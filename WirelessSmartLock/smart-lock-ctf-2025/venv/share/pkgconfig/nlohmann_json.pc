@@ -1,0 +1,4 @@
+Name: nlohmann_json
+Description: JSON for Modern C++
+Version: 3.11.3
+Cflags: -I/Users/hongjingtoh/Downloads/WirelessSmartLock/smart-lock-ctf-2025/venv/include

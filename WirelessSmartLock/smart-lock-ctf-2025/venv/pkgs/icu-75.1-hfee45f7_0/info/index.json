@@ -1,0 +1,14 @@
+{
+  "arch": "arm64",
+  "build": "hfee45f7_0",
+  "build_number": 0,
+  "depends": [
+    "__osx >=11.0"
+  ],
+  "license": "MIT",
+  "name": "icu",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1720853997952,
+  "version": "75.1"
+}

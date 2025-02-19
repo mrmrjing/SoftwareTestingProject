@@ -1,0 +1,11 @@
+prefix=/Users/hongjingtoh/Downloads/WirelessSmartLock/smart-lock-ctf-2025/venv
+exec_prefix=${prefix}
+includedir=/Users/hongjingtoh/Downloads/WirelessSmartLock/smart-lock-ctf-2025/venv/include
+libdir=/Users/hongjingtoh/Downloads/WirelessSmartLock/smart-lock-ctf-2025/venv/lib
+
+Name: Yaml-cpp
+Description: A YAML parser and emitter for C++
+Version: 0.8.0
+Requires:
+Libs: -L${libdir} -lyaml-cpp
+Cflags: -I${includedir}

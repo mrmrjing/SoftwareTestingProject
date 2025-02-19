@@ -1,0 +1,21 @@
+{
+    "arch": "arm64",
+    "build": "h3f77e49_1",
+    "build_number": 1,
+    "channel": "https://conda.anaconda.org/conda-forge",
+    "depends": [
+        "__osx >=11.0",
+        "libzlib >=1.3.1,<2.0a0"
+    ],
+    "fn": "libsqlite-3.48.0-h3f77e49_1.conda",
+    "license": "Unlicense",
+    "md5": "4c55169502ecddf8077973a987d08f08",
+    "name": "libsqlite",
+    "platform": "osx",
+    "sha256": "17c06940cc2a13fd6a17effabd6881b1477db38b2cd3ee2571092d293d3fdd75",
+    "size": 852831,
+    "subdir": "osx-arm64",
+    "timestamp": 1737564996616,
+    "url": "https://conda.anaconda.org/conda-forge/osx-arm64/libsqlite-3.48.0-h3f77e49_1.conda",
+    "version": "3.48.0"
+}

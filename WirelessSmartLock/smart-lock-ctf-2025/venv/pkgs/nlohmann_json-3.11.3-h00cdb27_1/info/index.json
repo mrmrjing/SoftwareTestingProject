@@ -1,0 +1,16 @@
+{
+  "arch": "arm64",
+  "build": "h00cdb27_1",
+  "build_number": 1,
+  "depends": [
+    "__osx >=11.0",
+    "libcxx >=16"
+  ],
+  "license": "MIT",
+  "license_family": "MIT",
+  "name": "nlohmann_json",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1723652704997,
+  "version": "3.11.3"
+}

@@ -1,0 +1,15 @@
+{
+  "c_stdlib": "macosx_deployment_target",
+  "cxx_compiler": "clangxx",
+  "target_platform": "osx-arm64",
+  "libarchive": "3.7",
+  "openssl": "3",
+  "zstd": "1.5",
+  "c_stdlib_version": "11.0",
+  "spdlog": "1.15",
+  "fmt": "11",
+  "CONDA_BUILD_SYSROOT": "/Applications/Xcode_15.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk",
+  "channel_targets": "conda-forge main",
+  "cxx_compiler_version": "18",
+  "__osx": "__osx >=11.0"
+}

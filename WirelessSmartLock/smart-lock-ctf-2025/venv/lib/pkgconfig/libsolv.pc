@@ -1,0 +1,8 @@
+libdir=/Users/hongjingtoh/Downloads/WirelessSmartLock/smart-lock-ctf-2025/venv/lib
+includedir=/Users/hongjingtoh/Downloads/WirelessSmartLock/smart-lock-ctf-2025/venv/include
+
+Name: libsolv
+Description: Library for solving packages
+Version: 0.7.30
+Libs: -L${libdir} -lsolv
+Cflags: -I${includedir}

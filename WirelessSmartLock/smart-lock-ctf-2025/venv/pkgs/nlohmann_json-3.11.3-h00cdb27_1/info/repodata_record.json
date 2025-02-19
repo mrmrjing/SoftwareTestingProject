@@ -1,0 +1,22 @@
+{
+    "arch": "arm64",
+    "build": "h00cdb27_1",
+    "build_number": 1,
+    "channel": "https://conda.anaconda.org/conda-forge",
+    "depends": [
+        "__osx >=11.0",
+        "libcxx >=16"
+    ],
+    "fn": "nlohmann_json-3.11.3-h00cdb27_1.conda",
+    "license": "MIT",
+    "license_family": "MIT",
+    "md5": "d2dee849c806430eee64d3acc98ce090",
+    "name": "nlohmann_json",
+    "platform": "osx",
+    "sha256": "3f4e6a4fa074bb297855f8111ab974dab6d9f98b7d4317d4dd46f8687ee2363b",
+    "size": 123250,
+    "subdir": "osx-arm64",
+    "timestamp": 1723652704997,
+    "url": "https://conda.anaconda.org/conda-forge/osx-arm64/nlohmann_json-3.11.3-h00cdb27_1.conda",
+    "version": "3.11.3"
+}
