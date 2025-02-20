@@ -41,6 +41,9 @@ For BLE application:
     d exceptions, or logs that show internal server errors, or server shutting down unexpectedly 
     - Logical bugs: incorrect responses, unexpected states
     - Restarts
+    - load testing using multithreading, parallelization operations
+    - change values and sequences, check if bounding exists
+    - modify volume and use direct inputs (eg: using cURL rather than python wrapper)
 
 5. What feedbacks to collect from test execution to improve fuzzer/which tests are interesting? 
     - Coverage 
