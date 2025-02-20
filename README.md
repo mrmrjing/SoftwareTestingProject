@@ -18,6 +18,7 @@
 1. What are the test inputs? 
 For Django web app: 
     - HTTP/HTTPs requests containing form data, query parameters, create a seed_http.txt file (fill_table.py)
+        * Modify input size to detect crashes 
 For BLE application: 
     - Valid BLE packets including header fields and payload (smartlock.py)
 
