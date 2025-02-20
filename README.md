@@ -30,4 +30,7 @@ For BLE application:
 
 6. How to improve the fuzzer to find more bugs efficiently? 
 
+## Fuzzer Architecture 
+![alt text](image.png)
+
 
