@@ -4,6 +4,13 @@
     * Send random BLE packets to the hardware lock and detect crashes or hangs
 
 - Highlight which parts of the fuzzer we plan to implement ourselves 
+    * Main Loop: Decide which seed to pick from the corpus, how many mutations to apply, scheduling of fuzz iterations
+    * Seed Corpus: Queue/priority queue 
+    * Mutation Engine: Domain specific manipulations for HTTP data and BLE packets 
+    * Target Interface: 
+        * Django --> Python module that issues HTTP requests to local test Django server with coverage running 
+        * Hardware lock --> Module that sends BLE packets to the BLE lock 
+    * Feedback Engine: Implement custom heuristics to evaluate whether a new input is intersting (covers new path or triggers a unique crash)
 - Discuss set of tools we plan to use out-of-the-box 
 - Discuss which parts of the designs are generic, and which parts need to be configured/tuned based on the two case studies 
 - Discuss the use cases for the fuzzer, i.e. how would someone use our fuzzer beyond the case studies 
@@ -31,6 +38,5 @@ For BLE application:
 6. How to improve the fuzzer to find more bugs efficiently? 
 
 ## Fuzzer Architecture 
-![alt text](image.png)
-
+![alt text](image-1.png)
 
