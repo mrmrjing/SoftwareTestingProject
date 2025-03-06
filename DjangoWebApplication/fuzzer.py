@@ -3,7 +3,7 @@ import random
 import json
 import copy
 import time
-import subprocess  
+from coverage import Coverage
 
 # ==============================================================
 # Configuration Parameters
@@ -18,15 +18,41 @@ HEADERS = {
     'Content-Type': 'application/json',
     'Cookie': 'csrftoken=VALID_CSRF_TOKEN; sessionid=VALID_SESSION_ID',
 }
+# Naive way of assigning energy: Fixed initial energy and maximum iterations
+INITIAL_ENERGY = 10
+MAX_ITERATIONS = 50  # Adjust as needed
 
-# Energy Generation: Naive approach of assigning a fixed energy value to each input 
-ENERGY = 10
-
+# ==============================================================
+# Coverage Tracking System
+# ==============================================================
+class CoverageManager:
+    def __init__(self):
+        self.cov = Coverage()
+        self.covered_lines = set()
+        
+    def start_tracking(self):
+        """Start measuring code coverage"""
+        self.cov.start()
+        
+    def stop_tracking(self):
+        """Stop measuring, update and return new coverage count"""
+        self.cov.stop()
+        self.cov.save()
+        coverage_data = self.cov.get_data()
+        new_lines = set()
+        
+        for file in coverage_data.measured_files():
+            lines = coverage_data.lines(file)
+            new_lines.update([(file, line) for line in lines])
+            
+        # New coverage lines are those not already seen
+        new_coverage = new_lines - self.covered_lines
+        self.covered_lines.update(new_lines)
+        return len(new_coverage)
 
 # ==============================================================
 # Seed Generation (from fill_table.py)
 # ==============================================================
-
 def generate_seed():
     """
     Generate a seed payload with random form data.
@@ -43,164 +69,134 @@ def generate_seed():
     return form_data
 
 # ==============================================================
-# Mutation Engine 
+# Mutation Engine with Dynamic Energy
 # ==============================================================
-
-def mutate_form_data(form_data):
+def mutate_form_data(form_data, energy):
     """
-    Apply a mutation on the input form data.
-    For numeric fields, generate edge cases (negative or high values).
-    For string fields, either append extra characters or truncate the string.
+    Apply multiple mutations based on the given energy level.
+    For each mutation, a random field is selected and modified.
     """
-    mutated_data = copy.deepcopy(form_data)
-    # Choose a random field to mutate
-    field = random.choice(list(mutated_data.keys()))
-    
-    if field == 'price':
-        # For the price, sometimes generate negative or unusually high values.
-        if random.random() < 0.5:
-            mutated_data[field] = random.randint(-100, 0)  # Negative edge case
+    mutated = copy.deepcopy(form_data)
+    # More energy results in a higher chance for multiple mutations.
+    num_mutations = random.randint(1, max(1, energy // 2))
+    for _ in range(num_mutations):
+        field = random.choice(list(mutated.keys()))
+        if field == 'price':
+            mutated[field] = random.choice([-100, 0, 10**6, 'NaN', '100'])
         else:
-            mutated_data[field] = random.randint(100, 1000)  # High value edge case
-    else:
-        # For 'name' and 'info', either append or truncate characters.
-        if random.random() < 0.5:
-            mutated_data[field] += ''.join(random.choices('abcdefghijklmnopqrstuvwxyz', k=3))
-        else:
-            mutated_data[field] = mutated_data[field][:max(1, len(mutated_data[field]) - 2)]
-    return mutated_data
+            mutated[field] = ''.join(random.choices(
+                'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\x00<>\'\"&%$#@!',
+                k=random.randint(0, 1000)
+            ))
+    return mutated
 
 # ==============================================================
-# Django Target Interface 
+# Django Target Interface
 # ==============================================================
-
-def send_post_request(form_data):
+def send_post_request(payload):
     """
-    Sends an HTTP POST request with the given form_data to the Django application.
-    Returns the response object or None if there's an exception.
+    Sends an HTTP POST request with the given payload to the Django application.
+    Returns the response object or None if an exception occurs.
     """
-    url = BASE_URL + ENDPOINT
     try:
-        response = requests.post(url, headers=HEADERS, data=json.dumps(form_data))
+        response = requests.post(
+            BASE_URL + ENDPOINT,
+            headers=HEADERS,
+            data=json.dumps(payload),
+            timeout=5
+        )
         return response
-    except requests.exceptions.RequestException as e:
-        print("Error sending request:", e)
+    except Exception:
         return None
 
-def check_response(response):
+# ==============================================================
+# Energy Calculation Based on Coverage
+# ==============================================================
+def calculate_energy(new_coverage_count):
     """
-    Analyze the response from the Django server.
-    Returns a dictionary with:
-      - status: "success", "crash", "unexpected", or "error"
-      - status_code: the HTTP response code
-      - response_text: the response body
+    Dynamically assign energy based on the number of new coverage lines.
     """
-    result = {}
-    if response is None:
-        result['status'] = "error"
-        result['error'] = "No response"
-        return result
-    
-    result['status_code'] = response.status_code
-    result['response_text'] = response.text
-
-    if response.status_code in [200, 201]:
-        result['status'] = "success"
-    elif response.status_code >= 500:
-        result['status'] = "crash"
-    else:
-        result['status'] = "unexpected"
-    return result
+    return max(1, INITIAL_ENERGY + new_coverage_count * 2)
 
 # ==============================================================
-# Feedback Engine
+# Greybox Fuzzer with Corpus Management
 # ==============================================================
-
-def evaluate_response(response_result):
-    """
-    Evaluate whether the response is interesting.
-    For now, an "interesting" response is one that indicates a server crash.
-    This function can be extended with additional heuristics.
-    """
-    if response_result.get("status") == "crash":
-        return True
-    return False
-
-# ==============================================================
-# Coverage Integration
-# ==============================================================
-
-def update_and_print_coverage():
-    """
-    Integrate with coverage.py to update and print the current coverage report.
-    Assumes that your Django server is running with coverage enabled.
-    This function runs:
-      - 'coverage combine' to combine data from parallel runs, and
-      - 'coverage report' to print the report.
-    """
-    try:
-        # Combine coverage data (if Django was run with parallel mode)
-        subprocess.run(["coverage", "combine"], check=True)
-        # Run the coverage report command and capture its output
-        result = subprocess.run(["coverage", "report"], check=True, capture_output=True, text=True)
-        print("\n=== Coverage Report ===")
-        print(result.stdout)
-    except Exception as e:
-        print("Coverage update failed:", e)
-
-# ==============================================================
-# Main Fuzzer Loop
-# ==============================================================
-
-def main():
-    # Initialize the seed corpus with a single seed
-    # Each entry in the corpus is a dictionary representing containing the following: 
-    #   - 'payload': the HTTP input (a dictionary)
-    #   - 'energy': number of times to fuzz this input.
-    corpus = [{'payload': generate_seed(), 'energy': ENERGY}]
-    
-    iteration = 0
-    max_iterations = 50  # Adjust the total number of iterations as needed
-
-    while iteration < max_iterations and corpus:
-        print(f"\nIteration: {iteration}")
+class GreyboxFuzzer:
+    def __init__(self):
+        self.cov_mgr = CoverageManager()
+        # Each corpus entry holds the payload, its current energy, and the last coverage count.
+        self.corpus = [{
+            'payload': generate_seed(),
+            'energy': INITIAL_ENERGY,
+            'coverage': 0
+        }]
+        self.crashes = []
         
-        # Select the first seed from the corpus
-        seed_entry = corpus[0]
-        seed = seed_entry['payload']
+    def run_iteration(self):
+        if not self.corpus:
+            return False
         
-        # Apply a mutation to the seed payload
-        mutated_input = mutate_form_data(seed)
-        print("Mutated input:", mutated_input)
+        # Select the seed with the highest energy from the corpus.
+        seed_entry = max(self.corpus, key=lambda x: x['energy'])
         
-        # Send the mutated input to the Django target
-        response = send_post_request(mutated_input)
+        # Mutate the selected seed based on its energy.
+        mutated = mutate_form_data(seed_entry['payload'], seed_entry['energy'])
         
-        # Analyze the response from the Django application
-        result = check_response(response)
-        print("Response result:", result)
+        # Measure code coverage for this mutated input.
+        self.cov_mgr.start_tracking()
+        response = send_post_request(mutated)
+        new_coverage = self.cov_mgr.stop_tracking()
         
-        # Evaluate the response using the feedback engine
-        if evaluate_response(result):
-            print("Found interesting input (crash detected)! Adding it to the corpus.")
-            # Add the mutated input as a new seed with full energy.
-            corpus.append({'payload': mutated_input, 'energy': ENERGY})
-        else:
-            print("Input not interesting.")
+        # Determine the outcome based on the response.
+        status = "success"
+        if response is None:
+            status = "crash"
+        elif response.status_code >= 500:
+            status = "crash"
         
-        # Reduce the energy of the current seed by 1
+        # If new coverage is discovered or a crash occurs, add the mutated input to the corpus.
+        if new_coverage > 0 or status == "crash":
+            new_energy = calculate_energy(new_coverage)
+            self.corpus.append({
+                'payload': mutated,
+                'energy': new_energy,
+                'coverage': new_coverage
+            })
+            if status == "crash":
+                self.crashes.append(mutated)
+        
+        # Reduce the energy of the current seed; remove it if exhausted.
         seed_entry['energy'] -= 1
-        # Remove the seed if its energy is exhausted.
         if seed_entry['energy'] <= 0:
-            corpus.pop(0)
-        
-        iteration += 1
+            self.corpus.remove(seed_entry)
+            
+        return True
+    
+    def print_stats(self):
+        print(f"\n[Stats] Corpus: {len(self.corpus)} | Crashes: {len(self.crashes)}")
+        print(f"Total coverage: {len(self.cov_mgr.covered_lines)} lines")
 
-        # Optionally update and print the coverage report every 10 iterations
-        if iteration % 10 == 0:
-            update_and_print_coverage()
-        
-        time.sleep(0.5)  # Delay to avoid overloading the server
+# ==============================================================
+# Execution
+# ==============================================================
+def main():
+    fuzzer = GreyboxFuzzer()
+    print("Starting greybox fuzzer...")
+    
+    for i in range(MAX_ITERATIONS):
+        print(f"\n--- Iteration {i+1}/{MAX_ITERATIONS} ---")
+        if not fuzzer.run_iteration():
+            break
+        if (i+1) % 10 == 0:
+            fuzzer.print_stats()
+        time.sleep(0.1)
+    
+    print("\n=== Final Results ===")
+    fuzzer.print_stats()
+    if fuzzer.crashes:
+        print("\nCrashes found:")
+        for crash in fuzzer.crashes:
+            print(json.dumps(crash, indent=2))
 
 if __name__ == "__main__":
     main()
