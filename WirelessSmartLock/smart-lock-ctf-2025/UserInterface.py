@@ -7,7 +7,7 @@ from BLEClient import BLEClient
 from nicegui import app, run, ui  # GUI Library
 
 
-DEVICE_NAME = "Smart Lock [Group 1]"
+DEVICE_NAME = "Smart Lock [Group 11]"
 
 AUTH = [0x00]  # 9 Bytes
 OPEN = [0x01]  # 1 Byte
@@ -284,7 +284,7 @@ async def user_interface() -> None:
         try:
             line = await run.io_bound(port.readline)
             if line:
-                print(f'<-- {line.decode().strip('\r\n')}')
+                print(f'<-- {line.decode().rstrip()}')
                 log.push(line.decode())
         except Exception:
             if port:
