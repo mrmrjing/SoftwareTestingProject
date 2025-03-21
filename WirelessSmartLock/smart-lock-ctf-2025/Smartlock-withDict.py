@@ -12,34 +12,6 @@ CLOSE = [0x02]  # 1 Byte
 PASSCODE = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06]  # Correct PASSCODE
 # PASSCODE = [0x01, 0x02, 0x03, 0x04, 0x05, 0x07] # Wrong PASSCODE
 
-
-def add_one(passcode):
-    if passcode[-1] == 6:
-        passcode[-1] = 0
-        if passcode[-2] == 6:
-            passcode[-2] = 0
-            if passcode[-3] == 6:
-                passcode[-3] = 0
-                if passcode[-4] == 6:
-                    passcode[-4] = 0
-                    if passcode[-5] == 6:
-                        if passcode[-6] == 6:
-                            print("[!] Disconnected!")
-                            sys.exit(0)
-                            return
-                        else:
-                            passcode[-6] += 1
-                    else:
-                        passcode[-5] += 1
-                else:
-                    passcode[-4] += 1
-            else:
-                passcode[-3] += 1
-        else:
-            passcode[-2] += 1
-    else:
-        passcode[-1] += 1
-
 transitions = {
     ('Locked', 'Locked'): 0,
     ('Locked', 'Authenticating'): 0,
@@ -67,31 +39,20 @@ async def example_control_smartlock():
     await ble.connect(DEVICE_NAME)
 
     print("\n[2] Authenticating...")
-    # PASSCODE = [1, 0, 0, 0, 0, 0]
     res = await ble.write_command(AUTH + PASSCODE)
-    while res[0] != 0: 
-        print(f"[X] Failure: Wrong Passcode: {AUTH + PASSCODE}")
-        add_one(PASSCODE)
-        res = await ble.write_command(AUTH + PASSCODE)
+    if res[0] != 0:
+        print(f"[X] Failure: Wrong Passcode.")
+        await ble.disconnect()
+        print("[!] Disconnected!")
+        sys.exit(0)
+        return
 
     print("[!] Authenticated!!!")
-    await asyncio.sleep(2)
-
-    for i in range(100):
-        if i == 1 or i == 10 or i == 11:
-            continue
-        else:
-            res = await ble.write_command([i])
-
-    res = await ble.write_command([11])
     await asyncio.sleep(2)
 
     print("\n[3] Opening")
     res = await ble.write_command(OPEN)
     await asyncio.sleep(2)
-
-    # res = await ble.write_command([10])
-    # await asyncio.sleep(2)
 
     print("\n[4] Closing")
     res = await ble.write_command(CLOSE)
@@ -104,7 +65,7 @@ async def example_control_smartlock():
     lines = ble.read_logs()  # Return a list of all log lines.
     for line in lines:
         print(line)
-    # print(lines[-1])
+    # TIP: Use lines[-1] to get the most recent line
 
     sys.exit(0)
 

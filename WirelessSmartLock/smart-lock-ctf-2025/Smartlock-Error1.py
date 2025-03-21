@@ -77,21 +77,15 @@ async def example_control_smartlock():
     print("[!] Authenticated!!!")
     await asyncio.sleep(2)
 
-    for i in range(100):
+    for i in range(64):
         if i == 1 or i == 10 or i == 11:
             continue
         else:
             res = await ble.write_command([i])
 
-    res = await ble.write_command([11])
-    await asyncio.sleep(2)
-
     print("\n[3] Opening")
     res = await ble.write_command(OPEN)
     await asyncio.sleep(2)
-
-    # res = await ble.write_command([10])
-    # await asyncio.sleep(2)
 
     print("\n[4] Closing")
     res = await ble.write_command(CLOSE)
