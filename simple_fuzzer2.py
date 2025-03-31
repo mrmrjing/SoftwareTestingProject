@@ -11,7 +11,7 @@ import os
 import datetime
 import traceback
 import subprocess
-from collections import defaultdict
+
 
 # --- Logging configuration ---
 # Set up a logger for the fuzzer with both file and console handlers
@@ -25,7 +25,7 @@ os.makedirs("logs", exist_ok=True)
 # Create a timestamp to uniquely name log files
 timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 
-# Set up a file handler for logging to a file, with INFO level
+# Set up a file handler for logging to a file
 file_handler = logging.FileHandler(f"logs/fuzz_log_{timestamp}.txt")
 file_handler.setLevel(logging.INFO)
 formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
@@ -58,17 +58,6 @@ DEFAULT_PAYLOAD = {
     "price": 100
 }
 
-# --- Define crash types ---
-# Enumerates the types of crashes/failures detected during fuzzing
-
-class CrashType:
-    SERVER_ERROR = "SERVER_ERROR"            # HTTP 500 errors
-    TIMEOUT = "TIMEOUT"                      # Request timeout occurred
-    CONNECTION_ERROR = "CONNECTION_ERROR"    # Failed to connect to the server
-    UNEXPECTED_RESPONSE = "UNEXPECTED_RESPONSE"  # Any other unexpected behavior
-    LONG_RESPONSE_TIME = "LONG_RESPONSE_TIME"    # Response took longer than acceptable
-    SERVER_CRASH = "SERVER_CRASH"        # Server crashed completely and needed restart
-
 # --- Request data structure ---
 # A helper class to encapsulate HTTP requests for fuzzing
 
@@ -100,28 +89,63 @@ class FuzzerClient:
         self.base_url = base_url
         self.headers = {}
         
-        # Create directory for crash logs
-        os.makedirs("crash_logs", exist_ok=True)
+        # Initialize SeedQ and FailureQ
+        self.SeedQ = self.initialize_seed_queue()
+        self.FailureQ = {}
         
-        # Define a path to store the crash report as a JSON file
-        self.crash_report_path = f"crash_logs/crash_report_{timestamp}.json"
+        # For tracking interesting tests
+        self.interesting_time = {0: datetime.datetime.now().isoformat()}
+        self.failure_time = {0: datetime.datetime.now().isoformat()}
+        self.tests = {0: datetime.datetime.now().isoformat()}
+        self.test_id = 1
         
-        # Initialize statistics for crashes, categorized by type, endpoint, and HTTP method
-        self.crash_stats = {
-            "total_crashes": 0,
-            "by_type": defaultdict(int),
-            "by_endpoint": defaultdict(int),
-            "by_method": defaultdict(int)
-        }
+        # Create directory for session data
+        self.session_folder = self.create_session_folder()
+    
+    def create_session_folder(self):
+        """Create a numbered session folder for storing results"""
+        base_folder = os.path.join("sessions", "http")
+        os.makedirs(base_folder, exist_ok=True)
         
-        # List to store detailed information about each crash
-        self.crashes = []
+        session_folders = [f for f in os.listdir(base_folder) if f.startswith("session")]
+        if session_folders:
+            session_folders.sort(key=lambda x: int(x.split()[-1]))
+            last_session = session_folders[-1]
+            session_number = int(last_session.split()[-1]) + 1
+        else:
+            session_number = 1
+            
+        session_folder = os.path.join(base_folder, f"session {session_number}")
+        os.makedirs(session_folder, exist_ok=True)
+        return session_folder
+    
+    def initialize_seed_queue(self):
+        """Initialize the SeedQ with endpoints and their valid methods/payloads"""
+        SeedQ = {}
         
+        for endpoint in ENDPOINTS:
+            # For endpoints with ID parameters, we'll add them with placeholders
+            SeedQ[endpoint] = {
+                "methods": {},
+                "seeds": [copy.deepcopy(DEFAULT_PAYLOAD)]
+            }
+            
+            # Assign appropriate methods for each endpoint
+            if endpoint == "/datatb/product/add/":
+                SeedQ[endpoint]["methods"] = {"POST": True, "GET": True}
+            elif "/edit/" in endpoint:
+                SeedQ[endpoint]["methods"] = {"PUT": True, "GET": True}
+            elif "/delete/" in endpoint:
+                SeedQ[endpoint]["methods"] = {"DELETE": True, "GET": True}
+            elif "/export/" in endpoint:
+                SeedQ[endpoint]["methods"] = {"GET": True, "POST": True}
+            else:
+                SeedQ[endpoint]["methods"] = {method: True for method in HTTP_METHODS}
+        
+        return SeedQ
+    
     def register_user(self, username, password, email):
-        """
-        Register a user account using the provided credentials.
-        Returns True if registration is successful.
-        """
+        """Register a user account using the provided credentials"""
         registration_url = f"{self.base_url}/accounts/register/"
         payload = {
             "username": username,
@@ -135,7 +159,7 @@ class FuzzerClient:
                 logger.info("User registration successful!")
                 return True
             else:
-                logger.error(f"User registration failed. Status code: {response.status_code}. Response: {response.text}")
+                logger.error(f"User registration failed. Status code: {response.status_code}")
                 return False
         except Exception as e:
             logger.error(f"Registration exception: {e}")
@@ -156,23 +180,21 @@ class FuzzerClient:
                     logger.info("Login successful!")
                     return token
                 else:
-                    logger.error("Login response did not contain a token.")
+                    logger.error("Login response did not contain a token")
                     return None
             else:
-                logger.error(f"Login failed. Status code: {response.status_code}. Response: {response.text}")
+                logger.error(f"Login failed. Status code: {response.status_code}")
                 return None
         except Exception as e:
             logger.error(f"Login exception: {e}")
             return None
 
     def ensure_authenticated(self):
-        """
-        Ensure that the client is authenticated.
-        Attempts to log in a test user, and if that fails, attempts to register then log in.
-        """
+        """Ensure that the client is authenticated"""
         test_username = "example"
         test_password = "example"
         test_email = "example@example.com"
+        
         token = self.login_user(test_username, test_password)
         if token is None:
             logger.info("Test user not found or login failed; attempting registration...")
@@ -182,119 +204,36 @@ class FuzzerClient:
                 if token:
                     self.headers["Authorization"] = f"Token {token}"
                 else:
-                    logger.error("Could not authenticate test user.")
+                    logger.error("Could not authenticate test user")
             return token
         else:
             self.headers["Authorization"] = f"Token {token}"
             return token
     
-    def record_crash(self, request, crash_type, response=None, response_time=None, error=None):
-        """
-        Record detailed crash information for a given request.
-        Updates statistics and logs the crash details.
-        """
-        self.crash_stats["total_crashes"] += 1
-        self.crash_stats["by_type"][crash_type] += 1
-        
-        # Determine the endpoint pattern by removing the base URL
-        endpoint = request.url.replace(self.base_url, "")
-        # Try to match the endpoint to a known pattern by replacing ID placeholders
-        for pattern in ENDPOINTS:
-            if pattern.replace("{id}", "\\d+") in endpoint:
-                endpoint_pattern = pattern
-                self.crash_stats["by_endpoint"][endpoint_pattern] += 1
-                break
-        else:
-            # If no pattern match, use the actual endpoint
-            self.crash_stats["by_endpoint"][endpoint] += 1
-        
-        self.crash_stats["by_method"][request.method] += 1
-        
-        # Build a detailed record of the crash
-        crash_record = {
-            "timestamp": datetime.datetime.now().isoformat(),
-            "crash_type": crash_type,
-            "request": request.to_dict(),
-            "response_time_ms": response_time * 1000 if response_time else None,
-        }
-        
-        if response:
-            crash_record["response"] = {
-                "status_code": response.status_code,
-                "headers": dict(response.headers),
-                "body": response.text[:1000]  # Limit response body size for logging
-            }
-        
-        if error:
-            crash_record["error"] = {
-                "type": type(error).__name__,
-                "message": str(error),
-                "traceback": traceback.format_exc()
-            }
-        
-        # Store the crash record
-        self.crashes.append(crash_record)
-        
-        # Log the crash details
-        logger.info(f"Crash detected: {crash_type} - {request.method} {request.url}")
-        if crash_type == CrashType.SERVER_ERROR and response:
-            logger.info(f"Server error response: {response.status_code} - {response.text[:200]}")
-        elif crash_type == CrashType.TIMEOUT:
-            logger.info(f"Request timed out after {response_time:.2f} seconds")
-        elif crash_type == CrashType.CONNECTION_ERROR:
-            logger.info(f"Connection error: {error}")
-    
-    def save_crash_report(self):
-        """
-        Save all crash records and summary statistics to a JSON file.
-        Also creates a human-readable summary text file.
-        """
-        report = {
-            "summary": self.crash_stats,
-            "crashes": self.crashes
-        }
-        
-        with open(self.crash_report_path, 'w') as f:
-            json.dump(report, f, indent=2)
-        
-        logger.info(f"Crash report saved to {self.crash_report_path}")
-        
-        # Save a summary in a separate text file
-        summary_path = self.crash_report_path.replace('.json', '_summary.txt')
-        with open(summary_path, 'w') as f:
-            f.write(f"FUZZING CRASH REPORT - {datetime.datetime.now()}\n")
-            f.write(f"{'='*50}\n\n")
-            f.write(f"Total crashes: {self.crash_stats['total_crashes']}\n\n")
+    def save_session_data(self):
+        """Save all session data to files in the session folder"""
+        with open(os.path.join(self.session_folder, "SeedQ.json"), "w") as f:
+            json.dump(self.SeedQ, f, indent=2)
             
-            f.write("Crashes by type:\n")
-            for crash_type, count in self.crash_stats['by_type'].items():
-                f.write(f"  {crash_type}: {count}\n")
-            f.write("\n")
+        with open(os.path.join(self.session_folder, "FailureQ.json"), "w") as f:
+            json.dump(self.FailureQ, f, indent=2)
             
-            f.write("Crashes by endpoint:\n")
-            for endpoint, count in self.crash_stats['by_endpoint'].items():
-                f.write(f"  {endpoint}: {count}\n")
-            f.write("\n")
+        with open(os.path.join(self.session_folder, "interesting.json"), "w") as f:
+            json.dump(self.interesting_time, f, indent=2)
             
-            f.write("Crashes by method:\n")
-            for method, count in self.crash_stats['by_method'].items():
-                f.write(f"  {method}: {count}\n")
-            f.write("\n")
+        with open(os.path.join(self.session_folder, "failure.json"), "w") as f:
+            json.dump(self.failure_time, f, indent=2)
             
-            f.write(f"Detailed crash information available in: {self.crash_report_path}\n")
+        with open(os.path.join(self.session_folder, "tests.json"), "w") as f:
+            json.dump(self.tests, f, indent=2)
         
-        logger.info(f"Crash summary saved to {summary_path}")
-
+        logger.info(f"Session data saved to {self.session_folder}")
 
 # --- Server control functions ---
-
 def start_django_server():
-    """
-    Start the Django development server.
-    Uses subprocess to run 'manage.py runserver' from the appropriate directory.
-    """
+    """Start the Django development server"""
     try:
-        # Determine the directory of the Django project relative to this script
+        # Determine the directory of the Django project
         base_dir = os.path.dirname(os.path.abspath(__file__))
         cwd = os.path.join(base_dir, "DjangoWebApplication")
         logger.info(f"Starting Django server from: {cwd}")
@@ -317,12 +256,8 @@ def start_django_server():
         logger.error(f"Failed to start Django server: {e}")
         return None
 
-
 def wait_for_server(url, timeout=30, interval=0.5):
-    """
-    Poll the given URL until the server responds or the timeout is reached.
-    Returns True if the server becomes available, otherwise False.
-    """
+    """Poll the URL until the server responds or timeout is reached"""
     logger.info(f"Waiting for server at {url} to be available (timeout: {timeout}s)")
     start_time = time.time()
     while time.time() - start_time < timeout:
@@ -330,22 +265,14 @@ def wait_for_server(url, timeout=30, interval=0.5):
             response = requests.get(url, timeout=2)
             logger.info(f"Server is up and running! Status code: {response.status_code}")
             return True
-        except requests.RequestException as e:
-            logger.debug(f"Server not yet available: {str(e)}")
+        except requests.RequestException:
             time.sleep(interval)
-    logger.error("Server did not start within the specified timeout.")
+    logger.error("Server did not start within the specified timeout")
     return False
 
 # --- Mutation helper functions ---
-# Functions to mutate strings, integers, and payloads to generate varied test inputs
-
 def mutate_string(s, num_mutations=1):
-    """
-    Mutate a string by performing a specified number of random changes:
-    - Changing a character
-    - Adding a character
-    - Removing a character
-    """
+    """Mutate a string by changing, adding, or removing characters"""
     if not s or not isinstance(s, str):
         return s
     
@@ -365,12 +292,8 @@ def mutate_string(s, num_mutations=1):
     
     return "".join(s_list)
 
-
 def mutate_integer(n, min_delta=-100, max_delta=100):
-    """
-    Mutate an integer by adding a random delta within the given range. A random delta is a random integer between
-    min_delta and max_delta (inclusive). If n is not an integer, it will be returned as is.
-    """
+    """Mutate an integer by adding a random delta"""
     if not isinstance(n, int):
         try:
             n = int(n)
@@ -380,12 +303,8 @@ def mutate_integer(n, min_delta=-100, max_delta=100):
     delta = random.randint(min_delta, max_delta)
     return n + delta
 
-
 def mutate_payload(payload):
-    """
-    Apply mutations to a payload dictionary.
-    Occasionally completely change the structure, otherwise mutate individual fields.
-    """
+    """Apply mutations to a payload dictionary"""
     if not payload:
         return payload
     
@@ -415,7 +334,7 @@ def mutate_payload(payload):
                 elif isinstance(mutated[key], int):
                     mutated[key] = random.choice(["123", True, [1, 2, 3], {"nested": "object"}])
     
-    # Otherwise, simply mutate each field based on its type
+    # Otherwise, mutate each field based on its type
     else:
         for key, value in mutated.items():
             if isinstance(value, str):
@@ -425,13 +344,8 @@ def mutate_payload(payload):
     
     return mutated
 
-
 def get_random_id():
-    """
-    Generate a random ID.
-    70% chance to return a likely valid numeric ID,
-    30% chance to return an invalid or unexpected ID.
-    """
+    """Generate a random ID for use in endpoint URLs"""
     if random.random() < 0.7:
         return str(random.randint(1, 100))
     
@@ -440,46 +354,28 @@ def get_random_id():
         "0", 
         "abc", 
         mutate_string(str(random.randint(1, 100))),
-        str(random.randint(1000000, 10000000))  # Likely out of range
+        str(random.randint(1000000, 10000000))
     ])
 
-
-def get_random_endpoint():
-    """
-    Select a random endpoint and, if necessary, fill in the {id} placeholder.
-    """
-    endpoint = random.choice(ENDPOINTS)
+def choose_next_seed(SeedQ):
+    """Choose a random path and seed from SeedQ"""
+    # Get a random path from SeedQ
+    path = random.choice(list(SeedQ.keys()))
     
-    if "{id}" in endpoint:
-        endpoint = endpoint.replace("{id}", get_random_id())
+    # If this path has no methods, return None
+    if not SeedQ[path]["methods"]:
+        return None, None
     
-    return endpoint
-
-
-def get_random_request(base_url="http://127.0.0.1:8000"):
-    """
-    Generate a random Request object using a random HTTP method and endpoint.
-    For POST and PUT requests on add/edit endpoints, attach a (possibly mutated) payload.
-    """
-    method = random.choice(HTTP_METHODS)
-    endpoint = get_random_endpoint()
-    url = f"{base_url}{endpoint}"
+    # Get a random seed for this path
+    if SeedQ[path]["seeds"]:
+        seed = random.choice(SeedQ[path]["seeds"])
+    else:
+        seed = copy.deepcopy(DEFAULT_PAYLOAD)
     
-    payload = None
-    if method in ["POST", "PUT"] and ("/add/" in endpoint or "/edit/" in endpoint):
-        payload = copy.deepcopy(DEFAULT_PAYLOAD)
-        # 80% chance to mutate the payload
-        if random.random() < 0.8:
-            payload = mutate_payload(payload)
-    
-    return Request(method, url, payload)
-
+    return path, seed
 
 def send_request(request, timeout=5.0):
-    """
-    Send an HTTP request using the provided Request object.
-    Returns a tuple: (response, response_time, error) where error is None if successful.
-    """
+    """Send an HTTP request using the provided Request object"""
     start_time = time.time()
     response = None
     error = None
@@ -513,405 +409,20 @@ def send_request(request, timeout=5.0):
     return response, response_time, error
 
 
-def execute_fuzz_request(client, request, slow_threshold=3.0, server_process=None):
-    """Execute a single fuzz request and log results with server recovery capability"""
-    logger.info(f"Executing: {request.method} {request.url}")
-    if request.payload:
-        logger.info(f"Payload: {request.payload}")
+def fuzz_application():
+    """Main fuzzing function that uses SeedQ and FailureQ for tracking test cases"""
+    # Start the Django server
+    server_process = start_django_server()
+    if not server_process:
+        logger.error("Failed to start Django server. Exiting.")
+        return
     
-    request.headers.update(client.headers)
-    response, response_time, error = send_request(request)
+    base_url = "http://127.0.0.1:8000"
     
-    # Check if server has crashed completely
-    server_crashed = (isinstance(error, requests.exceptions.ConnectionError) or 
-                     (server_process and server_process.poll() is not None))
-    
-    if server_crashed:
-        logger.warning("Server appears to have crashed. Attempting restart...")
-        
-        # Record the crash
-        client.record_crash(request, CrashType.SERVER_CRASH, error=error)
-        
-        # Terminate the existing process if it's still running
-        if server_process and server_process.poll() is None:
-            server_process.terminate()
-            server_process.wait()
-        
-        # Start a new server process
-        server_process = start_django_server()
-        
-        # Wait for it to become available
-        if wait_for_server(client.base_url, timeout=30):
-            logger.info("Server successfully restarted")
-            
-            # Re-authenticate if needed
-            client.ensure_authenticated()
-            
-            return True, server_process
-        else:
-            logger.error("Failed to restart server after crash")
-            return True, None
-    
-    # Normal crash detection logic
-    crash_detected = False
-    
-    if error:
-        if isinstance(error, requests.exceptions.Timeout):
-            client.record_crash(request, CrashType.TIMEOUT, response_time=response_time, error=error)
-            crash_detected = True
-        elif isinstance(error, requests.exceptions.ConnectionError):
-            client.record_crash(request, CrashType.CONNECTION_ERROR, response_time=response_time, error=error)
-            crash_detected = True
-        else:
-            client.record_crash(request, CrashType.UNEXPECTED_RESPONSE, response_time=response_time, error=error)
-            crash_detected = True
-    elif response:
-        logger.info(f"Response status: {response.status_code}")
-        
-        # Record server errors (500)
-        if response.status_code == 500:
-            client.record_crash(request, CrashType.SERVER_ERROR, response=response, response_time=response_time)
-            crash_detected = True
-        # Record unusually slow responses
-        elif response_time > slow_threshold:
-            client.record_crash(request, CrashType.LONG_RESPONSE_TIME, response=response, response_time=response_time)
-            crash_detected = True
-    
-    return crash_detected, server_process
-
-
-
-def fuzz_random(client, num_requests=100, server_process=None):
-    """Execute a specified number of random fuzz requests with server recovery"""
-    crashes = 0
-    
-    for i in range(num_requests):
-        logger.info(f"Random fuzzing iteration {i+1}/{num_requests}")
-        request = get_random_request(client.base_url)
-        
-        crash_detected, server_process = execute_fuzz_request(client, request, server_process=server_process)
-        
-        if crash_detected:
-            crashes += 1
-            
-        # If server couldn't be restarted, abort
-        if server_process is None:
-            logger.error("Server couldn't be restarted. Aborting fuzzing.")
-            break
-        
-        # Small delay between requests
-        time.sleep(0.1)
-    
-    return crashes, server_process
-
-
-
-def fuzz_systematic(client, server_process=None):
-    """Perform systematic fuzzing of all endpoints with all methods"""
-    crashes = 0
-    ids = [str(i) for i in range(1, 5)]  # Test with IDs 1-4
-    
-    # Test each endpoint
-    for endpoint_template in ENDPOINTS:
-        endpoint = endpoint_template
-        
-        # Fill in IDs if needed
-        if "{id}" in endpoint:
-            for id_value in ids:
-                filled_endpoint = endpoint.replace("{id}", id_value)
-                
-                # Try all HTTP methods
-                for method in HTTP_METHODS:
-                    request = Request(
-                        method=method,
-                        url=f"{client.base_url}{filled_endpoint}",
-                        payload=DEFAULT_PAYLOAD if method in ["POST", "PUT"] else None
-                    )
-                    
-                    crash_detected, server_process = execute_fuzz_request(client, request, server_process=server_process)
-                    
-                    if crash_detected:
-                        crashes += 1
-                    
-                    # If server couldn't be restarted, abort
-                    if server_process is None:
-                        logger.error("Server couldn't be restarted. Aborting fuzzing.")
-                        return crashes, server_process
-                    
-                    # Small delay
-                    time.sleep(0.1)
-        else:
-            # For endpoints without IDs
-            for method in HTTP_METHODS:
-                request = Request(
-                    method=method,
-                    url=f"{client.base_url}{endpoint}",
-                    payload=DEFAULT_PAYLOAD if method in ["POST", "PUT"] else None
-                )
-                
-                crash_detected, server_process = execute_fuzz_request(client, request, server_process=server_process)
-                
-                if crash_detected:
-                    crashes += 1
-                
-                # If server couldn't be restarted, abort
-                if server_process is None:
-                    logger.error("Server couldn't be restarted. Aborting fuzzing.")
-                    return crashes, server_process
-                
-                # Small delay
-                time.sleep(0.1)
-    
-    return crashes, server_process
-
-
-
-def fuzz_specific_vulnerabilities(client, server_process=None, consecutive_fails_limit=3):
-    """
-    Test specific known vulnerabilities or patterns that might cause problems
-    based on the information provided
-    """
-    crashes = 0
-    consecutive_connection_errors = 0
-    
-    # Test the specific endpoints mentioned:
-    vulnerabilities = [
-        # For /datatb/product/add/ 
-        Request("POST", f"{client.base_url}/datatb/product/add/", {"name": "test", "info": "test", "price": 100}),
-        Request("PUT", f"{client.base_url}/datatb/product/add/", {"name": "test", "info": "test", "price": 100}),
-        Request("DELETE", f"{client.base_url}/datatb/product/add/"),
-        Request("GET", f"{client.base_url}/datatb/product/add/"),
-        
-        # For /datatb/product/edit/<id>
-        Request("POST", f"{client.base_url}/datatb/product/edit/1/", {"name": "test", "info": "test", "price": 100}),
-        Request("PUT", f"{client.base_url}/datatb/product/edit/1/", {"name": "test", "info": "test", "price": 100}),
-        Request("DELETE", f"{client.base_url}/datatb/product/edit/1/"),
-        Request("GET", f"{client.base_url}/datatb/product/edit/1/"),
-        
-        # For /datatb/product/delete/<id>
-        Request("POST", f"{client.base_url}/datatb/product/delete/1/"),
-        Request("PUT", f"{client.base_url}/datatb/product/delete/1/"),
-        Request("DELETE", f"{client.base_url}/datatb/product/delete/1/"),
-        Request("GET", f"{client.base_url}/datatb/product/delete/1/"),
-        
-        # For /datatb/product/export/
-        Request("GET", f"{client.base_url}/datatb/product/export/"),
-        Request("POST", f"{client.base_url}/datatb/product/export/")
-    ]
-    
-    # Test specific payloads that might cause issues
-    special_payloads = [
-        {"name": "", "info": "", "price": 0},
-        {"name": "a" * 1000, "info": "b" * 1000, "price": 999999999},
-        {"name": "<script>alert('XSS')</script>", "info": "<img src=x onerror=alert('XSS')>", "price": -1},
-        {"name": "'; DROP TABLE products; --", "info": "SQL Injection Test", "price": 1},
-        {},  # Empty payload
-        {"name": "test", "info": "test"},  # Missing required field
-        {"name": "test", "info": "test", "price": "not_a_number"},  # Wrong type
-    ]
-    
-    # Known crash-inducing export payloads
-    export_payloads = [
-        {"search": "", "hidden_cols":[], "type": "pdf"},  # Known to cause a server crash
-        {"search": "test", "hidden_cols":[], "type": "pdf"},
-        {"search": "", "hidden_cols":[1, 2], "type": "pdf"},
-        {"search": "", "hidden_cols":None, "type": "pdf"},
-        {"search": "", "hidden_cols":[], "type": "csv"},
-        {"search": "", "hidden_cols":[], "type": "invalid_type"},
-        {"search": "", "hidden_cols":"not_a_list", "type": "pdf"},
-        # More extreme versions to potentially trigger other issues
-        {"search": "a" * 1000, "hidden_cols":[], "type": "pdf"},
-        {"search": "", "hidden_cols":[i for i in range(100)], "type": "pdf"},
-        {"search": "<script>alert('XSS')</script>", "hidden_cols":[], "type": "pdf"},
-    ]
-    
-    logger.info("Testing known vulnerabilities for specific endpoints")
-    
-    # Test vulnerabilities with provided endpoint info
-    for request in vulnerabilities:
-        crash_detected = execute_fuzz_request(client, request)
-        
-        if crash_detected:
-            crashes += 1
-            
-            # Check if this was a connection error
-            if client.crashes and client.crashes[-1]["crash_type"] == CrashType.CONNECTION_ERROR:
-                consecutive_connection_errors += 1
-            else:
-                consecutive_connection_errors = 0
-        else:
-            consecutive_connection_errors = 0
-        
-        # If we've had multiple connection errors in a row, restart the server
-        if consecutive_connection_errors >= consecutive_fails_limit:
-            logger.warning("Multiple consecutive connection errors detected. Server may have crashed. Restarting...")
-            
-            # Terminate the existing process if it's still running
-            if server_process and server_process.poll() is None:
-                server_process.terminate()
-                server_process.wait()
-            
-            # Start a new server process
-            server_process = start_django_server()
-            
-            # Wait for it to become available
-            if wait_for_server(client.base_url, timeout=30):
-                logger.info("Server successfully restarted")
-                
-                # Re-authenticate if needed
-                client.ensure_authenticated()
-                consecutive_connection_errors = 0
-            else:
-                logger.error("Failed to restart server after crash. Aborting fuzzing.")
-                return crashes, server_process
-                
-        time.sleep(0.1)
-    
-    logger.info("Testing special payloads on add and edit endpoints")
-    
-    # Test special payloads on add and edit endpoints
-    for payload in special_payloads:
-        # Test on add endpoint
-        request = Request("POST", f"{client.base_url}/datatb/product/add/", payload)
-        crash_detected = execute_fuzz_request(client, request)
-        
-        if crash_detected:
-            crashes += 1
-            
-            # Check for connection errors
-            if client.crashes and client.crashes[-1]["crash_type"] == CrashType.CONNECTION_ERROR:
-                consecutive_connection_errors += 1
-            else:
-                consecutive_connection_errors = 0
-        else:
-            consecutive_connection_errors = 0
-            
-        # Server restart logic if needed
-        if consecutive_connection_errors >= consecutive_fails_limit:
-            logger.warning("Multiple consecutive connection errors detected. Server may have crashed. Restarting...")
-            
-            # Terminate the existing process if it's still running
-            if server_process and server_process.poll() is None:
-                server_process.terminate()
-                server_process.wait()
-            
-            # Start a new server process
-            server_process = start_django_server()
-            
-            # Wait for it to become available
-            if wait_for_server(client.base_url, timeout=30):
-                logger.info("Server successfully restarted")
-                
-                # Re-authenticate if needed
-                client.ensure_authenticated()
-                consecutive_connection_errors = 0
-            else:
-                logger.error("Failed to restart server after crash. Aborting fuzzing.")
-                return crashes, server_process
-            
-        # Test on edit endpoint
-        request = Request("PUT", f"{client.base_url}/datatb/product/edit/1/", payload)
-        crash_detected = execute_fuzz_request(client, request)
-        
-        if crash_detected:
-            crashes += 1
-            
-            # Check for connection errors
-            if client.crashes and client.crashes[-1]["crash_type"] == CrashType.CONNECTION_ERROR:
-                consecutive_connection_errors += 1
-            else:
-                consecutive_connection_errors = 0
-        else:
-            consecutive_connection_errors = 0
-            
-        # Server restart logic if needed
-        if consecutive_connection_errors >= consecutive_fails_limit:
-            logger.warning("Multiple consecutive connection errors detected. Server may have crashed. Restarting...")
-            
-            # Terminate the existing process if it's still running
-            if server_process and server_process.poll() is None:
-                server_process.terminate()
-                server_process.wait()
-            
-            # Start a new server process
-            server_process = start_django_server()
-            
-            # Wait for it to become available
-            if wait_for_server(client.base_url, timeout=30):
-                logger.info("Server successfully restarted")
-                
-                # Re-authenticate if needed
-                client.ensure_authenticated()
-                consecutive_connection_errors = 0
-            else:
-                logger.error("Failed to restart server after crash. Aborting fuzzing.")
-                return crashes, server_process
-        
-        time.sleep(0.1)
-    
-    logger.info("Testing specific crash-inducing export payloads")
-    
-    # Test export payloads specifically targeting the known vulnerability
-    for payload in export_payloads:
-        request = Request("POST", f"{client.base_url}/datatb/product/export/", payload)
-        logger.info(f"Testing known crash-inducing export payload: {payload}")
-        
-        crash_detected = execute_fuzz_request(client, request)
-        
-        if crash_detected:
-            crashes += 1
-            logger.warning(f"Export payload {payload} caused a crash!")
-            
-            # Check for connection errors
-            if client.crashes and client.crashes[-1]["crash_type"] == CrashType.CONNECTION_ERROR:
-                consecutive_connection_errors += 1
-            else:
-                consecutive_connection_errors = 0
-        else:
-            consecutive_connection_errors = 0
-            
-        # Server restart logic if needed
-        if consecutive_connection_errors >= consecutive_fails_limit:
-            logger.warning("Multiple consecutive connection errors detected. Server may have crashed. Restarting...")
-            
-            # Terminate the existing process if it's still running
-            if server_process and server_process.poll() is None:
-                server_process.terminate()
-                server_process.wait()
-            
-            # Start a new server process
-            server_process = start_django_server()
-            
-            # Wait for it to become available
-            if wait_for_server(client.base_url, timeout=30):
-                logger.info("Server successfully restarted")
-                
-                # Re-authenticate if needed
-                client.ensure_authenticated()
-                consecutive_connection_errors = 0
-            else:
-                logger.error("Failed to restart server after crash. Aborting fuzzing.")
-                return crashes, server_process
-        
-        time.sleep(0.1)
-    
-    return crashes, server_process
-
-
-def start_fuzzing_session(base_url="http://127.0.0.1:8000", mode="all", num_random_requests=100, server_process=None):
-    """
-    Start a complete fuzzing session
-    
-    Args:
-        base_url: Base URL of the target application
-        mode: "all", "random", "systematic", or "targeted"
-        num_random_requests: Number of random requests to send in random mode
-        server_process: Current server process instance
-    
-    Returns:
-        Dictionary with fuzzing results
-    """
-    logger.info(f"Starting fuzzing session - Mode: {mode}, Target: {base_url}")
+    # Wait for server to start
+    if not wait_for_server(base_url, timeout=30):
+        logger.error("Server failed to start within the timeout period. Exiting.")
+        return
     
     # Initialize client
     client = FuzzerClient(base_url)
@@ -919,155 +430,218 @@ def start_fuzzing_session(base_url="http://127.0.0.1:8000", mode="all", num_rand
     # Make sure we're authenticated
     token = client.ensure_authenticated()
     if not token:
-        logger.error("Authentication failed. Exiting fuzzing session.")
-        return {"status": "error", "reason": "authentication_failed"}
+        logger.error("Authentication failed. Exiting.")
+        return
     
-    # Make sure server is responsive
-    if not wait_for_server(base_url, timeout=10):
-        logger.error("Server not responding. Exiting fuzzing session.")
-        return {"status": "error", "reason": "server_not_responding"}
+    logger.info("Authentication successful. Starting fuzzing...")
+    start_time = time.time()
     
-    logger.info("Authentication successful and server responsive. Starting fuzzing...")
-    
-    total_crashes = 0
-    
+    # Main fuzzing loop
     try:
-        # Execute the appropriate fuzzing strategy
-        if mode == "all" or mode == "random":
-            logger.info(f"Executing random fuzzing with {num_random_requests} requests")
-            random_crashes, server_process = fuzz_random(client, num_random_requests, server_process)
-            total_crashes += random_crashes
-            logger.info(f"Random fuzzing completed. Crashes found: {random_crashes}")
-            
-            # If server couldn't be restarted, abort further fuzzing
-            if server_process is None:
-                raise Exception("Failed to restart server after crash. Aborting further fuzzing.")
+        num_tests = 0
+        num_crashes = 0
         
-        if mode == "all" or mode == "systematic":
-            logger.info("Executing systematic fuzzing")
-            systematic_crashes, server_process = fuzz_systematic(client, server_process)
-            total_crashes += systematic_crashes
-            logger.info(f"Systematic fuzzing completed. Crashes found: {systematic_crashes}")
+        while num_tests < 1000:  # Limit to 1000 tests for this example
+            # Choose a random path and seed from SeedQ
+            path, seed = choose_next_seed(client.SeedQ)
+            if path is None:
+                continue
             
-            # If server couldn't be restarted, abort further fuzzing
-            if server_process is None:
-                raise Exception("Failed to restart server after crash. Aborting further fuzzing.")
-        
-        if mode == "all" or mode == "targeted":
-            logger.info("Executing targeted vulnerability fuzzing")
-            targeted_crashes, server_process = fuzz_specific_vulnerabilities(client, server_process)
-            total_crashes += targeted_crashes
-            logger.info(f"Targeted fuzzing completed. Crashes found: {targeted_crashes}")
+            # Replace {id} in path with a random ID if needed
+            current_path = path
+            if "{id}" in path:
+                id_value = get_random_id()
+                current_path = path.replace("{id}", id_value)
+            
+            # Mutate the seed
+            mutated_seed = mutate_payload(seed)
+            
+            # Get available methods for this path
+            available_methods = [m for m in client.SeedQ[path]["methods"] if client.SeedQ[path]["methods"][m]]
+            
+            if not available_methods:
+                logger.warning(f"No methods available for path: {path}")
+                continue
+            
+            # Try each available method
+            for method in available_methods:
+                # Create a request object
+                request = Request(
+                    method=method,
+                    url=f"{client.base_url}{current_path}",
+                    payload=mutated_seed if method in ["POST", "PUT"] else None
+                )
+                request.headers.update(client.headers)
+                
+                # Send the request
+                logger.info(f"Sending request: {method} {current_path}")
+                if request.payload:
+                    logger.info(f"Payload: {request.payload}")
+                
+                response, response_time, error = send_request(request)
+                
+                # Log the test
+                client.tests[client.test_id] = datetime.datetime.now().isoformat()
+                client.test_id += 1
+                num_tests += 1
+                
+                # Check if server crashed (process termination)
+                if server_process.poll() is not None:
+                    logger.warning("Server crashed! Process terminated unexpectedly.")
+                    num_crashes += 1
+                    
+                    # Record in FailureQ
+                    if path not in client.FailureQ:
+                        client.FailureQ[path] = {}
+                    
+                    if method not in client.FailureQ[path]:
+                        client.FailureQ[path][method] = {}
+                    
+                    status_code = "CRASH"
+                    if status_code not in client.FailureQ[path][method]:
+                        client.FailureQ[path][method][status_code] = []
+                    
+                    client.FailureQ[path][method][status_code].append({
+                        "input": mutated_seed,
+                        "timestamp": datetime.datetime.now().isoformat()
+                    })
+                    
+                    # If this is the first failure of this type, record the time
+                    if len(client.FailureQ[path][method][status_code]) == 1:
+                        client.failure_time[len(client.failure_time)] = datetime.datetime.now().isoformat()
+                    
+                    # Restart the server
+                    logger.info("Restarting the server...")
+                    server_process.terminate()
+                    time.sleep(2)  # Give it time to shut down
+                    server_process = start_django_server()
+                    
+                    if not wait_for_server(base_url, timeout=30):
+                        logger.error("Failed to restart server. Aborting.")
+                        break
+                    
+                    # Re-authenticate after server restart
+                    token = client.ensure_authenticated()
+                    if not token:
+                        logger.error("Failed to re-authenticate after server restart. Aborting.")
+                        break
+                    
+                # If server didn't crash, check HTTP status code
+                elif response and response.status_code >= 500:
+                    logger.warning(f"Server error detected! Status code: {response.status_code}")
+                    num_crashes += 1
+                    
+                    # Record in FailureQ
+                    if path not in client.FailureQ:
+                        client.FailureQ[path] = {}
+                    
+                    if method not in client.FailureQ[path]:
+                        client.FailureQ[path][method] = {}
+                    
+                    status_code = str(response.status_code)
+                    if status_code not in client.FailureQ[path][method]:
+                        client.FailureQ[path][method][status_code] = []
+                    
+                    client.FailureQ[path][method][status_code].append({
+                        "input": mutated_seed,
+                        "response": response.text[:1000],
+                        "timestamp": datetime.datetime.now().isoformat()
+                    })
+                    
+                    # If this is the first failure of this type, record the time
+                    if len(client.FailureQ[path][method][status_code]) == 1:
+                        client.failure_time[len(client.failure_time)] = datetime.datetime.now().isoformat()
+                
+                # If the request was successful, potentially add new test case to SeedQ
+                elif response and 200 <= response.status_code < 300:
+                    # In a real implementation, this is where you'd analyze code coverage
+                    # to determine if this test case is "interesting"
+                    # For this simplified version, we'll randomly consider some test cases interesting
+                    if random.random() < 0.1:  # 10% chance to consider a test case interesting
+                        client.SeedQ[path]["seeds"].append(mutated_seed)
+                        client.interesting_time[len(client.interesting_time)] = {
+                            "timestamp": datetime.datetime.now().isoformat(),
+                            "path": path,
+                            "method": method,
+                            "input": mutated_seed
+                        }
+                        logger.info(f"Found interesting test case: {method} {path}")
+                
+                # Display progress
+                if num_tests % 10 == 0:
+                    elapsed_time = time.time() - start_time
+                    logger.info(f"Progress: {num_tests} tests, {num_crashes} crashes, {elapsed_time:.2f} seconds elapsed")
+                
+                # Respect the server by adding a small delay between requests
+                time.sleep(0.1)
     
+    except KeyboardInterrupt:
+        logger.info("Fuzzing interrupted by user")
     except Exception as e:
         logger.error(f"Exception during fuzzing: {e}")
-        # Save crash report before exiting
-        client.save_crash_report()
-        return {
-            "status": "error", 
-            "reason": "exception", 
-            "details": str(e),
-            "crashes_found": total_crashes,
-            "crash_report_path": client.crash_report_path,
-            "server_process": server_process
-        }
+        logger.error(traceback.format_exc())
     finally:
-        # Save the crash report in all cases
-        client.save_crash_report()
-    
-    logger.info(f"Fuzzing session completed. Total crashes found: {total_crashes}")
-    
-    return {
-        "status": "success",
-        "crashes_found": total_crashes,
-        "crash_report_path": client.crash_report_path,
-        "server_process": server_process
-    }
-
-
-def get_crash_summary(json_report_path):
-    """
-    Generate a human-readable summary from a JSON crash report.
-    Parses the JSON file and creates a summary string listing totals and top crashes.
-    """
-    try:
-        with open(json_report_path, 'r') as f:
-            report = json.load(f)
+        # Save all data
+        client.save_session_data()
         
-        summary = []
-        summary.append("FUZZING CRASH REPORT SUMMARY")
-        summary.append("=" * 40)
-        summary.append(f"Total crashes: {report['summary']['total_crashes']}")
-        summary.append("")
-        
-        summary.append("CRASHES BY TYPE:")
-        for crash_type, count in report['summary']['by_type'].items():
-            summary.append(f"  {crash_type}: {count}")
-        summary.append("")
-        
-        summary.append("CRASHES BY ENDPOINT:")
-        for endpoint, count in report['summary']['by_endpoint'].items():
-            summary.append(f"  {endpoint}: {count}")
-        summary.append("")
-        
-        summary.append("CRASHES BY METHOD:")
-        for method, count in report['summary']['by_method'].items():
-            summary.append(f"  {method}: {count}")
-        summary.append("")
-        
-        summary.append("TOP 5 CRASHES:")
-        for i, crash in enumerate(report['crashes'][:5]):
-            summary.append(f"  {i+1}. {crash['crash_type']} - {crash['request']['method']} {crash['request']['url']}")
-            if 'response' in crash and 'status_code' in crash['response']:
-                summary.append(f"     Status code: {crash['response']['status_code']}")
-            if 'response_time_ms' in crash:
-                summary.append(f"     Response time: {crash['response_time_ms']:.2f} ms")
-        
-        return "\n".join(summary)
-    except Exception as e:
-        return f"Error generating summary: {e}"
-
-
-def main():
-    # Start the Django server
-    server_process = start_django_server()
-    if not server_process:
-        logger.error("Failed to start Django server. Exiting.")
-        return
-
-    base_url = "http://127.0.0.1:8000"
-    try:
-        # Wait for the server to start
-        if not wait_for_server(base_url, timeout=30):
-            logger.error("Server failed to start within the timeout period. Exiting.")
-            return
-
-        # Execute the fuzzing session, passing in the server process
-        results = start_fuzzing_session(base_url=base_url, mode="all", 
-                                       num_random_requests=100, 
-                                       server_process=server_process)
-        
-        # Update our reference to the server process which might have been restarted
-        server_process = results.get('server_process', server_process)
-        
+        # Print summary
         print("\n" + "=" * 50)
-        print(f"Fuzzing completed with status: {results['status']}")
-        print(f"Crashes found: {results.get('crashes_found', 0)}")
-        print(f"Crash report saved to: {results.get('crash_report_path')}")
+        print("FUZZING SUMMARY")
+        print("=" * 50)
+        print(f"Total tests executed: {num_tests}")
+        print(f"Total crashes found: {num_crashes}")
+        print(f"Interesting test cases: {len(client.interesting_time) - 1}")
+        print(f"Session data saved to: {client.session_folder}")
         
-        # Display summary if report was created
-        if 'crash_report_path' in results:
-            print("\nCRASH SUMMARY:")
-            print(get_crash_summary(results['crash_report_path']))
-            
-    finally:
-        # Make sure we terminate the server process when done
+        # Terminate the server
         if server_process and server_process.poll() is None:
-            logger.info("Terminating Django server process...")
+            logger.info("Terminating server process...")
             server_process.terminate()
             server_process.wait()
-            logger.info("Django server process terminated")
+        
+        return client
 
+def add_to_seed_queue(client, endpoint, method, payload):
+    """Manually add a seed to the SeedQ"""
+    if endpoint not in client.SeedQ:
+        client.SeedQ[endpoint] = {
+            "methods": {method: True},
+            "seeds": [payload]
+        }
+    else:
+        if method not in client.SeedQ[endpoint]["methods"]:
+            client.SeedQ[endpoint]["methods"][method] = True
+        client.SeedQ[endpoint]["seeds"].append(payload)
+    
+    logger.info(f"Added seed to queue: {endpoint} {method}")
+
+def main():
+    """Main entry point for the fuzzer"""
+    logger.info("Starting Django fuzzer")
+    client = fuzz_application()
+    
+    if client:
+        # Analyze failures
+        num_failures = sum(len(methods) for path_data in client.FailureQ.values() 
+                        for methods in path_data.values())
+        
+        if num_failures > 0:
+            print("\nFAILURE ANALYSIS")
+            print("=" * 50)
+            
+            for path in client.FailureQ:
+                for method in client.FailureQ[path]:
+                    for status_code in client.FailureQ[path][method]:
+                        failures = client.FailureQ[path][method][status_code]
+                        print(f"{method} {path} - Status code: {status_code}")
+                        print(f"  Number of failures: {len(failures)}")
+                        if failures:
+                            print(f"  Example input: {failures[0]['input']}")
+                        print()
+        
+        logger.info("Fuzzing completed")
+    else:
+        logger.error("Fuzzing failed to start")
 
 if __name__ == "__main__":
     main()
