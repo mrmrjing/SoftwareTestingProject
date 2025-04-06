@@ -1,5 +1,6 @@
 # fuzzer_v2.py
 
+import hashlib
 import requests
 import random
 import string
@@ -229,17 +230,145 @@ class FuzzerClient:
         
         logger.info(f"Session data saved to {self.session_folder}")
 
+    def mutate_input(self, s):
+        """Implementation of MutateInput from the algorithm"""
+        path = s["path"]
+        method = s["method"]
+        seed = s["seed"]
+        
+        # Replace {id} in path with a random ID if needed
+        current_path = path
+        if "{id}" in path:
+            id_value = get_random_id()
+            current_path = path.replace("{id}", id_value)
+        
+        # Mutate the seed with varying strategies based on previous results
+        # Sometimes make small mutations, sometimes larger ones
+        if random.random() < 0.7:  # 70% small mutations
+            mutated_seed = mutate_payload(seed, mutation_count=random.randint(1, 3))
+        else:  # 30% larger mutations
+            mutated_seed = mutate_payload(seed, mutation_count=random.randint(4, 10))
+        
+        # Generate a unique hash for this mutation to track it
+        mutation_id = hashlib.md5(
+            json.dumps((method, current_path, mutated_seed), sort_keys=True).encode()
+        ).hexdigest()
+        
+        # Create a request object
+        request = Request(
+            method=method,
+            url=f"{self.base_url}{current_path}",
+            payload=mutated_seed if method in ["POST", "PUT"] else None
+        )
+        request.headers.update(self.headers)
+        
+        return {
+            "request": request,
+            "path": path,
+            "method": method,
+            "seed": mutated_seed,
+            "current_path": current_path,
+            "mutation_id": mutation_id
+        }
+    
+    def choose_next(self, SeedQ):
+        """Implementation of ChooseNext from the algorithm"""
+        # Prioritize seeds that haven't been tested yet
+        untested_paths = []
+        for path in SeedQ:
+            methods = [m for m in SeedQ[path]["methods"] if SeedQ[path]["methods"][m]]
+            for method in methods:
+                if len(SeedQ[path]["seeds"]) > 0:
+                    untested_paths.append((path, method))
+        
+        if untested_paths:
+            path, method = random.choice(untested_paths)
+            seed = random.choice(SeedQ[path]["seeds"])
+            return {"path": path, "method": method, "seed": seed}
+        
+        return None
+
+    def assign_energy(self, s):
+        """Implementation of AssignEnergy from the algorithm"""
+        # For simplicity, we'll use a constant energy value
+        # In a more sophisticated implementation, you could adjust based on 
+        # how much new coverage this seed is likely to generate
+        return random.randint(5, 15)  # Try 5-15 mutations for each seed
+
+
+    # --- Helper functions for the coverage tracking ---
+
+    def read_coverage_data(self):
+        """Read the coverage data file produced by the Django middleware"""
+        coverage_file = os.path.join("DjangoWebApplication", "coverage_data.json")
+        try:
+            if os.path.exists(coverage_file):
+                with open(coverage_file, 'r') as f:
+                    return json.load(f)
+            return {}
+        except Exception as e:
+            logger.error(f"Error reading coverage data: {e}")
+            return {}
+
+    def get_last_coverage_hash(self):
+        """Get the hash of the most recent coverage data"""
+        coverage_data = self.read_coverage_data()
+        if not coverage_data:
+            return None
+        
+        # Sort by timestamp to get the most recent entry
+        sorted_entries = sorted(
+            coverage_data.values(), 
+            key=lambda x: x.get('timestamp', 0),
+            reverse=True
+        )
+        
+        if sorted_entries:
+            return sorted_entries[0].get('coverage_hash')
+        return None
+
+    def is_interesting(self, s_prime):
+        """Check if the mutated input produced new coverage"""
+        coverage_data = self.read_coverage_data()
+        if not coverage_data:
+            return False
+        
+        # Sort coverage data by timestamp (newest first)
+        sorted_entries = sorted(
+            coverage_data.values(), 
+            key=lambda x: x.get('timestamp', 0),
+            reverse=True
+        )
+        
+        # Look for the most recent entry
+        if sorted_entries:
+            latest_entry = sorted_entries[0]
+            # Check if this entry has new coverage
+            if latest_entry.get('is_new_coverage', False):
+                logger.info(f"Found new coverage path with hash: {latest_entry.get('coverage_hash')}")
+                
+                # Log some details about what made this interesting
+                method = latest_entry.get('method', '')
+                path = latest_entry.get('path', '')
+                logger.info(f"New coverage from: {method} {path}")
+                
+                return True
+        
+        return False
+
+
 # --- Server control functions ---
 def start_django_server():
-    """Start the Django development server"""
+    """Start the Django development server with coverage enabled"""
     try:
         # Determine the directory of the Django project
         base_dir = os.path.dirname(os.path.abspath(__file__))
         cwd = os.path.join(base_dir, "DjangoWebApplication")
-        logger.info(f"Starting Django server from: {cwd}")
+        logger.info(f"Starting Django server with coverage from: {cwd}")
 
-        # Build the command to run the Django server
-        cmd = ["python", "manage.py", "runserver"]
+        # Build the command to run the Django server with coverage
+        # Using subprocess to run: coverage run manage.py runserver
+        cmd = ["coverage", "run", "manage.py", "runserver"]
 
         # Start the server process
         server_process = subprocess.Popen(
@@ -249,7 +378,7 @@ def start_django_server():
             stderr=subprocess.PIPE,
             text=True
         )
-        logger.info("Django server process started")
+        logger.info("Django server process started with coverage")
         return server_process
 
     except Exception as e:
@@ -303,44 +432,89 @@ def mutate_integer(n, min_delta=-100, max_delta=100):
     delta = random.randint(min_delta, max_delta)
     return n + delta
 
-def mutate_payload(payload):
-    """Apply mutations to a payload dictionary"""
+def mutate_payload(payload, mutation_count=1):
+    """Apply mutations to a payload dictionary with controllable intensity"""
     if not payload:
         return payload
     
     mutated = copy.deepcopy(payload)
     
-    # Occasionally perform a structural mutation (10% chance)
-    if random.random() < 0.1:
-        mutation_type = random.choice(["empty", "add_fields", "remove_fields", "change_types"])
+    # Apply the specified number of mutations
+    for _ in range(mutation_count):
+        # Choose a mutation strategy
+        mutation_type = random.choice([
+            "modify_field", "add_field", "remove_field", 
+            "change_type", "empty_field", "inject_special_chars"
+        ])
         
-        if mutation_type == "empty":
-            return {}
-        elif mutation_type == "add_fields":
-            mutated["extra_field"] = random.choice([
-                "some_string", 
-                123, 
-                True, 
-                [1, 2, 3], 
+        if mutation_type == "modify_field" and mutated:
+            # Modify an existing field
+            if not mutated:
+                continue
+            key = random.choice(list(mutated.keys()))
+            if isinstance(mutated[key], str):
+                mutated[key] = mutate_string(mutated[key], random.randint(1, 3))
+            elif isinstance(mutated[key], int):
+                mutated[key] = mutate_integer(mutated[key])
+        
+        elif mutation_type == "add_field":
+            # Add a new field
+            field_name = "".join(random.choices(string.ascii_letters, k=random.randint(3, 10)))
+            field_value = random.choice([
+                "test_value",
+                random.randint(-1000, 1000),
+                True,
+                [1, 2, 3],
                 {"nested": "object"}
             ])
-        elif mutation_type == "remove_fields" and mutated:
-            key_to_remove = random.choice(list(mutated.keys()))
-            del mutated[key_to_remove]
-        elif mutation_type == "change_types":
-            for key in mutated:
-                if isinstance(mutated[key], str):
-                    mutated[key] = random.choice([123, True, [1, 2, 3], {"nested": "object"}])
-                elif isinstance(mutated[key], int):
-                    mutated[key] = random.choice(["123", True, [1, 2, 3], {"nested": "object"}])
-    
-    # Otherwise, mutate each field based on its type
-    else:
-        for key, value in mutated.items():
-            if isinstance(value, str):
-                mutated[key] = mutate_string(value, random.randint(1, 3))
-            elif isinstance(value, int):
-                mutated[key] = mutate_integer(value)
+            mutated[field_name] = field_value
+        
+        elif mutation_type == "remove_field" and mutated:
+            # Remove an existing field
+            if not mutated:
+                continue
+            key = random.choice(list(mutated.keys()))
+            del mutated[key]
+        
+        elif mutation_type == "change_type" and mutated:
+            # Change the type of an existing field
+            if not mutated:
+                continue
+            key = random.choice(list(mutated.keys()))
+            current_value = mutated[key]
+            new_type = random.choice(["string", "int", "bool", "list", "dict"])
+            
+            if new_type == "string":
+                mutated[key] = str(current_value)
+            elif new_type == "int":
+                try:
+                    mutated[key] = int(float(str(current_value)))
+                except:
+                    mutated[key] = random.randint(-1000, 1000)
+            elif new_type == "bool":
+                mutated[key] = bool(current_value)
+            elif new_type == "list":
+                mutated[key] = [current_value]
+            elif new_type == "dict":
+                mutated[key] = {"value": current_value}
+        
+        elif mutation_type == "empty_field" and mutated:
+            # Set a field to empty value
+            if not mutated:
+                continue
+            key = random.choice(list(mutated.keys()))
+            mutated[key] = ""
+        
+        elif mutation_type == "inject_special_chars" and mutated:
+            # Inject special characters into a string field
+            if not mutated:
+                continue
+            key = random.choice(list(mutated.keys()))
+            if isinstance(mutated[key], str):
+                special_chars = ["'", "\"", "<", ">", "&", ";", "|", "`", "$", "(", ")", "*", "\\", "\0", "\n", "\r"]
+                char = random.choice(special_chars)
+                pos = random.randint(0, len(mutated[key]))
+                mutated[key] = mutated[key][:pos] + char + mutated[key][pos:]
     
     return mutated
 
@@ -433,51 +607,37 @@ def fuzz_application():
         logger.error("Authentication failed. Exiting.")
         return
     
-    logger.info("Authentication successful. Starting fuzzing...")
+    logger.info("Authentication successful. Starting greybox fuzzing...")
     start_time = time.time()
     
-    # Main fuzzing loop
+    # Main fuzzing loop implementing the algorithm in the image
     try:
         num_tests = 0
         num_crashes = 0
+        num_interesting = 0
         
-        while num_tests < 1000:  # Limit to 1000 tests for this example
-            # Choose a random path and seed from SeedQ
-            path, seed = choose_next_seed(client.SeedQ)
-            if path is None:
-                continue
+        while num_tests < 1000:  # Limit to 1000 tests or timeout
+            # Choose next seed from SeedQ (ChooseNext function)
+            s = client.choose_next(client.SeedQ)
+            if s is None:
+                logger.warning("No more seeds in the queue to test!")
+                break
             
-            # Replace {id} in path with a random ID if needed
-            current_path = path
-            if "{id}" in path:
-                id_value = get_random_id()
-                current_path = path.replace("{id}", id_value)
+            # Assign energy for this seed (AssignEnergy function)
+            energy = client.assign_energy(s)
+            logger.info(f"Selected seed with energy {energy}: {s['method']} {s['path']}")
             
-            # Mutate the seed
-            mutated_seed = mutate_payload(seed)
-            
-            # Get available methods for this path
-            available_methods = [m for m in client.SeedQ[path]["methods"] if client.SeedQ[path]["methods"][m]]
-            
-            if not available_methods:
-                logger.warning(f"No methods available for path: {path}")
-                continue
-            
-            # Try each available method
-            for method in available_methods:
-                # Create a request object
-                request = Request(
-                    method=method,
-                    url=f"{client.base_url}{current_path}",
-                    payload=mutated_seed if method in ["POST", "PUT"] else None
-                )
-                request.headers.update(client.headers)
+            # Perform mutations based on energy
+            for k in range(energy):
+                # Mutate input (MutateInput function)
+                s_prime = client.mutate_input(s)
+                request = s_prime["request"]
                 
-                # Send the request
-                logger.info(f"Sending request: {method} {current_path}")
+                logger.info(f"Mutation {k+1}/{energy}: {request.method} {s_prime['current_path']}")
                 if request.payload:
                     logger.info(f"Payload: {request.payload}")
                 
+                # Send the request
                 response, response_time, error = send_request(request)
                 
                 # Log the test
@@ -485,92 +645,95 @@ def fuzz_application():
                 client.test_id += 1
                 num_tests += 1
                 
-                # Check if server crashed (process termination)
+                # Check for failures or crashes
+                reveals_bug = False
+                
                 if server_process.poll() is not None:
+                    # Server crashed
+                    reveals_bug = True
                     logger.warning("Server crashed! Process terminated unexpectedly.")
                     num_crashes += 1
-                    
-                    # Record in FailureQ
-                    if path not in client.FailureQ:
-                        client.FailureQ[path] = {}
-                    
-                    if method not in client.FailureQ[path]:
-                        client.FailureQ[path][method] = {}
-                    
-                    status_code = "CRASH"
-                    if status_code not in client.FailureQ[path][method]:
-                        client.FailureQ[path][method][status_code] = []
-                    
-                    client.FailureQ[path][method][status_code].append({
-                        "input": mutated_seed,
-                        "timestamp": datetime.datetime.now().isoformat()
-                    })
-                    
-                    # If this is the first failure of this type, record the time
-                    if len(client.FailureQ[path][method][status_code]) == 1:
-                        client.failure_time[len(client.failure_time)] = datetime.datetime.now().isoformat()
-                    
-                    # Restart the server
-                    logger.info("Restarting the server...")
-                    server_process.terminate()
-                    time.sleep(2)  # Give it time to shut down
-                    server_process = start_django_server()
-                    
-                    if not wait_for_server(base_url, timeout=30):
-                        logger.error("Failed to restart server. Aborting.")
-                        break
-                    
-                    # Re-authenticate after server restart
-                    token = client.ensure_authenticated()
-                    if not token:
-                        logger.error("Failed to re-authenticate after server restart. Aborting.")
-                        break
-                    
-                # If server didn't crash, check HTTP status code
+                elif error:
+                    # Request error
+                    reveals_bug = True
+                    logger.warning(f"Request error: {error}")
+                    num_crashes += 1
                 elif response and response.status_code >= 500:
+                    # Server error
+                    reveals_bug = True
                     logger.warning(f"Server error detected! Status code: {response.status_code}")
                     num_crashes += 1
+                
+                if reveals_bug:
+                    # Add s_prime to FailureQ
+                    path = s_prime["path"]
+                    method = s_prime["method"]
                     
-                    # Record in FailureQ
                     if path not in client.FailureQ:
                         client.FailureQ[path] = {}
                     
                     if method not in client.FailureQ[path]:
                         client.FailureQ[path][method] = {}
                     
-                    status_code = str(response.status_code)
+                    status_code = "CRASH" if server_process.poll() is not None else str(response.status_code) if response else "ERROR"
                     if status_code not in client.FailureQ[path][method]:
                         client.FailureQ[path][method][status_code] = []
                     
-                    client.FailureQ[path][method][status_code].append({
-                        "input": mutated_seed,
-                        "response": response.text[:1000],
-                        "timestamp": datetime.datetime.now().isoformat()
-                    })
+                    failure_info = {
+                        "input": s_prime["seed"],
+                        "timestamp": datetime.datetime.now().isoformat(),
+                        "mutation_id": s_prime["mutation_id"]
+                    }
+                    
+                    if response:
+                        failure_info["response"] = response.text[:1000]
+                    if error:
+                        failure_info["error"] = str(error)
+                    
+                    client.FailureQ[path][method][status_code].append(failure_info)
                     
                     # If this is the first failure of this type, record the time
                     if len(client.FailureQ[path][method][status_code]) == 1:
                         client.failure_time[len(client.failure_time)] = datetime.datetime.now().isoformat()
+                    
+                    # Restart the server if it crashed
+                    if server_process.poll() is not None:
+                        logger.info("Restarting the server...")
+                        server_process.terminate()
+                        time.sleep(2)  # Give it time to shut down
+                        server_process = start_django_server()
+                        
+                        if not wait_for_server(base_url, timeout=30):
+                            logger.error("Failed to restart server. Aborting.")
+                            break
+                        
+                        # Re-authenticate after server restart
+                        token = client.ensure_authenticated()
+                        if not token:
+                            logger.error("Failed to re-authenticate after server restart. Aborting.")
+                            break
                 
-                # If the request was successful, potentially add new test case to SeedQ
-                elif response and 200 <= response.status_code < 300:
-                    # In a real implementation, this is where you'd analyze code coverage
-                    # to determine if this test case is "interesting"
-                    # For this simplified version, we'll randomly consider some test cases interesting
-                    if random.random() < 0.1:  # 10% chance to consider a test case interesting
-                        client.SeedQ[path]["seeds"].append(mutated_seed)
-                        client.interesting_time[len(client.interesting_time)] = {
-                            "timestamp": datetime.datetime.now().isoformat(),
-                            "path": path,
-                            "method": method,
-                            "input": mutated_seed
-                        }
-                        logger.info(f"Found interesting test case: {method} {path}")
+                # Check if this input produced new coverage (IsInteresting function)
+                elif client.is_interesting(s_prime):
+                    # Add s_prime to SeedQ
+                    path = s_prime["path"]
+                    method = s_prime["method"]
+                    mutated_seed = s_prime["seed"]
+                    
+                    client.SeedQ[path]["seeds"].append(mutated_seed)
+                    client.interesting_time[len(client.interesting_time)] = {
+                        "timestamp": datetime.datetime.now().isoformat(),
+                        "path": path,
+                        "method": method,
+                        "input": mutated_seed
+                    }
+                    num_interesting += 1
+                    logger.info(f"Found interesting test case with new coverage: {method} {path}")
                 
                 # Display progress
                 if num_tests % 10 == 0:
                     elapsed_time = time.time() - start_time
-                    logger.info(f"Progress: {num_tests} tests, {num_crashes} crashes, {elapsed_time:.2f} seconds elapsed")
+                    logger.info(f"Progress: {num_tests} tests, {num_crashes} crashes, {num_interesting} interesting cases, {elapsed_time:.2f} seconds elapsed")
                 
                 # Respect the server by adding a small delay between requests
                 time.sleep(0.1)
@@ -590,7 +753,7 @@ def fuzz_application():
         print("=" * 50)
         print(f"Total tests executed: {num_tests}")
         print(f"Total crashes found: {num_crashes}")
-        print(f"Interesting test cases: {len(client.interesting_time) - 1}")
+        print(f"Interesting test cases: {num_interesting}")
         print(f"Session data saved to: {client.session_folder}")
         
         # Terminate the server
