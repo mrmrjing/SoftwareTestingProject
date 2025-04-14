@@ -25,7 +25,9 @@ class CoverageMiddleware:
         # Initialize the coverage file if it doesn't exist
         if not os.path.exists(self.coverage_file):
             with open(self.coverage_file, 'w') as f:
-                json.dump({}, f)
+                json.dump({}, f, indent=2)
+        
+        logger.info("Coverage middleware initialized")
     
     def __call__(self, request):
         # Log request info 
@@ -35,17 +37,26 @@ class CoverageMiddleware:
         request_hash = hashlib.md5(f"{request.method}:{request.path}:{request.body}".encode()).hexdigest()
         
         # Create a fresh Coverage instance for this request
+        # No source parameter = track all Python modules imported during execution
         cov = coverage.Coverage(
-            source=["core", "api", "home"],  # Change to include the specific source directories we want to track coverage for 
             data_file=None,  # Use memory storage, not a file
             config_file=False,
+            source=None,  # Track all modules
+            include=["*"],  # Include all Python files
+            omit=["*/site-packages/*", "*/dist-packages/*", "*/virtualenvs/*"]  # Omit standard libraries
         )
         
         # Start coverage collection
         cov.start()
         
-        # Process the request
-        response = self.get_response(request)
+        try:
+            # Process the request
+            response = self.get_response(request)
+        except Exception as e:
+            # Stop coverage even if there's an exception
+            cov.stop()
+            # Re-raise the exception
+            raise
         
         # Stop coverage collection
         cov.stop()
@@ -60,8 +71,16 @@ class CoverageMiddleware:
             file_coverage = {}
             for filename in measured_files:
                 if os.path.exists(filename):
-                    lines = data.lines(filename)
-                    file_coverage[filename] = list(lines)
+                    # Filter out only Django application files, not library files
+                    # Focus on files in the current project
+                    django_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+                    if filename.startswith(django_root):
+                        lines = data.lines(filename)
+                        file_coverage[filename] = sorted(list(lines))  # Sort for consistent hashing
+            
+            # Skip if no coverage data was collected
+            if not file_coverage:
+                return response
             
             # Generate coverage hash for this request
             coverage_hash = hashlib.md5(
@@ -81,6 +100,33 @@ class CoverageMiddleware:
                     self.global_coverage[filename] = set()
                 self.global_coverage[filename].update(lines)
             
+            # Determine if this coverage is new
+            is_new_coverage = self._is_new_coverage(coverage_hash, coverage_data)
+            
+            # If new, check for new lines specifically
+            if not is_new_coverage:
+                # Do a deeper check for new code lines
+                all_covered_lines = {}
+                for entry in coverage_data.values():
+                    if 'coverage' in entry:
+                        for filename, lines in entry['coverage'].items():
+                            if filename not in all_covered_lines:
+                                all_covered_lines[filename] = set()
+                            all_covered_lines[filename].update(lines)
+                
+                # Check each file for new lines
+                for filename, lines in file_coverage.items():
+                    if filename not in all_covered_lines:
+                        is_new_coverage = True
+                        logger.info(f"New file covered: {filename}")
+                        break
+                    else:
+                        new_lines = set(lines) - all_covered_lines[filename]
+                        if new_lines:
+                            is_new_coverage = True
+                            logger.info(f"New lines covered in {filename}: {new_lines}")
+                            break
+            
             # Store this request's coverage and metadata
             coverage_data[request_hash] = {
                 'id': request_id,
@@ -89,18 +135,19 @@ class CoverageMiddleware:
                 'coverage': file_coverage,
                 'coverage_hash': coverage_hash,
                 'timestamp': time.time(),
-                'status_code': response.status_code,
+                'status_code': getattr(response, 'status_code', 0),
                 # Include a sample of request body (if it exists)
                 'request_body': request.body.decode('utf-8', errors='ignore')[:200] if request.body else None,
                 # Track if this is new coverage
-                'is_new_coverage': self._is_new_coverage(coverage_hash, coverage_data)
+                'is_new_coverage': is_new_coverage
             }
             
-            # Write updated coverage data to file
+            # Write updated coverage data to file with indentation for readability
             try:
                 with open(self.coverage_file, 'w') as f:
-                    json.dump(coverage_data, f)
+                    json.dump(coverage_data, f, indent=2)
             except Exception as e:
+                logger.error(f"Error saving coverage data: {e}")
                 print(f"Error saving coverage data: {e}")
         
         return response
