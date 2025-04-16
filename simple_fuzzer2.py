@@ -1,7 +1,6 @@
 import hashlib
 import requests
 import random
-import string
 import copy
 import logging
 import time
@@ -10,6 +9,7 @@ import os
 import datetime
 import traceback
 import subprocess
+from mutations import MutationEngine
 
 # --- Logging configuration ---
 # Set up a logger for the fuzzer with both file and console handlers
@@ -92,6 +92,12 @@ class FuzzerClient:
         # Create directory for session data
         self.session_folder = self.create_session_folder()
 
+        # Initialize energy assignment tracking
+        self.initialize_energy_tracking()
+
+        # Initialize the mutation engine
+        self.mutation_engine = MutationEngine()
+
     def load_openapi_spec(self, openapi_file):
         """Load the OpenAPI specification from a JSON file."""
         try:
@@ -158,6 +164,66 @@ class FuzzerClient:
                 SeedQ[path]["seeds"].append({})
         logger.info("Seed queue initialized from OpenAPI spec.")
         return SeedQ
+
+    def initialize_energy_tracking(self):
+        """Initialize tracking structures for energy assignment."""
+        # Track seed performance (how many new paths each seed has found)
+        self.seed_performance = {}
+        
+        # Track path execution counts (how many times we've fuzzed each endpoint)
+        self.path_execution_count = {}
+        
+        # Track when seeds were discovered
+        self.seed_discovery_time = {}
+        
+        # Track which paths/methods correlate with crashes
+        self.crash_correlation = {}
+
+    def update_energy_metrics(self, s_prime, reveals_bug, is_interesting):
+        """Update metrics used for energy calculations."""
+        path = s_prime["path"] 
+        method = s_prime["method"]
+        seed = s_prime["seed"]
+        
+        # Generate a unique ID for this seed
+        seed_id = hashlib.md5(json.dumps(seed, sort_keys=True).encode()).hexdigest()
+        path_method_key = f"{method}:{path}"
+        
+        # Update path execution count
+        if not hasattr(self, 'path_execution_count'):
+            self.path_execution_count = {}
+        self.path_execution_count[path_method_key] = self.path_execution_count.get(path_method_key, 0) + 1
+        
+        # If this is a new seed, record discovery time
+        if not hasattr(self, 'seed_discovery_time'):
+            self.seed_discovery_time = {}
+        if seed_id not in self.seed_discovery_time:
+            self.seed_discovery_time[seed_id] = time.time()
+        
+        # Initialize seed performance tracking if needed
+        if not hasattr(self, 'seed_performance'):
+            self.seed_performance = {}
+        if seed_id not in self.seed_performance:
+            self.seed_performance[seed_id] = {'new_coverage_count': 0, 'executions': 0, 'crashes': 0}
+        
+        # Update execution count
+        self.seed_performance[seed_id]['executions'] += 1
+        
+        # If this seed found new coverage, update its score
+        if is_interesting:
+            self.seed_performance[seed_id]['new_coverage_count'] += 1
+        
+        # If this seed caused a crash, update crash correlation
+        if reveals_bug:
+            self.seed_performance[seed_id]['crashes'] += 1
+            
+            if not hasattr(self, 'crash_correlation'):
+                self.crash_correlation = {}
+            if path not in self.crash_correlation:
+                self.crash_correlation[path] = {}
+            if method not in self.crash_correlation[path]:
+                self.crash_correlation[path][method] = 0
+            self.crash_correlation[path][method] += 1
 
     def create_session_folder(self):
         """Create a numbered session folder for storing results"""
@@ -255,8 +321,7 @@ class FuzzerClient:
         logger.info(f"Session data saved to {self.session_folder}")
 
     def mutate_input(self, s):
-        """Implementation of MutateInput from the algorithm.
-           Replace any path parameters (e.g. {id}) and mutate the payload."""
+        """Implementation of MutateInput from the algorithm."""
         path = s["path"]
         method = s["method"]
         seed = s["seed"]
@@ -266,12 +331,14 @@ class FuzzerClient:
             id_value = get_random_id()
             current_path = path.replace("{id}", id_value)
 
-        # Mutate the seed with varying strategies based on previous results
-        # Sometimes make small mutations, sometimes larger ones
+        # Determine mutation intensity based on path/method performance
         if random.random() < 0.7:  # 70% small mutations
-            mutated_seed = mutate_payload(seed, mutation_count=random.randint(1, 3))
+            mutation_count = random.randint(1, 3)
         else:  # 30% larger mutations
-            mutated_seed = mutate_payload(seed, mutation_count=random.randint(4, 10))
+            mutation_count = random.randint(4, 10)
+        
+        # Use the MutationEngine instead of custom mutation functions
+        mutated_seed = self.mutation_engine.mutate_payload(seed, num_mutations=mutation_count)
         
         # Generate a unique hash for this mutation to track it
         mutation_id = hashlib.md5(
@@ -295,23 +362,133 @@ class FuzzerClient:
         }
 
     def choose_next(self, SeedQ):
-        """Implementation of ChooseNext from the algorithm"""
-        # Prioritize seeds that haven't been tested yet
+        """Implementation of ChooseNext"""
         untested_paths = []
         for path in SeedQ:
+            # Skip paths with no methods
+            if not SeedQ[path]["methods"]:
+                continue
+                
+            # Initialize FailureQ structure if needed
+            if path not in self.FailureQ:
+                self.FailureQ[path] = {}
+                
             methods = [m for m in SeedQ[path]["methods"] if SeedQ[path]["methods"][m]]
             for method in methods:
+                # Initialize method in FailureQ
+                if method not in self.FailureQ[path]:
+                    self.FailureQ[path][method] = {}
+                    
                 if len(SeedQ[path]["seeds"]) > 0:
                     untested_paths.append((path, method))
+                    
         if untested_paths:
             path, method = random.choice(untested_paths)
-            seed = random.choice(SeedQ[path]["seeds"])
+            if SeedQ[path]["seeds"]:
+                seed = random.choice(SeedQ[path]["seeds"])
+            else:
+                # Provide a default seed if none exists
+                seed = copy.deepcopy(DEFAULT_PAYLOAD)
+                
             return {"path": path, "method": method, "seed": seed}
         return None
 
     def assign_energy(self, s):
-        """Assign a constant energy for the mutation process."""
-        return random.randint(5, 15)
+        """
+        Energy Assignment Factors Inspired by AFL:
+
+        1. Code Coverage Impact:
+        - Seeds that discover new paths get higher priority.
+        2. Execution Time:
+        - Faster inputs get more energy for efficient use of fuzzing time.
+        3. Creation Time:
+        - Newer seeds get temporarily higher energy.
+        4. Queue Position:
+        - Ensures all seeds in the queue get some attention.
+        5. Input Size:
+        - Smaller inputs often get priority as they're more manageable.
+                
+        """        
+        seed = s["seed"]
+        path = s["path"]
+        method = s["method"]
+        
+        # --- Basic energy based on input complexity ---
+        # Calculate base energy based on seed size/complexity
+        seed_size = len(json.dumps(seed))  # Size in bytes when serialized
+        
+        # --- Factor 1: Input Size Consideration ---
+        # Smaller inputs get more energy (up to a point)
+        # This encourages finding minimal test cases
+        if seed_size < 100:
+            size_factor = 1.5  # Boost for very small payloads
+        elif seed_size < 500:
+            size_factor = 1.2  # Slight boost for reasonably sized payloads
+        elif seed_size < 1000:
+            size_factor = 1.0  # Normal energy
+        else:
+            size_factor = 0.7  # Penalty for very large payloads
+        
+        # --- Factor 2: Coverage Impact History ---
+        # If we track interesting inputs discovered by this seed
+        coverage_impact = 1.0
+        seed_id = hashlib.md5(json.dumps(seed, sort_keys=True).encode()).hexdigest()
+        
+        if hasattr(self, 'seed_performance') and seed_id in self.seed_performance:
+            # Reward seeds that previously found new coverage
+            discoveries = self.seed_performance[seed_id].get('new_coverage_count', 0)
+            if discoveries > 0:
+                coverage_impact = min(2.0, 1.0 + (discoveries * 0.2))  # Cap at 2x
+        
+        # --- Factor 3: Path/Method Rarity ---
+        # Prioritize less-fuzzed endpoints
+        path_method_key = f"{method}:{path}"
+        path_frequency = 1.0
+        
+        if hasattr(self, 'path_execution_count'):
+            total_executions = sum(self.path_execution_count.values()) or 1
+            path_count = self.path_execution_count.get(path_method_key, 0)
+            if path_count > 0:
+                # Less frequently tested paths get higher energy
+                path_frequency = max(0.5, min(2.0, 0.5 * (total_executions / path_count / len(self.path_execution_count))))
+        
+        # --- Factor 4: Seed Age ---
+        # Newer seeds get temporarily higher energy (like AFL)
+        age_factor = 1.0
+        if hasattr(self, 'seed_discovery_time') and seed_id in self.seed_discovery_time:
+            age_seconds = time.time() - self.seed_discovery_time[seed_id]
+            if age_seconds < 60:  # Last minute
+                age_factor = 1.5
+            elif age_seconds < 300:  # Last 5 minutes
+                age_factor = 1.2
+        
+        # --- Factor 5: Prior Crash Correlation ---
+        # If this seed or similar ones found crashes before, boost energy
+        crash_factor = 1.0
+        if hasattr(self, 'crash_correlation') and path in self.crash_correlation:
+            if method in self.crash_correlation[path]:
+                # This endpoint has produced crashes before
+                crash_factor = 1.5
+        
+        # --- AFL Style Calculation ---
+        # Base energy (calculated from input complexity)
+        base_energy = max(5, min(20, int(seed_size / 20)))
+        
+        # Apply all our factors
+        adjusted_energy = base_energy * size_factor * coverage_impact * path_frequency * age_factor * crash_factor
+        
+        # Enforce min/max bounds and ensure integer output
+        final_energy = int(max(3, min(50, adjusted_energy)))
+        
+        # Log why this energy was assigned for debugging
+        logger.debug(
+            f"Energy assigned: {final_energy} for {method} {path} "
+            f"(size:{seed_size}, size_factor:{size_factor:.2f}, "
+            f"coverage:{coverage_impact:.2f}, path:{path_frequency:.2f}, "
+            f"age:{age_factor:.2f}, crash:{crash_factor:.2f})"
+        )
+        
+        return final_energy
 
     # --- Helper functions for coverage tracking ---
     def read_coverage_data(self):
@@ -367,6 +544,15 @@ def start_django_server():
     try:
         base_dir = os.path.dirname(os.path.abspath(__file__))
         cwd = os.path.join(base_dir, "DjangoWebApplication")
+
+        # Remove the coverage_data.json file if it exists to start fresh
+        logger.info("Erasing previous coverage data...")
+        coverage_file = os.path.join(cwd, "coverage_data.json")
+        if os.path.exists(coverage_file):
+            os.remove(coverage_file)
+            logger.info("Deleted existing coverage_data.json.")
+
+        # Start the Django server with coverage
         logger.info(f"Starting Django server with coverage from: {cwd}")
         cmd = ["coverage", "run", "manage.py", "runserver"]
         server_process = subprocess.Popen(
@@ -396,102 +582,23 @@ def wait_for_server(url, timeout=30, interval=0.5):
     logger.error("Server did not start within the specified timeout")
     return False
 
-# --- Mutation helper functions ---
-def mutate_string(s, num_mutations=1):
-    """Mutate a string by changing, adding, or removing characters."""
-    if not s or not isinstance(s, str):
-        return s
-    s_list = list(s)
-    for _ in range(num_mutations):
-        mutation_type = random.choice(["change", "add", "remove"])
-        if mutation_type == "change" and s_list:
-            index = random.randint(0, len(s_list) - 1)
-            s_list[index] = random.choice(string.printable)
-        elif mutation_type == "add":
-            index = random.randint(0, len(s_list))
-            s_list.insert(index, random.choice(string.printable))
-        elif mutation_type == "remove" and s_list:
-            index = random.randint(0, len(s_list) - 1)
-            s_list.pop(index)
-    return "".join(s_list)
-
-def mutate_integer(n, min_delta=-100, max_delta=100):
-    """Mutate an integer by adding a random delta."""
-    try:
-        n = int(n)
-    except Exception:
-        return n
-    delta = random.randint(min_delta, max_delta)
-    return n + delta
-
-def mutate_payload(payload, mutation_count=1):
-    """Apply mutations to a payload dictionary with controllable intensity."""
-    if not payload:
-        return payload
-    mutated = copy.deepcopy(payload)
-    for _ in range(mutation_count):
-        mutation_type = random.choice([
-            "modify_field", "add_field", "remove_field", 
-            "change_type", "empty_field", "inject_special_chars"
-        ])
-        if mutation_type == "modify_field" and mutated:
-            key = random.choice(list(mutated.keys()))
-            if isinstance(mutated[key], str):
-                mutated[key] = mutate_string(mutated[key], random.randint(1, 3))
-            elif isinstance(mutated[key], int):
-                mutated[key] = mutate_integer(mutated[key])
-        elif mutation_type == "add_field":
-            field_name = "".join(random.choices(string.ascii_letters, k=random.randint(3, 10)))
-            field_value = random.choice([
-                "test_value",
-                random.randint(-1000, 1000),
-                True,
-                [1, 2, 3],
-                {"nested": "object"}
-            ])
-            mutated[field_name] = field_value
-        elif mutation_type == "remove_field" and mutated:
-            key = random.choice(list(mutated.keys()))
-            del mutated[key]
-        elif mutation_type == "change_type" and mutated:
-            key = random.choice(list(mutated.keys()))
-            current_value = mutated[key]
-            new_type = random.choice(["string", "int", "bool", "list", "dict"])
-            if new_type == "string":
-                mutated[key] = str(current_value)
-            elif new_type == "int":
-                try:
-                    mutated[key] = int(float(str(current_value)))
-                except:
-                    mutated[key] = random.randint(-1000, 1000)
-            elif new_type == "bool":
-                mutated[key] = bool(current_value)
-            elif new_type == "list":
-                mutated[key] = [current_value]
-            elif new_type == "dict":
-                mutated[key] = {"value": current_value}
-        elif mutation_type == "empty_field" and mutated:
-            key = random.choice(list(mutated.keys()))
-            mutated[key] = ""
-        elif mutation_type == "inject_special_chars" and mutated:
-            key = random.choice(list(mutated.keys()))
-            if isinstance(mutated[key], str):
-                special_chars = ["'", "\"", "<", ">", "&", ";", "|", "`", "$", "(", ")", "*", "\\", "\0", "\n", "\r"]
-                char = random.choice(special_chars)
-                pos = random.randint(0, len(mutated[key]))
-                mutated[key] = mutated[key][:pos] + char + mutated[key][pos:]
-    return mutated
 
 def get_random_id():
     """Generate a random ID for use in endpoint URLs."""
     if random.random() < 0.7:
+        # Return a normal ID most of the time
         return str(random.randint(1, 100))
+    
+    # Use MutationEngine for the mutation 
+    engine = MutationEngine()
+    
+    # For unusual IDs, choose from these options
     return random.choice([
-        "-1",
-        "0", 
-        "abc", 
-        mutate_string(str(random.randint(1, 100))),
-        str(random.randint(1000000, 10000000))
+        "-1",                                                
+        "0",                                                 
+        "abc",                                              
+        engine.random_byte_str(str(random.randint(1, 100))),
+        str(random.randint(1000000, 10000000))              
     ])
 
 def choose_next_seed(SeedQ):
@@ -621,7 +728,10 @@ def fuzz_application():
                         if not token:
                             logger.error("Failed to re-authenticate after server restart. Aborting.")
                             break
-                elif client.is_interesting(s_prime):
+    
+                # Check if the input is interesting (found new coverage)
+                is_interesting = client.is_interesting(s_prime)            
+                if is_interesting:
                     path = s_prime["path"]
                     method = s_prime["method"]
                     mutated_seed = s_prime["seed"]
@@ -634,6 +744,8 @@ def fuzz_application():
                     }
                     num_interesting += 1
                     logger.info(f"Found interesting test case with new coverage: {method} {path}")
+                # Update energy metrics after each test execution    
+                client.update_energy_metrics(s_prime, reveals_bug, is_interesting)
                 if num_tests % 10 == 0:
                     elapsed_time = time.time() - start_time
                     logger.info(f"Progress: {num_tests} tests, {num_crashes} crashes, {num_interesting} interesting cases, {elapsed_time:.2f} seconds elapsed")
