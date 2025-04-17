@@ -111,14 +111,19 @@ class FuzzerClient:
 
     def generate_default_payload(self, schema):
         """Generate a default payload based on the provided JSON schema.
-           Uses any examples if available; otherwise, falls back to hardcoded types."""
+        Uses any examples if available; otherwise, falls back to hardcoded types."""
         if not schema:
             return {}
         payload = {}
         properties = schema.get("properties", {})
         for key, prop in properties.items():
             if "example" in prop:
-                payload[key] = prop["example"]
+                # Handle examples that are arrays by selecting the first item
+                example_value = prop["example"]
+                if isinstance(example_value, list) and example_value:
+                    payload[key] = example_value[0]  # Take the first example
+                else:
+                    payload[key] = example_value
             elif prop.get("type") == "string":
                 payload[key] = "test"
             elif prop.get("type") == "integer":
@@ -136,32 +141,56 @@ class FuzzerClient:
         return payload
 
     def initialize_seed_queue_from_spec(self, spec):
-        """
-        Initialize SeedQ by parsing the OpenAPI spec.
-        For each path, enable each method found in the spec.
-        For endpoints with a JSON requestBody, attempt to generate a default payload.
-        """
+        """Initialize SeedQ by parsing the OpenAPI spec."""
         SeedQ = {}
         paths = spec.get("paths", {})
+        components = spec.get("components", {})
+        schemas = components.get("schemas", {})
+        
         for path, methods in paths.items():
             SeedQ[path] = {"methods": {}, "seeds": []}
+            
             for method, details in methods.items():
                 method_upper = method.upper()
                 SeedQ[path]["methods"][method_upper] = True
+                
+                # Skip generating payloads for GET and DELETE methods
+                if method_upper in ["GET", "DELETE"]:
+                    continue
+                    
                 payload = None
                 if "requestBody" in details:
                     content = details["requestBody"].get("content", {})
                     if "application/json" in content:
                         schema = content["application/json"].get("schema", {})
+                        
+                        # Handle schema references
+                        if "$ref" in schema:
+                            schema_ref = schema["$ref"]
+                            # Extract schema name from reference like "#/components/schemas/Product"
+                            schema_name = schema_ref.split("/")[-1]
+                            if schema_name in schemas:
+                                schema = schemas[schema_name]
+                        
                         payload = self.generate_default_payload(schema)
-                # For methods that normally include a request body, use the fallback if not generated
+                        
+                # If we couldn't generate a payload from the schema, use the default payload
                 if payload is None and method_upper in ["POST", "PUT", "PATCH"]:
                     payload = copy.deepcopy(DEFAULT_PAYLOAD)
+                    logger.info(f"Using default payload for {method_upper} {path}")
+                
+                # Add the payload to seeds if it exists
                 if payload is not None:
                     SeedQ[path]["seeds"].append(payload)
-            # If no seeds are defined (for GET requests etc.), add an empty payload
-            if not SeedQ[path]["seeds"]:
-                SeedQ[path]["seeds"].append({})
+                    logger.info(f"Added seed for {method_upper} {path}: {payload}")
+            
+            # If this path has no seeds but has methods that should have bodies,
+            # add a default payload
+            needs_body = any(m in ["POST", "PUT", "PATCH"] for m in SeedQ[path]["methods"])
+            if needs_body and not SeedQ[path]["seeds"]:
+                SeedQ[path]["seeds"].append(copy.deepcopy(DEFAULT_PAYLOAD))
+                logger.info(f"Added default seed for {path}: {DEFAULT_PAYLOAD}")
+        
         logger.info("Seed queue initialized from OpenAPI spec.")
         return SeedQ
 
