@@ -37,14 +37,14 @@
         ],
         "responses": {
           "200": {
+            "description": "Successful retrieval of product details",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Product"
                 }
               }
-            },
-            "description": "Successful retrieval of product details"
+            }
           }
         }
       },
@@ -64,6 +64,7 @@
           "productAPI"
         ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
@@ -80,8 +81,7 @@
                 "$ref": "#/components/schemas/Product"
               }
             }
-          },
-          "required": true
+          }
         },
         "security": [
           {
@@ -93,14 +93,14 @@
         ],
         "responses": {
           "200": {
+            "description": "Product created successfully",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Product"
                 }
               }
-            },
-            "description": "Product created successfully"
+            }
           }
         }
       },
@@ -120,6 +120,7 @@
           "productAPI"
         ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
@@ -136,8 +137,7 @@
                 "$ref": "#/components/schemas/Product"
               }
             }
-          },
-          "required": true
+          }
         },
         "security": [
           {
@@ -149,14 +149,14 @@
         ],
         "responses": {
           "200": {
+            "description": "Product updated successfully",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Product"
                 }
               }
-            },
-            "description": "Product updated successfully"
+            }
           }
         }
       },
@@ -224,6 +224,78 @@
             }
           }
         }
+      },
+      "post": {
+        "operationId": "createProduct",
+        "tags": [
+          "dataTable"
+        ],
+        "summary": "Create a new product in the data table",
+        "requestBody": {
+          "required": true,
+          "description": "Product object to be created",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Product created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateAllProducts",
+        "tags": [
+          "dataTable"
+        ],
+        "summary": "Update all products in the data table",
+        "requestBody": {
+          "required": true,
+          "description": "Product object with updated data for all products",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Products updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteAllProducts",
+        "tags": [
+          "dataTable"
+        ],
+        "summary": "Delete all products in the data table",
+        "responses": {
+          "204": {
+            "description": "All products deleted successfully (no response body)"
+          }
+        }
       }
     },
     "/datatb/product/export/": {
@@ -255,6 +327,123 @@
                 }
               }
             }
+          }
+        }
+      },
+      "post": {
+        "operationId": "generateExport",
+        "tags": [
+          "dataTable"
+        ],
+        "summary": "Generate a new export of products",
+        "requestBody": {
+          "required": true,
+          "description": "Export configuration settings",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "search": {
+                    "type": "string",
+                    "example": ""
+                  },
+                  "hidden_cols": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "example": []
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "pdf"
+                    ],
+                    "example": "pdf"
+                  }
+                },
+                "required": [
+                  "search",
+                  "hidden_cols",
+                  "type"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Export generated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateExportConfig",
+        "tags": [
+          "dataTable"
+        ],
+        "summary": "Update export configuration",
+        "requestBody": {
+          "required": true,
+          "description": "New export configuration",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "format": {
+                    "type": "string",
+                    "example": "pdf"
+                  },
+                  "template": {
+                    "type": "string",
+                    "example": "default"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Export configuration updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteExportHistory",
+        "tags": [
+          "dataTable"
+        ],
+        "summary": "Delete export history",
+        "responses": {
+          "204": {
+            "description": "Export history deleted successfully (no response body)"
           }
         }
       }
@@ -308,6 +497,7 @@
           }
         ],
         "requestBody": {
+          "required": true,
           "description": "Product object with updated data",
           "content": {
             "application/json": {
@@ -315,8 +505,7 @@
                 "$ref": "#/components/schemas/Product"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -330,18 +519,93 @@
             }
           }
         }
-      }
-    },
-    "/datatb/product/add/": {
-      "get": {
-        "operationId": "getAddProductForm",
+      },
+      "put": {
+        "operationId": "replaceProductInTable",
         "tags": [
           "dataTable"
         ],
-        "summary": "Retrieve form for adding a new product (this endpoint crashes when visited)",
+        "summary": "Replace an existing product in the data table",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Product ID to replace"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "New product object data",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
-            "description": "Form retrieval attempt (may crash)",
+            "description": "Product replaced successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteProductFromTable",
+        "tags": [
+          "dataTable"
+        ],
+        "summary": "Delete a product from the data table",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Product ID to delete"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Product deleted successfully (no response body)"
+          }
+        }
+      }
+    },
+    "/datatb/product/delete/{id}/": {
+      "get": {
+        "operationId": "retrieveProductForDeletion",
+        "tags": [
+          "dataTable"
+        ],
+        "summary": "Retrieve product data before deletion",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Product ID to delete"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product data retrieved for deletion confirmation",
             "content": {
               "application/json": {
                 "schema": {
@@ -353,32 +617,139 @@
         }
       },
       "post": {
-        "operationId": "addProductToTable",
+        "operationId": "confirmProductDeletion",
         "tags": [
           "dataTable"
         ],
-        "summary": "Add a new product to the data table",
-        "description": "Provide product id, name, details, and price to add a new product record.",
+        "summary": "Confirm deletion of a product",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Product ID to confirm deletion"
+          }
+        ],
         "requestBody": {
-          "description": "Product object to be added",
+          "required": true,
+          "description": "Confirmation data",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Product"
+                "type": "object",
+                "properties": {
+                  "confirm": {
+                    "type": "boolean",
+                    "example": true
+                  }
+                }
               }
             }
           }
         },
         "responses": {
-          "default": {
-            "description": "Operation completed (crash expected on this endpoint)",
+          "200": {
+            "description": "Product deletion confirmed",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Product"
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Product deleted successfully"
+                    }
+                  }
                 }
               }
             }
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateDeletionSettings",
+        "tags": [
+          "dataTable"
+        ],
+        "summary": "Update deletion settings for a product",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Product ID for deletion settings"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Deletion settings",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "cascade": {
+                    "type": "boolean",
+                    "example": true
+                  },
+                  "permanent": {
+                    "type": "boolean",
+                    "example": false
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Deletion settings updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "updated"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "executeProductDeletion",
+        "tags": [
+          "dataTable"
+        ],
+        "summary": "Permanently delete a product",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Product ID to permanently delete"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Product permanently deleted (no response body)"
           }
         }
       }
