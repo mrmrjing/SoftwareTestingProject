@@ -1,303 +1,484 @@
 {
-    "openapi": "3.0.3",
-    "info": {
-      "title": "Django API",
-      "version": "1.0.0"
-    },
-    "servers": [
-      {
-        "url": "http://localhost:8000"
-      }
-    ],
-    "paths": {
-      "/api/product/{id}/": {
-        "get": {
-          "operationId": "retrieveProduct",
-          "parameters": [
-            {
-              "in": "path",
-              "name": "id",
-              "schema": {
-                "type": "string"
-              },
-              "required": true
-            }
-          ],
-          "tags": [
-            "productAPI"
-          ],
-          "security": [
-            {
-              "cookieAuth": []
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Django API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8000"
+    }
+  ],
+  "paths": {
+    "/api/product/{id}/": {
+      "get": {
+        "operationId": "retrieveProduct",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
             },
-            {
-              "tokenAuth": []
-            },
-            {}
-          ],
-          "responses": {
-            "200": {
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Product"
-                  }
-                }
-              },
-              "description": "Successful retrieval of product details"
-            }
+            "required": true
           }
-        },
-        "post": {
-          "operationId": "createNewProduct",
-          "parameters": [
-            {
-              "in": "path",
-              "name": "id",
-              "schema": {
-                "type": "string"
-              },
-              "required": true
-            }
-          ],
-          "tags": [
-            "productAPI"
-          ],
-          "requestBody": {
+        ],
+        "tags": [
+          "productAPI"
+        ],
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "tokenAuth": []
+          },
+          {}
+        ],
+        "responses": {
+          "200": {
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Product"
                 }
-              },
-              "application/x-www-form-urlencoded": {
-                "schema": {
-                  "$ref": "#/components/schemas/Product"
-                }
-              },
-              "multipart/form-data": {
-                "schema": {
-                  "$ref": "#/components/schemas/Product"
-                }
               }
             },
-            "required": true
-          },
-          "security": [
-            {
-              "cookieAuth": []
-            },
-            {
-              "tokenAuth": []
-            }
-          ],
-          "responses": {
-            "200": {
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Product"
-                  }
-                }
-              },
-              "description": "Product created successfully"
-            }
-          }
-        },
-        "put": {
-          "operationId": "updateExistingProduct",
-          "parameters": [
-            {
-              "in": "path",
-              "name": "id",
-              "schema": {
-                "type": "string"
-              },
-              "required": true
-            }
-          ],
-          "tags": [
-            "productAPI"
-          ],
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Product"
-                }
-              },
-              "application/x-www-form-urlencoded": {
-                "schema": {
-                  "$ref": "#/components/schemas/Product"
-                }
-              },
-              "multipart/form-data": {
-                "schema": {
-                  "$ref": "#/components/schemas/Product"
-                }
-              }
-            },
-            "required": true
-          },
-          "security": [
-            {
-              "cookieAuth": []
-            },
-            {
-              "tokenAuth": []
-            }
-          ],
-          "responses": {
-            "200": {
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Product"
-                  }
-                }
-              },
-              "description": "Product updated successfully"
-            }
-          }
-        },
-        "delete": {
-          "operationId": "deleteProduct",
-          "parameters": [
-            {
-              "in": "path",
-              "name": "id",
-              "schema": {
-                "type": "string"
-              },
-              "required": true
-            }
-          ],
-          "tags": [
-            "productAPI"
-          ],
-          "security": [
-            {
-              "cookieAuth": []
-            },
-            {
-              "tokenAuth": []
-            }
-          ],
-          "responses": {
-            "204": {
-              "description": "Product deleted successfully (no response body)"
-            }
+            "description": "Successful retrieval of product details"
           }
         }
       },
-      "/datatb/product/add/": {
-        "post": {
-          "tags": [
-            "dataTable"
-          ],
-          "summary": "Add a new product to the data table",
-          "description": "Provide product id, name, details, and price to add a new product record.",
-          "operationId": "addProductToTable",
-          "requestBody": {
-            "description": "Product object to be added",
+      "post": {
+        "operationId": "createNewProduct",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "tags": [
+          "productAPI"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Product"
                 }
               }
-            }
-          },
-          "responses": {
-            "default": {
-              "description": "Operation completed successfully",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Product"
-                  }
-                }
+            },
+            "description": "Product created successfully"
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateExistingProduct",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "tags": [
+          "productAPI"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
               }
             }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            },
+            "description": "Product updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteProduct",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "tags": [
+          "productAPI"
+        ],
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Product deleted successfully (no response body)"
           }
         }
       }
     },
-    "components": {
-      "schemas": {
-        "AuthToken": {
-          "type": "object",
-          "properties": {
-            "username": {
+    "/datatb/product/": {
+      "get": {
+        "operationId": "listProducts",
+        "tags": [
+          "dataTable"
+        ],
+        "summary": "List products in the data table",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "entries",
+            "schema": {
               "type": "string",
-              "writeOnly": true,
-              "example": ["alice", "bob", "charlie"]
+              "pattern": "^[0-9]+/?$"
             },
-            "password": {
-              "type": "string",
-              "writeOnly": true,
-              "example": ["secret", "admin123", "password1"]
-            },
-            "token": {
-              "type": "string",
-              "readOnly": true,
-              "example": ["abc123", "def456", "ghi789"]
+            "required": false,
+            "description": "Number of entries to return, e.g., '100' or '100/'"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of products",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Product"
+                  }
+                }
+              }
             }
-          },
-          "required": [
-            "username",
-            "password",
-            "token"
-          ]
-        },
-        "Product": {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "integer",
-              "readOnly": true,
-              "example": [100],
-              "maximum": 9223372036854776000,
-              "minimum": -9223372036854776000
+          }
+        }
+      }
+    },
+    "/datatb/product/export/": {
+      "get": {
+        "operationId": "exportProductToPDF",
+        "tags": [
+          "dataTable"
+        ],
+        "summary": "Export products to PDF",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "format",
+            "schema": {
+              "type": "string"
             },
-            "name": {
-              "type": "string",
-              "maxLength": 2,
-              "example": ["pd"]
-            },
-            "info": {
-              "type": "string",
-              "maxLength": 2,
-              "example": ["dt"]
-            },
-            "price": {
-              "type": "integer",
-              "maximum": 9223372036854776000,
-              "minimum": -9223372036854776000,
-              "format": "int64",
-              "nullable": true,
-              "example": [99, -99]
+            "required": false,
+            "description": "Format of the exported file, e.g., 'pdf'"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "PDF export successful",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
             }
-          },
-          "required": [
-            "id",
-            "name"
-          ]
+          }
+        }
+      }
+    },
+    "/datatb/product/edit/{id}/": {
+      "get": {
+        "operationId": "retrieveProductForEdit",
+        "tags": [
+          "dataTable"
+        ],
+        "summary": "Retrieve product data for editing",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Product ID to edit (e.g., 0 may trigger a crash)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product data retrieved for editing",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          }
         }
       },
-      "securitySchemes": {
-        "cookieAuth": {
-          "type": "apiKey",
-          "in": "cookie",
-          "name": "sessionid"
+      "post": {
+        "operationId": "updateProductInTable",
+        "tags": [
+          "dataTable"
+        ],
+        "summary": "Update an existing product in the data table",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Product ID to update (allowing 0 for crash triggering)"
+          }
+        ],
+        "requestBody": {
+          "description": "Product object with updated data",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              }
+            }
+          },
+          "required": true
         },
-        "tokenAuth": {
-          "type": "apiKey",
-          "in": "header",
-          "name": "Authorization",
-          "description": "Token based authentication. Include the prefix \"Token\" followed by your key."
+        "responses": {
+          "200": {
+            "description": "Product updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/datatb/product/add/": {
+      "get": {
+        "operationId": "getAddProductForm",
+        "tags": [
+          "dataTable"
+        ],
+        "summary": "Retrieve form for adding a new product (this endpoint crashes when visited)",
+        "responses": {
+          "200": {
+            "description": "Form retrieval attempt (may crash)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "addProductToTable",
+        "tags": [
+          "dataTable"
+        ],
+        "summary": "Add a new product to the data table",
+        "description": "Provide product id, name, details, and price to add a new product record.",
+        "requestBody": {
+          "description": "Product object to be added",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Operation completed (crash expected on this endpoint)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          }
         }
       }
     }
+  },
+  "components": {
+    "schemas": {
+      "AuthToken": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "writeOnly": true,
+            "example": [
+              "alice",
+              "bob",
+              "charlie"
+            ]
+          },
+          "password": {
+            "type": "string",
+            "writeOnly": true,
+            "example": [
+              "secret",
+              "admin123",
+              "password1"
+            ]
+          },
+          "token": {
+            "type": "string",
+            "readOnly": true,
+            "example": [
+              "abc123",
+              "def456",
+              "ghi789"
+            ]
+          }
+        },
+        "required": [
+          "username",
+          "password",
+          "token"
+        ]
+      },
+      "Product": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true,
+            "example": [
+              100
+            ],
+            "maximum": 9223372036854776000,
+            "minimum": -9223372036854776000
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 2,
+            "example": [
+              "pd"
+            ]
+          },
+          "info": {
+            "type": "string",
+            "maxLength": 2,
+            "example": [
+              "dt"
+            ]
+          },
+          "price": {
+            "type": "integer",
+            "maximum": 9223372036854776000,
+            "minimum": -9223372036854776000,
+            "format": "int64",
+            "nullable": true,
+            "example": [
+              99,
+              -99
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      }
+    },
+    "securitySchemes": {
+      "cookieAuth": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "sessionid"
+      },
+      "tokenAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "Token based authentication. Include the prefix \"Token\" followed by your key."
+      }
+    }
   }
-  
+}
