@@ -1,48 +1,41 @@
-Bugs found manually: 
-1. Theres a problem with the http://127.0.0.1:8000/datatb/product/ endpoint as well, if u click export to pdf or run a GET /datatb/product/export/ u'll get a crash
+# Django Greybox Fuzzer
+A coverage-guided fuzzer for Django applications with OpenAPI specification support 
 
-2. there's another crash with the http://127.0.0.1:8000/datatb/product/edit/0/
+## Overview
+This project implements a greybox fuzzing tool that automatically tests Django web applications by generating HTTP requests based on an OpenAPI specification. The fuzzer uses code coverage feedback to guide test generation, allowing it to discover bugs more efficiently.
 
-3. another crash when we visit datatb/product/add/
+## Features
+- OpenAPI Integration: Automatically builds test inputs from OpenAPI specifications
+- Coverage Feedback: Uses runtime code coverage to guide the fuzzing process
+- Smart Mutations: Applies various mutation strategies to discover edge cases
+- Automated Authentication: Handles user registration and login for testing protected endpoints
+- Crash Detection: Identifies server crashes, timeouts, and HTTP 500 errors
+- Detailed Reporting: Tracks and saves all test data for analysis
 
-4. datatb/product/export/?
 
-5. GET http://127.0.0.1:8000/datatb/product/?entries=100/ (HOW to fit this into the fuzzer)
+## Architecture 
+The fuzzer follows the standard greybox fuzzing loop:
 
+- Select a seed from the queue
+- Assign energy (mutation iterations)
+- Generate mutations of the seed
+- Test each mutation
+- Add any crashes to the failure queue
+- Add interesting inputs (new coverage) back to the seed queue
 
-**31/3/2025**
-TODO: Implement code coverage instrumentation
-- [ ] Add Django coverage measurement tools
-- [ ] Modify server startup to include coverage tracking
-- [ ] Create an API to retrieve coverage data after each request
-- [ ] Store coverage data efficiently for comparison
-
-TODO: Add energy assignment algorithms
-- [ ] Implement AssignEnergy() function based on seed performance
-- [ ] Add metrics for determining seed value (code coverage, execution time)
-- [ ] Develop dynamic scaling for energy values
-- [ ] Track performance of different energy allocation strategies
-
-TODO: Enhance seed selection strategy
-- [ ] Modify choose_next_seed() to prioritize based on coverage metrics
-- [ ] Implement weighted selection for seeds that reach rare code paths
-- [ ] Add scheduling algorithm for balancing exploration vs exploitation
-- [ ] Create seed performance history tracking
-
-TODO: Add coverage-based interestingness detection
-- [ ] Replace random probability with actual coverage comparison
-- [ ] Implement efficient coverage difference calculation
-- [ ] Add thresholds for determining significant coverage differences
-- [ ] Create visualization of coverage growth over time
-
-TODO: Optimize mutation strategies based on results
-- [ ] Track which mutation types produce more interesting results
-- [ ] Implement targeted mutations for specific data types
-- [ ] Add adaptive mutation rates based on success history
-- [ ] Develop grammar-based mutations for structured inputs
-
-TODO: Improve session management and reporting
-- [ ] Add detailed statistics on coverage growth
-- [ ] Create visualizations of code coverage
-- [ ] Generate more detailed crash reports with execution traces
-- [ ] Implement resumable fuzzing sessions
+## TODO list for 19 April 2025: 
+1. Seed Selection Strategy (choose_next)
+  - [x] Random seed selection from OpenAPI spec
+  - [ ] Modify choose_next_seed() to prioritize based on coverage metrics
+ 
+2. Parallel Fuzzing (if we have time)
+  - [ ] Add multi-threading support for concurrent request generation
+  - [ ] Implement shared coverage information across processes
+ 
+3. Evaluation of fuzzer 
+### Effectiveness
+  - [ ] Graph_1_1 Plot number of unique crashes agaisnt time 
+  - [ ] Graph_1_2 Plot number of interesting test cases agaisnt time 
+  - [ ] Graph_1_3 Plot number of interesting test cases agianst number of tests generated (use the tests.json file)
+  - Coverage obtained with respect to time and generated tests 
+  - Provide a table of all the unique bugs found
