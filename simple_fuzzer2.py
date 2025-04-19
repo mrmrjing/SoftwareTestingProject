@@ -9,6 +9,8 @@ import os
 import datetime
 import traceback
 import subprocess
+import re
+import tabulate
 from mutations import MutationEngine
 
 # --- Logging configuration ---
@@ -36,12 +38,209 @@ console_handler.setLevel(logging.INFO)
 console_handler.setFormatter(formatter)
 logger.addHandler(console_handler)
 
+# --- Create bug_samples directory ---
+os.makedirs("bug_samples", exist_ok=True)
+
 # --- Fallback default payload ---
 DEFAULT_PAYLOAD = {
     "name": "test_product",
     "info": "test_info",
     "price": 100
 }
+
+# --- Bug classification functionality ---
+class BugClassifier:
+    """Identifies and classifies unique bugs from failures"""
+    
+    def __init__(self):
+        self.unique_bugs = {}  # Mapping of bug signature to bug details
+        self.bug_counter = 1   # Counter for assigning bug IDs
+    
+    def extract_error_signature(self, response_text=None, error_str=None, status_code=None):
+        """Extract a unique signature from an error response or error message"""
+        if status_code == "CRASH":
+            # Server crash - use error string as primary identifier
+            if error_str:
+                # Extract the exception type from the error string
+                exception_match = re.search(r'([A-Za-z.]+Error|[A-Za-z.]+Exception)', error_str)
+                if exception_match:
+                    return f"CRASH:{exception_match.group(1)}"
+            return "CRASH:ServerTerminated"
+        
+        if response_text:
+            # For 5xx responses, try to extract meaningful error information
+            # Look for Django error pattern
+            if "Django" in response_text and "Traceback" in response_text:
+                lines = response_text.split('\n')
+                for i, line in enumerate(lines):
+                    if "Exception Type:" in line and i+1 < len(lines):
+                        exception_type = lines[i+1].strip()
+                        # Add the next line as it often contains the error message
+                        if i+3 < len(lines) and "Exception Value:" in lines[i+2]:
+                            error_msg = lines[i+3].strip()
+                            # Filter out specific details that vary between requests
+                            error_msg = re.sub(r'\'[^\']+\'', "'X'", error_msg)
+                            return f"{status_code}:{exception_type}:{error_msg}"
+                        return f"{status_code}:{exception_type}"
+            
+            # Look for general error patterns in the response
+            traceback_match = re.search(r'Traceback[^\n]+\n\s+([^\n]+)', response_text)
+            if traceback_match:
+                # Get the first line of the traceback as part of the signature
+                return f"{status_code}:Traceback:{traceback_match.group(1)}"
+        
+        # If no clear pattern matches, use status code and a hash of response
+        if error_str:
+            error_hash = hashlib.md5(error_str.encode()).hexdigest()[:8]
+            return f"{status_code}:Error:{error_hash}"
+        elif response_text:
+            text_hash = hashlib.md5(response_text.encode()).hexdigest()[:8]
+            return f"{status_code}:Response:{text_hash}"
+        
+        # Fallback
+        return f"{status_code}:Unknown"
+    
+    def minimize_payload(self, original_payload):
+        """
+        Create a minimal version of the payload that still triggers the bug.
+        This is a simplified version - in practice you'd want to test each minimization
+        with the server to ensure it still triggers the bug.
+        """
+        # For dictionary payloads, we'll do a basic minimization
+        if isinstance(original_payload, dict):
+            # Try to keep only essential fields that are most likely to trigger bugs
+            minimal = {}
+            # Prioritize fields that are more likely to cause issues
+            suspicious_fields = ["id", "pk", "name", "price", "user", "email", "type"]
+            for field in suspicious_fields:
+                if field in original_payload:
+                    minimal[field] = original_payload[field]
+            
+            # If nothing was selected or the payload is very small, just return it as is
+            if not minimal or len(original_payload) <= 3:
+                return original_payload
+            
+            return minimal
+        
+        # For non-dict payloads, return as is
+        return original_payload
+    
+    def classify_bug(self, path, method, status_code, seed, response_text=None, error_str=None):
+        """
+        Classify a bug and determine if it's unique.
+        Returns a tuple of (is_new, bug_id, signature)
+        """
+        # Extract a signature to identify this particular bug
+        signature = self.extract_error_signature(response_text, error_str, status_code)
+        
+        # Check if we've seen this signature before
+        if signature in self.unique_bugs:
+            bug_id = self.unique_bugs[signature]["id"]
+            self.unique_bugs[signature]["occurrences"] += 1
+            return False, bug_id, signature
+        
+        # This is a new unique bug
+        bug_id = f"BUG-{self.bug_counter}"
+        self.bug_counter += 1
+        
+        # Create minimized test case
+        minimal_payload = self.minimize_payload(seed)
+        
+        # Record information about this bug
+        self.unique_bugs[signature] = {
+            "id": bug_id,
+            "signature": signature,
+            "path": path,
+            "method": method,
+            "status_code": status_code,
+            "first_seen": datetime.datetime.now().isoformat(),
+            "occurrences": 1,
+            "minimal_payload": minimal_payload,
+            "original_payload": seed,
+            "response_sample": response_text[:500] if response_text else None,
+            "error_sample": error_str[:500] if error_str else None
+        }
+        
+        return True, bug_id, signature
+
+    def save_bug_samples(self, folder="bug_samples"):
+        """Save all unique bugs as individual files in the designated folder"""
+        if not self.unique_bugs:
+            logger.info("No bugs to save")
+            return
+        
+        os.makedirs(folder, exist_ok=True)
+        
+        # Create a summary file
+        with open(os.path.join(folder, "bug_summary.txt"), "w") as f:
+            f.write(self.generate_summary_table())
+        
+        # Create individual files for each bug
+        for signature, bug in self.unique_bugs.items():
+            filename = f"{bug['id']}.json"
+            filepath = os.path.join(folder, filename)
+            
+            # Create a reproducible test case file
+            with open(filepath, "w") as f:
+                repro_case = {
+                    "bug_id": bug["id"],
+                    "signature": signature,
+                    "endpoint": bug["path"],
+                    "method": bug["method"],
+                    "payload": bug["minimal_payload"],
+                    "description": self._generate_bug_description(bug),
+                    "reproduction_steps": [
+                        f"1. Send a {bug['method']} request to {bug['path']}",
+                        f"2. Use the following payload: {json.dumps(bug['minimal_payload'])}"
+                    ]
+                }
+                json.dump(repro_case, f, indent=2)
+            
+            logger.info(f"Saved minimal test case for {bug['id']} to {filepath}")
+    
+    def _generate_bug_description(self, bug):
+        """Generate a human-readable description of the bug"""
+        status_code = bug["status_code"]
+        
+        if status_code == "CRASH":
+            return f"Server crash when sending {bug['method']} request to {bug['path']}"
+        elif status_code == "ERROR":
+            return f"Connection error when sending {bug['method']} request to {bug['path']}"
+        elif status_code.isdigit() and int(status_code) >= 500:
+            return f"Server error {status_code} when sending {bug['method']} request to {bug['path']}"
+        else:
+            return f"Error when sending {bug['method']} request to {bug['path']}"
+
+    def generate_summary_table(self):
+        """Generate a text table summarizing all unique bugs"""
+        if not self.unique_bugs:
+            return "No bugs found"
+        
+        # Prepare data for tabulation
+        headers = ["Bug ID", "Endpoint", "Method", "Status", "Occurrences", "Signature"]
+        rows = []
+        
+        for signature, bug in self.unique_bugs.items():
+            # Create a concise version of the signature for display
+            short_sig = signature
+            if len(short_sig) > 50:
+                short_sig = short_sig[:47] + "..."
+            
+            rows.append([
+                bug["id"],
+                bug["path"],
+                bug["method"],
+                bug["status_code"],
+                bug["occurrences"],
+                short_sig
+            ])
+        
+        # Sort by bug ID
+        rows.sort(key=lambda x: x[0])
+        
+        # Generate the table
+        table = tabulate.tabulate(rows, headers, tablefmt="grid")
+        return table
 
 # --- Request data structure ---
 # A helper class to encapsulate HTTP requests for fuzzing
@@ -97,6 +296,9 @@ class FuzzerClient:
 
         # Initialize the mutation engine
         self.mutation_engine = MutationEngine()
+
+        # Add bug classifier
+        self.bug_classifier = BugClassifier()
 
     def load_openapi_spec(self, openapi_file):
         """Load the OpenAPI specification from a JSON file."""
@@ -347,6 +549,15 @@ class FuzzerClient:
             json.dump(self.failure_time, f, indent=2)
         with open(os.path.join(self.session_folder, "tests.json"), "w") as f:
             json.dump(self.tests, f, indent=2)
+        logger.info(f"Session data saved to {self.session_folder}")
+
+        # Save bug samples
+        self.bug_classifier.save_bug_samples()
+        
+        # Also save bug summary to session folder
+        with open(os.path.join(self.session_folder, "bug_summary.txt"), "w") as f:
+            f.write(self.bug_classifier.generate_summary_table())
+        
         logger.info(f"Session data saved to {self.session_folder}")
 
     def mutate_input(self, s):
@@ -693,6 +904,7 @@ def fuzz_application():
         num_tests = 0
         num_crashes = 0
         num_interesting = 0
+        unique_bugs = 0
         while num_tests < 1000:
             s = client.choose_next(client.SeedQ)
             if s is None:
@@ -726,6 +938,22 @@ def fuzz_application():
                 if reveals_bug:
                     path = s_prime["path"]
                     method = s_prime["method"]
+                    status_code = "CRASH" if server_process.poll() is not None else str(response.status_code) if response else "ERROR"
+
+                    # Use bug classifier to identify if this is a unique bug
+                    response_text = response.text if response else None
+                    error_str = str(error) if error else None
+                    
+                    is_new_bug, bug_id, signature = client.bug_classifier.classify_bug(
+                        path, method, status_code, s_prime["seed"], response_text, error_str
+                    )
+                    
+                    if is_new_bug:
+                        unique_bugs += 1
+                        logger.warning(f"Discovered new unique bug: {bug_id} with signature {signature}")
+                    else:
+                        logger.info(f"Found instance of known bug: {bug_id}")
+
                     if path not in client.FailureQ:
                         client.FailureQ[path] = {}
                     if method not in client.FailureQ[path]:
@@ -736,7 +964,9 @@ def fuzz_application():
                     failure_info = {
                         "input": s_prime["seed"],
                         "timestamp": datetime.datetime.now().isoformat(),
-                        "mutation_id": s_prime["mutation_id"]
+                        "mutation_id": s_prime["mutation_id"],
+                        "bug_id": bug_id,
+                        "signature": signature,
                     }
                     if response:
                         failure_info["response"] = response.text[:1000]
@@ -792,7 +1022,16 @@ def fuzz_application():
         print(f"Total tests executed: {num_tests}")
         print(f"Total crashes found: {num_crashes}")
         print(f"Interesting test cases: {num_interesting}")
+        print(f"Unique bugs identified: {unique_bugs}")
         print(f"Session data saved to: {client.session_folder}")
+        print(f"Bug samples saved to: bug_samples/")
+
+        # Print the bug summary table
+        print("\n" + "=" * 50)
+        print("UNIQUE BUGS SUMMARY")
+        print("=" * 50)
+        print(client.bug_classifier.generate_summary_table())
+
         if server_process and server_process.poll() is None:
             logger.info("Terminating server process...")
             server_process.terminate()
@@ -817,20 +1056,26 @@ def main():
     logger.info("Starting Django fuzzer")
     client = fuzz_application()
     if client:
-        num_failures = sum(len(methods) for path_data in client.FailureQ.values() 
-                           for methods in path_data.values())
-        if num_failures > 0:
-            print("\nFAILURE ANALYSIS")
+        # Check if any bugs were found
+        if client.bug_classifier.unique_bugs:
+            print("\nBUG ANALYSIS")
             print("=" * 50)
-            for path in client.FailureQ:
-                for method in client.FailureQ[path]:
-                    for status_code in client.FailureQ[path][method]:
-                        failures = client.FailureQ[path][method][status_code]
-                        print(f"{method} {path} - Status code: {status_code}")
-                        print(f"  Number of failures: {len(failures)}")
-                        if failures:
-                            print(f"  Example input: {failures[0]['input']}")
-                        print()
+            print(f"Found {len(client.bug_classifier.unique_bugs)} unique bugs.")
+            print(f"Details saved to bug_samples/ directory.")
+            print("\nTo reproduce these bugs, use the JSON files in the bug_samples/ directory.")
+            
+            # Print minimal reproduction steps for each bug
+            print("\nMINIMAL REPRODUCTION STEPS:")
+            print("=" * 50)
+            for signature, bug in sorted(client.bug_classifier.unique_bugs.items(), 
+                                         key=lambda x: x[1]['id']):
+                print(f"Bug ID: {bug['id']}")
+                print(f"Endpoint: {bug['method']} {bug['path']}")
+                print(f"Payload: {json.dumps(bug['minimal_payload'])}")
+                print("-" * 40)
+        else:
+            print("\nNo bugs were found during this fuzzing session.")
+            
         logger.info("Fuzzing completed")
     else:
         logger.error("Fuzzing failed to start")
