@@ -1069,11 +1069,26 @@ def fuzz_application():
                 client.tests[client.test_id] = datetime.datetime.now().isoformat()
                 client.test_id += 1
                 num_tests += 1
+                
+                # Check for server crashes or errors
                 reveals_bug = False
+                server_crashed = False
+                
+                # Check if the server process has terminated
                 if server_process.poll() is not None:
                     reveals_bug = True
+                    server_crashed = True
                     logger.warning("Server crashed! Process terminated unexpectedly.")
                     num_crashes += 1
+                # Check for connection errors that indicate server is down
+                elif error and ("Connection refused" in str(error) or 
+                               "Failed to establish a new connection" in str(error) or
+                               "Connection reset by peer" in str(error)):
+                    reveals_bug = True
+                    server_crashed = True
+                    logger.warning(f"Server crashed! Connection error: {error}")
+                    num_crashes += 1
+                # Check for other errors or 5xx responses
                 elif error:
                     reveals_bug = True
                     logger.warning(f"Request error: {error}")
@@ -1082,10 +1097,11 @@ def fuzz_application():
                     reveals_bug = True
                     logger.warning(f"Server error detected! Status code: {response.status_code}")
                     num_crashes += 1
+                
                 if reveals_bug:
                     path = s_prime["path"]
                     method = s_prime["method"]
-                    status_code = "CRASH" if server_process.poll() is not None else str(response.status_code) if response else "ERROR"
+                    status_code = "CRASH" if server_crashed else str(response.status_code) if response else "ERROR"
 
                     # Use bug classifier to identify if this is a unique bug
                     response_text = response.text if response else None
@@ -1105,7 +1121,6 @@ def fuzz_application():
                         client.FailureQ[path] = {}
                     if method not in client.FailureQ[path]:
                         client.FailureQ[path][method] = {}
-                    status_code = "CRASH" if server_process.poll() is not None else str(response.status_code) if response else "ERROR"
                     if status_code not in client.FailureQ[path][method]:
                         client.FailureQ[path][method][status_code] = []
                     failure_info = {
@@ -1122,14 +1137,35 @@ def fuzz_application():
                     client.FailureQ[path][method][status_code].append(failure_info)
                     if len(client.FailureQ[path][method][status_code]) == 1:
                         client.failure_time[len(client.failure_time)] = datetime.datetime.now().isoformat()
-                    if server_process.poll() is not None:
+                    
+                    # Restart the server if it crashed or connection was refused
+                    if server_crashed:
                         logger.info("Restarting the server...")
-                        server_process.terminate()
+                        # Make sure to terminate the process if it's still running
+                        if server_process.poll() is None:
+                            try:
+                                server_process.terminate()
+                                server_process.wait(timeout=5)
+                            except subprocess.TimeoutExpired:
+                                logger.warning("Server process did not terminate gracefully, killing it.")
+                                server_process.kill()
+                                server_process.wait()
+                        
+                        # Wait a moment before restarting
                         time.sleep(2)
+                        
+                        # Start a new server process
                         server_process = start_django_server()
+                        if not server_process:
+                            logger.error("Failed to restart server. Aborting.")
+                            break
+                            
+                        # Wait for the server to be ready
                         if not wait_for_server(client.base_url, timeout=30):
                             logger.error("Failed to restart server. Aborting.")
                             break
+                            
+                        # Re-authenticate with the server
                         token = client.ensure_authenticated()
                         if not token:
                             logger.error("Failed to re-authenticate after server restart. Aborting.")
