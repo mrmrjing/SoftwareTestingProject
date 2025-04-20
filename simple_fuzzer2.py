@@ -56,49 +56,173 @@ class BugClassifier:
         self.unique_bugs = {}  # Mapping of bug signature to bug details
         self.bug_counter = 1   # Counter for assigning bug IDs
     
-    def extract_error_signature(self, response_text=None, error_str=None, status_code=None):
-        """Extract a unique signature from an error response or error message"""
+    def extract_error_signature(self, path, method, response_text=None, error_str=None, status_code=None):
+        """
+        Extract a meaningful signature from an error response or error message.
+        Includes path and method to ensure bugs in different endpoints are considered unique.
+        """
+        # First, determine the error type
+        error_type = self._determine_error_type(response_text, error_str, status_code)
+        
+        # Create the signature by combining path, method, and error type
+        # This ensures that the same error in different endpoints is considered unique
+        signature = f"{method}:{path}:{error_type}"
+        
+        return signature
+
+    
+    def _determine_error_type(self, response_text=None, error_str=None, status_code=None):
+        """Helper method to determine the specific error type without path/method"""
+        # Handle server crashes
         if status_code == "CRASH":
-            # Server crash - use error string as primary identifier
             if error_str:
                 # Extract the exception type from the error string
                 exception_match = re.search(r'([A-Za-z.]+Error|[A-Za-z.]+Exception)', error_str)
                 if exception_match:
-                    return f"CRASH:{exception_match.group(1)}"
-            return "CRASH:ServerTerminated"
+                    exception_type = exception_match.group(1)
+                    # Look for common crash patterns
+                    if "MemoryError" in exception_type:
+                        return "OutOfMemory"
+                    elif "TimeoutError" in exception_type:
+                        return "Timeout"
+                    elif "ConnectionError" in exception_type or "ConnectionRefused" in exception_type:
+                        return "ConnectionIssue"
+                    else:
+                        return exception_type
+            return "ServerTerminated"
         
-        if response_text:
-            # For 5xx responses, try to extract meaningful error information
-            # Look for Django error pattern
-            if "Django" in response_text and "Traceback" in response_text:
-                lines = response_text.split('\n')
-                for i, line in enumerate(lines):
-                    if "Exception Type:" in line and i+1 < len(lines):
-                        exception_type = lines[i+1].strip()
-                        # Add the next line as it often contains the error message
-                        if i+3 < len(lines) and "Exception Value:" in lines[i+2]:
-                            error_msg = lines[i+3].strip()
-                            # Filter out specific details that vary between requests
-                            error_msg = re.sub(r'\'[^\']+\'', "'X'", error_msg)
-                            return f"{status_code}:{exception_type}:{error_msg}"
-                        return f"{status_code}:{exception_type}"
+        # Handle connection errors
+        if status_code == "ERROR":
+            if error_str:
+                # Connection timeout
+                if "timeout" in error_str.lower():
+                    return "ConnectionTimeout"
+                # Connection refused
+                elif "connection refused" in error_str.lower() or "cannot connect" in error_str.lower():
+                    return "ConnectionRefused"
+                # DNS resolution issues
+                elif "name resolution" in error_str.lower() or "getaddrinfo failed" in error_str.lower():
+                    return "DNSResolutionFailure"
+                # SSL/TLS errors
+                elif "ssl" in error_str.lower() or "certificate" in error_str.lower():
+                    return "SSLError"
+                # Generic connection error
+                elif "connection" in error_str.lower():
+                    return "ConnectionIssue"
+        
+        # Handle HTTP 5xx responses
+        if status_code and str(status_code).startswith('5'):
+            if response_text:
+                # Django-specific error patterns
+                if "Django" in response_text and "Traceback" in response_text:
+                    # Extract exception type
+                    exception_match = re.search(r'Exception Type:\s*([^\n]+)', response_text)
+                    if exception_match:
+                        exception_type = exception_match.group(1).strip()
+                        
+                        # Extract exception value/message
+                        message_match = re.search(r'Exception Value:\s*([^\n]+)', response_text)
+                        exception_msg = message_match.group(1).strip() if message_match else ""
+                        
+                        # Normalize the exception message by removing specific values
+                        normalized_msg = re.sub(r'\'[^\']+\'', "'VALUE'", exception_msg)
+                        normalized_msg = re.sub(r'\d+', "N", normalized_msg)
+                        
+                        # Check for common Django error patterns
+                        if "DoesNotExist" in exception_type:
+                            return "ObjectNotFound"
+                        elif "IntegrityError" in exception_type:
+                            if "unique constraint" in normalized_msg.lower():
+                                return "UniqueConstraintViolation"
+                            elif "foreign key constraint" in normalized_msg.lower():
+                                return "ForeignKeyConstraintViolation"
+                            else:
+                                return "DatabaseIntegrityError"
+                        elif "ValidationError" in exception_type:
+                            return "ValidationError"
+                        elif "PermissionDenied" in exception_type:
+                            return "PermissionDenied"
+                        elif "TypeError" in exception_type:
+                            if "NoneType" in normalized_msg:
+                                return "NoneTypeError"
+                            else:
+                                return "TypeError"
+                        elif "ValueError" in exception_type:
+                            if "invalid literal" in normalized_msg.lower():
+                                return "InvalidLiteralError"
+                            else:
+                                return "ValueError"
+                        elif "KeyError" in exception_type:
+                            return "KeyError"
+                        elif "IndexError" in exception_type:
+                            return "IndexError"
+                        elif "AttributeError" in exception_type:
+                            return "AttributeError"
+                        else:
+                            # Use the exception type as the signature
+                            return exception_type
+                
+                # Look for JSON parsing errors
+                if "json" in response_text.lower() and ("parse" in response_text.lower() or "syntax" in response_text.lower()):
+                    return "JSONParseError"
+                
+                # Look for database errors
+                if "database" in response_text.lower() or "sql" in response_text.lower() or "query" in response_text.lower():
+                    if "timeout" in response_text.lower():
+                        return "DatabaseTimeout"
+                    elif "deadlock" in response_text.lower():
+                        return "DatabaseDeadlock"
+                    else:
+                        return "DatabaseError"
+                
+                # Look for template rendering errors
+                if "template" in response_text.lower() and "render" in response_text.lower():
+                    return "TemplateRenderingError"
             
-            # Look for general error patterns in the response
-            traceback_match = re.search(r'Traceback[^\n]+\n\s+([^\n]+)', response_text)
-            if traceback_match:
-                # Get the first line of the traceback as part of the signature
-                return f"{status_code}:Traceback:{traceback_match.group(1)}"
+            # Generic 5xx error if no specific pattern matched
+            return "ServerError"
         
-        # If no clear pattern matches, use status code and a hash of response
+        # Handle 4xx client errors
+        if status_code and str(status_code).startswith('4'):
+            if status_code == 400:
+                return "BadRequest"
+            elif status_code == 401:
+                return "Unauthorized"
+            elif status_code == 403:
+                return "Forbidden"
+            elif status_code == 404:
+                return "NotFound"
+            elif status_code == 405:
+                return "MethodNotAllowed"
+            elif status_code == 413:
+                return "PayloadTooLarge"
+            elif status_code == 429:
+                return "TooManyRequests"
+            else:
+                return "ClientError"
+        
+        # If we still don't have a signature, create a more generic one
         if error_str:
-            error_hash = hashlib.md5(error_str.encode()).hexdigest()[:8]
-            return f"{status_code}:Error:{error_hash}"
+            # Create a normalized version of the error string
+            normalized_error = error_str.lower()
+            normalized_error = re.sub(r'\d+', 'N', normalized_error)
+            normalized_error = re.sub(r'\'[^\']+\'', "'VALUE'", normalized_error)
+            
+            # Generate a hash of the normalized error
+            error_hash = hashlib.md5(normalized_error.encode()).hexdigest()[:8]
+            return f"GenericError:{error_hash}"
         elif response_text:
-            text_hash = hashlib.md5(response_text.encode()).hexdigest()[:8]
-            return f"{status_code}:Response:{text_hash}"
+            # For responses without clear error patterns, use a hash of the first 200 chars
+            # This helps group similar responses together
+            sample_text = response_text[:200].lower()
+            sample_text = re.sub(r'\d+', 'N', sample_text)
+            sample_text = re.sub(r'\'[^\']+\'', "'VALUE'", sample_text)
+            
+            text_hash = hashlib.md5(sample_text.encode()).hexdigest()[:8]
+            return f"UnknownResponse:{text_hash}"
         
         # Fallback
-        return f"{status_code}:Unknown"
+        return "Unknown"
     
     def minimize_payload(self, original_payload):
         """
@@ -131,12 +255,24 @@ class BugClassifier:
         Returns a tuple of (is_new, bug_id, signature)
         """
         # Extract a signature to identify this particular bug
-        signature = self.extract_error_signature(response_text, error_str, status_code)
+        # Pass path and method to the signature extraction
+        signature = self.extract_error_signature(path, method, response_text, error_str, status_code)
         
         # Check if we've seen this signature before
         if signature in self.unique_bugs:
             bug_id = self.unique_bugs[signature]["id"]
             self.unique_bugs[signature]["occurrences"] += 1
+            
+            # Add this occurrence to the list of examples if tracking examples
+            if "examples" in self.unique_bugs[signature]:
+                if len(self.unique_bugs[signature]["examples"]) < 5:  # Limit to 5 examples
+                    self.unique_bugs[signature]["examples"].append({
+                        "seed": seed,
+                        "response_sample": response_text[:200] if response_text else None,
+                        "error_sample": error_str[:200] if error_str else None,
+                        "timestamp": datetime.datetime.now().isoformat()
+                    })
+            
             return False, bug_id, signature
         
         # This is a new unique bug
@@ -147,7 +283,7 @@ class BugClassifier:
         minimal_payload = self.minimize_payload(seed)
         
         # Record information about this bug
-        self.unique_bugs[signature] = {
+        bug_info = {
             "id": bug_id,
             "signature": signature,
             "path": path,
@@ -161,7 +297,19 @@ class BugClassifier:
             "error_sample": error_str[:500] if error_str else None
         }
         
+        # Add examples list if we're tracking examples
+        if hasattr(self, '_track_examples') and self._track_examples:
+            bug_info["examples"] = [{
+                "seed": seed,
+                "response_sample": response_text[:200] if response_text else None,
+                "error_sample": error_str[:200] if error_str else None,
+                "timestamp": datetime.datetime.now().isoformat()
+            }]
+        
+        self.unique_bugs[signature] = bug_info
+        
         return True, bug_id, signature
+
 
     def save_bug_samples(self, folder="bug_samples"):
         """Save all unique bugs as individual files in the designated folder"""
@@ -216,15 +364,13 @@ class BugClassifier:
         if not self.unique_bugs:
             return "No bugs found"
         
-        # Prepare data for tabulation
-        headers = ["Bug ID", "Endpoint", "Method", "Status", "Occurrences", "Signature"]
+        # Standard summary table
+        headers = ["Bug ID", "Endpoint", "Method", "Status", "Occurrences", "Error Type"]
         rows = []
         
         for signature, bug in self.unique_bugs.items():
-            # Create a concise version of the signature for display
-            short_sig = signature
-            if len(short_sig) > 50:
-                short_sig = short_sig[:47] + "..."
+            # Extract the error type from the signature (format is METHOD:PATH:ERROR_TYPE)
+            error_type = signature.split(":", 2)[2] if len(signature.split(":", 2)) > 2 else signature
             
             rows.append([
                 bug["id"],
@@ -232,7 +378,7 @@ class BugClassifier:
                 bug["method"],
                 bug["status_code"],
                 bug["occurrences"],
-                short_sig
+                error_type
             ])
         
         # Sort by bug ID
@@ -241,6 +387,7 @@ class BugClassifier:
         # Generate the table
         table = tabulate.tabulate(rows, headers, tablefmt="grid")
         return table
+
 
 # --- Request data structure ---
 # A helper class to encapsulate HTTP requests for fuzzing
