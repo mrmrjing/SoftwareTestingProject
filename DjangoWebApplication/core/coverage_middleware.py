@@ -101,7 +101,7 @@ class CoverageMiddleware:
                 self.global_coverage[filename].update(lines)
             
             # Determine if this coverage is new
-            is_new_coverage = self._is_new_coverage(coverage_hash, coverage_data)
+            is_new_coverage = self._is_new_coverage(coverage_hash, coverage_data, file_coverage)
             
             # If new, check for new lines specifically
             if not is_new_coverage:
@@ -152,9 +152,51 @@ class CoverageMiddleware:
         
         return response
     
-    def _is_new_coverage(self, coverage_hash, coverage_data):
-        """Check if this coverage hash is new (not seen before)"""
+    def _is_new_coverage(self, coverage_hash, coverage_data, file_coverage):
+        """
+        Check if this coverage represents new code paths.
+        More sophisticated than just checking the hash.
+        """
+        # Check if the hash already exists in the coverage data
         for entry in coverage_data.values():
             if 'coverage_hash' in entry and entry['coverage_hash'] == coverage_hash:
                 return False
-        return True
+        
+        # If we have no previous coverage data, this is definitely new
+        if not coverage_data:
+            return True
+        
+        # Extract the current coverage information
+        current_coverage = {}
+        for filename, lines in file_coverage.items():
+            current_coverage[filename] = set(lines)
+        
+        # Get the global coverage from all previous requests
+        global_coverage = {}
+        for entry in coverage_data.values():
+            if 'coverage' in entry:
+                for filename, lines in entry['coverage'].items():
+                    if filename not in global_coverage:
+                        global_coverage[filename] = set()
+                    global_coverage[filename].update(lines)
+        
+        # Check if this coverage adds anything significant
+        # 1. New files
+        for filename in current_coverage:
+            if filename not in global_coverage:
+                logger.info(f"New file covered: {filename}")
+                return True
+        
+        # 2. New lines in existing files - with a threshold
+        for filename, lines in current_coverage.items():
+            if filename in global_coverage:
+                new_lines = lines - global_coverage[filename]
+                # Only consider it new if we have a significant number of new lines
+                # This filters out noise from timestamps, logging, etc.
+                if len(new_lines) >= 3:  # Threshold of 3 new lines
+                    logger.info(f"Significant new coverage in {filename}: {len(new_lines)} new lines")
+                    return True
+        
+        # If we got here, the coverage is not significantly new
+        return False
+
