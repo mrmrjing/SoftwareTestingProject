@@ -12,6 +12,9 @@ import subprocess
 import re
 import tabulate
 from mutations import MutationEngine
+from dotenv import load_dotenv
+import os
+
 
 # --- Logging configuration ---
 # Set up a logger for the fuzzer with both file and console handlers
@@ -930,8 +933,15 @@ def start_django_server():
     """Start the Django development server with coverage enabled."""
     try:
         base_dir = os.path.dirname(os.path.abspath(__file__))
-        cwd = os.path.join(base_dir, "DjangoWebApplication")
-
+        django_dir = os.path.join(base_dir, "DjangoWebApplication")
+        cwd = os.path.join(base_dir, "DjangoWebApplication")  # This is correct - keeps pointing to where manage.py is
+        if os.name=="nt":
+            logger.error("Windows OS is not supported for server execution")
+            return None
+        else:
+            python_path = os.path.join(django_dir, "virtual", "bin", "python")
+            
+        
         # Remove the coverage_data.json file if it exists to start fresh
         logger.info("Erasing previous coverage data...")
         coverage_file = os.path.join(cwd, "coverage_data.json")
@@ -939,12 +949,14 @@ def start_django_server():
             os.remove(coverage_file)
             logger.info("Deleted existing coverage_data.json.")
 
-        # Start the Django server with coverage
+        # Start the Django server with coverage using the full path to Python
         logger.info(f"Starting Django server with coverage from: {cwd}")
-        cmd = ["coverage", "run", "manage.py", "runserver"]
+        
+        cmd = [python_path, "-m", "coverage", "run", "manage.py", "runserver"]
+        # cmd = [python_path, "-m", "coverage", "run", "manage.py", "runserver"]
         server_process = subprocess.Popen(
             cmd,
-            cwd=cwd,
+            cwd=cwd,  # Keep this as is - it needs to point to Django project root
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True

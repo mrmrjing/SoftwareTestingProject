@@ -235,7 +235,7 @@ class MutationEngine:
                 # Find string fields to modify
                 string_fields = [(k, v) for k, v in mutated.items() if isinstance(v, str) and len(v) > 1]
                 if string_fields:
-                    key, value = random.choice(string_fields)
+                    key, vlue = random.choice(string_fields)
                     mutated[key] = self._delete_char(value)
             return mutated
         elif isinstance(data, str) and len(data) > 0:
