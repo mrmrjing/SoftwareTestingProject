@@ -4,7 +4,7 @@ import logging
 import sys
 from pathlib import Path
 from typing import List
-
+from simple_fuzzer2 import main as fuzz_main
 from colorama import init, Fore, Style
 
 # Initialize colorama (on Windows this will convert ANSI codes into Win32 calls)
@@ -70,12 +70,15 @@ def main():
     logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
     args = get_args_interactive()
-
-    # Print a green confirmation instead of raw logging
-    print(Fore.GREEN + f"✔ Launching fuzzer with args: {args}")
-
-    # … dispatch to your fuzzer entrypoint here …
-
-
+    if(args[0]=="DJANGO"):
+        if(len(args) > 1):
+            # Check if the provided path is a valid file
+            path = Path(args[1])
+            fuzz_main(path)
+        else:
+            fuzz_main()
+    elif(args[0]=="BLE"):
+         print(Fore.RED+ "Not Supported YEt ")
+    
 if __name__ == "__main__":
     main()

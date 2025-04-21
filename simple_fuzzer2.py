@@ -1042,14 +1042,14 @@ def send_request(request, timeout=5.0):
     response_time = end_time - start_time
     return response, response_time, error
 
-def fuzz_application():
+def fuzz_application(openapi_file: str = "open_api.json"):
     """Main fuzzing function that uses SeedQ and FailureQ for tracking test cases."""
     server_process = start_django_server()
     if not server_process:
         logger.error("Failed to start Django server. Exiting.")
         return
     # Instantiate the client without needing to supply a base URL
-    client = FuzzerClient()
+    client = FuzzerClient(openapi_file)
     if not wait_for_server(client.base_url, timeout=30):
         logger.error("Server failed to start within the timeout period. Exiting.")
         return
@@ -1246,10 +1246,10 @@ def add_to_seed_queue(client, endpoint, method, payload):
         client.SeedQ[endpoint]["seeds"].append(payload)
     logger.info(f"Added seed to queue: {endpoint} {method}")
 
-def main():
+def main(openapi_file: str = "open_api.json"):
     """Main entry point for the fuzzer."""
     logger.info("Starting Django fuzzer")
-    client = fuzz_application()
+    client = fuzz_application(openapi_file)
     if client:
         # Check if any bugs were found
         if client.bug_classifier.unique_bugs:
