@@ -12,6 +12,9 @@ import subprocess
 import re
 import tabulate
 from mutations import MutationEngine
+from dotenv import load_dotenv
+import os
+
 
 # --- Logging configuration ---
 # Set up a logger for the fuzzer with both file and console handlers
@@ -930,9 +933,17 @@ def start_django_server(preserve_coverage=True):
     """Start the Django development server with coverage enabled."""
     try:
         base_dir = os.path.dirname(os.path.abspath(__file__))
-        cwd = os.path.join(base_dir, "DjangoWebApplication")
-
-        # Only delete coverage data if we're not preserving it
+        django_dir = os.path.join(base_dir, "DjangoWebApplication")
+        cwd = os.path.join(base_dir, "DjangoWebApplication")  # This is correct - keeps pointing to where manage.py is
+        if os.name=="nt":
+            logger.error("Windows OS is not supported for server execution")
+            return None
+        else:
+            python_path = os.path.join(django_dir, "virtual", "bin", "python")
+            
+        
+        # Remove the coverage_data.json file if it exists to start fresh
+        logger.info("Erasing previous coverage data...")
         coverage_file = os.path.join(cwd, "coverage_data.json")
         if not preserve_coverage and os.path.exists(coverage_file):
             logger.info("Erasing previous coverage data...")
@@ -944,12 +955,14 @@ def start_django_server(preserve_coverage=True):
                 json.dump({}, f)
             logger.info("Created new coverage_data.json file.")
 
-        # Start the Django server with coverage
+        # Start the Django server with coverage using the full path to Python
         logger.info(f"Starting Django server with coverage from: {cwd}")
-        cmd = ["coverage", "run", "manage.py", "runserver"]
+        
+        cmd = [python_path, "-m", "coverage", "run", "manage.py", "runserver"]
+        # cmd = [python_path, "-m", "coverage", "run", "manage.py", "runserver"]
         server_process = subprocess.Popen(
             cmd,
-            cwd=cwd,
+            cwd=cwd,  # Keep this as is - it needs to point to Django project root
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True
@@ -1035,14 +1048,14 @@ def send_request(request, timeout=5.0):
     response_time = end_time - start_time
     return response, response_time, error
 
-def fuzz_application():
+def fuzz_application(openapi_file: str = "open_api.json"):
     """Main fuzzing function that uses SeedQ and FailureQ for tracking test cases."""
     server_process = start_django_server()
     if not server_process:
         logger.error("Failed to start Django server. Exiting.")
         return
     # Instantiate the client without needing to supply a base URL
-    client = FuzzerClient()
+    client = FuzzerClient(openapi_file)
     if not wait_for_server(client.base_url, timeout=30):
         logger.error("Server failed to start within the timeout period. Exiting.")
         return
@@ -1239,10 +1252,10 @@ def add_to_seed_queue(client, endpoint, method, payload):
         client.SeedQ[endpoint]["seeds"].append(payload)
     logger.info(f"Added seed to queue: {endpoint} {method}")
 
-def main():
+def main(openapi_file: str = "open_api.json"):
     """Main entry point for the fuzzer."""
     logger.info("Starting Django fuzzer")
-    client = fuzz_application()
+    client = fuzz_application(openapi_file)
     if client:
         # Check if any bugs were found
         if client.bug_classifier.unique_bugs:
