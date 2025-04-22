@@ -1087,7 +1087,7 @@ def send_request(request, timeout=5.0):
 
 def fuzz_application(openapi_file: str = "open_api.json"):
     """Main fuzzing function that uses SeedQ and FailureQ for tracking test cases."""
-    server_process = start_django_server()
+    server_process = start_django_server(preserve_coverage=False)
     if not server_process:
         logger.error("Failed to start Django server. Exiting.")
         return
