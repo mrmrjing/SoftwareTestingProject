@@ -926,18 +926,23 @@ class FuzzerClient:
         return False
 
 # --- Server control functions ---
-def start_django_server():
+def start_django_server(preserve_coverage=True):
     """Start the Django development server with coverage enabled."""
     try:
         base_dir = os.path.dirname(os.path.abspath(__file__))
         cwd = os.path.join(base_dir, "DjangoWebApplication")
 
-        # Remove the coverage_data.json file if it exists to start fresh
-        logger.info("Erasing previous coverage data...")
+        # Only delete coverage data if we're not preserving it
         coverage_file = os.path.join(cwd, "coverage_data.json")
-        if os.path.exists(coverage_file):
+        if not preserve_coverage and os.path.exists(coverage_file):
+            logger.info("Erasing previous coverage data...")
             os.remove(coverage_file)
             logger.info("Deleted existing coverage_data.json.")
+        elif preserve_coverage and not os.path.exists(coverage_file):
+            # Create an empty coverage file if it doesn't exist
+            with open(coverage_file, 'w') as f:
+                json.dump({}, f)
+            logger.info("Created new coverage_data.json file.")
 
         # Start the Django server with coverage
         logger.info(f"Starting Django server with coverage from: {cwd}")
@@ -1155,7 +1160,7 @@ def fuzz_application():
                         time.sleep(2)
                         
                         # Start a new server process
-                        server_process = start_django_server()
+                        server_process = start_django_server(preserve_coverage=True)
                         if not server_process:
                             logger.error("Failed to restart server. Aborting.")
                             break
