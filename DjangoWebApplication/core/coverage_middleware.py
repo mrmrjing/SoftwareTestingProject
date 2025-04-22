@@ -29,29 +29,30 @@ class CoverageMiddleware:
                 json.dump({}, f, indent=2)
         else:
             # Load existing coverage data to initialize global_coverage
-            try:
-                with open(self.coverage_file, 'r') as f:
-                    coverage_data = json.load(f)
-                    
-                # Initialize global_coverage from existing data
-                self.global_coverage = {}
-                for entry in coverage_data.values():
-                    if 'coverage' in entry:
-                        for filename, lines in entry['coverage'].items():
-                            if filename not in self.global_coverage:
-                                self.global_coverage[filename] = set()
-                            self.global_coverage[filename].update(lines)
-                
-                logger.info(f"Loaded existing coverage data with {len(self.global_coverage)} files")
-            except Exception as e:
-                logger.error(f"Error loading existing coverage data: {e}")
-                self.global_coverage = {}
-        
-        logger.info("Coverage middleware initialized")
-
+            self._load_coverage_from_file()
         
         logger.info("Coverage middleware initialized")
     
+    def _load_coverage_from_file(self):
+        """Load coverage data from file into global_coverage."""
+        try:
+            with open(self.coverage_file, 'r') as f:
+                coverage_data = json.load(f)
+            
+            # Initialize global_coverage from existing data
+            self.global_coverage = {}
+            for entry in coverage_data.values():
+                if 'coverage' in entry:
+                    for filename, lines in entry['coverage'].items():
+                        if filename not in self.global_coverage:
+                            self.global_coverage[filename] = set()
+                        self.global_coverage[filename].update(lines)
+            
+            logger.info(f"Loaded existing coverage data with {len(self.global_coverage)} files")
+        except Exception as e:
+            logger.error(f"Error loading existing coverage data: {e}")
+            self.global_coverage = {}
+
     def __call__(self, request):
         # Log request info 
         logger.debug(f"Processing request: {request.method} {request.path}")
@@ -60,7 +61,6 @@ class CoverageMiddleware:
         request_hash = hashlib.md5(f"{request.method}:{request.path}:{request.body}".encode()).hexdigest()
         
         # Create a fresh Coverage instance for this request
-        # No source parameter = track all Python modules imported during execution
         cov = coverage.Coverage(
             data_file=None,  # Use memory storage, not a file
             config_file=False,
@@ -95,7 +95,6 @@ class CoverageMiddleware:
             for filename in measured_files:
                 if os.path.exists(filename):
                     # Filter out only Django application files, not library files
-                    # Focus on files in the current project
                     django_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
                     if filename.startswith(django_root):
                         lines = data.lines(filename)
@@ -222,4 +221,3 @@ class CoverageMiddleware:
         
         # If we got here, the coverage is not significantly new
         return False
-
