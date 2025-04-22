@@ -13,7 +13,7 @@ import re
 import tabulate
 from mutations import MutationEngine
 from dotenv import load_dotenv
-import os
+import math 
 
 
 # --- Logging configuration ---
@@ -560,8 +560,16 @@ class FuzzerClient:
         # Track which paths/methods correlate with crashes
         self.crash_correlation = {}
 
-    def update_energy_metrics(self, s_prime, reveals_bug, is_interesting):
-        """Update metrics used for energy calculations."""
+    def update_energy_metrics(self, s_prime, reveals_bug, is_interesting, coverage_gain=0):
+        """
+        Update metrics used for energy calculations with a stronger emphasis on coverage gains.
+        
+        Args:
+            s_prime: The seed that was just executed
+            reveals_bug: Whether this seed revealed a bug
+            is_interesting: Whether this seed found new coverage
+            coverage_gain: The number of new lines covered by this seed
+        """
         path = s_prime["path"] 
         method = s_prime["method"]
         seed = s_prime["seed"]
@@ -585,14 +593,32 @@ class FuzzerClient:
         if not hasattr(self, 'seed_performance'):
             self.seed_performance = {}
         if seed_id not in self.seed_performance:
-            self.seed_performance[seed_id] = {'new_coverage_count': 0, 'executions': 0, 'crashes': 0}
+            self.seed_performance[seed_id] = {
+                'new_coverage_count': 0,  # Number of times this seed found new coverage
+                'total_coverage_gain': 0,  # Total number of new lines found by this seed
+                'executions': 0,
+                'crashes': 0,
+                'last_gain': 0,           # Coverage gain from the most recent execution
+                'avg_gain': 0.0           # Average coverage gain per execution
+            }
         
         # Update execution count
         self.seed_performance[seed_id]['executions'] += 1
         
-        # If this seed found new coverage, update its score
+        # If this seed found new coverage, update its score with the actual coverage gain
         if is_interesting:
             self.seed_performance[seed_id]['new_coverage_count'] += 1
+            self.seed_performance[seed_id]['total_coverage_gain'] += coverage_gain
+            self.seed_performance[seed_id]['last_gain'] = coverage_gain
+            
+            # Update average gain
+            total_gain = self.seed_performance[seed_id]['total_coverage_gain']
+            executions = self.seed_performance[seed_id]['executions']
+            self.seed_performance[seed_id]['avg_gain'] = total_gain / executions
+            
+            # Log significant coverage gains
+            if coverage_gain > 5:
+                logger.info(f"Significant coverage gain: {coverage_gain} new lines from {method} {path}")
         
         # If this seed caused a crash, update crash correlation
         if reveals_bug:
@@ -605,6 +631,7 @@ class FuzzerClient:
             if method not in self.crash_correlation[path]:
                 self.crash_correlation[path][method] = 0
             self.crash_correlation[path][method] += 1
+
 
     def create_session_folder(self):
         """Create a numbered session folder for storing results"""
@@ -941,9 +968,6 @@ def start_django_server(preserve_coverage=True):
         else:
             python_path = os.path.join(django_dir, "virtual", "bin", "python")
             
-        
-        # Remove the coverage_data.json file if it exists to start fresh
-        logger.info("Erasing previous coverage data...")
         coverage_file = os.path.join(cwd, "coverage_data.json")
         if not preserve_coverage and os.path.exists(coverage_file):
             logger.info("Erasing previous coverage data...")
@@ -1006,16 +1030,104 @@ def get_random_id():
         str(random.randint(1000000, 10000000))              
     ])
 
-def choose_next_seed(SeedQ):
-    """Choose a random path and seed from SeedQ."""
-    path = random.choice(list(SeedQ.keys()))
-    if not SeedQ[path]["methods"]:
-        return None, None
-    if SeedQ[path]["seeds"]:
-        seed = random.choice(SeedQ[path]["seeds"])
+def choose_next_seed(self):
+    """
+    Choose the next seed to fuzz based on energy assignment that prioritizes coverage gains.
+    Returns a tuple of (path, method, seed, energy)
+    """
+    # Calculate energy for each path/method combination
+    energy_map = {}
+    
+    # Get all available paths
+    for path in self.SeedQ:
+        for method in self.SeedQ[path]["methods"]:
+            path_method_key = f"{method}:{path}"
+            
+            # Base energy starts at 1
+            energy = 1
+            
+            # Increase energy for paths that have found new coverage recently
+            if hasattr(self, 'seed_performance'):
+                # Find seeds that have been used with this path/method
+                relevant_seeds = []
+                for seed_id, perf in self.seed_performance.items():
+                    if perf.get('path') == path and perf.get('method') == method:
+                        relevant_seeds.append((seed_id, perf))
+                
+                if relevant_seeds:
+                    # Calculate average coverage gain for this path/method
+                    total_gain = sum(perf['total_coverage_gain'] for _, perf in relevant_seeds)
+                    total_execs = sum(perf['executions'] for _, perf in relevant_seeds)
+                    
+                    if total_execs > 0:
+                        avg_gain = total_gain / total_execs
+                        # Boost energy based on average gain (logarithmic scale to prevent excessive focus)
+                        if avg_gain > 0:
+                            energy += int(math.log2(avg_gain + 1) * 2)
+                    
+                    # Boost energy if this path/method found coverage recently
+                    recent_gains = [perf['last_gain'] for _, perf in relevant_seeds if perf['last_gain'] > 0]
+                    if recent_gains:
+                        energy += min(5, max(recent_gains))  # Cap at +5 energy
+            
+            # Boost energy for paths that haven't been executed much
+            exec_count = self.path_execution_count.get(path_method_key, 0)
+            if exec_count < 5:
+                energy += (5 - exec_count)  # More energy for less-executed paths
+            
+            # Boost energy for paths associated with crashes
+            if hasattr(self, 'crash_correlation') and path in self.crash_correlation:
+                if method in self.crash_correlation[path]:
+                    crash_count = self.crash_correlation[path][method]
+                    energy += min(3, crash_count)  # Cap at +3 energy
+            
+            # Store the calculated energy
+            energy_map[path_method_key] = max(1, min(20, energy))  # Ensure energy is between 1 and 20
+    
+    # Choose a path/method based on weighted random selection
+    if not energy_map:
+        # Fallback if no energy map (shouldn't happen in normal operation)
+        paths = list(self.SeedQ.keys())
+        if not paths:
+            raise ValueError("No paths available in SeedQ")
+        
+        path = random.choice(paths)
+        methods = list(self.SeedQ[path]["methods"].keys())
+        if not methods:
+            raise ValueError(f"No methods available for path {path}")
+        
+        method = random.choice(methods)
+        energy = 5  # Default energy
     else:
+        # Weighted random selection based on energy
+        total_energy = sum(energy_map.values())
+        r = random.uniform(0, total_energy)
+        
+        cumulative = 0
+        selected_key = None
+        
+        for key, energy in energy_map.items():
+            cumulative += energy
+            if r <= cumulative:
+                selected_key = key
+                break
+        
+        if selected_key is None:
+            selected_key = list(energy_map.keys())[0]
+        
+        method, path = selected_key.split(":", 1)
+        energy = energy_map[selected_key]
+    
+    # Choose a seed for this path
+    if not self.SeedQ[path]["seeds"]:
+        # If no seeds available, create a default one
         seed = copy.deepcopy(DEFAULT_PAYLOAD)
-    return path, seed
+    else:
+        seed = random.choice(self.SeedQ[path]["seeds"])
+    
+    logger.info(f"Selected seed with energy {energy}: {method} {path}")
+    return path, method, seed, energy
+
 
 def send_request(request, timeout=5.0):
     """Send an HTTP request using the provided Request object."""
