@@ -12,7 +12,6 @@ import subprocess
 import re
 import tabulate
 from mutations import MutationEngine
-from dotenv import load_dotenv
 import math 
 
 
@@ -103,12 +102,6 @@ class BugClassifier:
                 # Connection refused
                 elif "connection refused" in error_str.lower() or "cannot connect" in error_str.lower():
                     return "ConnectionRefused"
-                # DNS resolution issues
-                elif "name resolution" in error_str.lower() or "getaddrinfo failed" in error_str.lower():
-                    return "DNSResolutionFailure"
-                # SSL/TLS errors
-                elif "ssl" in error_str.lower() or "certificate" in error_str.lower():
-                    return "SSLError"
                 # Generic connection error
                 elif "connection" in error_str.lower():
                     return "ConnectionIssue"
@@ -227,31 +220,6 @@ class BugClassifier:
         # Fallback
         return "Unknown"
     
-    def minimize_payload(self, original_payload):
-        """
-        Create a minimal version of the payload that still triggers the bug.
-        This is a simplified version - in practice you'd want to test each minimization
-        with the server to ensure it still triggers the bug.
-        """
-        # For dictionary payloads, we'll do a basic minimization
-        if isinstance(original_payload, dict):
-            # Try to keep only essential fields that are most likely to trigger bugs
-            minimal = {}
-            # Prioritize fields that are more likely to cause issues
-            suspicious_fields = ["id", "pk", "name", "price", "user", "email", "type"]
-            for field in suspicious_fields:
-                if field in original_payload:
-                    minimal[field] = original_payload[field]
-            
-            # If nothing was selected or the payload is very small, just return it as is
-            if not minimal or len(original_payload) <= 3:
-                return original_payload
-            
-            return minimal
-        
-        # For non-dict payloads, return as is
-        return original_payload
-    
     def classify_bug(self, path, method, status_code, seed, response_text=None, error_str=None):
         """
         Classify a bug and determine if it's unique.
@@ -282,9 +250,6 @@ class BugClassifier:
         bug_id = f"BUG-{self.bug_counter}"
         self.bug_counter += 1
         
-        # Create minimized test case
-        minimal_payload = self.minimize_payload(seed)
-        
         # Record information about this bug
         bug_info = {
             "id": bug_id,
@@ -294,7 +259,6 @@ class BugClassifier:
             "status_code": status_code,
             "first_seen": datetime.datetime.now().isoformat(),
             "occurrences": 1,
-            "minimal_payload": minimal_payload,
             "original_payload": seed,
             "response_sample": response_text[:500] if response_text else None,
             "error_sample": error_str[:500] if error_str else None
@@ -313,42 +277,6 @@ class BugClassifier:
         
         return True, bug_id, signature
 
-
-    def save_bug_samples(self, folder="bug_samples"):
-        """Save all unique bugs as individual files in the designated folder"""
-        if not self.unique_bugs:
-            logger.info("No bugs to save")
-            return
-        
-        os.makedirs(folder, exist_ok=True)
-        
-        # Create a summary file
-        with open(os.path.join(folder, "bug_summary.txt"), "w") as f:
-            f.write(self.generate_summary_table())
-        
-        # Create individual files for each bug
-        for signature, bug in self.unique_bugs.items():
-            filename = f"{bug['id']}.json"
-            filepath = os.path.join(folder, filename)
-            
-            # Create a reproducible test case file
-            with open(filepath, "w") as f:
-                repro_case = {
-                    "bug_id": bug["id"],
-                    "signature": signature,
-                    "endpoint": bug["path"],
-                    "method": bug["method"],
-                    "payload": bug["minimal_payload"],
-                    "description": self._generate_bug_description(bug),
-                    "reproduction_steps": [
-                        f"1. Send a {bug['method']} request to {bug['path']}",
-                        f"2. Use the following payload: {json.dumps(bug['minimal_payload'])}"
-                    ]
-                }
-                json.dump(repro_case, f, indent=2)
-            
-            logger.info(f"Saved minimal test case for {bug['id']} to {filepath}")
-    
     def _generate_bug_description(self, bug):
         """Generate a human-readable description of the bug"""
         status_code = bug["status_code"]
@@ -617,7 +545,7 @@ class FuzzerClient:
             self.seed_performance[seed_id]['avg_gain'] = total_gain / executions
             
             # Log significant coverage gains
-            if coverage_gain > 5:
+            if coverage_gain > 3:
                 logger.info(f"Significant coverage gain: {coverage_gain} new lines from {method} {path}")
         
         # If this seed caused a crash, update crash correlation
@@ -727,9 +655,6 @@ class FuzzerClient:
         with open(os.path.join(self.session_folder, "tests.json"), "w") as f:
             json.dump(self.tests, f, indent=2)
         logger.info(f"Session data saved to {self.session_folder}")
-
-        # Save bug samples
-        self.bug_classifier.save_bug_samples()
         
         # Also save bug summary to session folder
         with open(os.path.join(self.session_folder, "bug_summary.txt"), "w") as f:
@@ -1337,7 +1262,6 @@ def fuzz_application(openapi_file: str = "open_api.json"):
         print(f"Interesting test cases: {num_interesting}")
         print(f"Unique bugs identified: {unique_bugs}")
         print(f"Session data saved to: {client.session_folder}")
-        print(f"Bug samples saved to: bug_samples/")
 
         # Print the bug summary table
         print("\n" + "=" * 50)
@@ -1369,26 +1293,6 @@ def main(openapi_file: str = "open_api.json"):
     logger.info("Starting Django fuzzer")
     client = fuzz_application(openapi_file)
     if client:
-        # Check if any bugs were found
-        if client.bug_classifier.unique_bugs:
-            print("\nBUG ANALYSIS")
-            print("=" * 50)
-            print(f"Found {len(client.bug_classifier.unique_bugs)} unique bugs.")
-            print(f"Details saved to bug_samples/ directory.")
-            print("\nTo reproduce these bugs, use the JSON files in the bug_samples/ directory.")
-            
-            # Print minimal reproduction steps for each bug
-            print("\nMINIMAL REPRODUCTION STEPS:")
-            print("=" * 50)
-            for signature, bug in sorted(client.bug_classifier.unique_bugs.items(), 
-                                         key=lambda x: x[1]['id']):
-                print(f"Bug ID: {bug['id']}")
-                print(f"Endpoint: {bug['method']} {bug['path']}")
-                print(f"Payload: {json.dumps(bug['minimal_payload'])}")
-                print("-" * 40)
-        else:
-            print("\nNo bugs were found during this fuzzing session.")
-            
         logger.info("Fuzzing completed")
     else:
         logger.error("Fuzzing failed to start")
