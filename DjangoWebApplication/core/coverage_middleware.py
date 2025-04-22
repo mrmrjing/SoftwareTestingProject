@@ -22,10 +22,33 @@ class CoverageMiddleware:
         self.get_response = get_response
         # Create coverage file directory if it doesn't exist
         os.makedirs(os.path.dirname(self.coverage_file), exist_ok=True)
+        
         # Initialize the coverage file if it doesn't exist
         if not os.path.exists(self.coverage_file):
             with open(self.coverage_file, 'w') as f:
                 json.dump({}, f, indent=2)
+        else:
+            # Load existing coverage data to initialize global_coverage
+            try:
+                with open(self.coverage_file, 'r') as f:
+                    coverage_data = json.load(f)
+                    
+                # Initialize global_coverage from existing data
+                self.global_coverage = {}
+                for entry in coverage_data.values():
+                    if 'coverage' in entry:
+                        for filename, lines in entry['coverage'].items():
+                            if filename not in self.global_coverage:
+                                self.global_coverage[filename] = set()
+                            self.global_coverage[filename].update(lines)
+                
+                logger.info(f"Loaded existing coverage data with {len(self.global_coverage)} files")
+            except Exception as e:
+                logger.error(f"Error loading existing coverage data: {e}")
+                self.global_coverage = {}
+        
+        logger.info("Coverage middleware initialized")
+
         
         logger.info("Coverage middleware initialized")
     
