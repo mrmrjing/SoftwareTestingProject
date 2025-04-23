@@ -30,6 +30,87 @@ class MutationEngine:
         self.interesting_numbers = [
             0, -1, 1, 255, 256, 0x7F, 0xFF, 0x7FFF, 0xFFFF, 0x80000000, 0xFFFFFFFF
         ]
+    
+    # --- Core Mutation Strategies ---
+    def _mutate_integer(self, value):
+        """Apply different integer mutation strategies including metamorphic"""
+        strategy = random.choice([
+            "interesting", "arithmetic", "bitflip", "metamorphic"
+        ])
+        
+        if strategy == "interesting":
+            return random.choice(self.interesting_numbers)
+            
+        elif strategy == "arithmetic":
+            operators = [
+                lambda x: x + 1,
+                lambda x: x - 1,
+                lambda x: x * 2,
+                lambda x: x // 2,
+                lambda x: -x,
+                lambda x: x ^ 0xFFFFFFFF,
+                lambda x: x + random.randint(-10, 10)
+            ]
+            return random.choice(operators)(value)
+            
+        elif strategy == "bitflip":
+            byte_length = max(1, (value.bit_length() + 7) // 8)
+            try:
+                bytes_value = value.to_bytes(byte_length, byteorder='little', signed=True)
+                result = bytearray(bytes_value)
+                pos = random.randint(0, len(result) - 1)
+                bit = 1 << random.randint(0, 7)
+                result[pos] ^= bit
+                return int.from_bytes(result, byteorder='little', signed=True)
+            except (OverflowError, AttributeError):
+                return value + random.randint(-100, 100)
+        
+        elif strategy == "metamorphic":
+            return random.choice([
+                value + 1000,
+                -value,
+                0x7FFFFFFF,
+                value ^ 0xFFFFFFFF,
+                value * 100
+            ])
+
+    def _change_random_char(self, string_data):
+        """Enhanced string mutation with metamorphic strategies"""
+        strategies = [
+            "replace_char",
+            "append_special",
+            "truncate",
+            "uppercase",
+            "replace_a",
+            "random_case"
+        ]
+        
+        strategy = random.choice(strategies)
+        
+        if strategy == "replace_char":
+            if not string_data:
+                return string_data
+            char_list = list(string_data)
+            pos = random.randint(0, len(char_list) - 1)
+            char_list[pos] = random.choice(string.printable)
+            return ''.join(char_list)
+            
+        elif strategy == "append_special":
+            return string_data + random.choice(self.special_chars)
+            
+        elif strategy == "truncate":
+            return string_data[:-1] if len(string_data) > 0 else string_data
+            
+        elif strategy == "uppercase":
+            return string_data.upper()
+            
+        elif strategy == "replace_a":
+            return string_data.replace('a', 'aaaaa').replace('A', 'AAAAA')
+            
+        elif strategy == "random_case":
+            return ''.join(random.choice([c.upper(), c.lower()]) for c in string_data)
+            
+        return string_data
 
     # --- Core AFL-style Mutation Strategies ---
     
@@ -136,12 +217,10 @@ class MutationEngine:
         return string_data[:pos] + char + string_data[pos:]
     
     def random_byte_str(self, data, num_changes=1):
-        """Changes random bytes in string data"""
+        """Changes random bytes in string data using enhanced mutations"""
         if isinstance(data, dict):
-            # For dictionaries, we'll modify random string fields
             mutated = copy.deepcopy(data)
             for _ in range(num_changes):
-                # Find string fields to modify
                 string_fields = [(k, v) for k, v in mutated.items() if isinstance(v, str)]
                 if string_fields:
                     key, value = random.choice(string_fields)
@@ -153,7 +232,21 @@ class MutationEngine:
                 result = self._change_random_char(result)
             return result
         else:
-            # Return data unchanged if not a supported type
+            return data
+
+    def random_byte_int(self, data, num_changes=1):
+        """Changes random bytes in integer data with metamorphic support"""
+        if isinstance(data, dict):
+            mutated = copy.deepcopy(data)
+            for _ in range(num_changes):
+                int_fields = [(k, v) for k, v in mutated.items() if isinstance(v, int)]
+                if int_fields:
+                    key, value = random.choice(int_fields)
+                    mutated[key] = self._mutate_integer(value)
+            return mutated
+        elif isinstance(data, int):
+            return self._mutate_integer(data)
+        else:
             return data
     
     def _change_random_char(self, string_data):
@@ -168,24 +261,6 @@ class MutationEngine:
         pos = random.randint(0, len(char_list) - 1)
         char_list[pos] = random.choice(string.printable)
         return ''.join(char_list)
-    
-    def random_byte_int(self, data, num_changes=1):
-        """Changes random bytes in integer data"""
-        if isinstance(data, dict):
-            # For dictionaries, we'll modify random integer fields
-            mutated = copy.deepcopy(data)
-            for _ in range(num_changes):
-                # Find integer fields to modify
-                int_fields = [(k, v) for k, v in mutated.items() if isinstance(v, int)]
-                if int_fields:
-                    key, value = random.choice(int_fields)
-                    mutated[key] = self._mutate_integer(value)
-            return mutated
-        elif isinstance(data, int):
-            return self._mutate_integer(data)
-        else:
-            # Return data unchanged if not a supported type
-            return data
     
     def _mutate_integer(self, value):
         """Apply different integer mutation strategies"""

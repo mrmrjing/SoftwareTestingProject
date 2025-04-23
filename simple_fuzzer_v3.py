@@ -7,170 +7,175 @@ import logging
 import time
 import subprocess
 import os
-from coverage import Coverage
+import json
+from mutations import MutationEngine
+from simple_fuzzer2 import FuzzerClient, Request, BugClassifier, start_django_server, wait_for_server
 
 logger = logging.getLogger("EnhancedFuzzer")
 logger.setLevel(logging.INFO)
 
-file_handler = logging.FileHandler("fuzz_log_v3.txt")
-formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
-file_handler.setFormatter(formatter)
-logger.addHandler(file_handler)
+class EnhancedFuzzerClient(FuzzerClient):
+    """Extends FuzzerClient with metamorphic testing capabilities"""
+    
+    def __init__(self, openapi_file="open_api.json"):
+        super().__init__(openapi_file)
+        self.created_resources = set()  # Track (endpoint, resource_id)
+        self.mutation_engine = MutationEngine()  # Inherited but reinitialized for safety
 
-console_handler = logging.StreamHandler()
-console_handler.setFormatter(formatter)
-logger.addHandler(console_handler)
-
-crash_report = open("crash_report_v3.txt", "w")
-coverage = Coverage()
-
-class EnhancedFuzzerClient:
-    def __init__(self):
-        self.headers = {}
-        self.created_resources = set()
-        self.coverage_file = "coverage_metrics.txt"
-        
-    def register_user(self, username, password, email):
-        payload = {
-            "username": username,
-            "email": email,
-            "password1": password,
-            "password2": password
-        }
-        response = requests.post("http://127.0.0.1:8000/accounts/register/", data=payload)
-        return response.status_code in (200, 201)
-
-    def login_user(self, username, password):
-        response = requests.post("http://127.0.0.1:8000/login/jwt/", json={"username": username, "password": password})
-        if response.status_code == 200:
-            self.headers["Authorization"] = f"Token {response.json().get('token')}"
-            return True
-        return False
-
-    def ensure_auth(self):
-        if not self.login_user("test", "test"):
-            self.register_user("test", "test", "test@test.com")
-            self.login_user("test", "test")
-
-    # Metamorphic relation methods
+    # Metamorphic testing operations
     def create_resource(self, endpoint, data):
-        response = requests.post(f"http://127.0.0.1:8000{endpoint}", json=data, headers=self.headers)
-        if response.status_code == 201:
+        """Create resource and track it for later verification"""
+        request = Request(
+            method="POST",
+            url=f"{self.base_url}{endpoint}",
+            payload=data,
+            headers=self.headers
+        )
+        response, _, _ = self.send_request(request)
+        
+        if response and response.status_code == 201:
             resource_id = response.json().get('id')
-            self.created_resources.add((endpoint, resource_id))
-            return resource_id
+            if resource_id:
+                self.created_resources.add((endpoint, resource_id))
+                logger.info(f"Created resource {endpoint}{resource_id}/")
+                return resource_id
         return None
 
     def verify_resource_exists(self, endpoint, resource_id):
-        response = requests.get(f"http://127.0.0.1:8000{endpoint}{resource_id}/", headers=self.headers)
-        return response.status_code == 200
+        """Verify a resource exists (should return 200)"""
+        request = Request(
+            method="GET",
+            url=f"{self.base_url}{endpoint}{resource_id}/",
+            headers=self.headers
+        )
+        response, _, _ = self.send_request(request)
+        return response.status_code == 200 if response else False
 
     def delete_resource(self, endpoint, resource_id):
-        response = requests.delete(f"http://127.0.0.1:8000{endpoint}{resource_id}/", headers=self.headers)
-        if response.status_code == 204:
+        """Delete a resource and remove from tracking"""
+        request = Request(
+            method="DELETE",
+            url=f"{self.base_url}{endpoint}{resource_id}/",
+            headers=self.headers
+        )
+        response, _, _ = self.send_request(request)
+        
+        if response and response.status_code == 204:
             self.created_resources.discard((endpoint, resource_id))
+            logger.info(f"Deleted resource {endpoint}{resource_id}/")
             return True
         return False
 
     def cleanup(self):
+        """Clean up all created resources"""
         for endpoint, resource_id in list(self.created_resources):
             self.delete_resource(endpoint, resource_id)
 
-def mutate_input(seed: str, num_mutations=1) -> str:
-    strategies = [
-        lambda s: s + random.choice(['', '!', '@', '#', '$', '%']),
-        lambda s: s[:-1] if len(s) > 0 else s,
-        lambda s: s.upper(),
-        lambda s: s.replace('a', 'aaaaa'),
-        lambda s: ''.join(random.choices(string.printable, k=len(s)))
-    ]
-    for _ in range(num_mutations):
-        seed = random.choice(strategies)(seed)
-    return seed
-
-def mutate_payload(payload: dict) -> dict:
-    mutated = copy.deepcopy(payload)
-    for key in mutated:
-        if isinstance(mutated[key], int):
-            mutated[key] = random.choice([
-                mutated[key] + 1000,
-                -mutated[key],
-                0x7fffffff
-            ])
-        elif isinstance(mutated[key], str):
-            mutated[key] = mutate_input(mutated[key], 2)
-    return mutated
-
-def start_coverage_server():
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    cwd = os.path.join(base_dir, "DjangoWebApplication")
-    cmd = ["coverage", "run", "manage.py", "runserver"]
-    return subprocess.Popen(
-        cmd,
-        cwd=cwd,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        text=True
-    )
-
-def read_coverage():
-    coverage.load()
-    covered = coverage.data.measured_files()
-    with open("coverage_metrics.txt", "a") as f:
-        f.write(f"{time.time()}: {len(covered)}\n")
-    return len(covered)
-
 def directed_fuzz(max_iterations=200):
+    """Enhanced fuzzing with metamorphic relationship checks"""
+    server_process = start_django_server()
+    if not server_process:
+        logger.error("Failed to start Django server. Exiting.")
+        return
+
     client = EnhancedFuzzerClient()
-    client.ensure_auth()
-    server_proc = start_coverage_server()
+    if not wait_for_server(client.base_url, timeout=30):
+        logger.error("Server failed to start within timeout period. Exiting.")
+        return
     
-    seed_endpoints = {
+    if not client.ensure_authenticated():
+        logger.error("Authentication failed. Exiting.")
+        return
+
+    # Initialize seed queue with directed testing endpoints
+    client.SeedQ = {
         "/api/products/": {
-            "methods": ["POST", "GET", "DELETE"],
-            "payloads": [{"name": "Test", "price": 100}],
-            "relations": [
-                ("CREATE_DELETE", lambda: client.cleanup())
-            ]
+            "methods": {"POST": True, "GET": True, "DELETE": True},
+            "seeds": [{"name": "Test Product", "price": 100}]
         }
     }
 
-    coverage_history = set()
     iteration = 0
+    unique_bugs = set()
     
-    while iteration < max_iterations:
-        for endpoint, config in seed_endpoints.items():
-            for method in config["methods"]:
-                if method == "POST":
-                    payload = mutate_payload(random.choice(config["payloads"]))
-                    resource_id = client.create_resource(endpoint, payload)
-                    if resource_id:
-                        assert client.verify_resource_exists(endpoint, resource_id)
-                        client.delete_resource(endpoint, resource_id)
-                        assert not client.verify_resource_exists(endpoint, resource_id)
-                
-                current_coverage = read_coverage()
-                if current_coverage not in coverage_history:
-                    coverage_history.add(current_coverage)
-                    logger.info(f"New coverage achieved: {current_coverage} files")
-                
-                url = f"http://127.0.0.1:8000{endpoint}"
-                response = requests.request(
-                    method,
-                    url,
-                    headers=client.headers,
-                    json=mutate_payload({}) if method in ["POST", "PUT"] else None
-                )
-                if response.status_code >= 500:
-                    crash_report.write(f"CRASH: {method} {url} - {response.status_code}\n")
-        
-        iteration += 1
-        logger.info(f"Directed iteration {iteration} complete. Coverage: {len(coverage_history)}")
+    try:
+        while iteration < max_iterations:
+            s = client.choose_next(client.SeedQ)
+            if not s:
+                logger.warning("No more seeds in queue!")
+                break
 
-    server_proc.terminate()
-    client.cleanup()
-    crash_report.close()
-    coverage.save()
+            # Mutate using enhanced mutation engine
+            mutated_payload = client.mutation_engine.mutate_payload(s["seed"])
+            logger.info(f"Testing mutated payload: {mutated_payload}")
+
+            # Metamorphic testing sequence
+            resource_id = client.create_resource(s["path"], mutated_payload)
+            if resource_id:
+                # Verify creation
+                if not client.verify_resource_exists(s["path"], resource_id):
+                    logger.error("Metamorphic violation: Resource not found after creation!")
+                    client.bug_classifier.classify_bug(
+                        s["path"], "POST", 500, mutated_payload,
+                        "Resource not found after creation", None
+                    )
+                
+                # Delete and verify deletion
+                if client.delete_resource(s["path"], resource_id):
+                    if client.verify_resource_exists(s["path"], resource_id):
+                        logger.error("Metamorphic violation: Resource still exists after deletion!")
+                        client.bug_classifier.classify_bug(
+                            s["path"], "DELETE", 500, mutated_payload,
+                            "Resource persists after deletion", None
+                        )
+
+            # Standard fuzzing path
+            request = Request(
+                method=s["method"],
+                url=f"{client.base_url}{s["path"]}",
+                payload=mutated_payload,
+                headers=client.headers
+            )
+            
+            response, _, error = client.send_request(request)
+            reveals_bug = False
+            
+            # Error detection
+            if error or (response and response.status_code >= 500):
+                reveals_bug = True
+                status_code = "CRASH" if error else str(response.status_code)
+                error_str = str(error) if error else None
+                response_text = response.text if response else None
+                
+                is_new, bug_id, _ = client.bug_classifier.classify_bug(
+                    s["path"], s["method"], status_code,
+                    mutated_payload, response_text, error_str
+                )
+                
+                if is_new:
+                    unique_bugs.add(bug_id)
+                    logger.warning(f"New bug detected: {bug_id}")
+
+            client.update_energy_metrics(s, reveals_bug, False)
+            iteration += 1
+            
+            # Progress reporting
+            if iteration % 10 == 0:
+                logger.info(
+                    f"Iteration {iteration}/{max_iterations} - "
+                    f"Unique bugs: {len(unique_bugs)}"
+                )
+
+    except KeyboardInterrupt:
+        logger.info("Fuzzing interrupted by user")
+    finally:
+        client.cleanup()
+        client.save_session_data()
+        logger.info(f"Completed {iteration} iterations with {len(unique_bugs)} unique bugs found")
+        
+        if server_process.poll() is None:
+            server_process.terminate()
+            logger.info("Server process terminated")
 
 if __name__ == "__main__":
-    directed_fuzz()
+    directed_fuzz(max_iterations=500)
