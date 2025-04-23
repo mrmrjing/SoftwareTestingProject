@@ -12,8 +12,6 @@ import subprocess
 import re
 import tabulate
 from mutations import MutationEngine
-import math 
-
 
 # --- Logging configuration ---
 # Set up a logger for the fuzzer with both file and console handlers
@@ -53,7 +51,7 @@ DEFAULT_PAYLOAD = {
 # --- Bug classification functionality ---
 class BugClassifier:
     """Identifies and classifies unique bugs from failures"""
-    
+
     def __init__(self):
         self.unique_bugs = {}  # Mapping of bug signature to bug details
         self.bug_counter = 1   # Counter for assigning bug IDs
@@ -71,7 +69,6 @@ class BugClassifier:
         signature = f"{method}:{path}:{error_type}"
         
         return signature
-
     
     def _determine_error_type(self, response_text=None, error_str=None, status_code=None):
         """Helper method to determine the specific error type without path/method"""
@@ -231,18 +228,8 @@ class BugClassifier:
         
         # Check if we've seen this signature before
         if signature in self.unique_bugs:
-            bug_id = self.unique_bugs[signature]["id"]
-            self.unique_bugs[signature]["occurrences"] += 1
-            
-            # Add this occurrence to the list of examples if tracking examples
-            if "examples" in self.unique_bugs[signature]:
-                if len(self.unique_bugs[signature]["examples"]) < 5:  # Limit to 5 examples
-                    self.unique_bugs[signature]["examples"].append({
-                        "seed": seed,
-                        "response_sample": response_text[:200] if response_text else None,
-                        "error_sample": error_str[:200] if error_str else None,
-                        "timestamp": datetime.datetime.now().isoformat()
-                    })
+            bug_id = self.unique_bugs[signature]["id"] # Get the existing bug ID
+            self.unique_bugs[signature]["occurrences"] += 1 # Increment occurrence count
             
             return False, bug_id, signature
         
@@ -264,32 +251,10 @@ class BugClassifier:
             "error_sample": error_str[:500] if error_str else None
         }
         
-        # Add examples list if we're tracking examples
-        if hasattr(self, '_track_examples') and self._track_examples:
-            bug_info["examples"] = [{
-                "seed": seed,
-                "response_sample": response_text[:200] if response_text else None,
-                "error_sample": error_str[:200] if error_str else None,
-                "timestamp": datetime.datetime.now().isoformat()
-            }]
-        
         self.unique_bugs[signature] = bug_info
         
         return True, bug_id, signature
-
-    def _generate_bug_description(self, bug):
-        """Generate a human-readable description of the bug"""
-        status_code = bug["status_code"]
-        
-        if status_code == "CRASH":
-            return f"Server crash when sending {bug['method']} request to {bug['path']}"
-        elif status_code == "ERROR":
-            return f"Connection error when sending {bug['method']} request to {bug['path']}"
-        elif status_code.isdigit() and int(status_code) >= 500:
-            return f"Server error {status_code} when sending {bug['method']} request to {bug['path']}"
-        else:
-            return f"Error when sending {bug['method']} request to {bug['path']}"
-
+    
     def generate_summary_table(self):
         """Generate a text table summarizing all unique bugs"""
         if not self.unique_bugs:
@@ -319,11 +284,10 @@ class BugClassifier:
         table = tabulate.tabulate(rows, headers, tablefmt="grid")
         return table
 
-
 # --- Request data structure ---
-# A helper class to encapsulate HTTP requests for fuzzing
-
 class Request:
+    """A helper class to encapsulate HTTP requests for fuzzing"""
+
     def __init__(self, method, url, payload=None, headers=None):
         self.method = method        # HTTP method (GET, POST, etc.)
         self.url = url              # Full URL for the request
@@ -344,9 +308,9 @@ class Request:
         }
 
 # --- Fuzzer Client class ---
-# Encapsulates the logic for interacting with the target application, including authentication and crash logging
 
 class FuzzerClient:
+    '''Encapsulates the logic for interacting with the target application, including authentication and crash logging'''
     def __init__(self, openapi_file="open_api.json"):
         self.headers = {}
         # Load the OpenAPI specification and extract base URL if defined
@@ -375,7 +339,7 @@ class FuzzerClient:
         # Initialize the mutation engine
         self.mutation_engine = MutationEngine()
 
-        # Add bug classifier
+        # Initialize the bug classifier
         self.bug_classifier = BugClassifier()
 
     def load_openapi_spec(self, openapi_file):
@@ -464,8 +428,7 @@ class FuzzerClient:
                     SeedQ[path]["seeds"].append(payload)
                     logger.info(f"Added seed for {method_upper} {path}: {payload}")
             
-            # If this path has no seeds but has methods that should have bodies,
-            # add a default payload
+            # If this path has no seeds but has methods that should have bodies, add a default payload
             needs_body = any(m in ["POST", "PUT", "PATCH"] for m in SeedQ[path]["methods"])
             if needs_body and not SeedQ[path]["seeds"]:
                 SeedQ[path]["seeds"].append(copy.deepcopy(DEFAULT_PAYLOAD))
@@ -490,13 +453,13 @@ class FuzzerClient:
 
     def update_energy_metrics(self, s_prime, reveals_bug, is_interesting, coverage_gain=0):
         """
-        Update metrics used for energy calculations with a stronger emphasis on coverage gains.
+        Update metrics used for energy calculations
         
         Args:
-            s_prime: The seed that was just executed
-            reveals_bug: Whether this seed revealed a bug
-            is_interesting: Whether this seed found new coverage
-            coverage_gain: The number of new lines covered by this seed
+            s_prime: The seed that was just executed, a dictionary with the following keys: path, method, seed
+            reveals_bug: Whether this seed revealed a bug (boolean)
+            is_interesting: Whether this seed found new coverage (boolean)
+            coverage_gain: The number of new lines covered by this seed, initailly set to 0 (int)
         """
         path = s_prime["path"] 
         method = s_prime["method"]
@@ -509,15 +472,15 @@ class FuzzerClient:
         # Update path execution count
         if not hasattr(self, 'path_execution_count'):
             self.path_execution_count = {}
-        self.path_execution_count[path_method_key] = self.path_execution_count.get(path_method_key, 0) + 1
+        self.path_execution_count[path_method_key] = self.path_execution_count.get(path_method_key, 0) + 1 # Count how often each path/method is executed
         
         # If this is a new seed, record discovery time
         if not hasattr(self, 'seed_discovery_time'):
             self.seed_discovery_time = {}
         if seed_id not in self.seed_discovery_time:
-            self.seed_discovery_time[seed_id] = time.time()
+            self.seed_discovery_time[seed_id] = time.time() # Record when each unique seed was discovered 
         
-        # Initialize seed performance tracking if needed
+        # Initialize seed performance tracking if needed for each unqiue seed first appearance 
         if not hasattr(self, 'seed_performance'):
             self.seed_performance = {}
         if seed_id not in self.seed_performance:
@@ -559,7 +522,6 @@ class FuzzerClient:
             if method not in self.crash_correlation[path]:
                 self.crash_correlation[path][method] = 0
             self.crash_correlation[path][method] += 1
-
 
     def create_session_folder(self):
         """Create a numbered session folder for storing results"""
@@ -663,7 +625,7 @@ class FuzzerClient:
         logger.info(f"Session data saved to {self.session_folder}")
 
     def mutate_input(self, s):
-        """Implementation of MutateInput from the algorithm."""
+        """Implementation of MutateInput from AFL"""
         path = s["path"]
         method = s["method"]
         seed = s["seed"]
@@ -673,13 +635,13 @@ class FuzzerClient:
             id_value = get_random_id()
             current_path = path.replace("{id}", id_value)
 
-        # Determine mutation intensity based on path/method performance
+        # Determine mutation intensity based on path/method performance, mutation intensity is for the number of individual mutations done by the MutationEngine
         if random.random() < 0.7:  # 70% small mutations
             mutation_count = random.randint(1, 3)
         else:  # 30% larger mutations
             mutation_count = random.randint(4, 10)
         
-        # Use the MutationEngine instead of custom mutation functions
+        # Use the MutationEngine defined in mutations.py instead of custom mutation functions to produce a mutated seed (test case)
         mutated_seed = self.mutation_engine.mutate_payload(seed, num_mutations=mutation_count)
         
         # Generate a unique hash for this mutation to track it
@@ -687,6 +649,7 @@ class FuzzerClient:
             json.dumps((method, current_path, mutated_seed), sort_keys=True).encode()
         ).hexdigest()
 
+        # Build the HTTP request object
         request = Request(
             method=method,
             url=f"{self.base_url}{current_path}",
@@ -703,41 +666,9 @@ class FuzzerClient:
             "mutation_id": mutation_id
         }
 
-    def choose_next(self, SeedQ):
-        """Implementation of ChooseNext"""
-        untested_paths = []
-        for path in SeedQ:
-            # Skip paths with no methods
-            if not SeedQ[path]["methods"]:
-                continue
-                
-            # Initialize FailureQ structure if needed
-            if path not in self.FailureQ:
-                self.FailureQ[path] = {}
-                
-            methods = [m for m in SeedQ[path]["methods"] if SeedQ[path]["methods"][m]]
-            for method in methods:
-                # Initialize method in FailureQ
-                if method not in self.FailureQ[path]:
-                    self.FailureQ[path][method] = {}
-                    
-                if len(SeedQ[path]["seeds"]) > 0:
-                    untested_paths.append((path, method))
-                    
-        if untested_paths:
-            path, method = random.choice(untested_paths)
-            if SeedQ[path]["seeds"]:
-                seed = random.choice(SeedQ[path]["seeds"])
-            else:
-                # Provide a default seed if none exists
-                seed = copy.deepcopy(DEFAULT_PAYLOAD)
-                
-            return {"path": path, "method": method, "seed": seed}
-        return None
-
     def assign_energy(self, s):
         """
-        Energy Assignment Factors Inspired by AFL:
+        Energy Assignment Factors to decide how many mutations to apply to each seed:
 
         1. Code Coverage Impact:
         - Seeds that discover new paths get higher priority.
@@ -845,20 +776,6 @@ class FuzzerClient:
             logger.error(f"Error reading coverage data: {e}")
             return {}
 
-    def get_last_coverage_hash(self):
-        """Get the hash of the most recent coverage data."""
-        coverage_data = self.read_coverage_data()
-        if not coverage_data:
-            return None
-        sorted_entries = sorted(
-            coverage_data.values(),
-            key=lambda x: x.get('timestamp', 0),
-            reverse=True
-        )
-        if sorted_entries:
-            return sorted_entries[0].get('coverage_hash')
-        return None
-
     def is_interesting(self, s_prime):
         """Check if the mutated input produced new coverage."""
         coverage_data = self.read_coverage_data()
@@ -879,6 +796,126 @@ class FuzzerClient:
                 logger.info(f"New coverage from: {method} {path}")
                 return True
         return False
+    
+    def choose_next_seed(self):
+        """
+        Choose the next seed to fuzz using a smart selection strategy that:
+        1. Ensures all paths get attention (queue cycling)
+        2. Prioritizes promising paths based on past performance
+        
+        Returns a tuple of (path, method, seed)
+        """
+        # Track queue cycle for better coverage
+        if not hasattr(self, 'path_method_queue'):
+            # Initialize queue of all path/method combinations
+            self.path_method_queue = []
+            self.path_method_index = 0
+            self.queue_cycle_count = 0
+            
+            # Build initial queue
+            for path in self.SeedQ:
+                for method in self.SeedQ[path]["methods"]:
+                    self.path_method_queue.append((path, method))
+            
+            # Shuffle initial queue
+            random.shuffle(self.path_method_queue)
+        
+        # Choose selection strategy based on fuzzing progress
+        if random.random() < 0.8:  # 80% of the time: cycle through queue
+            # Get next path/method from queue
+            if self.path_method_index >= len(self.path_method_queue):
+                # Completed a cycle, shuffle queue for next round
+                random.shuffle(self.path_method_queue)
+                self.path_method_index = 0
+                self.queue_cycle_count += 1
+                logger.info(f"Completed queue cycle #{self.queue_cycle_count}")
+            
+            path, method = self.path_method_queue[self.path_method_index]
+            self.path_method_index += 1
+        else:  # 20% of the time: weighted selection based on performance
+            # Calculate weights for each path/method
+            weights = {}
+            
+            for path in self.SeedQ:
+                for method in self.SeedQ[path]["methods"]:
+                    path_method_key = f"{method}:{path}"
+                    
+                    # Start with base weight
+                    weight = 1.0
+                    
+                    # Boost weight for paths with less execution
+                    exec_count = self.path_execution_count.get(path_method_key, 0)
+                    if exec_count < 5:
+                        weight *= 2.0  # Double weight for less-executed paths
+                    
+                    # Boost weight for paths that found coverage
+                    if hasattr(self, 'crash_correlation') and path in self.crash_correlation:
+                        if method in self.crash_correlation[path]:
+                            weight *= 1.5  # 50% boost for crash-finding paths
+                    
+                    weights[path_method_key] = weight
+            
+            # If we have weights, do weighted selection
+            if weights:
+                total_weight = sum(weights.values())
+                r = random.uniform(0, total_weight)
+                
+                cumulative = 0
+                selected_key = list(weights.keys())[0]  # Default
+                
+                for key, weight in weights.items():
+                    cumulative += weight
+                    if r <= cumulative:
+                        selected_key = key
+                        break
+                
+                method, path = selected_key.split(":", 1)
+            else:
+                # Fallback to random selection
+                path = random.choice(list(self.SeedQ.keys()))
+                method = random.choice(list(self.SeedQ[path]["methods"].keys()))
+        
+        # Choose a seed for this path
+        if not self.SeedQ[path]["seeds"]:
+            # If no seeds available, create a default one
+            seed = copy.deepcopy(DEFAULT_PAYLOAD)
+        else:
+            # Prefer seeds that have performed well in the past
+            seed_weights = {}
+            for i, seed in enumerate(self.SeedQ[path]["seeds"]):
+                seed_id = hashlib.md5(json.dumps(seed, sort_keys=True).encode()).hexdigest()
+                
+                # Default weight
+                weight = 1.0
+                
+                # Boost weight for seeds that found coverage
+                if hasattr(self, 'seed_performance') and seed_id in self.seed_performance:
+                    perf = self.seed_performance[seed_id]
+                    if perf.get('new_coverage_count', 0) > 0:
+                        weight *= 1.5
+                
+                seed_weights[i] = weight
+            
+            # Select seed based on weights
+            if seed_weights:
+                total_weight = sum(seed_weights.values())
+                r = random.uniform(0, total_weight)
+                
+                cumulative = 0
+                selected_index = 0
+                
+                for idx, weight in seed_weights.items():
+                    cumulative += weight
+                    if r <= cumulative:
+                        selected_index = idx
+                        break
+                
+                seed = self.SeedQ[path]["seeds"][selected_index]
+            else:
+                seed = random.choice(self.SeedQ[path]["seeds"])
+
+        logger.info(f"Selected seed: {method} {path}")
+        return path, method, seed
 
 # --- Server control functions ---
 def start_django_server(preserve_coverage=True):
@@ -936,9 +973,8 @@ def wait_for_server(url, timeout=30, interval=0.5):
     logger.error("Server did not start within the specified timeout")
     return False
 
-
 def get_random_id():
-    """Generate a random ID for use in endpoint URLs."""
+    """Generate a random ID for use in endpoint URLs that requires {id}."""
     if random.random() < 0.7:
         # Return a normal ID most of the time
         return str(random.randint(1, 100))
@@ -954,105 +990,6 @@ def get_random_id():
         engine.random_byte_str(str(random.randint(1, 100))),
         str(random.randint(1000000, 10000000))              
     ])
-
-def choose_next_seed(self):
-    """
-    Choose the next seed to fuzz based on energy assignment that prioritizes coverage gains.
-    Returns a tuple of (path, method, seed, energy)
-    """
-    # Calculate energy for each path/method combination
-    energy_map = {}
-    
-    # Get all available paths
-    for path in self.SeedQ:
-        for method in self.SeedQ[path]["methods"]:
-            path_method_key = f"{method}:{path}"
-            
-            # Base energy starts at 1
-            energy = 1
-            
-            # Increase energy for paths that have found new coverage recently
-            if hasattr(self, 'seed_performance'):
-                # Find seeds that have been used with this path/method
-                relevant_seeds = []
-                for seed_id, perf in self.seed_performance.items():
-                    if perf.get('path') == path and perf.get('method') == method:
-                        relevant_seeds.append((seed_id, perf))
-                
-                if relevant_seeds:
-                    # Calculate average coverage gain for this path/method
-                    total_gain = sum(perf['total_coverage_gain'] for _, perf in relevant_seeds)
-                    total_execs = sum(perf['executions'] for _, perf in relevant_seeds)
-                    
-                    if total_execs > 0:
-                        avg_gain = total_gain / total_execs
-                        # Boost energy based on average gain (logarithmic scale to prevent excessive focus)
-                        if avg_gain > 0:
-                            energy += int(math.log2(avg_gain + 1) * 2)
-                    
-                    # Boost energy if this path/method found coverage recently
-                    recent_gains = [perf['last_gain'] for _, perf in relevant_seeds if perf['last_gain'] > 0]
-                    if recent_gains:
-                        energy += min(5, max(recent_gains))  # Cap at +5 energy
-            
-            # Boost energy for paths that haven't been executed much
-            exec_count = self.path_execution_count.get(path_method_key, 0)
-            if exec_count < 5:
-                energy += (5 - exec_count)  # More energy for less-executed paths
-            
-            # Boost energy for paths associated with crashes
-            if hasattr(self, 'crash_correlation') and path in self.crash_correlation:
-                if method in self.crash_correlation[path]:
-                    crash_count = self.crash_correlation[path][method]
-                    energy += min(3, crash_count)  # Cap at +3 energy
-            
-            # Store the calculated energy
-            energy_map[path_method_key] = max(1, min(20, energy))  # Ensure energy is between 1 and 20
-    
-    # Choose a path/method based on weighted random selection
-    if not energy_map:
-        # Fallback if no energy map (shouldn't happen in normal operation)
-        paths = list(self.SeedQ.keys())
-        if not paths:
-            raise ValueError("No paths available in SeedQ")
-        
-        path = random.choice(paths)
-        methods = list(self.SeedQ[path]["methods"].keys())
-        if not methods:
-            raise ValueError(f"No methods available for path {path}")
-        
-        method = random.choice(methods)
-        energy = 5  # Default energy
-    else:
-        # Weighted random selection based on energy
-        total_energy = sum(energy_map.values())
-        r = random.uniform(0, total_energy)
-        
-        cumulative = 0
-        selected_key = None
-        
-        for key, energy in energy_map.items():
-            cumulative += energy
-            if r <= cumulative:
-                selected_key = key
-                break
-        
-        if selected_key is None:
-            selected_key = list(energy_map.keys())[0]
-        
-        method, path = selected_key.split(":", 1)
-        energy = energy_map[selected_key]
-    
-    # Choose a seed for this path
-    if not self.SeedQ[path]["seeds"]:
-        # If no seeds available, create a default one
-        seed = copy.deepcopy(DEFAULT_PAYLOAD)
-    else:
-        seed = random.choice(self.SeedQ[path]["seeds"])
-    
-    logger.info(f"Selected seed with energy {energy}: {method} {path}")
-    return path, method, seed, energy
-
 
 def send_request(request, timeout=5.0):
     """Send an HTTP request using the provided Request object."""
@@ -1091,7 +1028,7 @@ def fuzz_application(openapi_file: str = "open_api.json"):
     if not server_process:
         logger.error("Failed to start Django server. Exiting.")
         return
-    # Instantiate the client without needing to supply a base URL
+    # Instantiate the client 
     client = FuzzerClient(openapi_file)
     if not wait_for_server(client.base_url, timeout=30):
         logger.error("Server failed to start within the timeout period. Exiting.")
@@ -1107,8 +1044,9 @@ def fuzz_application(openapi_file: str = "open_api.json"):
         num_crashes = 0
         num_interesting = 0
         unique_bugs = 0
-        while num_tests < 1000:
-            s = client.choose_next(client.SeedQ)
+        while num_tests < 1000: # Adjustable limit for the number of tests
+            path, method, seed = client.choose_next_seed()
+            s = {"path": path, "method": method, "seed": seed}
             if s is None:
                 logger.warning("No more seeds in the queue to test!")
                 break
@@ -1141,7 +1079,7 @@ def fuzz_application(openapi_file: str = "open_api.json"):
                                "Connection reset by peer" in str(error)):
                     reveals_bug = True
                     server_crashed = True
-                    logger.warning(f"Server crashed! Connection error: {error}")
+                    logger.warning(f"Server Error! Connection error: {error}")
                     num_crashes += 1
                 # Check for other errors or 5xx responses
                 elif error:
@@ -1274,19 +1212,6 @@ def fuzz_application(openapi_file: str = "open_api.json"):
             server_process.terminate()
             server_process.wait()
         return client
-
-def add_to_seed_queue(client, endpoint, method, payload):
-    """Manually add a seed to the SeedQ."""
-    if endpoint not in client.SeedQ:
-        client.SeedQ[endpoint] = {
-            "methods": {method: True},
-            "seeds": [payload]
-        }
-    else:
-        if method not in client.SeedQ[endpoint]["methods"]:
-            client.SeedQ[endpoint]["methods"][method] = True
-        client.SeedQ[endpoint]["seeds"].append(payload)
-    logger.info(f"Added seed to queue: {endpoint} {method}")
 
 def main(openapi_file: str = "open_api.json"):
     """Main entry point for the fuzzer."""
