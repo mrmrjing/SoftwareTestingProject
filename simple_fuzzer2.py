@@ -38,9 +38,6 @@ console_handler.setLevel(logging.INFO)
 console_handler.setFormatter(formatter)
 logger.addHandler(console_handler)
 
-# --- Create bug_samples directory ---
-os.makedirs("bug_samples", exist_ok=True)
-
 # --- Fallback default payload ---
 DEFAULT_PAYLOAD = {
     "name": "test_product",
