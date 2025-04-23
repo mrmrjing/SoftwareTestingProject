@@ -5,12 +5,39 @@ import threading
 import hashlib
 import time
 import logging 
+import datetime
 
+current_dir = os.path.dirname(os.path.dirname(__file__))  # DjangoWebApplication folder
+parent_dir = os.path.dirname(current_dir)  # Project root folder
+logs_dir = os.path.join(parent_dir, "logs")
+
+# Create logs directory if it doesn't exist
+os.makedirs(logs_dir, exist_ok=True)
+
+# Create a timestamp for the log file name
+timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+log_file_path = os.path.join(logs_dir, f"coverage_middleware_{timestamp}.log")
+
+# Set up the logger
 logger = logging.getLogger('coverage_middleware')
 logger.setLevel(logging.DEBUG)
-handler = logging.FileHandler('coverage_middleware.log')
-handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+
+# Create a formatter identical to the one in simple_fuzzer2.py
+formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
+
+# Set up the file handler with the new path
+handler = logging.FileHandler(log_file_path)
+handler.setFormatter(formatter)
+
+# Remove any existing handlers to avoid duplicate logs
+if logger.handlers:
+    for handler in logger.handlers:
+        logger.removeHandler(handler)
+
 logger.addHandler(handler)
+
+# Log the path to help with debugging
+logger.info(f"Coverage middleware log file created at: {log_file_path}")
 
 class CoverageMiddleware:
     coverage_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'coverage_data.json')
