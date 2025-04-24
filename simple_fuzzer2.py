@@ -274,8 +274,8 @@ class BugClassifier:
                 error_type
             ])
         
-        # Sort by bug ID
-        rows.sort(key=lambda x: x[0])
+        # Sort by bug ID numerically
+        rows.sort(key=lambda x: int(x[0].split('-')[1]))
         
         # Generate the table
         table = tabulate.tabulate(rows, headers, tablefmt="grid")
@@ -522,7 +522,7 @@ class FuzzerClient:
 
     def create_session_folder(self):
         """Create a numbered session folder for storing results"""
-        base_folder = os.path.join("sessions", "http")
+        base_folder = os.path.join("sessions")
         os.makedirs(base_folder, exist_ok=True)
         session_folders = [f for f in os.listdir(base_folder) if f.startswith("session")]
         if session_folders:
@@ -778,22 +778,56 @@ class FuzzerClient:
         coverage_data = self.read_coverage_data()
         if not coverage_data:
             return False
+        
+        # Get the trace ID if available
+        trace_id = s_prime.get("trace_id")
+        
+        # If we have a trace ID, use it for precise matching
+        if trace_id:
+            for entry in coverage_data.values():
+                if entry.get('trace_id') == trace_id:
+                    if entry.get('is_new_coverage', False):
+                        logger.info(f"Found new coverage path with hash: {entry.get('coverage_hash')}")
+                        method = entry.get('method', '')
+                        path = entry.get('path', '')
+                        logger.info(f"New coverage from: {method} {path}")
+                        return True
+                    return False
+        
+        # Fall back to method/path matching if no trace ID or no match found
+        current_method = s_prime["method"]
+        current_path = s_prime["current_path"]
+        
+        # Look for the most recent entry that matches this request
         sorted_entries = sorted(
             coverage_data.values(),
             key=lambda x: x.get('timestamp', 0),
             reverse=True
         )
-        if sorted_entries:
-            latest_entry = sorted_entries[0]
-            # Check if this entry has new coverage
-            if latest_entry.get('is_new_coverage', False):
-                logger.info(f"Found new coverage path with hash: {latest_entry.get('coverage_hash')}")
-                method = latest_entry.get('method', '')
-                path = latest_entry.get('path', '')
-                logger.info(f"New coverage from: {method} {path}")
-                return True
+        
+        # Only consider entries from the last few seconds
+        current_time = time.time()
+        recent_threshold = 5  # seconds
+        
+        for entry in sorted_entries:
+            # Skip entries that are too old
+            if current_time - entry.get('timestamp', 0) > recent_threshold:
+                continue
+                
+            # Check if this entry matches our current request
+            if (entry.get('method') == current_method and 
+                entry.get('path') == current_path):
+                # Check if this entry has new coverage
+                if entry.get('is_new_coverage', False):
+                    logger.info(f"Found new coverage path with hash: {entry.get('coverage_hash')}")
+                    logger.info(f"New coverage from: {current_method} {current_path}")
+                    return True
+                # If we found a matching entry but it's not new coverage, return False
+                return False
+        
+        # If we didn't find a matching entry, it's not interesting
         return False
-    
+
     def choose_next_seed(self):
         """
         Choose the next seed to fuzz using a smart selection strategy that:
@@ -993,6 +1027,11 @@ def send_request(request, timeout=5.0):
     start_time = time.time()
     response = None
     error = None
+    
+    # Add a trace ID to track this request in the coverage data
+    trace_id = hashlib.md5(f"{time.time()}-{random.random()}".encode()).hexdigest()
+    request.headers['X-Fuzzer-Trace-ID'] = trace_id
+    
     try:
         if request.payload is not None:
             response = requests.request(
@@ -1017,7 +1056,7 @@ def send_request(request, timeout=5.0):
         error = e
     end_time = time.time()
     response_time = end_time - start_time
-    return response, response_time, error
+    return response, response_time, error, trace_id
 
 def fuzz_application(openapi_file: str = "open_api.json"):
     """Main fuzzing function that uses SeedQ and FailureQ for tracking test cases."""
@@ -1041,7 +1080,7 @@ def fuzz_application(openapi_file: str = "open_api.json"):
         num_crashes = 0
         num_interesting = 0
         unique_bugs = 0
-        while num_tests < 1000: # Adjustable limit for the number of tests
+        while num_tests < 100000: # Adjustable limit for the number of tests
             path, method, seed = client.choose_next_seed()
             s = {"path": path, "method": method, "seed": seed}
             if s is None:
@@ -1055,7 +1094,8 @@ def fuzz_application(openapi_file: str = "open_api.json"):
                 logger.info(f"Mutation {k+1}/{energy}: {request_obj.method} {s_prime['current_path']}")
                 if request_obj.payload:
                     logger.info(f"Payload: {request_obj.payload}")
-                response, response_time, error = send_request(request_obj)
+                response, response_time, error, trace_id = send_request(request_obj)
+                s_prime["trace_id"] = trace_id
                 client.tests[client.test_id] = datetime.datetime.now().isoformat()
                 client.test_id += 1
                 num_tests += 1
