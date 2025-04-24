@@ -16,7 +16,7 @@ os.makedirs(logs_dir, exist_ok=True)
 
 # Create a timestamp for the log file name
 timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-log_file_path = os.path.join(logs_dir, f"coverage_middleware_{timestamp}.log")
+log_file_path = os.path.join(logs_dir, f"coverage_middleware.log")
 
 # Set up the logger
 logger = logging.getLogger('coverage_middleware')
@@ -81,12 +81,19 @@ class CoverageMiddleware:
             self.global_coverage = {}
 
     def __call__(self, request):
-        # Log request info 
-        logger.debug(f"Processing request: {request.method} {request.path}")
+        # Extract fuzzer trace ID if present
+        trace_id = request.headers.get('X-Fuzzer-Trace-ID', None)
+        
+        # Log request info with trace ID if available
+        if trace_id:
+            logger.debug(f"Processing request: {request.method} {request.path} (Trace ID: {trace_id})")
+        else:
+            logger.debug(f"Processing request: {request.method} {request.path}")
+        
         # Create a unique identifier for this request
         request_id = f"{request.method}:{request.path}:{int(time.time())}"
         request_hash = hashlib.md5(f"{request.method}:{request.path}:{request.body}".encode()).hexdigest()
-        
+
         # Create a fresh Coverage instance for this request
         cov = coverage.Coverage(
             data_file=None,  # Use memory storage, not a file
@@ -179,6 +186,7 @@ class CoverageMiddleware:
             # Store this request's coverage and metadata
             coverage_data[request_hash] = {
                 'id': request_id,
+                'trace_id': trace_id, 
                 'method': request.method,
                 'path': request.path,
                 'coverage': file_coverage,
@@ -209,10 +217,12 @@ class CoverageMiddleware:
         # Check if the hash already exists in the coverage data
         for entry in coverage_data.values():
             if 'coverage_hash' in entry and entry['coverage_hash'] == coverage_hash:
+                logger.debug(f"Coverage hash {coverage_hash} already exists")
                 return False
         
         # If we have no previous coverage data, this is definitely new
         if not coverage_data:
+            logger.info("First coverage entry - marking as new")
             return True
         
         # Extract the current coverage information
@@ -237,14 +247,26 @@ class CoverageMiddleware:
                 return True
         
         # 2. New lines in existing files - with a threshold
+        total_new_lines = 0
+        new_lines_details = []
+        
         for filename, lines in current_coverage.items():
             if filename in global_coverage:
                 new_lines = lines - global_coverage[filename]
-                # Only consider it new if we have a significant number of new lines
-                # This filters out noise from timestamps, logging, etc.
-                if len(new_lines) >= 3:  # Threshold of 3 new lines
-                    logger.info(f"Significant new coverage in {filename}: {len(new_lines)} new lines")
-                    return True
+                if new_lines:
+                    total_new_lines += len(new_lines)
+                    new_lines_details.append(f"{filename}: {len(new_lines)} new lines")
+        
+        # Only consider it new if we have a significant number of new lines
+        # This filters out noise from timestamps, logging, etc.
+        if total_new_lines >= 3:  # Threshold of 3 new lines total
+            logger.info(f"Significant new coverage: {total_new_lines} new lines across files")
+            for detail in new_lines_details:
+                logger.info(detail)
+            return True
+        elif total_new_lines > 0:
+            logger.debug(f"Found {total_new_lines} new lines, but below threshold")
         
         # If we got here, the coverage is not significantly new
+        logger.debug("No significant new coverage found")
         return False
