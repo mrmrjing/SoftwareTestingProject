@@ -1,0 +1,78 @@
+{
+  "0": "2025-04-24T00:12:42.625542",
+  "1": {
+    "timestamp": "2025-04-24T00:12:47.088598",
+    "path": "/api/product/{id}/",
+    "method": "PUT",
+    "input": {
+      "id": 100,
+      "name": "pd",
+      "info": "d^",
+      "price": 4294967196
+    }
+  },
+  "2": {
+    "timestamp": "2025-04-24T00:12:51.752104",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 100,
+      "name": "$pd",
+      "info": "dt<",
+      "price": 99
+    }
+  },
+  "3": {
+    "timestamp": "2025-04-24T00:12:52.188091",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 100,
+      "name": "pd",
+      "ifo": "d",
+      "price": 98,
+      "WAC": -729
+    }
+  },
+  "4": {
+    "timestamp": "2025-04-24T00:15:30.914379",
+    "path": "/api/product/{id}/",
+    "method": "GET",
+    "input": {
+      "name": "pd",
+      "info": "dt"
+    }
+  },
+  "5": {
+    "timestamp": "2025-04-24T00:15:31.329005",
+    "path": "/api/product/{id}/",
+    "method": "GET",
+    "input": {
+      "name": "&t",
+      "info": "dt`;X",
+      "price": 255
+    }
+  },
+  "6": {
+    "timestamp": "2025-04-24T00:16:30.490322",
+    "path": "/api/product/{id}/",
+    "method": "DELETE",
+    "input": {
+      "name": "&t<",
+      "price": 255
+    }
+  },
+  "7": {
+    "timestamp": "2025-04-24T10:57:57.785508",
+    "path": "/api/product/{id}/",
+    "method": "PUT",
+    "input": {
+      "id": 100,
+      "name": "pd",
+      "ifo": "d",
+      "price": 98,
+      "WAC": -729,
+      "AaMm": -672
+    }
+  }
+}
