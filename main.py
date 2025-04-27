@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 import logging
 import sys
@@ -6,16 +5,34 @@ from pathlib import Path
 from typing import List
 from simple_fuzzer2 import main as fuzz_main
 from colorama import init, Fore, Style
+from typing import List
+import os
+from dotenv import load_dotenv
 
-# Initialize colorama (on Windows this will convert ANSI codes into Win32 calls)
+load_dotenv(".env")
+
 init(autoreset=True)
 
-# Dictionary of valid project types and their enabled/disabled status.
 VALID_PROJECT_TYPES = {
     "BLE": False,
     "DJANGO": True,
 }
 
+DJANGO_APP_DIR_NAME = os.getenv("DJANGO_APP_DIR_NAME")
+VENV_FILE_NAME = os.getenv("DJANGO_VENV_FIlE_NAME")
+
+def ensure_django_app_available():
+    base = Path(__file__).parent
+    django_dir = base / DJANGO_APP_DIR_NAME
+
+    if not django_dir.is_dir():
+        print(Fore.RED + f"ERROR: required folder '{DJANGO_APP_DIR_NAME}' not found at {django_dir!r}")
+        sys.exit(1)
+
+    venv_file = django_dir / VENV_FILE_NAME
+    if not venv_file.is_dir():
+        print(Fore.RED + f"ERROR: venv file '{VENV_FILE_NAME}' not found in {django_dir!r}")
+        sys.exit(1)
 
 def print_commands() -> None:
     print(Fore.MAGENTA + "Possible commands:")
@@ -71,6 +88,8 @@ def main():
 
     args = get_args_interactive()
     if(args[0]=="DJANGO"):
+        ensure_django_app_available()
+        # check if all django stuff exists so we can run the fuzzer
         if(len(args) > 1):
             # Check if the provided path is a valid file
             path = Path(args[1])

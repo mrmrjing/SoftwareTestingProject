@@ -39,3 +39,25 @@ The fuzzer follows the standard greybox fuzzing loop:
   - [ ] Graph_1_3 Plot number of interesting test cases agianst number of tests generated (use the tests.json file)
   - Coverage obtained with respect to time and generated tests 
   - Provide a table of all the unique bugs found
+
+
+# How To Run Django Fuzzer : 
+
+install everything inside the django webapplication 
+get the location of your django env file 
+
+What should the "api" do ?
+start django fuzzer / start ble shit 
+for django , allow users to specify their virtual env and shit 
+
+
+allow passing in arguments for openapi file 
+
+
+
+Install virtual environemnt , 
+install the following libraries 
+
+pip install requests tabulate coverage
+from dotenv import load_dotenv
+import os
