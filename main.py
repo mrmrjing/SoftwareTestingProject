@@ -9,6 +9,7 @@ from colorama import init, Fore, Style
 from typing import List
 import os
 from dotenv import load_dotenv
+PROJECT_ROOT = Path(__file__).parent 
 
 load_dotenv(".env")
 
@@ -42,7 +43,8 @@ def print_commands() -> None:
     print(Fore.MAGENTA + "  DJANGO <filepath>")
 
     print(Fore.MAGENTA + "  BLE" + Style.RESET_ALL)
-    print(Fore.MAGENTA + "  BLE JSON filepath" + Style.RESET_ALL)
+    
+    print(Fore.MAGENTA + "  BLE --resume <filepath>" + Style.RESET_ALL)
 
 
 # def get_args_interactive() -> List[str]:
@@ -90,7 +92,8 @@ def get_args_interactive() -> List[str]:
         if not raw:
             continue
 
-        parts = raw.split(maxsplit=1)
+        parts = raw.split()
+
         proj = parts[0].upper()
 
         if proj not in VALID_PROJECT_TYPES:
@@ -98,6 +101,7 @@ def get_args_interactive() -> List[str]:
             print(Fore.RED + f"  ✖ Unknown project type '{proj}'. Valid choices: {valid_choices}")
             print_commands()
             continue
+
         if not VALID_PROJECT_TYPES[proj]:
             print(Fore.RED + f"  ✖ '{proj}' support is currently disabled.")
             print_commands()
@@ -105,24 +109,34 @@ def get_args_interactive() -> List[str]:
 
         args = [proj]
 
-        # if user gave a second argument (filepath)
-        if len(parts) == 2 and parts[1].strip():
-            filepath = parts[1].strip()
-            path = Path(filepath)
-
-            if proj == "DJANGO":
+        if proj == "DJANGO":
+            if len(parts) >= 2:
+                filepath = parts[1].strip()
+                path = Path(filepath)
                 if not path.exists():
                     print(Fore.YELLOW + f"  ⚠ Warning: Django file '{filepath}' does not exist (continuing anyway).")
                 args.append(filepath)
 
-            elif proj == "BLE":
-                if not path.exists():
-                    print(Fore.RED + f"  ✖ BLE resume file '{filepath}' not found. Please check the path.")
-                    continue  # force user to re-enter input
-                args.append(filepath)
+        elif proj == "BLE":
+            if len(parts) >= 3 and parts[1] == "--resume":
+                raw_path   = parts[2].strip()                
+                if not raw_path.lower().endswith(".json"):
+                    print(Fore.RED + "  ✖ BLE resume file must be a .json file.")
+                    print_commands()
+                    continue
 
+                abs_path = (PROJECT_ROOT /"BLE" / raw_path).expanduser().resolve()
+                if not abs_path.exists():
+                    print(Fore.RED + f"  ✖ BLE resume file '{raw_path}' not found. Please check the path.")
+                    print_commands()
+                    continue
+                args.extend(["--resume", str(raw_path)])             # store absolute path
+            else:
+                print(Fore.RED + "  ✖ For BLE, use: BLE --resume <filepath> or BLE")
+                print_commands()
+                continue
         return args
-    
+
 
 def ensure_ble_app_available():
     base = Path(__file__).parent
@@ -131,31 +145,32 @@ def ensure_ble_app_available():
     if not smartlock_file.is_file():
         print(Fore.RED + f"ERROR: 'Smartlock.py' not found at {smartlock_file!r}")
         sys.exit(1)
-    
+ 
 def main():
-    logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
+    logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+    current_abs_path = Path(__file__).resolve()
+    logging.info(f"Current absolute path: {current_abs_path}")
     args = get_args_interactive()
     if not args:
         print(Fore.RED + "ERROR: No arguments provided.")
         sys.exit(1)
 
-    if args[0] == "DJANGO":
+    proj = args[0]
+
+    if proj == "DJANGO":
         ensure_django_app_available()
         if len(args) > 1:
             fuzz_main(Path(args[1]))
         else:
             fuzz_main()
 
-    elif args[0] == "BLE":
+    elif proj == "BLE":
         ensure_ble_app_available()
-        if len(args) > 1:
-            ble_main(args[1])
+        if len(args) >= 3 and args[1] == "--resume":
+            ble_main(args[2])  # args[2] = filepath
         else:
             ble_main()
-    
 
-
-    
 if __name__ == "__main__":
     main()
