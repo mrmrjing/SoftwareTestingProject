@@ -1,0 +1,260 @@
+{
+  "/api/product/{id}/": {
+    "methods": {
+      "GET": true,
+      "POST": true,
+      "PUT": true,
+      "DELETE": true
+    },
+    "seeds": [
+      {
+        "id": 100,
+        "name": "pd",
+        "info": "dt",
+        "price": 99
+      },
+      {
+        "id": 100,
+        "name": "pd",
+        "info": "dt",
+        "price": 99
+      },
+      {
+        "id": 100,
+        "name": "pd",
+        "info": "d\u0000t",
+        "price": 97
+      },
+      {
+        "id": 255,
+        "name": "p'd$",
+        "info": "dt",
+        "price": 99
+      },
+      {
+        "id": 100,
+        "name": "Hd",
+        "info": "dt",
+        "price": 99
+      },
+      {
+        "id": 100,
+        "name": "pd",
+        "info": "d",
+        "price": 99
+      },
+      {
+        "id": 100,
+        "name": "pd",
+        "info": "dt",
+        "price": 99,
+        "EjkoYF": "tes)_value",
+        "NFVvZ": true
+      },
+      {
+        "id": 108,
+        "name": "pd",
+        "info": "dt",
+        "price": 256
+      },
+      {
+        "id": 108,
+        "name": "pd",
+        "info": "dt",
+        "price": 99
+      },
+      {
+        "id": 255,
+        "name": "p'7$",
+        "info": "dt",
+        "price": 99
+      },
+      {
+        "id": 254,
+        "name": "p'd$",
+        "info": "dt",
+        "price": 198
+      }
+    ]
+  },
+  "/datatb/product/": {
+    "methods": {
+      "GET": true,
+      "POST": true,
+      "PUT": true,
+      "DELETE": true
+    },
+    "seeds": [
+      {
+        "id": 100,
+        "name": "pd",
+        "info": "dt",
+        "price": 99
+      },
+      {
+        "id": 100,
+        "name": "pd",
+        "info": "dt",
+        "price": 99
+      }
+    ]
+  },
+  "/datatb/product/export/": {
+    "methods": {
+      "GET": true,
+      "POST": true,
+      "PUT": true,
+      "DELETE": true
+    },
+    "seeds": [
+      {
+        "search": "",
+        "hidden_cols": [],
+        "type": "pdf"
+      },
+      {
+        "format": "pdf",
+        "template": "default"
+      }
+    ]
+  },
+  "/datatb/product/edit/{id}/": {
+    "methods": {
+      "GET": true,
+      "POST": true,
+      "PUT": true,
+      "DELETE": true
+    },
+    "seeds": [
+      {
+        "id": 100,
+        "name": "pd",
+        "info": "dt",
+        "price": 99
+      },
+      {
+        "id": 100,
+        "name": "pd",
+        "info": "dt",
+        "price": 99
+      },
+      {
+        "id": 100,
+        "name": "pd>",
+        "info": "dt",
+        "price": 99
+      },
+      {
+        "id": 2147483648,
+        "ame": "pedt",
+        "info": "dt"
+      },
+      {
+        "id": 100,
+        "name": "pd",
+        "mnfo": "dt",
+        "price": 99
+      },
+      {
+        "id": 100,
+        "info": "G@dt",
+        "ghkzXRt": null
+      },
+      {
+        "id": 100,
+        "name": "pd",
+        "info": "dt",
+        "price": 100,
+        "zIe": "test_value"
+      },
+      {
+        "name": "p4d",
+        "price": 99,
+        "wImEc": true,
+        "iFzf": -6
+      },
+      {
+        "id": 100,
+        "name": "pd",
+        "info": "t",
+        "price": 99
+      }
+    ]
+  },
+  "/datatb/product/delete/{id}/": {
+    "methods": {
+      "GET": true,
+      "POST": true,
+      "PUT": true,
+      "DELETE": true
+    },
+    "seeds": [
+      {
+        "confirm": true
+      },
+      {
+        "cascade": true,
+        "permanent": false
+      },
+      {
+        "confirm": -2
+      },
+      {
+        "confirm": -127
+      },
+      {
+        "confirm": 19
+      },
+      {},
+      {
+        "confirm": 3
+      },
+      {
+        "confirm": true
+      },
+      {
+        "confirm": 33
+      },
+      {
+        "confirm": 123
+      },
+      {
+        "coNfirm": -127
+      },
+      {
+        "c\u007fnfirm": -127
+      },
+      {
+        "confirm": 2147483648
+      },
+      {},
+      {
+        "confirm": -126,
+        "xkA": true
+      },
+      {
+        "confirm": 510,
+        "qj,xiWEI": "4est_value",
+        "hNXA": "test_value"
+      },
+      {
+        "confirm": -128
+      },
+      {
+        "confirm": 0
+      },
+      {
+        "confirm": -254,
+        "xcCrH": "test_value"
+      },
+      {},
+      {
+        "confirm": -126,
+        "AKm": -72
+      },
+      {
+        "c/nfrm": 65535
+      }
+    ]
+  }
+}

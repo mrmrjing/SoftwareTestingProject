@@ -1,0 +1,110 @@
+Input:
+[
+  [
+    0,
+    1,
+    2,
+    3,
+    4,
+    37,
+    6
+  ],
+  [
+    0,
+    1,
+    2,
+    3,
+    4,
+    37,
+    6
+  ],
+  [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  [
+    184
+  ],
+  [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  [
+    235,
+    145,
+    221,
+    159,
+    81,
+    143,
+    170
+  ],
+  [
+    235,
+    145,
+    221,
+    159,
+    81,
+    143,
+    170
+  ]
+]
+
+Logs:
+  [Bluetooth] Received command: 0x00 (Authenticate)
+  [AUTH] Authentication Failed
+  [Bluetooth] Received command: 0x00 (Authenticate)
+  [AUTH] Authentication Failed
+  [Bluetooth] Received command: 0x00 (Authenticate)
+  [Auth] Authentication Sucessfull
+  [State] Device state: Authenticated
+  [Bluetooth] Received command: 0x00 (Authenticate)
+  [Auth] Authentication Sucessfull
+  [State] Device state: Authenticated
+  [Bluetooth] Received command: 0x00 (Authenticate)
+  [Auth] Authentication Sucessfull
+  [State] Device state: Authenticated
+  [Bluetooth] Received command: 0x00 (Authenticate)
+  [Auth] Authentication Sucessfull
+  [State] Device state: Authenticated
+  [Bluetooth] Received command: 0x00 (Authenticate)
+  [Auth] Authentication Sucessfull
+  [State] Device state: Authenticated
+  [Warning] Code: 0x001675
+  [Warning] Code: 0x001675

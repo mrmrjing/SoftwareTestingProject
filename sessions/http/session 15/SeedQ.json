@@ -1,0 +1,115 @@
+{
+  "/api/product/{id}/": {
+    "methods": {
+      "GET": true,
+      "POST": true,
+      "PUT": true,
+      "DELETE": true
+    },
+    "seeds": [
+      {
+        "id": 100,
+        "name": "pd",
+        "info": "dt",
+        "price": 99
+      },
+      {
+        "id": 100,
+        "name": "pd",
+        "info": "dt",
+        "price": 99
+      },
+      {
+        "name": "p",
+        "info": "dt",
+        "price": 99
+      },
+      {
+        "id": 100,
+        "lame": "pd",
+        "info": "dt",
+        "rice": 99
+      }
+    ]
+  },
+  "/datatb/product/": {
+    "methods": {
+      "GET": true,
+      "POST": true,
+      "PUT": true,
+      "DELETE": true
+    },
+    "seeds": [
+      {
+        "id": 100,
+        "name": "pd",
+        "info": "dt",
+        "price": 99
+      },
+      {
+        "id": 100,
+        "name": "pd",
+        "info": "dt",
+        "price": 99
+      }
+    ]
+  },
+  "/datatb/product/export/": {
+    "methods": {
+      "GET": true,
+      "POST": true,
+      "PUT": true,
+      "DELETE": true
+    },
+    "seeds": [
+      {
+        "search": "",
+        "hidden_cols": [],
+        "type": "pdf"
+      },
+      {
+        "format": "pdf",
+        "template": "default"
+      }
+    ]
+  },
+  "/datatb/product/edit/{id}/": {
+    "methods": {
+      "GET": true,
+      "POST": true,
+      "PUT": true,
+      "DELETE": true
+    },
+    "seeds": [
+      {
+        "id": 100,
+        "name": "pd",
+        "info": "dt",
+        "price": 99
+      },
+      {
+        "id": 100,
+        "name": "pd",
+        "info": "dt",
+        "price": 99
+      }
+    ]
+  },
+  "/datatb/product/delete/{id}/": {
+    "methods": {
+      "GET": true,
+      "POST": true,
+      "PUT": true,
+      "DELETE": true
+    },
+    "seeds": [
+      {
+        "confirm": true
+      },
+      {
+        "cascade": true,
+        "permanent": false
+      }
+    ]
+  }
+}

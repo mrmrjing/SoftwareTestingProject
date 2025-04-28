@@ -4,6 +4,7 @@ import sys
 from pathlib import Path
 from typing import List
 from simple_fuzzer2 import main as fuzz_main
+from BLE.Smartlock import start_ble_fuzzing as ble_main
 from colorama import init, Fore, Style
 from typing import List
 import os
@@ -14,12 +15,13 @@ load_dotenv(".env")
 init(autoreset=True)
 
 VALID_PROJECT_TYPES = {
-    "BLE": False,
+    "BLE": True,
     "DJANGO": True,
 }
 
 DJANGO_APP_DIR_NAME = os.getenv("DJANGO_APP_DIR_NAME")
 VENV_FILE_NAME = os.getenv("DJANGO_VENV_FIlE_NAME")
+
 
 def ensure_django_app_available():
     base = Path(__file__).parent
@@ -38,7 +40,9 @@ def print_commands() -> None:
     print(Fore.MAGENTA + "Possible commands:")
     print(Fore.MAGENTA + "  DJANGO")
     print(Fore.MAGENTA + "  DJANGO <filepath>")
+
     print(Fore.MAGENTA + "  BLE" + Style.RESET_ALL)
+    print(Fore.MAGENTA + "  BLE JSON filepath" + Style.RESET_ALL)
 
 
 def get_args_interactive() -> List[str]:
@@ -70,20 +74,28 @@ def get_args_interactive() -> List[str]:
 
         args = [proj]
 
-        # if DJANGO and user supplied a second token, treat it as filepath
-        if proj == "DJANGO" and len(parts) == 2 and parts[1].strip():
-            fp = parts[1].strip()
-            path = Path(fp)
-            if not path.exists():
-                print(Fore.YELLOW + f"  ⚠ Warning: '{fp}' does not exist (continuing anyway).")
-            args.append(fp)
+        # # if DJANGO and user supplied a second token, treat it as filepath
+        # if proj == "DJANGO" and len(parts) == 2 and parts[1].strip():
+        #     fp = parts[1].strip()
+        #     path = Path(fp)
+        #     if not path.exists():
+        #         print(Fore.YELLOW + f"  ⚠ Warning: '{fp}' does not exist (continuing anyway).")
+        #     args.append(fp)
 
+        if len(parts) == 2 and parts[1].strip():
+            args.append(parts[1].strip())
         # valid args gathered
         return args
+    
+def ensure_ble_app_available():
+    base = Path(__file__).parent
+    smartlock_file = base / "BLE/Smartlock.py"
 
-
+    if not smartlock_file.is_file():
+        print(Fore.RED + f"ERROR: 'Smartlock.py' not found at {smartlock_file!r}")
+        sys.exit(1)
+    
 def main():
-    # We still configure logging in case you want to switch back later
     logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
     args = get_args_interactive()
@@ -96,8 +108,14 @@ def main():
             fuzz_main(path)
         else:
             fuzz_main()
-    elif(args[0]=="BLE"):
-         print(Fore.RED+ "Not Supported YEt ")
+
+    elif args[0] == "BLE":
+        ensure_ble_app_available()
+        if len(args) > 1:
+            ble_main(args[1])  # <-- Pass the resume path
+        else:
+            ble_main() 
+
     
 if __name__ == "__main__":
     main()

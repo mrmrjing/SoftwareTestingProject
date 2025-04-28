@@ -1,63 +1,152 @@
-# Django Greybox Fuzzer
-A coverage-guided fuzzer for Django applications with OpenAPI specification support 
+# Project Title: Software Testing 50.053
 
-## Overview
-This project implements a greybox fuzzing tool that automatically tests Django web applications by generating HTTP requests based on an OpenAPI specification. The fuzzer uses code coverage feedback to guide test generation, allowing it to discover bugs more efficiently.
+## Table of Contents
+1. [Introduction](#introduction)  
+2. [Purpose & Security Testing Approach](#purpose--security-testing-approach)  
+3. [Architecture](#architecture)  
+   1. [Overall Workflow](#overall-workflow)  
+   2. [BLE Application Fuzzing](#ble-application-fuzzing)  
+   3. [Django Application Fuzzing](#django-application-fuzzing)  
+4. [Installation & Setup](#installation--setup)  
+5. [Usage Examples](#usage-examples)  
+6. [Visual Elements](#visual-elements)  
+7. [Technical Challenges & Key Findings](#technical-challenges--key-findings)  
+8. [Future Development](#future-development)  
+9. [License](#license)  
+10. [Contributing](#contributing)  
 
-## Features
-- OpenAPI Integration: Automatically builds test inputs from OpenAPI specifications
-- Coverage Feedback: Uses runtime code coverage to guide the fuzzing process
-- Smart Mutations: Applies various mutation strategies to discover edge cases
-- Automated Authentication: Handles user registration and login for testing protected endpoints
-- Crash Detection: Identifies server crashes, timeouts, and HTTP 500 errors
-- Detailed Reporting: Tracks and saves all test data for analysis
+---
+
+## 1. Introduction
+- **Software Testing Project** using python
+- Brief high-level overview of the two fuzz targets  
+
+## 2. Purpose & Security Testing Approach
+- Project goals (detecting crashes, undefined behavior, coverage improvements)  
+- Why AFL fuzzing (advantages in genetic mutation, instrumentation)  
+- Scope: BLE vs. Django targets  
+
+## 3. Architecture
+### 3.1 Overall Workflow
+### 3.1 Overall Workflow
+
+```mermaid
+flowchart TD
+    subgraph Bootstrap Environment
+      A[run.sh] --> B[Create/activate venv & install deps]
+    end
+    B --> C[Executes main.py]
+    subgraph Interactive CLI
+      C --> D["print_commands()"]
+      D --> E["get_args_interactive()"]
+      E --> F{User command}
+      F -->|DJANGO| G["ensure_django_app_available()"]
+      G --> H["fuzz_main()" → Django fuzzing]
+      F -->|DJANGO file_path| I["fuzz_main(path)" → targeted fuzzing]
+      F -->|BLE| J[“Not Supported Yet”]
+    end
+```
+- **`run.sh`**  
+  Acts as the project’s bootstrapper. When invoked, it:  
+  1. Ensures you’re in the repository root.  
+  2. Creates (if needed) and activates a Python 3 virtual environment in `.local`.  
+  3. Installs or updates all dependencies from `requirements.txt`.  
+  4. Hands control to `main.py` via `exec`, preserving the activated environment context.
+
+- **`main.py`**  
+  Serves as the interactive entrypoint to the AFL fuzzing harness. On launch it:  
+  1. Loads environment variables from `.env` (e.g. Django folder names).  
+  2. Configures colored CLI output and logging.  
+  3. Displays supported targets and prompts for a command.  
+  4. Validates the command, verifies any prerequisites (e.g. Django project structure), and then invokes the `simple_fuzzer2` harness (`fuzz_main()`) with or without a specific file argument.
+
+### 3.2 BLE Application Fuzzing
+- How AFL integrates with BLE binary  
+- Instrumentation or harness details  
+- Input formats and mutation strategy  
+
+### 3.3 Django Application Fuzzing
+- Web-app harness (HTTP endpoints, input sanitization)  
+- AFL’s server-side instrumentation (e.g., compile flags)  
+- Handling stateful targets (database snapshots, rollbacks)  
+
+## 4. Installation & Setup
+- **Prerequisites:** Python, AFL, BLE toolchain, Django dependencies  
+- **Cloning & Environment:**  
+  ```bash
+  git clone …
+  cd afl-power
+  ./run.sh
 
 
-## Architecture 
-The fuzzer follows the standard greybox fuzzing loop:
 
-- Select a seed from the queue
-- Assign energy (mutation iterations)
-- Generate mutations of the seed
-- Test each mutation
-- Add any crashes to the failure queue
-- Add interesting inputs (new coverage) back to the seed queue
+Here’s a professional, visually-focused **README.md** outline in Markdown. You can later fill in each section with the detailed content.
 
-## TODO list for 19 April 2025: 
-1. Seed Selection Strategy (choose_next)
-  - [x] Random seed selection from OpenAPI spec
-  - [ ] Modify choose_next_seed() to prioritize based on coverage metrics
- 
-2. Parallel Fuzzing (if we have time)
-  - [ ] Add multi-threading support for concurrent request generation
-  - [ ] Implement shared coverage information across processes
- 
-3. Evaluation of fuzzer 
-### Effectiveness
-  - [ ] Graph_1_1 Plot number of unique crashes agaisnt time 
-  - [ ] Graph_1_2 Plot number of interesting test cases agaisnt time 
-  - [ ] Graph_1_3 Plot number of interesting test cases agianst number of tests generated (use the tests.json file)
-  - Coverage obtained with respect to time and generated tests 
-  - Provide a table of all the unique bugs found
+```markdown
+<!-- Badges: build status, code coverage, license, Python version, AFL fuzzing status -->
+<!-- e.g. ![Build Status](…)](…) ![Coverage](…) ![License](…) ![Python](…) -->
 
+# Project Title: AFL-Power (Example)
 
-# How To Run Django Fuzzer : 
+## Table of Contents
+1. [Introduction](#introduction)  
+2. [Purpose & Security Testing Approach](#purpose--security-testing-approach)  
+3. [Architecture](#architecture)  
+   1. [Overall Workflow](#overall-workflow)  
+   2. [BLE Application Fuzzing](#ble-application-fuzzing)  
+   3. [Django Application Fuzzing](#django-application-fuzzing)  
+4. [Installation & Setup](#installation--setup)  
+5. [Usage Examples](#usage-examples)  
+6. [Visual Elements](#visual-elements)  
+7. [Technical Challenges & Key Findings](#technical-challenges--key-findings)  
+8. [Future Development](#future-development)  
+9. [License](#license)  
+10. [Contributing](#contributing)  
 
-install everything inside the django webapplication 
-get the location of your django env file 
+---
 
-What should the "api" do ?
-start django fuzzer / start ble shit 
-for django , allow users to specify their virtual env and shit 
+## 1. Introduction
+- **Project Title** and tagline  
+- Brief high-level overview of the two fuzz targets  
 
+## 2. Purpose & Security Testing Approach
+- Project goals (detecting crashes, undefined behavior, coverage improvements)  
+- Why AFL fuzzing (advantages in genetic mutation, instrumentation)  
+- Scope: BLE vs. Django targets  
 
-allow passing in arguments for openapi file 
+## 3. Architecture
+### 3.1 Overall Workflow
+- Diagram placeholder for end-to-end fuzzing pipeline  
+- Description of `main.py` and `run.sh` roles  
 
+### 3.2 BLE Application Fuzzing
+- How AFL integrates with BLE binary  
+- Instrumentation or harness details  
+- Input formats and mutation strategy  
 
+### 3.3 Django Application Fuzzing
+- Web-app harness (HTTP endpoints, input sanitization)  
+- AFL’s server-side instrumentation (e.g., compile flags)  
+- Handling stateful targets (database snapshots, rollbacks)  
 
-Install virtual environemnt , 
-install the following libraries 
+## 4. Installation & Setup
+- **Prerequisites:** Python, AFL, BLE toolchain, Django dependencies  
+- **Cloning & Environment:**  
+  ```bash
+  git clone …
+  cd afl-power
+  ./run.sh
+  ```  
+  
+- **Configuration:** ENV vars, ports, file paths  
 
-pip install requests tabulate coverage
-from dotenv import load_dotenv
-import os
+## 5. Usage Examples
+- **Fuzz BLE Target:**  
+  ```bash
+  afl-fuzz -i inputs/ble -o findings/ble -- python3 main.py BLE
+  ```  
+- **Fuzz Django Target:**  
+  ```bash
+  afl-fuzz -i inputs/django -o findings/django -- python3 main.py DJANGO
+  ```  
+- Explanation of common flags and output interpretation  

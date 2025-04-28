@@ -1,0 +1,109 @@
+{
+  "0": "2025-04-21T23:58:24.044090",
+  "1": {
+    "timestamp": "2025-04-21T23:58:26.509426",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 101,
+      "name": "p6d",
+      "info": "\ndt",
+      "price": 107
+    }
+  },
+  "2": {
+    "timestamp": "2025-04-21T23:58:26.679229",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 10,
+      "name": "pd",
+      "info": "dt",
+      "price": 99
+    }
+  },
+  "3": {
+    "timestamp": "2025-04-21T23:58:26.854271",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 100,
+      "name": "pd",
+      "info": "dt",
+      "price": 99,
+      "dcsOqsy": -757
+    }
+  },
+  "4": {
+    "timestamp": "2025-04-21T23:58:26.991181",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 97,
+      "name": "p%n$",
+      "nfo": "dt",
+      "price": 256
+    }
+  },
+  "5": {
+    "timestamp": "2025-04-21T23:58:27.176757",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 100,
+      "name": "pd\n",
+      "info": "dt",
+      "KnNRn": "test_value"
+    }
+  },
+  "6": {
+    "timestamp": "2025-04-21T23:58:27.345133",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 100,
+      "info": "dt",
+      "price": 99,
+      "bCv": null
+    }
+  },
+  "7": {
+    "timestamp": "2025-04-21T23:58:27.507181",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 1,
+      "name": "pd\"",
+      "info": "d)t",
+      "price": 99,
+      "rxY": null
+    }
+  },
+  "8": {
+    "timestamp": "2025-04-21T23:58:27.637556",
+    "path": "/datatb/product/delete/{id}/",
+    "method": "GET",
+    "input": {
+      "OJjt": null,
+      "dCVuD": true,
+      "CxeMR": true
+    }
+  },
+  "9": {
+    "timestamp": "2025-04-21T23:58:27.771207",
+    "path": "/datatb/product/delete/{id}/",
+    "method": "GET",
+    "input": {
+      "confirm": true,
+      "gKEGlyAn": -260
+    }
+  },
+  "10": {
+    "timestamp": "2025-04-21T23:58:27.908204",
+    "path": "/datatb/product/delete/{id}/",
+    "method": "GET",
+    "input": {
+      "confirm": -127
+    }
+  }
+}

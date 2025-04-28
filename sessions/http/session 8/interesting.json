@@ -1,0 +1,214 @@
+{
+  "0": "2025-04-21T22:27:00.546362",
+  "1": {
+    "timestamp": "2025-04-21T22:27:03.505820",
+    "path": "/datatb/product/edit/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 100,
+      "name": "6pd",
+      "nfo": "@t",
+      "price": 115
+    }
+  },
+  "2": {
+    "timestamp": "2025-04-21T22:27:03.627857",
+    "path": "/datatb/product/edit/{id}/",
+    "method": "POST",
+    "input": {
+      "id": -1,
+      "name": "J`d",
+      "info": "dt",
+      "price": 256,
+      "lpxhcA": true,
+      "Peq": -638
+    }
+  },
+  "3": {
+    "timestamp": "2025-04-21T22:27:03.746729",
+    "path": "/datatb/product/edit/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 200,
+      "name": "pd",
+      "info": "dt",
+      "price": 99,
+      "MNAIDCy": -578
+    }
+  },
+  "4": {
+    "timestamp": "2025-04-21T22:27:03.889004",
+    "path": "/datatb/product/edit/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 200,
+      "name": "pd",
+      "info": "dt",
+      "price": 99
+    }
+  },
+  "5": {
+    "timestamp": "2025-04-21T22:27:04.017490",
+    "path": "/datatb/product/edit/{id}/",
+    "method": "POST",
+    "input": {
+      "name": "pd",
+      "info": "dt",
+      "price": 104,
+      "sAMlv": "tst_value"
+    }
+  },
+  "6": {
+    "timestamp": "2025-04-21T22:27:04.142431",
+    "path": "/datatb/product/edit/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 100,
+      "name": "pd",
+      "info": "dt",
+      "price": 32767
+    }
+  },
+  "7": {
+    "timestamp": "2025-04-21T22:27:04.262793",
+    "path": "/datatb/product/edit/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 100,
+      "name": "pd",
+      "info": "Ht",
+      "price": 99
+    }
+  },
+  "8": {
+    "timestamp": "2025-04-21T22:27:04.392634",
+    "path": "/datatb/product/delete/{id}/",
+    "method": "POST",
+    "input": {
+      "cascade": true,
+      "permanet": 65535,
+      "vIoqSt": null
+    }
+  },
+  "9": {
+    "timestamp": "2025-04-21T22:27:04.519308",
+    "path": "/datatb/product/delete/{id}/",
+    "method": "POST",
+    "input": {
+      "cascade": 255,
+      "perma.ent": 64
+    }
+  },
+  "10": {
+    "timestamp": "2025-04-21T22:27:04.648290",
+    "path": "/datatb/product/delete/{id}/",
+    "method": "POST",
+    "input": {
+      "cascade": 9,
+      "permanent": false,
+      "FoseP": null
+    }
+  },
+  "11": {
+    "timestamp": "2025-04-21T22:27:04.771967",
+    "path": "/datatb/product/delete/{id}/",
+    "method": "POST",
+    "input": {
+      "permanent": false
+    }
+  },
+  "12": {
+    "timestamp": "2025-04-21T22:27:04.892689",
+    "path": "/datatb/product/delete/{id}/",
+    "method": "POST",
+    "input": {
+      "cascade": 255,
+      "permanent": false
+    }
+  },
+  "13": {
+    "timestamp": "2025-04-21T22:27:05.013802",
+    "path": "/datatb/product/delete/{id}/",
+    "method": "POST",
+    "input": {
+      "cascade": true,
+      "permanent": 4294967295
+    }
+  },
+  "14": {
+    "timestamp": "2025-04-21T22:27:05.141517",
+    "path": "/datatb/product/delete/{id}/",
+    "method": "POST",
+    "input": {
+      "cascade": 32767,
+      "Dnzjf": null,
+      "XXZtVqe": true,
+      "UATyxjBd": -222
+    }
+  },
+  "15": {
+    "timestamp": "2025-04-21T22:27:05.286753",
+    "path": "/datatb/product/",
+    "method": "DELETE",
+    "input": {
+      "id": 100,
+      "name": "pd",
+      "info": "dt",
+      "price": 99
+    }
+  },
+  "16": {
+    "timestamp": "2025-04-21T22:27:05.418351",
+    "path": "/datatb/product/",
+    "method": "DELETE",
+    "input": {
+      "id": 256,
+      "name": "pd",
+      "info": "t"
+    }
+  },
+  "17": {
+    "timestamp": "2025-04-21T22:27:05.557955",
+    "path": "/datatb/product/",
+    "method": "DELETE",
+    "input": {
+      "id": 200,
+      "name": "pd",
+      "info": "dt",
+      "price": 99
+    }
+  },
+  "18": {
+    "timestamp": "2025-04-21T22:27:05.680910",
+    "path": "/datatb/product/",
+    "method": "DELETE",
+    "input": {
+      "id": 4294967295,
+      "name": "pd*",
+      "in&o": "dt",
+      "prce": 256
+    }
+  },
+  "19": {
+    "timestamp": "2025-04-21T22:27:05.879932",
+    "path": "/datatb/product/",
+    "method": "DELETE",
+    "input": {
+      "id": 100,
+      "name": "pd",
+      "info": "dt",
+      "price": 99
+    }
+  },
+  "20": {
+    "timestamp": "2025-04-21T22:27:06.036986",
+    "path": "/datatb/product/",
+    "method": "DELETE",
+    "input": {
+      "id": 100,
+      "name": "pdd",
+      "info": "dt",
+      "price": 99
+    }
+  }
+}

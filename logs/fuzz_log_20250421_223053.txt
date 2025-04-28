@@ -1,0 +1,49 @@
+2025-04-21 22:30:53,642 - INFO - Starting Django fuzzer
+2025-04-21 22:30:53,643 - INFO - Erasing previous coverage data...
+2025-04-21 22:30:53,643 - INFO - Deleted existing coverage_data.json.
+2025-04-21 22:30:53,643 - INFO - Starting Django server with coverage from: /Users/speedpowermac/Documents/projects/CODE_MAIN/SoftwareTestingProject/DjangoWebApplication
+2025-04-21 22:30:53,643 - INFO - ***** PYTHON PATH IS *****/Users/speedpowermac/Documents/projects/CODE_MAIN/SoftwareTestingProject/DjangoWebApplication/virtual/bin/python
+2025-04-21 22:30:53,643 - INFO - ***** CWD IS *****/Users/speedpowermac/Documents/projects/CODE_MAIN/SoftwareTestingProject/DjangoWebApplication/virtual/bin/python
+2025-04-21 22:30:53,645 - INFO - Django server process started with coverage
+2025-04-21 22:30:53,646 - INFO - Loaded OpenAPI specification from open_api.json
+2025-04-21 22:30:53,646 - INFO - Using base URL: http://localhost:8000
+2025-04-21 22:30:53,646 - INFO - Added seed for POST /api/product/{id}/: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-21 22:30:53,646 - INFO - Added seed for PUT /api/product/{id}/: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-21 22:30:53,646 - INFO - Added seed for POST /datatb/product/: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-21 22:30:53,646 - INFO - Added seed for PUT /datatb/product/: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-21 22:30:53,646 - INFO - Added seed for POST /datatb/product/export/: {'search': '', 'hidden_cols': [], 'type': 'pdf'}
+2025-04-21 22:30:53,646 - INFO - Added seed for PUT /datatb/product/export/: {'format': 'pdf', 'template': 'default'}
+2025-04-21 22:30:53,646 - INFO - Added seed for POST /datatb/product/edit/{id}/: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-21 22:30:53,646 - INFO - Added seed for PUT /datatb/product/edit/{id}/: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-21 22:30:53,646 - INFO - Added seed for POST /datatb/product/delete/{id}/: {'confirm': True}
+2025-04-21 22:30:53,646 - INFO - Added seed for PUT /datatb/product/delete/{id}/: {'cascade': True, 'permanent': False}
+2025-04-21 22:30:53,646 - INFO - Seed queue initialized from OpenAPI spec.
+2025-04-21 22:30:53,646 - INFO - Waiting for server at http://localhost:8000 to be available (timeout: 30s)
+2025-04-21 22:30:56,360 - INFO - Server is up and running! Status code: 200
+2025-04-21 22:30:56,588 - INFO - Login successful!
+2025-04-21 22:30:56,589 - INFO - Authentication successful. Starting greybox fuzzing...
+2025-04-21 22:30:56,589 - INFO - Selected seed with energy 7: GET /api/product/{id}/
+2025-04-21 22:30:56,589 - INFO - Mutation 1/7: GET /api/product/100/
+2025-04-21 22:30:56,610 - INFO - Found new coverage path with hash: 24a6886098078f261de5686a145a294f
+2025-04-21 22:30:56,610 - INFO - New coverage from: GET /api/product/100/
+2025-04-21 22:30:56,610 - INFO - Found interesting test case with new coverage: GET /api/product/{id}/
+2025-04-21 22:30:56,713 - INFO - Mutation 2/7: GET /api/product/22/
+2025-04-21 22:30:56,840 - INFO - Mutation 3/7: GET /api/product//2/
+2025-04-21 22:30:56,861 - INFO - Found new coverage path with hash: 282e198543187e3a4f653d6ada0bd7f6
+2025-04-21 22:30:56,861 - INFO - New coverage from: GET /api/product//2/
+2025-04-21 22:30:56,861 - INFO - Found interesting test case with new coverage: GET /api/product/{id}/
+2025-04-21 22:30:56,962 - INFO - Mutation 4/7: GET /api/product/80/
+2025-04-21 22:30:57,114 - INFO - Mutation 5/7: GET /api/product/98/
+2025-04-21 22:30:57,238 - INFO - Mutation 6/7: GET /api/product/51/
+2025-04-21 22:30:57,367 - INFO - Mutation 7/7: GET /api/product/5K/
+2025-04-21 22:30:57,493 - INFO - Selected seed with energy 7: DELETE /datatb/product/
+2025-04-21 22:30:57,493 - INFO - Mutation 1/7: DELETE /datatb/product/
+2025-04-21 22:30:57,633 - INFO - Mutation 2/7: DELETE /datatb/product/
+2025-04-21 22:30:57,764 - INFO - Mutation 3/7: DELETE /datatb/product/
+2025-04-21 22:30:57,795 - INFO - Progress: 10 tests, 0 crashes, 2 interesting cases, 1.21 seconds elapsed
+2025-04-21 22:30:57,873 - INFO - Fuzzing interrupted by user
+2025-04-21 22:30:57,875 - INFO - Session data saved to sessions/http/session 11
+2025-04-21 22:30:57,875 - INFO - No bugs to save
+2025-04-21 22:30:57,875 - INFO - Session data saved to sessions/http/session 11
+2025-04-21 22:30:57,875 - INFO - Terminating server process...
+2025-04-21 22:30:57,940 - INFO - Fuzzing completed

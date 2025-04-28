@@ -1,0 +1,52 @@
+Input:
+[
+  [
+    2,
+    217,
+    245,
+    32,
+    78,
+    96
+  ],
+  [
+    2,
+    217,
+    245,
+    32,
+    78,
+    96
+  ],
+  [
+    18
+  ],
+  [
+    199,
+    134,
+    207,
+    142,
+    37
+  ],
+  [
+    11
+  ],
+  [
+    11
+  ],
+  [
+    91
+  ],
+  [
+    116
+  ],
+  [
+    133,
+    60,
+    12
+  ]
+]
+
+Logs:
+  [Bluetooth] Received command: 0x02 (Close)
+  [Bluetooth] Received command: 0x02 (Close)
+  [State] Servo Enabled
+  [State] Servo Enabled

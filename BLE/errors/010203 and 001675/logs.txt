@@ -1,0 +1,136 @@
+(base) C:\Users\jaga9\Desktop\smart-lock-ctf-2025>.\venv\python Smartlock.py  
+[1] Connecting to "Smart Lock [Group 11]"...
+[!] Serial Port: COM7
+[!] Connected. Type 'help' for available commands.
+smartlock> auth  
+[!] --> Command:  [0, 1, 2, 3, 4, 5, 6]
+[!] <-- Response: [0]
+[<] Response: [0]
+smartlock> auth
+[!] --> Command:  [0, 1, 2, 3, 4, 5, 6]
+[!] <-- Response: [0]
+[<] Response: [0]
+smartlock> auth
+[!] --> Command:  [0, 1, 2, 3, 4, 5, 6]
+[!] <-- Response: [0]
+[<] Response: [0]
+smartlock> auth
+[!] --> Command:  [0, 1, 2, 3, 4, 5, 6]
+[!] <-- Response: [0]
+[<] Response: [0]
+smartlock> send FF FF FF FF FF FF
+[!] --> Command:  [255, 255, 255, 255, 255, 255]
+[!] <-- Response: [4]
+[<] Response: [4]
+smartlock> send FF FF FF FF FF FF
+[!] --> Command:  [255, 255, 255, 255, 255, 255]
+[!] <-- Response: [4]
+[<] Response: [4]
+smartlock> send FF FF FF FF FF FF
+[!] --> Command:  [255, 255, 255, 255, 255, 255]
+[!] <-- Response: [4]
+[<] Response: [4]
+smartlock> auth
+[!] --> Command:  [0, 1, 2, 3, 4, 5, 6]
+[!] <-- Response: [0]
+[<] Response: [0]
+smartlock> auth
+[!] --> Command:  [0, 1, 2, 3, 4, 5, 6]
+[!] <-- Response: [0]
+[<] Response: [0]
+smartlock> auth
+[!] --> Command:  [0, 1, 2, 3, 4, 5, 6]
+[!] <-- Response: [0]
+[<] Response: [0]
+smartlock> auth
+[!] --> Command:  [0, 1, 2, 3, 4, 5, 6]
+[!] <-- Response: [0]
+[<] Response: [0]
+smartlock> auth
+[!] --> Command:  [0, 1, 2, 3, 4, 5, 6]
+[!] <-- Response: [0]
+[<] Response: [0]
+smartlock> open
+[!] --> Command:  [1]
+[!] <-- Response: [0]
+[<] Response: [0]
+smartlock> close
+[!] --> Command:  [2]
+[!] <-- Response: [0]
+[<] Response: [0]
+smartlock> open
+[!] --> Command:  [1]
+[!] <-- Response: [0]
+[<] Response: [0]
+smartlock> close
+[!] --> Command:  [2]
+[!] <-- Response: [0]
+[<] Response: [0]
+smartlock> logs
+[📜 Logs]
+  [Bluetooth] Received command: 0x01 (Open)
+  [State] Opening the lock mechanism
+  [State] Lock mechanism open
+  [Bluetooth] Received command: 0x02 (Close)
+  [State] Closing the lock mechanism
+  [State] Lock mechanism closed
+  [Bluetooth] Received command: 0x01 (Open)
+  [State] Opening the lock mechanism
+  [State] Lock mechanism open
+  [Bluetooth] Received command: 0x02 (Close)
+smartlock> auth
+[!] --> Command:  [0, 1, 2, 3, 4, 5, 6]
+
+[!] Unexpected exception: [WinError -2147023673] The operation was canceled by the user
+[!] Disconnecting...
+
+[🔚 Full ESP32 Logs from this session]
+
+  [Bluetooth] User Connected
+  [Bluetooth] Received command: 0x00 (Authenticate)
+  [Auth] Authentication Sucessfull
+  [State] Device state: Authenticated
+  [Bluetooth] Received command: 0x00 (Authenticate)
+  [Auth] Authentication Sucessfull
+  [State] Device state: Authenticated
+  [Bluetooth] Received command: 0x00 (Authenticate)
+  [Auth] Authentication Sucessfull
+  [State] Device state: Authenticated
+  [Bluetooth] Received command: 0x00 (Authenticate)
+  [Auth] Authentication Sucessfull
+  [State] Device state: Authenticated
+  [Error] Code: 0xtttttt
+  [Error] Code: 0xtttttt
+  [Error] Code: 0xtttttt
+  [Bluetooth] Received command: 0x00 (Authenticate)
+  [Auth] Authentication Sucessfull
+  [State] Device state: Authenticated
+  [Bluetooth] Received command: 0x00 (Authenticate)
+  [Auth] Authentication Sucessfull
+  [State] Device state: Authenticated
+  [Warning] Code: 0x001675
+  [Bluetooth] Received command: 0x00 (Authenticate)
+  [Auth] Authentication Sucessfull
+  [State] Device state: Authenticated
+  [Bluetooth] Received command: 0x00 (Authenticate)
+  [Auth] Authentication Sucessfull
+  [State] Device state: Authenticated
+  [Bluetooth] Received command: 0x00 (Authenticate)
+  [Auth] Authentication Sucessfull
+  [State] Device state: Authenticated
+  [Bluetooth] Received command: 0x01 (Open)
+  [State] Opening the lock mechanism
+  [State] Lock mechanism open
+  [Bluetooth] Received command: 0x02 (Close)
+  [State] Closing the lock mechanism
+  [State] Lock mechanism closed
+  [Bluetooth] Received command: 0x01 (Open)
+  [State] Opening the lock mechanism
+  [State] Lock mechanism open
+  [Bluetooth] Received command: 0x02 (Close)
+  [State] Closing the lock mechanism
+  [State] Lock mechanism closed
+  [Bluetooth] Received command: 0x00 (Authenticate)
+  [Error] Code: 0x010203
+
+[✔] Logs saved to cli_session_logs_20250325_185031.txt

@@ -1,0 +1,23 @@
+Input:
+[
+  [
+    0,
+    0,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  [
+    123
+  ],
+  [
+    11
+  ]
+]
+
+Logs:
+  [Bluetooth] Received command: 0x00 (Authenticate)
+  [AUTH] Authentication Failed
+  [State] Servo Enabled

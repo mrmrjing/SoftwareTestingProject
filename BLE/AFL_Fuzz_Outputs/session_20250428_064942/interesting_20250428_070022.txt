@@ -1,0 +1,52 @@
+Input:
+[
+  [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  [
+    27,
+    41,
+    54,
+    37,
+    68,
+    179
+  ],
+  [
+    86,
+    236,
+    10,
+    242,
+    178,
+    100
+  ],
+  [
+    11
+  ],
+  [
+    137,
+    72,
+    126,
+    87,
+    26,
+    250
+  ],
+  [
+    11
+  ],
+  [
+    11
+  ]
+]
+
+Logs:
+  [Bluetooth] Received command: 0x01 (Open)
+  [State] Opening the lock mechanism
+  [State] Lock mechanism open
+  [State] Servo Enabled
+  [State] Servo Enabled
+  [State] Servo Enabled

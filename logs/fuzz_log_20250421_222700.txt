@@ -1,0 +1,127 @@
+2025-04-21 22:27:00,540 - INFO - Starting Django fuzzer
+2025-04-21 22:27:00,540 - INFO - Erasing previous coverage data...
+2025-04-21 22:27:00,540 - INFO - Deleted existing coverage_data.json.
+2025-04-21 22:27:00,540 - INFO - Starting Django server with coverage from: /Users/speedpowermac/Documents/projects/CODE_MAIN/SoftwareTestingProject/DjangoWebApplication
+2025-04-21 22:27:00,544 - INFO - Django server process started with coverage
+2025-04-21 22:27:00,545 - INFO - Loaded OpenAPI specification from open_api.json
+2025-04-21 22:27:00,545 - INFO - Using base URL: http://localhost:8000
+2025-04-21 22:27:00,545 - INFO - Added seed for POST /api/product/{id}/: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-21 22:27:00,545 - INFO - Added seed for PUT /api/product/{id}/: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-21 22:27:00,545 - INFO - Added seed for POST /datatb/product/: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-21 22:27:00,546 - INFO - Added seed for PUT /datatb/product/: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-21 22:27:00,546 - INFO - Added seed for POST /datatb/product/export/: {'search': '', 'hidden_cols': [], 'type': 'pdf'}
+2025-04-21 22:27:00,546 - INFO - Added seed for PUT /datatb/product/export/: {'format': 'pdf', 'template': 'default'}
+2025-04-21 22:27:00,546 - INFO - Added seed for POST /datatb/product/edit/{id}/: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-21 22:27:00,546 - INFO - Added seed for PUT /datatb/product/edit/{id}/: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-21 22:27:00,546 - INFO - Added seed for POST /datatb/product/delete/{id}/: {'confirm': True}
+2025-04-21 22:27:00,546 - INFO - Added seed for PUT /datatb/product/delete/{id}/: {'cascade': True, 'permanent': False}
+2025-04-21 22:27:00,546 - INFO - Seed queue initialized from OpenAPI spec.
+2025-04-21 22:27:00,546 - INFO - Waiting for server at http://localhost:8000 to be available (timeout: 30s)
+2025-04-21 22:27:03,267 - INFO - Server is up and running! Status code: 200
+2025-04-21 22:27:03,490 - INFO - Login successful!
+2025-04-21 22:27:03,490 - INFO - Authentication successful. Starting greybox fuzzing...
+2025-04-21 22:27:03,490 - INFO - Selected seed with energy 7: POST /datatb/product/edit/{id}/
+2025-04-21 22:27:03,490 - INFO - Mutation 1/7: POST /datatb/product/edit/9583364/
+2025-04-21 22:27:03,490 - INFO - Payload: {'id': 100, 'name': '6pd', 'nfo': '@t', 'price': 115}
+2025-04-21 22:27:03,505 - INFO - Found new coverage path with hash: 151643f9f43a54564e135fae0de6287c
+2025-04-21 22:27:03,505 - INFO - New coverage from: GET /
+2025-04-21 22:27:03,505 - INFO - Found interesting test case with new coverage: POST /datatb/product/edit/{id}/
+2025-04-21 22:27:03,608 - INFO - Mutation 2/7: POST /datatb/product/edit/54/
+2025-04-21 22:27:03,608 - INFO - Payload: {'id': -1, 'name': 'J`d', 'info': 'dt', 'price': 256, 'lpxhcA': True, 'Peq': -638}
+2025-04-21 22:27:03,627 - INFO - Found new coverage path with hash: 151643f9f43a54564e135fae0de6287c
+2025-04-21 22:27:03,627 - INFO - New coverage from: GET /
+2025-04-21 22:27:03,627 - INFO - Found interesting test case with new coverage: POST /datatb/product/edit/{id}/
+2025-04-21 22:27:03,733 - INFO - Mutation 3/7: POST /datatb/product/edit/22/
+2025-04-21 22:27:03,733 - INFO - Payload: {'id': 200, 'name': 'pd', 'info': 'dt', 'price': 99, 'MNAIDCy': -578}
+2025-04-21 22:27:03,746 - INFO - Found new coverage path with hash: 151643f9f43a54564e135fae0de6287c
+2025-04-21 22:27:03,746 - INFO - New coverage from: GET /
+2025-04-21 22:27:03,746 - INFO - Found interesting test case with new coverage: POST /datatb/product/edit/{id}/
+2025-04-21 22:27:03,850 - INFO - Mutation 4/7: POST /datatb/product/edit/97/
+2025-04-21 22:27:03,851 - INFO - Payload: {'id': 200, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-21 22:27:03,888 - INFO - Found new coverage path with hash: 151643f9f43a54564e135fae0de6287c
+2025-04-21 22:27:03,888 - INFO - New coverage from: GET /
+2025-04-21 22:27:03,889 - INFO - Found interesting test case with new coverage: POST /datatb/product/edit/{id}/
+2025-04-21 22:27:03,994 - INFO - Mutation 5/7: POST /datatb/product/edit/-1/
+2025-04-21 22:27:03,994 - INFO - Payload: {'name': 'pd', 'info': 'dt', 'price': 104, 'sAMlv': 'tst_value'}
+2025-04-21 22:27:04,017 - INFO - Found new coverage path with hash: 151643f9f43a54564e135fae0de6287c
+2025-04-21 22:27:04,017 - INFO - New coverage from: GET /
+2025-04-21 22:27:04,017 - INFO - Found interesting test case with new coverage: POST /datatb/product/edit/{id}/
+2025-04-21 22:27:04,121 - INFO - Mutation 6/7: POST /datatb/product/edit/24/
+2025-04-21 22:27:04,121 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 32767}
+2025-04-21 22:27:04,142 - INFO - Found new coverage path with hash: 151643f9f43a54564e135fae0de6287c
+2025-04-21 22:27:04,142 - INFO - New coverage from: GET /
+2025-04-21 22:27:04,142 - INFO - Found interesting test case with new coverage: POST /datatb/product/edit/{id}/
+2025-04-21 22:27:04,247 - INFO - Mutation 7/7: POST /datatb/product/edit/17/
+2025-04-21 22:27:04,247 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'Ht', 'price': 99}
+2025-04-21 22:27:04,262 - INFO - Found new coverage path with hash: 151643f9f43a54564e135fae0de6287c
+2025-04-21 22:27:04,262 - INFO - New coverage from: GET /
+2025-04-21 22:27:04,262 - INFO - Found interesting test case with new coverage: POST /datatb/product/edit/{id}/
+2025-04-21 22:27:04,368 - INFO - Selected seed with energy 7: POST /datatb/product/delete/{id}/
+2025-04-21 22:27:04,368 - INFO - Mutation 1/7: POST /datatb/product/delete/6102422/
+2025-04-21 22:27:04,368 - INFO - Payload: {'cascade': True, 'permanet': 65535, 'vIoqSt': None}
+2025-04-21 22:27:04,392 - INFO - Found new coverage path with hash: 151643f9f43a54564e135fae0de6287c
+2025-04-21 22:27:04,392 - INFO - New coverage from: GET /
+2025-04-21 22:27:04,392 - INFO - Found interesting test case with new coverage: POST /datatb/product/delete/{id}/
+2025-04-21 22:27:04,498 - INFO - Mutation 2/7: POST /datatb/product/delete/64/
+2025-04-21 22:27:04,498 - INFO - Payload: {'cascade': 255, 'perma.ent': 64}
+2025-04-21 22:27:04,519 - INFO - Found new coverage path with hash: 151643f9f43a54564e135fae0de6287c
+2025-04-21 22:27:04,519 - INFO - New coverage from: GET /
+2025-04-21 22:27:04,519 - INFO - Found interesting test case with new coverage: POST /datatb/product/delete/{id}/
+2025-04-21 22:27:04,622 - INFO - Mutation 3/7: POST /datatb/product/delete/9/
+2025-04-21 22:27:04,623 - INFO - Payload: {'cascade': 9, 'permanent': False, 'FoseP': None}
+2025-04-21 22:27:04,648 - INFO - Found new coverage path with hash: 151643f9f43a54564e135fae0de6287c
+2025-04-21 22:27:04,648 - INFO - New coverage from: GET /
+2025-04-21 22:27:04,648 - INFO - Found interesting test case with new coverage: POST /datatb/product/delete/{id}/
+2025-04-21 22:27:04,648 - INFO - Progress: 10 tests, 0 crashes, 10 interesting cases, 1.16 seconds elapsed
+2025-04-21 22:27:04,748 - INFO - Mutation 4/7: POST /datatb/product/delete/63/
+2025-04-21 22:27:04,749 - INFO - Payload: {'permanent': False}
+2025-04-21 22:27:04,771 - INFO - Found new coverage path with hash: 151643f9f43a54564e135fae0de6287c
+2025-04-21 22:27:04,771 - INFO - New coverage from: GET /
+2025-04-21 22:27:04,771 - INFO - Found interesting test case with new coverage: POST /datatb/product/delete/{id}/
+2025-04-21 22:27:04,876 - INFO - Mutation 5/7: POST /datatb/product/delete/81/
+2025-04-21 22:27:04,876 - INFO - Payload: {'cascade': 255, 'permanent': False}
+2025-04-21 22:27:04,892 - INFO - Found new coverage path with hash: 151643f9f43a54564e135fae0de6287c
+2025-04-21 22:27:04,892 - INFO - New coverage from: GET /
+2025-04-21 22:27:04,892 - INFO - Found interesting test case with new coverage: POST /datatb/product/delete/{id}/
+2025-04-21 22:27:04,994 - INFO - Mutation 6/7: POST /datatb/product/delete/49/
+2025-04-21 22:27:04,995 - INFO - Payload: {'cascade': True, 'permanent': 4294967295}
+2025-04-21 22:27:05,013 - INFO - Found new coverage path with hash: 151643f9f43a54564e135fae0de6287c
+2025-04-21 22:27:05,013 - INFO - New coverage from: GET /
+2025-04-21 22:27:05,013 - INFO - Found interesting test case with new coverage: POST /datatb/product/delete/{id}/
+2025-04-21 22:27:05,119 - INFO - Mutation 7/7: POST /datatb/product/delete/-1/
+2025-04-21 22:27:05,119 - INFO - Payload: {'cascade': 32767, 'Dnzjf': None, 'XXZtVqe': True, 'UATyxjBd': -222}
+2025-04-21 22:27:05,141 - INFO - Found new coverage path with hash: 151643f9f43a54564e135fae0de6287c
+2025-04-21 22:27:05,141 - INFO - New coverage from: GET /
+2025-04-21 22:27:05,141 - INFO - Found interesting test case with new coverage: POST /datatb/product/delete/{id}/
+2025-04-21 22:27:05,245 - INFO - Selected seed with energy 7: DELETE /datatb/product/
+2025-04-21 22:27:05,245 - INFO - Mutation 1/7: DELETE /datatb/product/
+2025-04-21 22:27:05,286 - INFO - Found new coverage path with hash: 151643f9f43a54564e135fae0de6287c
+2025-04-21 22:27:05,286 - INFO - New coverage from: GET /
+2025-04-21 22:27:05,286 - INFO - Found interesting test case with new coverage: DELETE /datatb/product/
+2025-04-21 22:27:05,390 - INFO - Mutation 2/7: DELETE /datatb/product/
+2025-04-21 22:27:05,418 - INFO - Found new coverage path with hash: 151643f9f43a54564e135fae0de6287c
+2025-04-21 22:27:05,418 - INFO - New coverage from: GET /
+2025-04-21 22:27:05,418 - INFO - Found interesting test case with new coverage: DELETE /datatb/product/
+2025-04-21 22:27:05,523 - INFO - Mutation 3/7: DELETE /datatb/product/
+2025-04-21 22:27:05,557 - INFO - Found new coverage path with hash: 151643f9f43a54564e135fae0de6287c
+2025-04-21 22:27:05,557 - INFO - New coverage from: GET /
+2025-04-21 22:27:05,557 - INFO - Found interesting test case with new coverage: DELETE /datatb/product/
+2025-04-21 22:27:05,658 - INFO - Mutation 4/7: DELETE /datatb/product/
+2025-04-21 22:27:05,680 - INFO - Found new coverage path with hash: 151643f9f43a54564e135fae0de6287c
+2025-04-21 22:27:05,680 - INFO - New coverage from: GET /
+2025-04-21 22:27:05,680 - INFO - Found interesting test case with new coverage: DELETE /datatb/product/
+2025-04-21 22:27:05,786 - INFO - Mutation 5/7: DELETE /datatb/product/
+2025-04-21 22:27:05,879 - INFO - Found new coverage path with hash: 151643f9f43a54564e135fae0de6287c
+2025-04-21 22:27:05,879 - INFO - New coverage from: GET /
+2025-04-21 22:27:05,879 - INFO - Found interesting test case with new coverage: DELETE /datatb/product/
+2025-04-21 22:27:05,983 - INFO - Mutation 6/7: DELETE /datatb/product/
+2025-04-21 22:27:06,036 - INFO - Found new coverage path with hash: 151643f9f43a54564e135fae0de6287c
+2025-04-21 22:27:06,036 - INFO - New coverage from: GET /
+2025-04-21 22:27:06,036 - INFO - Found interesting test case with new coverage: DELETE /datatb/product/
+2025-04-21 22:27:06,037 - INFO - Progress: 20 tests, 0 crashes, 20 interesting cases, 2.55 seconds elapsed
+2025-04-21 22:27:06,089 - INFO - Fuzzing interrupted by user
+2025-04-21 22:27:06,090 - INFO - Session data saved to sessions/http/session 8
+2025-04-21 22:27:06,090 - INFO - No bugs to save
+2025-04-21 22:27:06,090 - INFO - Session data saved to sessions/http/session 8
+2025-04-21 22:27:06,090 - INFO - Terminating server process...
+2025-04-21 22:27:06,154 - INFO - Fuzzing completed

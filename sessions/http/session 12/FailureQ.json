@@ -1,0 +1,32 @@
+{
+  "/api/product/{id}/": {
+    "GET": {},
+    "POST": {},
+    "PUT": {},
+    "DELETE": {}
+  },
+  "/datatb/product/": {
+    "GET": {},
+    "POST": {},
+    "PUT": {},
+    "DELETE": {}
+  },
+  "/datatb/product/export/": {
+    "GET": {},
+    "POST": {},
+    "PUT": {},
+    "DELETE": {}
+  },
+  "/datatb/product/edit/{id}/": {
+    "GET": {},
+    "POST": {},
+    "PUT": {},
+    "DELETE": {}
+  },
+  "/datatb/product/delete/{id}/": {
+    "GET": {},
+    "POST": {},
+    "PUT": {},
+    "DELETE": {}
+  }
+}

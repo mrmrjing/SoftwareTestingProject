@@ -1,0 +1,91 @@
+{
+  "0": "2025-04-21T22:30:15.157015",
+  "1": {
+    "timestamp": "2025-04-21T22:30:18.175723",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 100,
+      "name": "pd>",
+      "info": "dt",
+      "price": 99
+    }
+  },
+  "2": {
+    "timestamp": "2025-04-21T22:30:18.375926",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 100,
+      "info": "dt",
+      "price": 99,
+      "XgeZM": "test_value"
+    }
+  },
+  "3": {
+    "timestamp": "2025-04-21T22:30:18.538043",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 256,
+      "info": "dt",
+      "price": 99
+    }
+  },
+  "4": {
+    "timestamp": "2025-04-21T22:30:18.698005",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 100,
+      "name": "b\"pd",
+      "info": "dt",
+      "price": 99
+    }
+  },
+  "5": {
+    "timestamp": "2025-04-21T22:30:18.860543",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {
+      "name": "pd",
+      "info": "dt",
+      "price": 109,
+      "sQUdro": null
+    }
+  },
+  "6": {
+    "timestamp": "2025-04-21T22:30:19.035592",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 100,
+      "name": "pd",
+      "info": "dt",
+      "price": 99
+    }
+  },
+  "7": {
+    "timestamp": "2025-04-21T22:30:19.197701",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 18,
+      "name": "pd",
+      "info": "%ndt",
+      "price": 198,
+      "RqYkm": null,
+      "clZ": true
+    }
+  },
+  "8": {
+    "timestamp": "2025-04-21T22:30:19.336218",
+    "path": "/datatb/product/export/",
+    "method": "PUT",
+    "input": {
+      "search": "",
+      "hidden_cols": [],
+      "t{pe": "pdf"
+    }
+  }
+}

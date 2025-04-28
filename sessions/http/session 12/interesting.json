@@ -1,0 +1,97 @@
+{
+  "0": "2025-04-21T23:51:46.398305",
+  "1": {
+    "timestamp": "2025-04-21T23:51:49.367588",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 99,
+      "name": "pd",
+      "pice": 255
+    }
+  },
+  "2": {
+    "timestamp": "2025-04-21T23:51:49.537153",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 100,
+      "name": "pd",
+      "ino": "dt",
+      "price": 99
+    }
+  },
+  "3": {
+    "timestamp": "2025-04-21T23:51:49.751174",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 100,
+      "name": "pd)",
+      "info": "dt",
+      "pice": 99
+    }
+  },
+  "4": {
+    "timestamp": "2025-04-21T23:51:49.911635",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 100,
+      "info": "dt",
+      "price": 99
+    }
+  },
+  "5": {
+    "timestamp": "2025-04-21T23:51:50.083192",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {
+      "name": "p",
+      "info": "dt",
+      "price": 99
+    }
+  },
+  "6": {
+    "timestamp": "2025-04-21T23:51:50.258020",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 100,
+      "name": "pd",
+      "info": "dt",
+      "price": 99
+    }
+  },
+  "7": {
+    "timestamp": "2025-04-21T23:51:50.432684",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 100,
+      "name": "pd",
+      "info": "d(t",
+      "price": 99
+    }
+  },
+  "8": {
+    "timestamp": "2025-04-21T23:51:50.599684",
+    "path": "/datatb/product/export/",
+    "method": "GET",
+    "input": {
+      "search": "",
+      "hidden_cmls": [],
+      "type": "ppdf"
+    }
+  },
+  "9": {
+    "timestamp": "2025-04-21T23:51:50.766672",
+    "path": "/datatb/product/export/",
+    "method": "GET",
+    "input": {
+      "search": "",
+      "hidden_cols": [],
+      "typ": "pdf"
+    }
+  }
+}
