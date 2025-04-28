@@ -6,8 +6,11 @@ import sys
 import json
 from pathlib import Path
 import argparse
-sys.path.append(str(Path(__file__).parent.resolve()))
 
+
+BASE_DIR = Path(__file__).parent.resolve()
+os.chdir(BASE_DIR)
+sys.path.append(str(BASE_DIR))
 
 from BLEClient import BLEClient
 # === Configuration ===

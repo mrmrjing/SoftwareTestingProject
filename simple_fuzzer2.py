@@ -338,18 +338,18 @@ class FuzzerClient:
 
         # Initialize the bug classifier
         self.bug_classifier = BugClassifier()
-
     def load_openapi_spec(self, openapi_file):
         """Load the OpenAPI specification from a JSON file."""
         try:
-            with open(openapi_file, "r") as f:
+            base_dir = os.path.dirname(os.path.abspath(__file__))
+            openapi_path = os.path.join(base_dir, openapi_file)
+            with open(openapi_path, "r") as f:
                 spec = json.load(f)
-            logger.info(f"Loaded OpenAPI specification from {openapi_file}")
+            logger.info(f"Loaded OpenAPI specification from {openapi_path}")
             return spec
         except Exception as e:
             logger.error(f"Failed to load OpenAPI spec from {openapi_file}: {e}")
             raise
-
     def generate_default_payload(self, schema):
         """Generate a default payload based on the provided JSON schema.
         Uses any examples if available; otherwise, falls back to hardcoded types."""
@@ -956,11 +956,13 @@ def start_django_server(preserve_coverage=True):
         django_dir = os.path.join(base_dir, "DjangoWebApplication")
         cwd = os.path.join(base_dir, "DjangoWebApplication")  # This is correct - keeps pointing to where manage.py is
         if os.name=="nt":
-            logger.error("Windows OS is not supported for server execution")
-            return None
+            python_path = os.path.join(django_dir, "virtual", "Scripts", "python.exe")
         else:
             python_path = os.path.join(django_dir, "virtual", "bin", "python")
-            
+        
+        if not os.path.isfile(python_path):
+            logger.error("Python executable not found at %s", python_path)
+            return None
         coverage_file = os.path.join(cwd, "coverage_data.json")
         if not preserve_coverage and os.path.exists(coverage_file):
             logger.info("Erasing previous coverage data...")
