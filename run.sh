@@ -26,3 +26,4 @@ fi
 # 5) hand off to main.py with no extra args—let it prompt you
 echo "→ Launching fuzzer interactive shell…"
 exec python main.py
+!/usr/bin/env bash

@@ -6,8 +6,11 @@ import sys
 import json
 from pathlib import Path
 import argparse
-sys.path.append(str(Path(__file__).parent.resolve()))
 
+
+BASE_DIR = Path(__file__).parent.resolve()
+os.chdir(BASE_DIR)
+sys.path.append(str(BASE_DIR))
 
 from BLEClient import BLEClient
 # === Configuration ===
@@ -295,6 +298,7 @@ async def afl_fuzz(queue):
 def start_ble_fuzzing(optional_resume_file: str = None):
     if optional_resume_file:
         if os.path.exists(optional_resume_file):
+            print(f"[✓] Resuming from {optional_resume_file}")
             queue = load_queue(optional_resume_file)
         else:
             print(f"[X] Queue file not found: {optional_resume_file}")
