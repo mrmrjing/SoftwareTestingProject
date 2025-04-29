@@ -1,0 +1,64 @@
+{
+  "0": "2025-04-28T20:14:56.019993",
+  "1": {
+    "timestamp": "2025-04-28T20:15:07.924207",
+    "path": "/api/product/{id}/",
+    "method": "DELETE",
+    "input": {
+      "ino": "d&tR?",
+      "price": 99
+    }
+  },
+  "2": {
+    "timestamp": "2025-04-28T20:15:09.420813",
+    "path": "/api/product/{id}/",
+    "method": "GET",
+    "input": {
+      "id": 100,
+      "name": "pd",
+      "price": 99,
+      "swLOfEb": 429
+    }
+  },
+  "3": {
+    "timestamp": "2025-04-28T20:17:16.629317",
+    "path": "/api/product/{id}/",
+    "method": "PUT",
+    "input": {
+      "ino": "d&tR?",
+      "prica": 1
+    }
+  },
+  "4": {
+    "timestamp": "2025-04-28T20:23:34.457304",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 100,
+      "name": "p",
+      "info": "d",
+      "price": -29
+    }
+  },
+  "5": {
+    "timestamp": "2025-04-28T20:30:23.233839",
+    "path": "/api/product/{id}/",
+    "method": "GET",
+    "input": {
+      "id": 100,
+      "name": "t",
+      "info": "d",
+      "price": -29
+    }
+  },
+  "6": {
+    "timestamp": "2025-04-28T20:36:40.166314",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 100,
+      "info": "&dt",
+      "price": 1
+    }
+  }
+}

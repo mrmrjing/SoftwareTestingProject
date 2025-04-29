@@ -1,1 +1,2343 @@
-{}
+{
+  "36f4ee58781f9cde24f50d6ecd20c353": {
+    "id": "GET:/:1745910560",
+    "trace_id": null,
+    "method": "GET",
+    "path": "/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/home/views.py": [
+        14,
+        15,
+        18
+      ]
+    },
+    "coverage_hash": "4e2a8c6e853674a3a046b924f1b4d044",
+    "timestamp": 1745910560.700088,
+    "status_code": 200,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "6cc35b0d863dae9056e15c0c9ec1f1e2": {
+    "id": "PUT:/api/product/34/:1745909917",
+    "trace_id": "3385ad12277b9236e4a10ae5c9484f4c",
+    "method": "PUT",
+    "path": "/api/product/34/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745909917.27246,
+    "status_code": 404,
+    "request_body": "{\"id\": 100, \"name\": \"pd\", \"price\": 99}",
+    "is_new_coverage": true
+  },
+  "e862eed8cec32d12850da275e0901d17": {
+    "id": "PUT:/api/product/9016173/:1745909917",
+    "trace_id": "fbd52ae178e21636caee97a65cac7484",
+    "method": "PUT",
+    "path": "/api/product/9016173/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745909917.39745,
+    "status_code": 404,
+    "request_body": "{\"id\": 100, \"name\": \"pd\", \"info\": \"t\", \"price\": 99}",
+    "is_new_coverage": false
+  },
+  "44b9eb921035434eee2337bef8e13620": {
+    "id": "PUT:/api/product/29/:1745909917",
+    "trace_id": "6c814d41d7296c15bb11bca3f9602db1",
+    "method": "PUT",
+    "path": "/api/product/29/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745909917.695449,
+    "status_code": 404,
+    "request_body": "{\"id\": 100, \"name\": \"'pd\", \"info\": \"dt\", \"price\": 99}",
+    "is_new_coverage": false
+  },
+  "6d400118a7347b9ccf25f33af88608dd": {
+    "id": "PUT:/api/product/58/:1745909917",
+    "trace_id": "0074a405ac6a01277eef04ce6bbd8abd",
+    "method": "PUT",
+    "path": "/api/product/58/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745909917.81861,
+    "status_code": 404,
+    "request_body": "{\"id\": 4294967252, \"name\": \"pd\", \"info\": \"dt\", \"price\": 99}",
+    "is_new_coverage": false
+  },
+  "20750045fcbb4c0e8f3710d8ec9f7349": {
+    "id": "PUT:/api/product/92/:1745909917",
+    "trace_id": "b48cecdb9857c28a88bc8aa1799e460f",
+    "method": "PUT",
+    "path": "/api/product/92/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745909917.963094,
+    "status_code": 404,
+    "request_body": "{\"id\": 100, \"name\": \"pd\", \"info\": \"dt\", \"price\": 99, \"WGxsDY\": \"test_value\"}",
+    "is_new_coverage": false
+  },
+  "80cf14f42563326b8d4d93f846ed2577": {
+    "id": "POST:/api/product/abc/:1745909930",
+    "trace_id": "117280ad7f70c0572e777c5df398da32",
+    "method": "POST",
+    "path": "/api/product/abc/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        24,
+        25,
+        30,
+        31,
+        32,
+        33,
+        34
+      ]
+    },
+    "coverage_hash": "2294d0152dddac3b452c90ebc4d21701",
+    "timestamp": 1745909930.952885,
+    "status_code": 200,
+    "request_body": "{\"id\": 100, \"name\": \"pd\", \"info\": \"t\", \"price\": 99, \"suQBlS\": true}",
+    "is_new_coverage": true
+  },
+  "3fc8c003e6effe21bbbca439d2acc263": {
+    "id": "POST:/api/product/abc/:1745909931",
+    "trace_id": "e50d4b40a105d1bced459eae20276e47",
+    "method": "POST",
+    "path": "/api/product/abc/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ]
+    },
+    "coverage_hash": "b351a76087c0283df209421b61002528",
+    "timestamp": 1745909931.407767,
+    "status_code": 400,
+    "request_body": "{\"name\": \"pd\", \"info\": \"d`t!\", \"Bjhi\": \"testvalue\"}",
+    "is_new_coverage": true
+  },
+  "e839f9b1c5ccf7537e9220a4b7f92928": {
+    "id": "POST:/api/product/{7/:1745909931",
+    "trace_id": "a76c1efbf8333ab965f62b5d6b79fb4f",
+    "method": "POST",
+    "path": "/api/product/{7/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        24,
+        25,
+        30,
+        31,
+        32,
+        33,
+        34
+      ]
+    },
+    "coverage_hash": "2294d0152dddac3b452c90ebc4d21701",
+    "timestamp": 1745909931.677717,
+    "status_code": 200,
+    "request_body": "{\"name\": \"pd\", \"price\": 99}",
+    "is_new_coverage": false
+  },
+  "dd0b7ad36d1fdefde2f26d868efd81ad": {
+    "id": "DELETE:/api/product/88/:1745909943",
+    "trace_id": "69ea11f2e08bbad2ea6ca46db8a00499",
+    "method": "DELETE",
+    "path": "/api/product/88/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81
+      ]
+    },
+    "coverage_hash": "b640b5dfc6f9dd083647b8e37299cc4b",
+    "timestamp": 1745909943.208535,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": true
+  },
+  "a8dbc1fceca937530519795cdafdadbe": {
+    "id": "DELETE:/api/product/63/:1745909943",
+    "trace_id": "d00463d38cabc6549b0b0c84be45179c",
+    "method": "DELETE",
+    "path": "/api/product/63/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81
+      ]
+    },
+    "coverage_hash": "b640b5dfc6f9dd083647b8e37299cc4b",
+    "timestamp": 1745909943.4985979,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "5db2e9a7f97f440809bd4e501162c2e1": {
+    "id": "DELETE:/api/product/0/:1745909943",
+    "trace_id": "318dc8350f93c3c39f1bcea5153d7cf3",
+    "method": "DELETE",
+    "path": "/api/product/0/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81
+      ]
+    },
+    "coverage_hash": "b640b5dfc6f9dd083647b8e37299cc4b",
+    "timestamp": 1745909943.859906,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "b81c32ad6d41e2081cf19b0623e5c53f": {
+    "id": "DELETE:/api/product/83/:1745909943",
+    "trace_id": "ea6609d07cb08c2e256413101a78249c",
+    "method": "DELETE",
+    "path": "/api/product/83/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81
+      ]
+    },
+    "coverage_hash": "b640b5dfc6f9dd083647b8e37299cc4b",
+    "timestamp": 1745909943.7344909,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "7a9bbbba76abae945db3cde408f6cfb5": {
+    "id": "DELETE:/api/product/12/:1745910565",
+    "trace_id": "192542b68a1db3519ff066c89b3ef185",
+    "method": "DELETE",
+    "path": "/api/product/12/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81
+      ]
+    },
+    "coverage_hash": "b640b5dfc6f9dd083647b8e37299cc4b",
+    "timestamp": 1745910565.128674,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "318dadbe6cf5a704820e61685f5e65df": {
+    "id": "PUT:/api/product/27/:1745909985",
+    "trace_id": "c5d0d0230e4930f08917b4ab95a55e91",
+    "method": "PUT",
+    "path": "/api/product/27/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745909985.190258,
+    "status_code": 404,
+    "request_body": "{\"id\": 100, \"name\": \"pd\", \"info\": \"t\", \"price\": 99, \"suQBlS\": true}",
+    "is_new_coverage": false
+  },
+  "e63f04c6cf23f263b1ad90d11d71fde6": {
+    "id": "PUT:/api/product/48/:1745909990",
+    "trace_id": "2d22b3aac14d68c3b86de738a7ccb7a5",
+    "method": "PUT",
+    "path": "/api/product/48/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745909990.304085,
+    "status_code": 404,
+    "request_body": "{\"id\": 140, \"nae\": \"pd\", \"info\": \"\", \"price\": 99, \"suQBlS\": true}",
+    "is_new_coverage": false
+  },
+  "8df0ea4314ba3cffabbe62a7ae4c6194": {
+    "id": "PUT:/api/product/9/:1745910005",
+    "trace_id": "9ed058aef8d33b2eadda53c04a744f9c",
+    "method": "PUT",
+    "path": "/api/product/9/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910005.652704,
+    "status_code": 404,
+    "request_body": "{\"id\": 100, \"info\": \"t\", \"price\": 99, \"suQBlS\": true}",
+    "is_new_coverage": false
+  },
+  "464ed2135ed8f51dcc10638bf9ba70ed": {
+    "id": "PUT:/api/product/50/:1745910010",
+    "trace_id": "58297627c6baeffefa7eec93ea68251e",
+    "method": "PUT",
+    "path": "/api/product/50/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910010.756741,
+    "status_code": 404,
+    "request_body": "{\"id\": 10, \"name\": \"pd\", \"price\": 99, \"suQBlS\": true, \"gxpzZuS\": true}",
+    "is_new_coverage": false
+  },
+  "0c63f90c610d196c542084c3a6cfb237": {
+    "id": "PUT:/api/product/56/:1745910015",
+    "trace_id": "718985fdf7f0c2d2c52960ee3b464e67",
+    "method": "PUT",
+    "path": "/api/product/56/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910015.8663528,
+    "status_code": 404,
+    "request_body": "{\"id\": 255, \"price\": 4294967196, \"wKFE\": true}",
+    "is_new_coverage": false
+  },
+  "6b6a2741358c310f83fa8749072fba1c": {
+    "id": "PUT:/api/product/0/:1745910026",
+    "trace_id": "de91a26926ac452c621ca6bf8a91ebfe",
+    "method": "PUT",
+    "path": "/api/product/0/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910026.094147,
+    "status_code": 404,
+    "request_body": "{\"id\": 100, \"name\": \"4pd\", \"info\": \"t\", \"price\": 99, \"suQBlS\": true}",
+    "is_new_coverage": false
+  },
+  "3df2693bf9b95c925ac8362449091e4b": {
+    "id": "PUT:/api/product/33/:1745910036",
+    "trace_id": "4d4ecdedf33ad24f283e01fbca6d6a96",
+    "method": "PUT",
+    "path": "/api/product/33/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910036.3270762,
+    "status_code": 404,
+    "request_body": "{\"id\": 100, \"name\": \"pd\", \"info\": \"t\", \"price\": 99, \"suQBlS\": true}",
+    "is_new_coverage": false
+  },
+  "d356a08ab885d9132775a10082fbdbbd": {
+    "id": "PUT:/api/product/84/:1745910041",
+    "trace_id": "73f66b3b6d6993de1023f047ba59c3ba",
+    "method": "PUT",
+    "path": "/api/product/84/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910041.433957,
+    "status_code": 404,
+    "request_body": "{\"id\": 100, \"name\": \"pd\", \"info\": \"t\", \"price\": 65535, \"suQBlS\": true, \"fmAGWlMT\": 684}",
+    "is_new_coverage": false
+  },
+  "2f2db741a5e4a2c62173a13fa856335d": {
+    "id": "PUT:/api/product/63/:1745910046",
+    "trace_id": "1dd7a9345dc7f02899638e35b64fcc6b",
+    "method": "PUT",
+    "path": "/api/product/63/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910046.542277,
+    "status_code": 404,
+    "request_body": "{\"id\": -100, \"name\": \";d\", \"info\": \"t\", \"price\": 99, \"suQBlS\": 65}",
+    "is_new_coverage": false
+  },
+  "aaa1898d0b353770ceac6aa6a99ba0c9": {
+    "id": "PUT:/api/product/3214760/:1745910056",
+    "trace_id": "8488616d142d4345ebb1b3a181b24d67",
+    "method": "PUT",
+    "path": "/api/product/3214760/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910056.752884,
+    "status_code": 404,
+    "request_body": "{\"id\": 100, \"name\": \"pd\", \"info\": \"t\", \"price\": 99, \"suQBlS\": true}",
+    "is_new_coverage": false
+  },
+  "c27f01736ffce9e4971a42f51ff10aa0": {
+    "id": "GET:/api/product/-1/:1745910149",
+    "trace_id": "86c1bf6c335e1552bf8bd18753b3be97",
+    "method": "GET",
+    "path": "/api/product/-1/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        37,
+        38,
+        39,
+        40,
+        41
+      ]
+    },
+    "coverage_hash": "0086c84d83a1567194fc2576a3f78236",
+    "timestamp": 1745910149.3518112,
+    "status_code": 200,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "a57427d994d0863fedddeec1d1fbc646": {
+    "id": "GET:/api/product/97/:1745910135",
+    "trace_id": "b78cd8f90f73d45935a47dbe0e1c23d8",
+    "method": "GET",
+    "path": "/api/product/97/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        37,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    "coverage_hash": "8452eb5435a9872246179967a412a9e7",
+    "timestamp": 1745910135.788314,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": true
+  },
+  "74945aedfb6e4d8800abfc8d29ac5516": {
+    "id": "GET:/api/product/abc/:1745910546",
+    "trace_id": "27ce725c28bb29bcca5e7d6a79fe313d",
+    "method": "GET",
+    "path": "/api/product/abc/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        37,
+        38,
+        39,
+        40,
+        41
+      ]
+    },
+    "coverage_hash": "0086c84d83a1567194fc2576a3f78236",
+    "timestamp": 1745910546.6114612,
+    "status_code": 200,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "c8ceb30157d8b1979ea35a27cb0001ba": {
+    "id": "GET:/api/product/0/:1745910149",
+    "trace_id": "6468c8a55326d5fcb3d3c0dba29875f1",
+    "method": "GET",
+    "path": "/api/product/0/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        37,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    "coverage_hash": "8452eb5435a9872246179967a412a9e7",
+    "timestamp": 1745910149.965664,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "8eac59f3df11536ec0884c70c1d5f214": {
+    "id": "GET:/api/product/49/:1745910136",
+    "trace_id": "40ccff25791da7fc7fd653faefcc78d3",
+    "method": "GET",
+    "path": "/api/product/49/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        37,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    "coverage_hash": "8452eb5435a9872246179967a412a9e7",
+    "timestamp": 1745910136.506005,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "a7333bc57c28cb1f1d5d763d635698c5": {
+    "id": "GET:/api/product/89/:1745910136",
+    "trace_id": "b57796ee9ac326cb4be5df01db3f24a1",
+    "method": "GET",
+    "path": "/api/product/89/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        37,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    "coverage_hash": "8452eb5435a9872246179967a412a9e7",
+    "timestamp": 1745910136.6434612,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "83b2f194eda1b0e758ee4b4f2563f575": {
+    "id": "GET:/api/product/28/:1745910136",
+    "trace_id": "572d80f35002d77b3947243a392cc2d7",
+    "method": "GET",
+    "path": "/api/product/28/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        37,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    "coverage_hash": "8452eb5435a9872246179967a412a9e7",
+    "timestamp": 1745910136.76272,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "2da9da2e7fa18fd0cdb61a7ed4b21ddf": {
+    "id": "GET:/api/product/41/:1745910137",
+    "trace_id": "5f623b236ef74396f86e77542b613d61",
+    "method": "GET",
+    "path": "/api/product/41/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        37,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    "coverage_hash": "8452eb5435a9872246179967a412a9e7",
+    "timestamp": 1745910137.326963,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "f0871e2e9ab2f0e5ea308cbab1f0ad28": {
+    "id": "GET:/api/product/04/:1745910137",
+    "trace_id": "1e450ec6b8f0016ec205afbaa21dec77",
+    "method": "GET",
+    "path": "/api/product/04/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        37,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    "coverage_hash": "8452eb5435a9872246179967a412a9e7",
+    "timestamp": 1745910137.828348,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "b04254822aae049d43c2c45ae3af85a0": {
+    "id": "DELETE:/api/product/65/:1745910147",
+    "trace_id": "807ccb49f0f6abd29cc10c8ad3a1c154",
+    "method": "DELETE",
+    "path": "/api/product/65/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81
+      ]
+    },
+    "coverage_hash": "b640b5dfc6f9dd083647b8e37299cc4b",
+    "timestamp": 1745910147.5136251,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "74166c720e9f99448db0bf2b14fdd45e": {
+    "id": "DELETE:/api/product/3/:1745910147",
+    "trace_id": "d6109bd3dba35f143d0d341ed196eb4a",
+    "method": "DELETE",
+    "path": "/api/product/3/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81
+      ]
+    },
+    "coverage_hash": "b640b5dfc6f9dd083647b8e37299cc4b",
+    "timestamp": 1745910147.9112,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "bf8d30f485f2217c7ee7a782e169c64c": {
+    "id": "DELETE:/api/product/29/:1745910148",
+    "trace_id": "1aed7b8400b40634fe4b95c1b6a8b370",
+    "method": "DELETE",
+    "path": "/api/product/29/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81
+      ]
+    },
+    "coverage_hash": "b640b5dfc6f9dd083647b8e37299cc4b",
+    "timestamp": 1745910148.0321841,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "1e872b70f5f84d474596246ff3b8b4f8": {
+    "id": "DELETE:/api/product/37/:1745910148",
+    "trace_id": "555b672531177175fa42b7622fad5a03",
+    "method": "DELETE",
+    "path": "/api/product/37/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81
+      ]
+    },
+    "coverage_hash": "b640b5dfc6f9dd083647b8e37299cc4b",
+    "timestamp": 1745910148.158066,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "05e4161bf58924babda599eb62269dee": {
+    "id": "DELETE:/api/product/17/:1745910148",
+    "trace_id": "e4ae33733980648793f3e8c58e1169ef",
+    "method": "DELETE",
+    "path": "/api/product/17/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81
+      ]
+    },
+    "coverage_hash": "b640b5dfc6f9dd083647b8e37299cc4b",
+    "timestamp": 1745910148.282253,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "45fc9bf23fc36230362505e66cdeac8c": {
+    "id": "DELETE:/api/product/38/:1745910148",
+    "trace_id": "0cd092bd1c7d592f1655066fe2a71dfb",
+    "method": "DELETE",
+    "path": "/api/product/38/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81
+      ]
+    },
+    "coverage_hash": "b640b5dfc6f9dd083647b8e37299cc4b",
+    "timestamp": 1745910148.416935,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "6383e084d0a51be48312c8d8db66522f": {
+    "id": "DELETE:/api/product/70/:1745910148",
+    "trace_id": "95d3694204ba98292a53a8673f648811",
+    "method": "DELETE",
+    "path": "/api/product/70/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81
+      ]
+    },
+    "coverage_hash": "b640b5dfc6f9dd083647b8e37299cc4b",
+    "timestamp": 1745910148.568973,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "163f2d71f18466baf2c04b8aef32bce7": {
+    "id": "DELETE:/api/product/97/:1745910148",
+    "trace_id": "ff7b9fc842dc9feaa3712c538aa99f3c",
+    "method": "DELETE",
+    "path": "/api/product/97/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81
+      ]
+    },
+    "coverage_hash": "b640b5dfc6f9dd083647b8e37299cc4b",
+    "timestamp": 1745910148.69218,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "1f5201523ca6bcb4a0a64dd71d922e8d": {
+    "id": "DELETE:/api/product/81/:1745910148",
+    "trace_id": "501e77bff036ff619651f11c5129416c",
+    "method": "DELETE",
+    "path": "/api/product/81/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81
+      ]
+    },
+    "coverage_hash": "b640b5dfc6f9dd083647b8e37299cc4b",
+    "timestamp": 1745910148.831075,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "0fe59423ba401668d540d0eb3a8da3b8": {
+    "id": "GET:/api/product/71/:1745910148",
+    "trace_id": "8faa4eae6fce5198ed2585a5bf241b65",
+    "method": "GET",
+    "path": "/api/product/71/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        37,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    "coverage_hash": "8452eb5435a9872246179967a412a9e7",
+    "timestamp": 1745910148.967115,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "aaa558e9aecb6f9882d0a1c84b3fb15c": {
+    "id": "GET:/api/product/19/:1745910149",
+    "trace_id": "bfed467aed4b4475018a5168553c333a",
+    "method": "GET",
+    "path": "/api/product/19/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        37,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    "coverage_hash": "8452eb5435a9872246179967a412a9e7",
+    "timestamp": 1745910149.469624,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "23052a9ae140b7fe92f6d4debbe6b493": {
+    "id": "GET:/api/product/40/:1745910149",
+    "trace_id": "cf4e301bc56d767bf08207b894143782",
+    "method": "GET",
+    "path": "/api/product/40/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        37,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    "coverage_hash": "8452eb5435a9872246179967a412a9e7",
+    "timestamp": 1745910149.609458,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "10a42de1dd6f65286c45d5eca63fab89": {
+    "id": "GET:/api/product/54/:1745910149",
+    "trace_id": "cab50ca38cceb83c20935e8e38328f3c",
+    "method": "GET",
+    "path": "/api/product/54/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        37,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    "coverage_hash": "8452eb5435a9872246179967a412a9e7",
+    "timestamp": 1745910149.7252312,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "e3c6c7648f1234b8f2a1ae322e9a0697": {
+    "id": "GET:/api/product/7719750/:1745910149",
+    "trace_id": "bc63bbfc09a2a8c07b9cccfd51c38ca3",
+    "method": "GET",
+    "path": "/api/product/7719750/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        37,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    "coverage_hash": "8452eb5435a9872246179967a412a9e7",
+    "timestamp": 1745910149.841185,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "938576ad5373dd64a3b1e4107e7cff20": {
+    "id": "PUT:/api/product/0/:1745910150",
+    "trace_id": "596ad1885b95bdb8b12837275292f762",
+    "method": "PUT",
+    "path": "/api/product/0/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910150.08696,
+    "status_code": 404,
+    "request_body": "{\"id\": 100, \"name\": \"pvd\", \"info\": \"dt\", \"price\": 99}",
+    "is_new_coverage": false
+  },
+  "7d5e3afa297be502c39ebb7ec439e5bc": {
+    "id": "PUT:/api/product/74/:1745910150",
+    "trace_id": "f92b44f00bcac87b85eb706dd6f06534",
+    "method": "PUT",
+    "path": "/api/product/74/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910150.2609332,
+    "status_code": 404,
+    "request_body": "{\"id\": 255, \"info\": \"det\"}",
+    "is_new_coverage": false
+  },
+  "5205a8016d7d3b5866d47019b8e53ba8": {
+    "id": "PUT:/api/product/17/:1745910150",
+    "trace_id": "d9ac30e9bc960cd562e631c8ec2c4eb2",
+    "method": "PUT",
+    "path": "/api/product/17/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910150.524991,
+    "status_code": 404,
+    "request_body": "{\"id\": 100, \"name\": \"pd\", \"info\": \"dt\", \"price\": 103}",
+    "is_new_coverage": false
+  },
+  "c24a5d18cdc1b0e02696779aae1bfdc4": {
+    "id": "PUT:/api/product/24/:1745910150",
+    "trace_id": "1e1013dcb2e6d9975011f304f1078b39",
+    "method": "PUT",
+    "path": "/api/product/24/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910150.659647,
+    "status_code": 404,
+    "request_body": "{\"id\": 2147483648, \"name\": \"p\", \"info\": \"drt\", \"price\": 256}",
+    "is_new_coverage": false
+  },
+  "1ef810f6812da6cdebf64f0c0fa13ea8": {
+    "id": "PUT:/api/product/5843387/:1745910150",
+    "trace_id": "0649cc3f7d80e075cdbab6dd3a0e97c0",
+    "method": "PUT",
+    "path": "/api/product/5843387/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910150.779767,
+    "status_code": 404,
+    "request_body": "{\"id\": 100, \"nam\": \"pd\", \"info\": \"dt\", \"price\": 99}",
+    "is_new_coverage": false
+  },
+  "e98232c2751bb5c9648b11a0008dd9b4": {
+    "id": "PUT:/api/product/74/:1745910150",
+    "trace_id": "1bffd4af6d413164a336414dfa91169a",
+    "method": "PUT",
+    "path": "/api/product/74/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910150.905061,
+    "status_code": 404,
+    "request_body": "{\"name\": \"d\", \"info\": \"pj\", \"price\": -99, \"YEJ\": \"test_value\"}",
+    "is_new_coverage": false
+  },
+  "f0cab3ef115e9012085971a3cdcd28b2": {
+    "id": "PUT:/api/product/45/:1745910151",
+    "trace_id": "166b2f3df95d22eab2549753a2c85f7c",
+    "method": "PUT",
+    "path": "/api/product/45/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910151.035187,
+    "status_code": 404,
+    "request_body": "{\"name\": \"d\", \"info\": \"dt\", \"price\": 99}",
+    "is_new_coverage": false
+  },
+  "dcb3efae84527cbaffac6aa4412f11bc": {
+    "id": "POST:/api/product/-1/:1745910164",
+    "trace_id": "90579fc815c914e26bd87d79ab403067",
+    "method": "POST",
+    "path": "/api/product/-1/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ]
+    },
+    "coverage_hash": "b351a76087c0283df209421b61002528",
+    "timestamp": 1745910164.443416,
+    "status_code": 400,
+    "request_body": "{\"d\": 32766, \"name\": \"pd\", \"info\": \"dt$\", \"price\": 103}",
+    "is_new_coverage": false
+  },
+  "8c2a59bfa4b1c02f9f36f401717fdbf3": {
+    "id": "POST:/api/product/abc/:1745910169",
+    "trace_id": "1bbdd45012de0890a7552b6a0248554d",
+    "method": "POST",
+    "path": "/api/product/abc/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ]
+    },
+    "coverage_hash": "b351a76087c0283df209421b61002528",
+    "timestamp": 1745910169.548521,
+    "status_code": 400,
+    "request_body": "{\"name\": \"pd\", \"info\": \"d)t\", \"prie\": 99, \"YbmmtB\": \"test_value\"}",
+    "is_new_coverage": false
+  },
+  "3b0ded291c673be8843a9c508d5bc592": {
+    "id": "POST:/api/product/2=/:1745910174",
+    "trace_id": "16303983c2f16e4dc9b65a6dee6dfdb1",
+    "method": "POST",
+    "path": "/api/product/2=/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        24,
+        25,
+        30,
+        31,
+        32,
+        33,
+        34
+      ]
+    },
+    "coverage_hash": "2294d0152dddac3b452c90ebc4d21701",
+    "timestamp": 1745910174.645947,
+    "status_code": 200,
+    "request_body": "{\"d\": 32766, \"name\": \"pd\", \"ifo\": \"dt\", \"price\": 99}",
+    "is_new_coverage": false
+  },
+  "a717e9d44db452863fc0ce4df9587789": {
+    "id": "DELETE:/api/product/98/:1745910202",
+    "trace_id": "33a95145c563b089aaafc45c7f01f9d9",
+    "method": "DELETE",
+    "path": "/api/product/98/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81
+      ]
+    },
+    "coverage_hash": "b640b5dfc6f9dd083647b8e37299cc4b",
+    "timestamp": 1745910202.743673,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "531d6171ca7f55ed3a1e2a703620f073": {
+    "id": "DELETE:/api/product/59/:1745910207",
+    "trace_id": "e0b3e974a23783aa67da207d628f7bc4",
+    "method": "DELETE",
+    "path": "/api/product/59/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81
+      ]
+    },
+    "coverage_hash": "b640b5dfc6f9dd083647b8e37299cc4b",
+    "timestamp": 1745910207.8841019,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "c7d943c9636ba165ae9b664dc0a9c39e": {
+    "id": "DELETE:/api/product/40/:1745910212",
+    "trace_id": "cc4861f2a02ae3f89da2f6247aa22f99",
+    "method": "DELETE",
+    "path": "/api/product/40/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81
+      ]
+    },
+    "coverage_hash": "b640b5dfc6f9dd083647b8e37299cc4b",
+    "timestamp": 1745910212.968599,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "8be4098dc456cb8f59696f4e5f68766c": {
+    "id": "DELETE:/api/product/18/:1745910218",
+    "trace_id": "a2f2ee96f0f56fddb4dbee0657344c3f",
+    "method": "DELETE",
+    "path": "/api/product/18/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81
+      ]
+    },
+    "coverage_hash": "b640b5dfc6f9dd083647b8e37299cc4b",
+    "timestamp": 1745910218.079823,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "c405c59d257bb922c88424d3df2286d2": {
+    "id": "DELETE:/api/product/45/:1745910542",
+    "trace_id": "f0f273599b6730a81dbc136ebae06b8f",
+    "method": "DELETE",
+    "path": "/api/product/45/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81
+      ]
+    },
+    "coverage_hash": "b640b5dfc6f9dd083647b8e37299cc4b",
+    "timestamp": 1745910542.6443741,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "8a30fd29b2801a8e1c20d5cd401effdf": {
+    "id": "DELETE:/api/product/67/:1745910542",
+    "trace_id": "2091f7efd6c7c3c17359980fed7cad05",
+    "method": "DELETE",
+    "path": "/api/product/67/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81
+      ]
+    },
+    "coverage_hash": "b640b5dfc6f9dd083647b8e37299cc4b",
+    "timestamp": 1745910542.520203,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "a3264bf9c34162e461772c5b3019d6dc": {
+    "id": "PUT:/api/product/44/:1745910542",
+    "trace_id": "c7f2dfc75853639b4dfba14c858c331e",
+    "method": "PUT",
+    "path": "/api/product/44/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910542.763625,
+    "status_code": 404,
+    "request_body": "{\"id\": -100, \"name\": \"pe\", \"info\": \"dWt\\n\", \"price\": 1}",
+    "is_new_coverage": false
+  },
+  "63639023c5078fbb52af55c978ecf8dc": {
+    "id": "PUT:/api/product/82/:1745910542",
+    "trace_id": "f7fb656553d1a48b300373c6f2bed6b4",
+    "method": "PUT",
+    "path": "/api/product/82/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910542.889864,
+    "status_code": 404,
+    "request_body": "{\"id\": 100, \"name\": \"pe\", \"info\": \"{t\\n\", \"price\": 1, \"vnVywho\": true}",
+    "is_new_coverage": false
+  },
+  "c43c2b47536827e50789af8597fb116d": {
+    "id": "PUT:/api/product/89/:1745910542",
+    "trace_id": "1294ac7ada01598296b404418b5da772",
+    "method": "PUT",
+    "path": "/api/product/89/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910543.0073879,
+    "status_code": 404,
+    "request_body": "{\"id\": 100, \"nae\": \"p\", \"info\": \"dt\\n\", \"price\": 1, \"vnVywho\": true}",
+    "is_new_coverage": false
+  },
+  "7109dc6287d8e6d4a64869e8927c2cd3": {
+    "id": "PUT:/api/product/100/:1745910543",
+    "trace_id": "38eceda7608fec071e3229c6655f1280",
+    "method": "PUT",
+    "path": "/api/product/100/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910543.130042,
+    "status_code": 404,
+    "request_body": "{\"id\": 100, \"naie\": \"pe\", \"info\": \"dt^q\", \"price\": 1, \"vnVywho\": true}",
+    "is_new_coverage": false
+  },
+  "ebb760c2029c3f382498cbde6d6c54f8": {
+    "id": "PUT:/api/product/100/:1745910543",
+    "trace_id": "360d0672e1824cd38296f3b4242fdee1",
+    "method": "PUT",
+    "path": "/api/product/100/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910543.262859,
+    "status_code": 404,
+    "request_body": "{\"id\": 100, \"name\": \"pe\", \"info\": \"dt\\n\", \"price\": 256, \"vnVywho\": 65, \"Jiv\": \"test_value\"}",
+    "is_new_coverage": false
+  },
+  "c93d8387082241c340a933796b6847ed": {
+    "id": "PUT:/api/product/83/:1745910543",
+    "trace_id": "d9d47d048d68575aebeea7005e74e2df",
+    "method": "PUT",
+    "path": "/api/product/83/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910543.3993778,
+    "status_code": 404,
+    "request_body": "{\"id\": 100, \"name\": \"pe\", \"info\": \"'dt\\n\", \"price\": 1, \"vnVywho\": true, \"Bvo\": \"test_value\"}",
+    "is_new_coverage": false
+  },
+  "13fa3b4a1284563ba2ddc213a2e9ea26": {
+    "id": "PUT:/api/product/73/:1745910544",
+    "trace_id": "d225da2bfe3196e6eee688d37182d090",
+    "method": "PUT",
+    "path": "/api/product/73/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910544.12377,
+    "status_code": 404,
+    "request_body": "{\"id\": 101, \"name\": \"pd\", \"price\": 99}",
+    "is_new_coverage": false
+  },
+  "380b248070645e04eebf7d55139ca2a4": {
+    "id": "PUT:/api/product/26/:1745910544",
+    "trace_id": "fbe6635f488ff91f37b899f31f36e4a9",
+    "method": "PUT",
+    "path": "/api/product/26/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910544.251023,
+    "status_code": 404,
+    "request_body": "{\"id\": 10, \"name\": \"pd\", \"price\": 99}",
+    "is_new_coverage": false
+  },
+  "a77010d9defedad615409c070c90cb1a": {
+    "id": "PUT:/api/product/52/:1745910544",
+    "trace_id": "78208d7d13f3c486004d2c2ae00b5d75",
+    "method": "PUT",
+    "path": "/api/product/52/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910544.3873012,
+    "status_code": 404,
+    "request_body": "{\"id\": 100, \"name\": \"pd\", \"price\": 99}",
+    "is_new_coverage": false
+  },
+  "a08c92167c7cfc37d48053d293c267a6": {
+    "id": "PUT:/api/product/12/:1745910544",
+    "trace_id": "dce9c9ebedf8ec435f01e22d3feb5c04",
+    "method": "PUT",
+    "path": "/api/product/12/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910544.522225,
+    "status_code": 404,
+    "request_body": "{\"id\": 100, \"name\": \"p'd\", \"price\": 99}",
+    "is_new_coverage": false
+  },
+  "edbaa17febed45aae248fb51ffc0c97b": {
+    "id": "PUT:/api/product/3249280/:1745910544",
+    "trace_id": "0868986a29cc9a63ec85f0ba68221fca",
+    "method": "PUT",
+    "path": "/api/product/3249280/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910544.6509461,
+    "status_code": 404,
+    "request_body": "{\"id\": 36, \"name\": \"pd\", \"price\": 99, \"qFITuL\": 22}",
+    "is_new_coverage": false
+  },
+  "22415c0570ba00948e98fba410ad2c0f": {
+    "id": "PUT:/api/product/49/:1745910545",
+    "trace_id": "ba0e2fd07c3a85e4a40fbfdf4eddee36",
+    "method": "PUT",
+    "path": "/api/product/49/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910545.6666272,
+    "status_code": 404,
+    "request_body": "{\"id\": 100, \"name\": \"pd%\", \"info\": \"dt\", \"price\": 99}",
+    "is_new_coverage": false
+  },
+  "973e1a992f4f69d46e3853f838588acf": {
+    "id": "PUT:/api/product/0/:1745910545",
+    "trace_id": "dd84be0576983616e74ec5ad0d4eec30",
+    "method": "PUT",
+    "path": "/api/product/0/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910545.8044128,
+    "status_code": 404,
+    "request_body": "{\"id\": 100, \"name\": \"pd\", \"info\": \"d*\", \"price\": 99}",
+    "is_new_coverage": false
+  },
+  "e9ed7cc2166741bdd69c045b6724d77b": {
+    "id": "PUT:/api/product/31/:1745910545",
+    "trace_id": "9794f2c36bbf35fbe5ebb7a1d2fd8502",
+    "method": "PUT",
+    "path": "/api/product/31/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910545.944166,
+    "status_code": 404,
+    "request_body": "{\"id\": -1, \"info\": \"+t\", \"SMogUuM\": true}",
+    "is_new_coverage": false
+  },
+  "ba88855e48f772f5b8bac19b786a4b72": {
+    "id": "PUT:/api/product/26/:1745910546",
+    "trace_id": "88149079752117ddc9e6e8a42519b8f0",
+    "method": "PUT",
+    "path": "/api/product/26/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910546.09473,
+    "status_code": 404,
+    "request_body": "{\"id\": 100, \"name\": \"Rd\", \"info\": \"dt\", \"price\": -67}",
+    "is_new_coverage": false
+  },
+  "613688971ecdd2c3e037a14ce53e0ad3": {
+    "id": "PUT:/api/product/1899826/:1745910546",
+    "trace_id": "f74d9a9e16015f3ce1b32578c76d1a45",
+    "method": "PUT",
+    "path": "/api/product/1899826/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910546.225065,
+    "status_code": 404,
+    "request_body": "{\"id\": 100, \"name\": \"pd\", \"info\": \"dt\", \"price\": 99, \"nyaDPs\": null}",
+    "is_new_coverage": false
+  },
+  "0395f048e54a76e4994c3bf83998b27d": {
+    "id": "GET:/api/product/6/:1745910546",
+    "trace_id": "c5e481f2e63d6f677dfa930154b241b5",
+    "method": "GET",
+    "path": "/api/product/6/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        37,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    "coverage_hash": "8452eb5435a9872246179967a412a9e7",
+    "timestamp": 1745910546.731196,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "53c292717e10f0b1f44a167bd0ab60e1": {
+    "id": "GET:/api/product/65/:1745910546",
+    "trace_id": "1e09f3db1e39c8764a8c95e2538f7fd2",
+    "method": "GET",
+    "path": "/api/product/65/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        37,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    "coverage_hash": "8452eb5435a9872246179967a412a9e7",
+    "timestamp": 1745910546.8563461,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "1eb6a8ef8dcc8d3badf2d85c5f58fcb0": {
+    "id": "GET:/api/product/96/:1745910546",
+    "trace_id": "e541dfe61b200a15f3ad011debe436fa",
+    "method": "GET",
+    "path": "/api/product/96/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        37,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    "coverage_hash": "8452eb5435a9872246179967a412a9e7",
+    "timestamp": 1745910546.983368,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "0f65be4da312c089089c03b00b45af66": {
+    "id": "GET:/api/product/76/:1745910547",
+    "trace_id": "49ddf58a3b19dc7cc57ce80f2335645a",
+    "method": "GET",
+    "path": "/api/product/76/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        37,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    "coverage_hash": "8452eb5435a9872246179967a412a9e7",
+    "timestamp": 1745910547.106488,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "15d2585580d14c3be70dd4c2da152b3a": {
+    "id": "GET:/api/product/22/:1745910547",
+    "trace_id": "7772696f6087fd9166bce159b1503bc0",
+    "method": "GET",
+    "path": "/api/product/22/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        37,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    "coverage_hash": "8452eb5435a9872246179967a412a9e7",
+    "timestamp": 1745910547.229413,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "a930679b4446217068a688e712054df1": {
+    "id": "PUT:/api/product/52/:1745910562",
+    "trace_id": "ee54fa77866084277844021df87d7f77",
+    "method": "PUT",
+    "path": "/api/product/52/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910562.369759,
+    "status_code": 404,
+    "request_body": "{\"name\": \"pd\", \"info\": \"~\", \"price\": 4294967196, \"suQBlS\": true, \"gKv\": -192, \"IeUhJjb\": 65}",
+    "is_new_coverage": false
+  },
+  "775d364975fb979a80a7d49de332943a": {
+    "id": "PUT:/api/product/46/:1745910562",
+    "trace_id": "7714040414f59e7eea9a527f813ec870",
+    "method": "PUT",
+    "path": "/api/product/46/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910562.5057652,
+    "status_code": 404,
+    "request_body": "{\"id\": 100, \"name\": \"pd\", \"info\": \"t\", \"price\": 99}",
+    "is_new_coverage": false
+  },
+  "b5de6cdcf7497520e8e01f6654793263": {
+    "id": "PUT:/api/product/5/:1745910562",
+    "trace_id": "3f485ebd7a70cde2f1e43824782031cc",
+    "method": "PUT",
+    "path": "/api/product/5/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910562.948289,
+    "status_code": 404,
+    "request_body": "{\"id\": 198, \"name\": \"pQ\", \"ifo\": \"t\", \"price\": 116, \"suQBlS\": 0}",
+    "is_new_coverage": false
+  },
+  "3f15e015193c023d9912019ec6b7edf2": {
+    "id": "PUT:/api/product/49/:1745910563",
+    "trace_id": "b26f4bd501ba3397d7795676393c2422",
+    "method": "PUT",
+    "path": "/api/product/49/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910563.071348,
+    "status_code": 404,
+    "request_body": "{\"id\": 100, \"name\": \"d\", \"info\": \"t\", \"suQBlS\": true}",
+    "is_new_coverage": false
+  },
+  "cdba712764560937b3cc55dc2b2589ec": {
+    "id": "DELETE:/api/product/87/:1745910564",
+    "trace_id": "c60eee079d20075caa7c7966b8a6415a",
+    "method": "DELETE",
+    "path": "/api/product/87/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81
+      ]
+    },
+    "coverage_hash": "b640b5dfc6f9dd083647b8e37299cc4b",
+    "timestamp": 1745910564.7373598,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "e74bf1312490b3172b848e09ae013a0b": {
+    "id": "DELETE:/api/product/11/:1745910564",
+    "trace_id": "452de94f64234b9ff9e29af4e9322623",
+    "method": "DELETE",
+    "path": "/api/product/11/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81
+      ]
+    },
+    "coverage_hash": "b640b5dfc6f9dd083647b8e37299cc4b",
+    "timestamp": 1745910564.8674188,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "b826a090e3e23319c98f6f9d713ac617": {
+    "id": "DELETE:/api/product/66/:1745910564",
+    "trace_id": "267a1b6c090f87aed876fa6d3bdb4239",
+    "method": "DELETE",
+    "path": "/api/product/66/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81
+      ]
+    },
+    "coverage_hash": "b640b5dfc6f9dd083647b8e37299cc4b",
+    "timestamp": 1745910564.9931011,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "8695094406e5f7e15f366d0862f4381f": {
+    "id": "DELETE:/api/product/53/:1745910565",
+    "trace_id": "b593dadc077c33e0a5cf0019a4dce3cc",
+    "method": "DELETE",
+    "path": "/api/product/53/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81
+      ]
+    },
+    "coverage_hash": "b640b5dfc6f9dd083647b8e37299cc4b",
+    "timestamp": 1745910565.40322,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "0033a5e8393b19b5b9058656ba781508": {
+    "id": "PUT:/api/product/87/:1745910565",
+    "trace_id": "c0057a59372e2a9201f9469ed94cdba2",
+    "method": "PUT",
+    "path": "/api/product/87/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910565.5445068,
+    "status_code": 404,
+    "request_body": "{\"d\": 32766, \"name\": \"p(d\", \"info\": \"dt\", \"price\": 99}",
+    "is_new_coverage": false
+  },
+  "41ce6551c9c4f8d6ee3fab7c34bac7b1": {
+    "id": "PUT:/api/product/68/:1745910565",
+    "trace_id": "3a9e125bdb609d3affd0d8475ed881ab",
+    "method": "PUT",
+    "path": "/api/product/68/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910565.684926,
+    "status_code": 404,
+    "request_body": "{\"d\": 32766, \"name\": \"pd\", \"info\": \"dt\", \"price\": 99}",
+    "is_new_coverage": false
+  },
+  "e4e545606debc95e8114ddc06ed886df": {
+    "id": "PUT:/api/product/0/:1745910565",
+    "trace_id": "c1998841d517aa6bbfca389c851de372",
+    "method": "PUT",
+    "path": "/api/product/0/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910565.819639,
+    "status_code": 404,
+    "request_body": "{\"d\": 32766, \"name\": \"pd\", \"info\": \"dt\", \"price\": 99}",
+    "is_new_coverage": false
+  },
+  "3dc84832981685ba9fb2e577348b80e2": {
+    "id": "PUT:/api/product/44/:1745910565",
+    "trace_id": "6ab42a05ad674ae1c46b3aa377680ae5",
+    "method": "PUT",
+    "path": "/api/product/44/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910565.943126,
+    "status_code": 404,
+    "request_body": "{\"d\": 32766, \"name\": \"Vpd\", \"info\": \"dt\", \"price\": 99, \"KkX\": true}",
+    "is_new_coverage": false
+  },
+  "afc3291094f36458f426dcdad9495f32": {
+    "id": "PUT:/api/product/13/:1745910566",
+    "trace_id": "c5f67479d7a906589fba4ee89bc9c0fa",
+    "method": "PUT",
+    "path": "/api/product/13/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910566.076139,
+    "status_code": 404,
+    "request_body": "{\"d\": 32766, \"name\": \"pd\", \"info\": \"dt\", \"price\": 99, \"FAKBF\": 625}",
+    "is_new_coverage": false
+  },
+  "b93de4bc85d85af3109a1915783639fc": {
+    "id": "PUT:/api/product/74/:1745910566",
+    "trace_id": "9e1ab568efbd7857cddcac2a715b45b5",
+    "method": "PUT",
+    "path": "/api/product/74/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910566.211551,
+    "status_code": 404,
+    "request_body": "{\"d\": 65535, \"name\": \"pd\", \"info\": \"dt\"}",
+    "is_new_coverage": false
+  },
+  "ef70a900878ac77b7da6d3ee242cff7c": {
+    "id": "GET:/api/product/39/:1745910573",
+    "trace_id": "952fc733e797bd1872e3151a47d3d0ac",
+    "method": "GET",
+    "path": "/api/product/39/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        37,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    "coverage_hash": "8452eb5435a9872246179967a412a9e7",
+    "timestamp": 1745910573.2690299,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "391cce71c009950e0a09b5c3836e31a5": {
+    "id": "GET:/api/product/T/:1745910573",
+    "trace_id": "b5c6a6433124f41129c04fd33e1376da",
+    "method": "GET",
+    "path": "/api/product/T/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        37,
+        38,
+        39,
+        40,
+        41
+      ]
+    },
+    "coverage_hash": "0086c84d83a1567194fc2576a3f78236",
+    "timestamp": 1745910573.641243,
+    "status_code": 200,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "ab5d4af73ee588fc458a5e83c7a6018e": {
+    "id": "GET:/api/product/1/:1745910573",
+    "trace_id": "f262b590d382833113aaaf4e987cfde8",
+    "method": "GET",
+    "path": "/api/product/1/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        37,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    "coverage_hash": "8452eb5435a9872246179967a412a9e7",
+    "timestamp": 1745910573.759577,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "8fd36354618be8ddea1c92ff8ae682db": {
+    "id": "GET:/api/product/83/:1745910573",
+    "trace_id": "8ad878fe1b09fd2d5b2b0f130aed0f41",
+    "method": "GET",
+    "path": "/api/product/83/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        37,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    "coverage_hash": "8452eb5435a9872246179967a412a9e7",
+    "timestamp": 1745910573.8854358,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "712d0d12b5a1ef7e6adeed501cccd869": {
+    "id": "GET:/api/product/3290711/:1745910573",
+    "trace_id": "ea71c76bf9a2b2afbb51923eb0d6e170",
+    "method": "GET",
+    "path": "/api/product/3290711/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        37,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    "coverage_hash": "8452eb5435a9872246179967a412a9e7",
+    "timestamp": 1745910574.020812,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "7105aca0f6111e9b292bb340692d42aa": {
+    "id": "GET:/api/product/29/:1745910574",
+    "trace_id": "8a0d10c4de812a647cb5d79dce160bb8",
+    "method": "GET",
+    "path": "/api/product/29/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        37,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    "coverage_hash": "8452eb5435a9872246179967a412a9e7",
+    "timestamp": 1745910574.151305,
+    "status_code": 404,
+    "request_body": null,
+    "is_new_coverage": false
+  },
+  "dc8316fe36b3b96943b688ce8665f6a4": {
+    "id": "POST:/api/product/B7/:1745910582",
+    "trace_id": "b1004662c467aa25793c80b4783279d7",
+    "method": "POST",
+    "path": "/api/product/B7/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        24,
+        25,
+        30,
+        31,
+        32,
+        33,
+        34
+      ]
+    },
+    "coverage_hash": "2294d0152dddac3b452c90ebc4d21701",
+    "timestamp": 1745910582.79441,
+    "status_code": 200,
+    "request_body": "{\"id\": 127, \"name\": \"\\\\\", \"vnVywho\": true}",
+    "is_new_coverage": false
+  },
+  "69c1b130caecd01d6af8038f303a2726": {
+    "id": "PUT:/api/product/30/:1745910666",
+    "trace_id": "00941d7b42d56b321fbbc3af4a91ea92",
+    "method": "PUT",
+    "path": "/api/product/30/",
+    "coverage": {
+      "/Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication/api/views.py": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "coverage_hash": "e592ced0359c3e0616c0b2cb88393778",
+    "timestamp": 1745910666.990052,
+    "status_code": 404,
+    "request_body": "{\"id\": -100, \"name\": \"pV\", \"price\": 99, \"WkwIi\": \"test_val#ue\", \"AfSgBlB\": 391}",
+    "is_new_coverage": false
+  }
+}

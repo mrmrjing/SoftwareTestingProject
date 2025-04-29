@@ -1,0 +1,2144 @@
+2025-04-28 20:14:56,017 - INFO - Starting Django fuzzer
+2025-04-28 20:14:56,017 - INFO - Erasing previous coverage data...
+2025-04-28 20:14:56,017 - INFO - Deleted existing coverage_data.json.
+2025-04-28 20:14:56,017 - INFO - Starting Django server with coverage from: /Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication
+2025-04-28 20:14:56,019 - INFO - Django server process started with coverage
+2025-04-28 20:14:56,019 - INFO - Loaded OpenAPI specification from open_api.json
+2025-04-28 20:14:56,019 - INFO - Using base URL: http://localhost:8000
+2025-04-28 20:14:56,019 - INFO - Added seed for POST /api/product/{id}/: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-28 20:14:56,019 - INFO - Added seed for PUT /api/product/{id}/: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-28 20:14:56,019 - INFO - Added seed for POST /datatb/product/: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-28 20:14:56,019 - INFO - Added seed for PUT /datatb/product/: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-28 20:14:56,019 - INFO - Added seed for POST /datatb/product/export/: {'search': '', 'hidden_cols': [], 'type': 'pdf'}
+2025-04-28 20:14:56,019 - INFO - Added seed for PUT /datatb/product/export/: {'format': 'pdf', 'template': 'default'}
+2025-04-28 20:14:56,019 - INFO - Added seed for POST /datatb/product/edit/{id}/: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-28 20:14:56,019 - INFO - Added seed for PUT /datatb/product/edit/{id}/: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-28 20:14:56,019 - INFO - Added seed for POST /datatb/product/delete/{id}/: {'confirm': True}
+2025-04-28 20:14:56,019 - INFO - Added seed for PUT /datatb/product/delete/{id}/: {'cascade': True, 'permanent': False}
+2025-04-28 20:14:56,019 - INFO - Seed queue initialized from OpenAPI spec.
+2025-04-28 20:14:56,020 - INFO - Waiting for server at http://localhost:8000 to be available (timeout: 30s)
+2025-04-28 20:14:57,627 - INFO - Server is up and running! Status code: 200
+2025-04-28 20:14:57,729 - INFO - Login successful!
+2025-04-28 20:14:57,729 - INFO - Authentication successful. Starting greybox fuzzing...
+2025-04-28 20:14:57,729 - INFO - Selected seed: DELETE /datatb/product/export/
+2025-04-28 20:14:57,729 - INFO - Selected seed with energy 7: DELETE /datatb/product/export/
+2025-04-28 20:14:57,729 - INFO - Mutation 1/7: DELETE /datatb/product/export/
+2025-04-28 20:14:57,868 - INFO - Mutation 2/7: DELETE /datatb/product/export/
+2025-04-28 20:14:58,002 - INFO - Mutation 3/7: DELETE /datatb/product/export/
+2025-04-28 20:14:58,141 - INFO - Mutation 4/7: DELETE /datatb/product/export/
+2025-04-28 20:14:58,293 - INFO - Mutation 5/7: DELETE /datatb/product/export/
+2025-04-28 20:14:58,428 - INFO - Mutation 6/7: DELETE /datatb/product/export/
+2025-04-28 20:14:58,573 - INFO - Mutation 7/7: DELETE /datatb/product/export/
+2025-04-28 20:14:58,719 - INFO - Selected seed: DELETE /datatb/product/
+2025-04-28 20:14:58,719 - INFO - Selected seed with energy 7: DELETE /datatb/product/
+2025-04-28 20:14:58,719 - INFO - Mutation 1/7: DELETE /datatb/product/
+2025-04-28 20:14:58,871 - INFO - Mutation 2/7: DELETE /datatb/product/
+2025-04-28 20:14:59,018 - INFO - Mutation 3/7: DELETE /datatb/product/
+2025-04-28 20:14:59,062 - INFO - Progress: 10 tests, 0 crashes, 0 interesting cases, 1.33 seconds elapsed
+2025-04-28 20:14:59,163 - INFO - Mutation 4/7: DELETE /datatb/product/
+2025-04-28 20:14:59,311 - INFO - Mutation 5/7: DELETE /datatb/product/
+2025-04-28 20:14:59,446 - INFO - Mutation 6/7: DELETE /datatb/product/
+2025-04-28 20:14:59,579 - INFO - Mutation 7/7: DELETE /datatb/product/
+2025-04-28 20:14:59,722 - INFO - Selected seed: DELETE /datatb/product/export/
+2025-04-28 20:14:59,723 - INFO - Selected seed with energy 3: DELETE /datatb/product/export/
+2025-04-28 20:14:59,723 - INFO - Mutation 1/3: DELETE /datatb/product/export/
+2025-04-28 20:14:59,873 - INFO - Mutation 2/3: DELETE /datatb/product/export/
+2025-04-28 20:15:00,024 - INFO - Mutation 3/3: DELETE /datatb/product/export/
+2025-04-28 20:15:00,173 - INFO - Selected seed: PUT /datatb/product/delete/{id}/
+2025-04-28 20:15:00,173 - INFO - Selected seed with energy 7: PUT /datatb/product/delete/{id}/
+2025-04-28 20:15:00,174 - INFO - Mutation 1/7: PUT /datatb/product/delete/45/
+2025-04-28 20:15:00,174 - INFO - Payload: {'confirm': True, 'bDMhOKTd': 'test_value', 'cJdmBA': None}
+2025-04-28 20:15:00,294 - INFO - Mutation 2/7: PUT /datatb/product/delete/73/
+2025-04-28 20:15:00,295 - INFO - Payload: {'confirm': -64}
+2025-04-28 20:15:00,419 - INFO - Mutation 3/7: PUT /datatb/product/delete/52/
+2025-04-28 20:15:00,419 - INFO - Payload: {'confirm': 7}
+2025-04-28 20:15:00,441 - INFO - Progress: 20 tests, 0 crashes, 0 interesting cases, 2.71 seconds elapsed
+2025-04-28 20:15:00,542 - INFO - Mutation 4/7: PUT /datatb/product/delete/36/
+2025-04-28 20:15:00,542 - INFO - Payload: {'confir': -34}
+2025-04-28 20:15:00,659 - INFO - Mutation 5/7: PUT /datatb/product/delete/37/
+2025-04-28 20:15:00,779 - INFO - Mutation 6/7: PUT /datatb/product/delete/-1/
+2025-04-28 20:15:00,779 - INFO - Payload: {'confirm': 95}
+2025-04-28 20:15:00,914 - INFO - Mutation 7/7: PUT /datatb/product/delete/11/
+2025-04-28 20:15:00,914 - INFO - Payload: {'confrm': True}
+2025-04-28 20:15:01,044 - INFO - Selected seed: POST /api/product/{id}/
+2025-04-28 20:15:01,044 - INFO - Selected seed with energy 7: POST /api/product/{id}/
+2025-04-28 20:15:01,044 - INFO - Mutation 1/7: POST /api/product/52/
+2025-04-28 20:15:01,044 - INFO - Payload: {'info': 'd', 'price': 99, 'XneSH': 1439, 'oiAaj': 'est_value'}
+2025-04-28 20:15:01,210 - INFO - Mutation 2/7: POST /api/product/27/
+2025-04-28 20:15:01,210 - INFO - Payload: {'id': 100, 'name': 'p', 'info': 'dt', 'price': 99}
+2025-04-28 20:15:01,402 - INFO - Mutation 3/7: POST /api/product/63/
+2025-04-28 20:15:01,403 - INFO - Payload: {'id': 101, 'name': '(pd', 'info': 'dta', 'rice': 9, 'zENk': 'test_value', 'TCoez': 'test_value'}
+2025-04-28 20:15:01,607 - INFO - Mutation 4/7: POST /api/product/7/
+2025-04-28 20:15:01,607 - INFO - Payload: {'id': 102, 'name': 'p%sd', 'ijfo': 'd4'}
+2025-04-28 20:15:01,768 - INFO - Mutation 5/7: POST /api/product/86/
+2025-04-28 20:15:01,769 - INFO - Payload: {'id': 100, 'name': '7d', 'info': 'dft', 'price': 99}
+2025-04-28 20:15:01,915 - INFO - Mutation 6/7: POST /api/product/54/
+2025-04-28 20:15:01,915 - INFO - Payload: {'id': 200, 'info': 'At', 'ZWXQc': True, 'QMLWgE': 'test_value', 'JJDOn': 331, 'MKSrBGk': None}
+2025-04-28 20:15:01,971 - INFO - Progress: 30 tests, 0 crashes, 0 interesting cases, 4.24 seconds elapsed
+2025-04-28 20:15:02,072 - INFO - Mutation 7/7: POST /api/product/62/
+2025-04-28 20:15:02,072 - INFO - Payload: {'id': 100, 'io': 'dv', 'prie': 107, 'WvgGsK': True}
+2025-04-28 20:15:02,226 - INFO - Selected seed: PUT /datatb/product/
+2025-04-28 20:15:02,226 - INFO - Selected seed with energy 7: PUT /datatb/product/
+2025-04-28 20:15:02,226 - INFO - Mutation 1/7: PUT /datatb/product/
+2025-04-28 20:15:02,226 - INFO - Payload: {'id': 100, 'name': '\td', 'info': 'dt', 'price': 99, 'pnu': 'test_value', 'nVSW': True, 'qdvcA': 'test_value'}
+2025-04-28 20:15:02,362 - INFO - Mutation 2/7: PUT /datatb/product/
+2025-04-28 20:15:02,362 - INFO - Payload: {'id': 100, 'name': 'pd', 'price': 99}
+2025-04-28 20:15:02,519 - INFO - Mutation 3/7: PUT /datatb/product/
+2025-04-28 20:15:02,519 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 49, 'bkDyzpf': -384}
+2025-04-28 20:15:02,662 - INFO - Mutation 4/7: PUT /datatb/product/
+2025-04-28 20:15:02,662 - INFO - Payload: {'id': 100, 'name': 'p', 'price': 255}
+2025-04-28 20:15:02,810 - INFO - Mutation 5/7: PUT /datatb/product/
+2025-04-28 20:15:02,810 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': '%nd', 'price': 99}
+2025-04-28 20:15:02,954 - INFO - Mutation 6/7: PUT /datatb/product/
+2025-04-28 20:15:02,954 - INFO - Payload: {'id': 255, 'nsme': 'pd', 'price': 99, 'hRZGv~b': None}
+2025-04-28 20:15:03,100 - INFO - Mutation 7/7: PUT /datatb/product/
+2025-04-28 20:15:03,100 - INFO - Payload: {'id': 100, 'name': 'pd%', 'ijfo': 'dt', 'price': 97}
+2025-04-28 20:15:03,248 - INFO - Selected seed: POST /datatb/product/
+2025-04-28 20:15:03,249 - INFO - Selected seed with energy 7: POST /datatb/product/
+2025-04-28 20:15:03,249 - INFO - Mutation 1/7: POST /datatb/product/
+2025-04-28 20:15:03,249 - INFO - Payload: {'i': 100, 'name': 'pd%s', 'info': 'Dt', 'price': 58}
+2025-04-28 20:15:03,398 - INFO - Mutation 2/7: POST /datatb/product/
+2025-04-28 20:15:03,398 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99, 'WRMMz': None, 'IUdsRNCB': 934}
+2025-04-28 20:15:03,444 - INFO - Progress: 40 tests, 0 crashes, 0 interesting cases, 5.71 seconds elapsed
+2025-04-28 20:15:03,549 - INFO - Mutation 3/7: POST /datatb/product/
+2025-04-28 20:15:03,549 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99, 'kTXWz': 'test_value'}
+2025-04-28 20:15:03,680 - INFO - Mutation 4/7: POST /datatb/product/
+2025-04-28 20:15:03,680 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': '0do', 'price': 4294967295}
+2025-04-28 20:15:03,820 - INFO - Mutation 5/7: POST /datatb/product/
+2025-04-28 20:15:03,820 - INFO - Payload: {'id': -56, 'name': 'pd', 'info': 'dt'}
+2025-04-28 20:15:03,963 - INFO - Mutation 6/7: POST /datatb/product/
+2025-04-28 20:15:03,965 - INFO - Payload: {'id': 102, 'name': 'p{d', 'info': 'dt'}
+2025-04-28 20:15:04,151 - INFO - Mutation 7/7: POST /datatb/product/
+2025-04-28 20:15:04,151 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt]', 'price': 99}
+2025-04-28 20:15:04,320 - INFO - Selected seed: PUT /datatb/product/
+2025-04-28 20:15:04,320 - INFO - Selected seed with energy 4: PUT /datatb/product/
+2025-04-28 20:15:04,321 - INFO - Mutation 1/4: PUT /datatb/product/
+2025-04-28 20:15:04,321 - INFO - Payload: {'id': 100, 'name': 'pd', 'price': 99}
+2025-04-28 20:15:04,489 - INFO - Mutation 2/4: PUT /datatb/product/
+2025-04-28 20:15:04,489 - INFO - Payload: {'i': 100, 'name': 'pd>', 'info': 'dt', 'price': 99}
+2025-04-28 20:15:04,648 - INFO - Mutation 3/4: PUT /datatb/product/
+2025-04-28 20:15:04,648 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99, 'stalame': None}
+2025-04-28 20:15:04,783 - INFO - Mutation 4/4: PUT /datatb/product/
+2025-04-28 20:15:04,783 - INFO - Payload: {'id': 100, 'info': 'd', 'price': 4294967196, 'IDng': None}
+2025-04-28 20:15:04,954 - INFO - Selected seed: GET /datatb/product/
+2025-04-28 20:15:04,954 - INFO - Selected seed with energy 7: GET /datatb/product/
+2025-04-28 20:15:04,955 - INFO - Mutation 1/7: GET /datatb/product/
+2025-04-28 20:15:05,028 - INFO - Progress: 50 tests, 0 crashes, 0 interesting cases, 7.30 seconds elapsed
+2025-04-28 20:15:05,131 - INFO - Mutation 2/7: GET /datatb/product/
+2025-04-28 20:15:05,325 - INFO - Mutation 3/7: GET /datatb/product/
+2025-04-28 20:15:05,491 - INFO - Mutation 4/7: GET /datatb/product/
+2025-04-28 20:15:05,677 - INFO - Mutation 5/7: GET /datatb/product/
+2025-04-28 20:15:05,803 - INFO - Mutation 6/7: GET /datatb/product/
+2025-04-28 20:15:05,937 - INFO - Mutation 7/7: GET /datatb/product/
+2025-04-28 20:15:06,120 - INFO - Selected seed: DELETE /datatb/product/delete/{id}/
+2025-04-28 20:15:06,121 - INFO - Selected seed with energy 7: DELETE /datatb/product/delete/{id}/
+2025-04-28 20:15:06,122 - INFO - Mutation 1/7: DELETE /datatb/product/delete/-1/
+2025-04-28 20:15:06,258 - INFO - Mutation 2/7: DELETE /datatb/product/delete/14/
+2025-04-28 20:15:06,375 - INFO - Mutation 3/7: DELETE /datatb/product/delete/29/
+2025-04-28 20:15:06,497 - INFO - Mutation 4/7: DELETE /datatb/product/delete/-1/
+2025-04-28 20:15:06,519 - INFO - Progress: 60 tests, 0 crashes, 0 interesting cases, 8.79 seconds elapsed
+2025-04-28 20:15:06,625 - INFO - Mutation 5/7: DELETE /datatb/product/delete/4756987/
+2025-04-28 20:15:06,754 - INFO - Mutation 6/7: DELETE /datatb/product/delete/59/
+2025-04-28 20:15:06,876 - INFO - Mutation 7/7: DELETE /datatb/product/delete/51/
+2025-04-28 20:15:07,007 - INFO - Selected seed: PUT /datatb/product/edit/{id}/
+2025-04-28 20:15:07,007 - INFO - Selected seed with energy 7: PUT /datatb/product/edit/{id}/
+2025-04-28 20:15:07,007 - INFO - Mutation 1/7: PUT /datatb/product/edit/93/
+2025-04-28 20:15:07,007 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-28 20:15:07,126 - INFO - Mutation 2/7: PUT /datatb/product/edit/0/
+2025-04-28 20:15:07,127 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99, 'XcTcfe': None}
+2025-04-28 20:15:07,251 - INFO - Mutation 3/7: PUT /datatb/product/edit/-1/
+2025-04-28 20:15:07,253 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': ']', 'price': 99}
+2025-04-28 20:15:07,385 - INFO - Mutation 4/7: PUT /datatb/product/edit/9/
+2025-04-28 20:15:07,385 - INFO - Payload: {'id': 100, 'name': 'pd9', 'info': 'dT', 'price': 99}
+2025-04-28 20:15:07,514 - INFO - Mutation 5/7: PUT /datatb/product/edit/71/
+2025-04-28 20:15:07,514 - INFO - Payload: {'name': 'd', 'ino': 'dt', 'qrice': 67, 'IvGtOL': -1}
+2025-04-28 20:15:07,635 - INFO - Mutation 6/7: PUT /datatb/product/edit/abc/
+2025-04-28 20:15:07,635 - INFO - Payload: {'id': 64, 'name': 'pd', 'ifo': 't', 'price': 1}
+2025-04-28 20:15:07,778 - INFO - Mutation 7/7: PUT /datatb/product/edit/28/
+2025-04-28 20:15:07,779 - INFO - Payload: {'id': 100, 'ame': ';pd', 'info': 't', 'price': 99}
+2025-04-28 20:15:07,791 - INFO - Progress: 70 tests, 0 crashes, 0 interesting cases, 10.06 seconds elapsed
+2025-04-28 20:15:07,895 - INFO - Selected seed: DELETE /api/product/{id}/
+2025-04-28 20:15:07,896 - INFO - Selected seed with energy 11: DELETE /api/product/{id}/
+2025-04-28 20:15:07,897 - INFO - Mutation 1/11: DELETE /api/product/21/
+2025-04-28 20:15:07,924 - INFO - Found new coverage path with hash: b640b5dfc6f9dd083647b8e37299cc4b
+2025-04-28 20:15:07,924 - INFO - New coverage from: DELETE /api/product/21/
+2025-04-28 20:15:07,924 - INFO - Found interesting test case with new coverage: DELETE /api/product/{id}/
+2025-04-28 20:15:08,029 - INFO - Mutation 2/11: DELETE /api/product/35/
+2025-04-28 20:15:08,180 - INFO - Mutation 3/11: DELETE /api/product/64/
+2025-04-28 20:15:08,313 - INFO - Mutation 4/11: DELETE /api/product/-1/
+2025-04-28 20:15:08,477 - INFO - Mutation 5/11: DELETE /api/product/88/
+2025-04-28 20:15:08,599 - INFO - Mutation 6/11: DELETE /api/product/2M/
+2025-04-28 20:15:08,768 - INFO - Mutation 7/11: DELETE /api/product/63/
+2025-04-28 20:15:08,888 - INFO - Mutation 8/11: DELETE /api/product/17/
+2025-04-28 20:15:09,014 - INFO - Mutation 9/11: DELETE /api/product/6/
+2025-04-28 20:15:09,135 - INFO - Mutation 10/11: DELETE /api/product/75/
+2025-04-28 20:15:09,151 - INFO - Progress: 80 tests, 0 crashes, 1 interesting cases, 11.42 seconds elapsed
+2025-04-28 20:15:09,257 - INFO - Mutation 11/11: DELETE /api/product/-1/
+2025-04-28 20:15:09,410 - INFO - Selected seed: GET /api/product/{id}/
+2025-04-28 20:15:09,410 - INFO - Selected seed with energy 11: GET /api/product/{id}/
+2025-04-28 20:15:09,410 - INFO - Mutation 1/11: GET /api/product/30/
+2025-04-28 20:15:09,420 - INFO - Found new coverage path with hash: 8452eb5435a9872246179967a412a9e7
+2025-04-28 20:15:09,420 - INFO - New coverage from: GET /api/product/30/
+2025-04-28 20:15:09,420 - INFO - Found interesting test case with new coverage: GET /api/product/{id}/
+2025-04-28 20:15:09,526 - INFO - Mutation 2/11: GET /api/product/36/
+2025-04-28 20:15:09,646 - INFO - Mutation 3/11: GET /api/product/30/
+2025-04-28 20:15:09,767 - INFO - Mutation 4/11: GET /api/product/63/
+2025-04-28 20:15:09,887 - INFO - Mutation 5/11: GET /api/product/18/
+2025-04-28 20:15:10,018 - INFO - Mutation 6/11: GET /api/product/74/
+2025-04-28 20:15:10,146 - INFO - Mutation 7/11: GET /api/product/58/
+2025-04-28 20:15:10,281 - INFO - Mutation 8/11: GET /api/product/72/
+2025-04-28 20:15:10,416 - INFO - Mutation 9/11: GET /api/product/69/
+2025-04-28 20:15:10,446 - INFO - Progress: 90 tests, 0 crashes, 2 interesting cases, 12.72 seconds elapsed
+2025-04-28 20:15:10,552 - INFO - Mutation 10/11: GET /api/product/36/
+2025-04-28 20:15:10,688 - INFO - Mutation 11/11: GET /api/product/67/
+2025-04-28 20:15:10,821 - INFO - Selected seed: PUT /datatb/product/export/
+2025-04-28 20:15:10,821 - INFO - Selected seed with energy 7: PUT /datatb/product/export/
+2025-04-28 20:15:10,821 - INFO - Mutation 1/7: PUT /datatb/product/export/
+2025-04-28 20:15:10,821 - INFO - Payload: {'format': 'pdf', 'template': 'Ffaul'}
+2025-04-28 20:15:10,968 - INFO - Mutation 2/7: PUT /datatb/product/export/
+2025-04-28 20:15:10,969 - INFO - Payload: {'template': 'default'}
+2025-04-28 20:15:11,111 - INFO - Mutation 3/7: PUT /datatb/product/export/
+2025-04-28 20:15:11,112 - INFO - Payload: {'format': 'p\rf', 'temlate': 'default', 'MfIUJvVS': None}
+2025-04-28 20:15:11,256 - INFO - Mutation 4/7: PUT /datatb/product/export/
+2025-04-28 20:15:11,256 - INFO - Payload: {'format': 'pdf', 'template': 'defaul(t'}
+2025-04-28 20:15:11,394 - INFO - Mutation 5/7: PUT /datatb/product/export/
+2025-04-28 20:15:11,395 - INFO - Payload: {'format': 'pdf'}
+2025-04-28 20:15:11,537 - INFO - Mutation 6/7: PUT /datatb/product/export/
+2025-04-28 20:15:11,538 - INFO - Payload: {'format': 'pd', 'tEmplate': 'default', 'YWhL': None, 'ZNS': None, 'OKhNnwf': None}
+2025-04-28 20:15:11,682 - INFO - Mutation 7/7: PUT /datatb/product/export/
+2025-04-28 20:15:11,682 - INFO - Payload: {'temPlate': 'defult'}
+2025-04-28 20:15:11,827 - INFO - Selected seed: POST /datatb/product/delete/{id}/
+2025-04-28 20:15:11,827 - INFO - Selected seed with energy 7: POST /datatb/product/delete/{id}/
+2025-04-28 20:15:11,827 - INFO - Mutation 1/7: POST /datatb/product/delete/0/
+2025-04-28 20:15:11,827 - INFO - Payload: {'cascade': True, 'permanent': False, 'JHifFp': 304}
+2025-04-28 20:15:11,842 - INFO - Progress: 100 tests, 0 crashes, 2 interesting cases, 14.11 seconds elapsed
+2025-04-28 20:15:11,944 - INFO - Mutation 2/7: POST /datatb/product/delete/-1/
+2025-04-28 20:15:11,944 - INFO - Payload: {'cascade': 1, 'permanent': 64}
+2025-04-28 20:15:12,064 - INFO - Mutation 3/7: POST /datatb/product/delete/20/
+2025-04-28 20:15:12,064 - INFO - Payload: {'cascade': 1, 'ermanent': False}
+2025-04-28 20:15:12,186 - INFO - Mutation 4/7: POST /datatb/product/delete/42/
+2025-04-28 20:15:12,186 - INFO - Payload: {'cascade': -127, 'permanent': 127}
+2025-04-28 20:15:12,310 - INFO - Mutation 5/7: POST /datatb/product/delete/29/
+2025-04-28 20:15:12,311 - INFO - Payload: {'cascade': True}
+2025-04-28 20:15:12,439 - INFO - Mutation 6/7: POST /datatb/product/delete/88/
+2025-04-28 20:15:12,440 - INFO - Payload: {'cascade': True, 'permanent': 7}
+2025-04-28 20:15:12,577 - INFO - Mutation 7/7: POST /datatb/product/delete/52/
+2025-04-28 20:15:12,577 - INFO - Payload: {'cascade': -1, 'permanent': -1}
+2025-04-28 20:15:12,706 - INFO - Selected seed: GET /datatb/product/export/
+2025-04-28 20:15:12,706 - INFO - Selected seed with energy 11: GET /datatb/product/export/
+2025-04-28 20:15:12,706 - INFO - Mutation 1/11: GET /datatb/product/export/
+2025-04-28 20:15:12,865 - INFO - Mutation 2/11: GET /datatb/product/export/
+2025-04-28 20:15:13,013 - INFO - Mutation 3/11: GET /datatb/product/export/
+2025-04-28 20:15:13,162 - INFO - Mutation 4/11: GET /datatb/product/export/
+2025-04-28 20:15:13,207 - INFO - Progress: 110 tests, 0 crashes, 2 interesting cases, 15.48 seconds elapsed
+2025-04-28 20:15:13,313 - INFO - Mutation 5/11: GET /datatb/product/export/
+2025-04-28 20:15:13,474 - INFO - Mutation 6/11: GET /datatb/product/export/
+2025-04-28 20:15:13,621 - INFO - Mutation 7/11: GET /datatb/product/export/
+2025-04-28 20:15:13,768 - INFO - Mutation 8/11: GET /datatb/product/export/
+2025-04-28 20:15:13,906 - INFO - Mutation 9/11: GET /datatb/product/export/
+2025-04-28 20:15:14,068 - INFO - Mutation 10/11: GET /datatb/product/export/
+2025-04-28 20:15:19,071 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:15:19,072 - WARNING - Discovered new unique bug: BUG-1 with signature GET:/datatb/product/export/:ConnectionTimeout
+2025-04-28 20:15:19,177 - INFO - Mutation 11/11: GET /datatb/product/export/
+2025-04-28 20:15:24,192 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:15:24,192 - INFO - Found instance of known bug: BUG-1
+2025-04-28 20:15:24,297 - INFO - Selected seed: GET /datatb/product/export/
+2025-04-28 20:15:24,297 - INFO - Selected seed with energy 8: GET /datatb/product/export/
+2025-04-28 20:15:24,298 - INFO - Mutation 1/8: GET /datatb/product/export/
+2025-04-28 20:15:29,302 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:15:29,302 - INFO - Found instance of known bug: BUG-1
+2025-04-28 20:15:29,406 - INFO - Mutation 2/8: GET /datatb/product/export/
+2025-04-28 20:15:34,409 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:15:34,410 - INFO - Found instance of known bug: BUG-1
+2025-04-28 20:15:34,515 - INFO - Mutation 3/8: GET /datatb/product/export/
+2025-04-28 20:15:39,519 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:15:39,519 - INFO - Found instance of known bug: BUG-1
+2025-04-28 20:15:39,519 - INFO - Progress: 120 tests, 5 crashes, 2 interesting cases, 41.79 seconds elapsed
+2025-04-28 20:15:39,625 - INFO - Mutation 4/8: GET /datatb/product/export/
+2025-04-28 20:15:44,629 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:15:44,630 - INFO - Found instance of known bug: BUG-1
+2025-04-28 20:15:44,734 - INFO - Mutation 5/8: GET /datatb/product/export/
+2025-04-28 20:15:49,738 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:15:49,738 - INFO - Found instance of known bug: BUG-1
+2025-04-28 20:15:49,842 - INFO - Mutation 6/8: GET /datatb/product/export/
+2025-04-28 20:15:54,847 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:15:54,847 - INFO - Found instance of known bug: BUG-1
+2025-04-28 20:15:54,953 - INFO - Mutation 7/8: GET /datatb/product/export/
+2025-04-28 20:15:59,958 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:15:59,958 - INFO - Found instance of known bug: BUG-1
+2025-04-28 20:16:00,060 - INFO - Mutation 8/8: GET /datatb/product/export/
+2025-04-28 20:16:05,064 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:16:05,064 - INFO - Found instance of known bug: BUG-1
+2025-04-28 20:16:05,169 - INFO - Selected seed: DELETE /api/product/{id}/
+2025-04-28 20:16:05,169 - INFO - Selected seed with energy 5: DELETE /api/product/{id}/
+2025-04-28 20:16:05,169 - INFO - Mutation 1/5: DELETE /api/product/-1/
+2025-04-28 20:16:10,173 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:16:10,173 - WARNING - Discovered new unique bug: BUG-2 with signature DELETE:/api/product/{id}/:ConnectionTimeout
+2025-04-28 20:16:10,279 - INFO - Mutation 2/5: DELETE /api/product/83/
+2025-04-28 20:16:15,286 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:16:15,286 - INFO - Found instance of known bug: BUG-2
+2025-04-28 20:16:15,387 - INFO - Mutation 3/5: DELETE /api/product/97/
+2025-04-28 20:16:20,395 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:16:20,396 - INFO - Found instance of known bug: BUG-2
+2025-04-28 20:16:20,501 - INFO - Mutation 4/5: DELETE /api/product/26/
+2025-04-28 20:16:25,508 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:16:25,508 - INFO - Found instance of known bug: BUG-2
+2025-04-28 20:16:25,614 - INFO - Mutation 5/5: DELETE /api/product/6/
+2025-04-28 20:16:30,621 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:16:30,622 - INFO - Found instance of known bug: BUG-2
+2025-04-28 20:16:30,625 - INFO - Progress: 130 tests, 15 crashes, 2 interesting cases, 92.90 seconds elapsed
+2025-04-28 20:16:30,729 - INFO - Selected seed: GET /datatb/product/delete/{id}/
+2025-04-28 20:16:30,730 - INFO - Selected seed with energy 7: GET /datatb/product/delete/{id}/
+2025-04-28 20:16:30,731 - INFO - Mutation 1/7: GET /datatb/product/delete/0/
+2025-04-28 20:16:35,738 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:16:35,739 - WARNING - Discovered new unique bug: BUG-3 with signature GET:/datatb/product/delete/{id}/:ConnectionTimeout
+2025-04-28 20:16:35,848 - INFO - Mutation 2/7: GET /datatb/product/delete/31/
+2025-04-28 20:16:40,852 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:16:40,852 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:16:40,957 - INFO - Mutation 3/7: GET /datatb/product/delete/16/
+2025-04-28 20:16:45,962 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:16:45,962 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:16:46,067 - INFO - Mutation 4/7: GET /datatb/product/delete/35/
+2025-04-28 20:16:51,072 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:16:51,072 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:16:51,178 - INFO - Mutation 5/7: GET /datatb/product/delete/58/
+2025-04-28 20:16:56,184 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:16:56,185 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:16:56,291 - INFO - Mutation 6/7: GET /datatb/product/delete/9/
+2025-04-28 20:17:01,295 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:17:01,295 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:17:01,401 - INFO - Mutation 7/7: GET /datatb/product/delete/55/
+2025-04-28 20:17:06,404 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:17:06,405 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:17:06,506 - INFO - Selected seed: PUT /api/product/{id}/
+2025-04-28 20:17:06,507 - INFO - Selected seed with energy 10: PUT /api/product/{id}/
+2025-04-28 20:17:06,507 - INFO - Mutation 1/10: PUT /api/product/-1/
+2025-04-28 20:17:06,507 - INFO - Payload: {'ino': 'd&tR?', 'price': 2147483648}
+2025-04-28 20:17:11,512 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:17:11,512 - WARNING - Discovered new unique bug: BUG-4 with signature PUT:/api/product/{id}/:ConnectionTimeout
+2025-04-28 20:17:11,619 - INFO - Mutation 2/10: PUT /api/product/96/
+2025-04-28 20:17:11,619 - INFO - Payload: {'ino': 'd&tR?', 'prica': 1}
+2025-04-28 20:17:16,627 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:17:16,628 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:17:16,629 - INFO - Found new coverage path with hash: e592ced0359c3e0616c0b2cb88393778
+2025-04-28 20:17:16,629 - INFO - New coverage from: PUT /api/product/96/
+2025-04-28 20:17:16,629 - INFO - Found interesting test case with new coverage: PUT /api/product/{id}/
+2025-04-28 20:17:16,734 - INFO - Mutation 3/10: PUT /api/product/1807119/
+2025-04-28 20:17:16,734 - INFO - Payload: {'ino': 'd&tR?', 'price': 114}
+2025-04-28 20:17:21,738 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:17:21,739 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:17:21,741 - INFO - Progress: 140 tests, 25 crashes, 3 interesting cases, 144.01 seconds elapsed
+2025-04-28 20:17:21,846 - INFO - Mutation 4/10: PUT /api/product/9/
+2025-04-28 20:17:26,851 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:17:26,852 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:17:26,960 - INFO - Mutation 5/10: PUT /api/product/24/
+2025-04-28 20:17:26,960 - INFO - Payload: {'ino': 'd&tR?', 'price': 4294967295}
+2025-04-28 20:17:31,967 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:17:31,967 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:17:32,069 - INFO - Mutation 6/10: PUT /api/product/12/
+2025-04-28 20:17:32,069 - INFO - Payload: {'ino': '&tR?'}
+2025-04-28 20:17:37,073 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:17:37,073 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:17:37,176 - INFO - Mutation 7/10: PUT /api/product/19/
+2025-04-28 20:17:37,176 - INFO - Payload: {'price': 4294967295}
+2025-04-28 20:17:42,179 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:17:42,180 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:17:42,285 - INFO - Mutation 8/10: PUT /api/product/92/
+2025-04-28 20:17:42,286 - INFO - Payload: {'ino': 'd&tR?', 'price': 99}
+2025-04-28 20:17:47,293 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:17:47,293 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:17:47,399 - INFO - Mutation 9/10: PUT /api/product/18/
+2025-04-28 20:17:47,399 - INFO - Payload: {'ino': 'd&tR?'}
+2025-04-28 20:17:52,404 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:17:52,404 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:17:52,508 - INFO - Mutation 10/10: PUT /api/product/\8/
+2025-04-28 20:17:52,508 - INFO - Payload: {'ino': 'd&tR?', 'price': 97, 'vWetLZkc': None}
+2025-04-28 20:17:57,515 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:17:57,515 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:17:57,620 - INFO - Selected seed: POST /datatb/product/
+2025-04-28 20:17:57,620 - INFO - Selected seed with energy 5: POST /datatb/product/
+2025-04-28 20:17:57,621 - INFO - Mutation 1/5: POST /datatb/product/
+2025-04-28 20:17:57,621 - INFO - Payload: {'id': 4294967195, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-28 20:17:57,780 - INFO - Mutation 2/5: POST /datatb/product/
+2025-04-28 20:17:57,780 - INFO - Payload: {'id': 100, 'name': 'pd`', 'info': 'dt', 'price': 99}
+2025-04-28 20:17:57,928 - INFO - Mutation 3/5: POST /datatb/product/
+2025-04-28 20:17:57,928 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'Mdt', 'price': 99}
+2025-04-28 20:17:57,976 - INFO - Progress: 150 tests, 32 crashes, 3 interesting cases, 180.25 seconds elapsed
+2025-04-28 20:17:58,082 - INFO - Mutation 4/5: POST /datatb/product/
+2025-04-28 20:17:58,082 - INFO - Payload: {'name': 'd', 'price': 99}
+2025-04-28 20:17:58,268 - INFO - Mutation 5/5: POST /datatb/product/
+2025-04-28 20:17:58,268 - INFO - Payload: {'id': 100, 'name': 'pd\n', 'info': 'dt', 'price': 99}
+2025-04-28 20:17:58,415 - INFO - Selected seed: DELETE /datatb/product/export/
+2025-04-28 20:17:58,415 - INFO - Selected seed with energy 4: DELETE /datatb/product/export/
+2025-04-28 20:17:58,416 - INFO - Mutation 1/4: DELETE /datatb/product/export/
+2025-04-28 20:18:03,419 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:18:03,420 - WARNING - Discovered new unique bug: BUG-5 with signature DELETE:/datatb/product/export/:ConnectionTimeout
+2025-04-28 20:18:03,525 - INFO - Mutation 2/4: DELETE /datatb/product/export/
+2025-04-28 20:18:08,528 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:18:08,529 - INFO - Found instance of known bug: BUG-5
+2025-04-28 20:18:08,634 - INFO - Mutation 3/4: DELETE /datatb/product/export/
+2025-04-28 20:18:13,638 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:18:13,638 - INFO - Found instance of known bug: BUG-5
+2025-04-28 20:18:13,741 - INFO - Mutation 4/4: DELETE /datatb/product/export/
+2025-04-28 20:18:18,745 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:18:18,745 - INFO - Found instance of known bug: BUG-5
+2025-04-28 20:18:18,851 - INFO - Selected seed: GET /datatb/product/edit/{id}/
+2025-04-28 20:18:18,851 - INFO - Selected seed with energy 9: GET /datatb/product/edit/{id}/
+2025-04-28 20:18:18,852 - INFO - Mutation 1/9: GET /datatb/product/edit/54/
+2025-04-28 20:18:23,858 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:18:23,859 - WARNING - Discovered new unique bug: BUG-6 with signature GET:/datatb/product/edit/{id}/:ConnectionTimeout
+2025-04-28 20:18:23,962 - INFO - Mutation 2/9: GET /datatb/product/edit/67/
+2025-04-28 20:18:28,966 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:18:28,966 - INFO - Found instance of known bug: BUG-6
+2025-04-28 20:18:29,071 - INFO - Mutation 3/9: GET /datatb/product/edit/0/
+2025-04-28 20:18:34,077 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:18:34,077 - INFO - Found instance of known bug: BUG-6
+2025-04-28 20:18:34,182 - INFO - Mutation 4/9: GET /datatb/product/edit/0/
+2025-04-28 20:18:39,188 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:18:39,188 - INFO - Found instance of known bug: BUG-6
+2025-04-28 20:18:39,189 - INFO - Progress: 160 tests, 40 crashes, 3 interesting cases, 221.46 seconds elapsed
+2025-04-28 20:18:39,293 - INFO - Mutation 5/9: GET /datatb/product/edit/0/
+2025-04-28 20:18:44,296 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:18:44,297 - INFO - Found instance of known bug: BUG-6
+2025-04-28 20:18:44,403 - INFO - Mutation 6/9: GET /datatb/product/edit/@9/
+2025-04-28 20:18:49,407 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:18:49,408 - INFO - Found instance of known bug: BUG-6
+2025-04-28 20:18:49,511 - INFO - Mutation 7/9: GET /datatb/product/edit/6422807/
+2025-04-28 20:18:54,515 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:18:54,516 - INFO - Found instance of known bug: BUG-6
+2025-04-28 20:18:54,619 - INFO - Mutation 8/9: GET /datatb/product/edit/66/
+2025-04-28 20:18:59,622 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:18:59,622 - INFO - Found instance of known bug: BUG-6
+2025-04-28 20:18:59,728 - INFO - Mutation 9/9: GET /datatb/product/edit/85/
+2025-04-28 20:19:04,733 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:19:04,733 - INFO - Found instance of known bug: BUG-6
+2025-04-28 20:19:04,838 - INFO - Selected seed: POST /datatb/product/export/
+2025-04-28 20:19:04,838 - INFO - Selected seed with energy 7: POST /datatb/product/export/
+2025-04-28 20:19:04,839 - INFO - Mutation 1/7: POST /datatb/product/export/
+2025-04-28 20:19:04,839 - INFO - Payload: {'format': 'df', 'template': 'default'}
+2025-04-28 20:19:04,999 - INFO - Mutation 2/7: POST /datatb/product/export/
+2025-04-28 20:19:04,999 - INFO - Payload: {'format': 'p', 'template': 'efault'}
+2025-04-28 20:19:05,146 - INFO - Mutation 3/7: POST /datatb/product/export/
+2025-04-28 20:19:05,146 - INFO - Payload: {'tempdate': 'detault'}
+2025-04-28 20:19:05,290 - INFO - Mutation 4/7: POST /datatb/product/export/
+2025-04-28 20:19:05,290 - INFO - Payload: {'format': "pd'", 'template': 'default', 'BVLzrh': True}
+2025-04-28 20:19:05,434 - INFO - Mutation 5/7: POST /datatb/product/export/
+2025-04-28 20:19:05,434 - INFO - Payload: {'format': 'pdf', 'template': 'd$efault', 'gsYC': 421}
+2025-04-28 20:19:05,486 - INFO - Progress: 170 tests, 45 crashes, 3 interesting cases, 247.76 seconds elapsed
+2025-04-28 20:19:05,591 - INFO - Mutation 6/7: POST /datatb/product/export/
+2025-04-28 20:19:05,591 - INFO - Payload: {'format': 'pdf'}
+2025-04-28 20:19:05,732 - INFO - Mutation 7/7: POST /datatb/product/export/
+2025-04-28 20:19:05,732 - INFO - Payload: {'format': 'pf', 'template': 'defult', 'IDt': True}
+2025-04-28 20:19:05,922 - INFO - Selected seed: POST /datatb/product/
+2025-04-28 20:19:05,922 - INFO - Selected seed with energy 4: POST /datatb/product/
+2025-04-28 20:19:05,922 - INFO - Mutation 1/4: POST /datatb/product/
+2025-04-28 20:19:05,922 - INFO - Payload: {'id': -28, 'namm': '"d', 'info': 'dt', 'prmce': -99, 'Mut': 'test_value'}
+2025-04-28 20:19:06,057 - INFO - Mutation 2/4: POST /datatb/product/
+2025-04-28 20:19:06,057 - INFO - Payload: {'id': 36, 'name': 'po', 'info': 'd}', 'prie': 99}
+2025-04-28 20:19:06,205 - INFO - Mutation 3/4: POST /datatb/product/
+2025-04-28 20:19:06,205 - INFO - Payload: {'d': 6553, 'info': 'd', 'price': 115}
+2025-04-28 20:19:06,354 - INFO - Mutation 4/4: POST /datatb/product/
+2025-04-28 20:19:06,354 - INFO - Payload: {'id': 96, 'name': 'pkd', 'inf': 'dtE', 'price': 1}
+2025-04-28 20:19:06,506 - INFO - Selected seed: DELETE /datatb/product/export/
+2025-04-28 20:19:06,506 - INFO - Selected seed with energy 6: DELETE /datatb/product/export/
+2025-04-28 20:19:06,506 - INFO - Mutation 1/6: DELETE /datatb/product/export/
+2025-04-28 20:19:11,509 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:19:11,509 - INFO - Found instance of known bug: BUG-5
+2025-04-28 20:19:11,612 - INFO - Mutation 2/6: DELETE /datatb/product/export/
+2025-04-28 20:19:16,616 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:19:16,616 - INFO - Found instance of known bug: BUG-5
+2025-04-28 20:19:16,718 - INFO - Mutation 3/6: DELETE /datatb/product/export/
+2025-04-28 20:19:21,724 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:19:21,725 - INFO - Found instance of known bug: BUG-5
+2025-04-28 20:19:21,830 - INFO - Mutation 4/6: DELETE /datatb/product/export/
+2025-04-28 20:19:26,839 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:19:26,841 - INFO - Found instance of known bug: BUG-5
+2025-04-28 20:19:26,843 - INFO - Progress: 180 tests, 49 crashes, 3 interesting cases, 269.11 seconds elapsed
+2025-04-28 20:19:26,958 - INFO - Mutation 5/6: DELETE /datatb/product/export/
+2025-04-28 20:19:32,068 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:19:32,068 - INFO - Found instance of known bug: BUG-5
+2025-04-28 20:19:32,171 - INFO - Mutation 6/6: DELETE /datatb/product/export/
+2025-04-28 20:19:37,176 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:19:37,177 - INFO - Found instance of known bug: BUG-5
+2025-04-28 20:19:37,283 - INFO - Selected seed: POST /datatb/product/edit/{id}/
+2025-04-28 20:19:37,283 - INFO - Selected seed with energy 9: POST /datatb/product/edit/{id}/
+2025-04-28 20:19:37,284 - INFO - Mutation 1/9: POST /datatb/product/edit/72/
+2025-04-28 20:19:37,284 - INFO - Payload: {'id': 4294967195, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-28 20:19:37,419 - INFO - Mutation 2/9: POST /datatb/product/edit/4/
+2025-04-28 20:19:37,420 - INFO - Payload: {'id': 83, 'name': '}Md', 'info': 'd'}
+2025-04-28 20:19:37,548 - INFO - Mutation 3/9: POST /datatb/product/edit/6F/
+2025-04-28 20:19:37,548 - INFO - Payload: {'id': 116, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-28 20:19:42,553 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:19:42,553 - WARNING - Discovered new unique bug: BUG-7 with signature POST:/datatb/product/edit/{id}/:ConnectionTimeout
+2025-04-28 20:19:42,658 - INFO - Mutation 4/9: POST /datatb/product/edit/44/
+2025-04-28 20:19:42,659 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-28 20:19:42,795 - INFO - Mutation 5/9: POST /datatb/product/edit/45/
+2025-04-28 20:19:42,796 - INFO - Payload: {'id': 1, 'name': 'pd', 'info': 't', 'prIce': 255}
+2025-04-28 20:19:47,799 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:19:47,799 - INFO - Found instance of known bug: BUG-7
+2025-04-28 20:19:47,903 - INFO - Mutation 6/9: POST /datatb/product/edit/abc/
+2025-04-28 20:19:47,904 - INFO - Payload: {'id': 108, 'name': 'pd', 'price': 99}
+2025-04-28 20:19:52,908 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:19:52,909 - INFO - Found instance of known bug: BUG-7
+2025-04-28 20:19:53,015 - INFO - Mutation 7/9: POST /datatb/product/edit/34/
+2025-04-28 20:19:53,015 - INFO - Payload: {'name': 'Ud', 'info': 'dt', 'price': 99}
+2025-04-28 20:19:53,146 - INFO - Mutation 8/9: POST /datatb/product/edit/18/
+2025-04-28 20:19:53,146 - INFO - Payload: {'id': 100, 'name': 'pd(', 'info': 'dt', 'price': 99}
+2025-04-28 20:19:53,170 - INFO - Progress: 190 tests, 54 crashes, 3 interesting cases, 295.44 seconds elapsed
+2025-04-28 20:19:53,276 - INFO - Mutation 9/9: POST /datatb/product/edit/93/
+2025-04-28 20:19:53,276 - INFO - Payload: {'id': 50, 'name': 'pd,s', 'info': 'dw', 'vVEe': True}
+2025-04-28 20:19:58,283 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:19:58,284 - INFO - Found instance of known bug: BUG-7
+2025-04-28 20:19:58,390 - INFO - Selected seed: DELETE /datatb/product/edit/{id}/
+2025-04-28 20:19:58,391 - INFO - Selected seed with energy 9: DELETE /datatb/product/edit/{id}/
+2025-04-28 20:19:58,392 - INFO - Mutation 1/9: DELETE /datatb/product/edit/37/
+2025-04-28 20:20:03,398 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:20:03,399 - WARNING - Discovered new unique bug: BUG-8 with signature DELETE:/datatb/product/edit/{id}/:ConnectionTimeout
+2025-04-28 20:20:03,505 - INFO - Mutation 2/9: DELETE /datatb/product/edit/7/
+2025-04-28 20:20:08,509 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:20:08,510 - INFO - Found instance of known bug: BUG-8
+2025-04-28 20:20:08,612 - INFO - Mutation 3/9: DELETE /datatb/product/edit/11/
+2025-04-28 20:20:13,618 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:20:13,618 - INFO - Found instance of known bug: BUG-8
+2025-04-28 20:20:13,721 - INFO - Mutation 4/9: DELETE /datatb/product/edit/-1/
+2025-04-28 20:20:18,729 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:20:18,729 - INFO - Found instance of known bug: BUG-8
+2025-04-28 20:20:18,830 - INFO - Mutation 5/9: DELETE /datatb/product/edit/53/
+2025-04-28 20:20:23,833 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:20:23,833 - INFO - Found instance of known bug: BUG-8
+2025-04-28 20:20:23,938 - INFO - Mutation 6/9: DELETE /datatb/product/edit/58/
+2025-04-28 20:20:28,942 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:20:28,943 - INFO - Found instance of known bug: BUG-8
+2025-04-28 20:20:29,044 - INFO - Mutation 7/9: DELETE /datatb/product/edit/88/
+2025-04-28 20:20:34,048 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:20:34,049 - INFO - Found instance of known bug: BUG-8
+2025-04-28 20:20:34,150 - INFO - Mutation 8/9: DELETE /datatb/product/edit/70/
+2025-04-28 20:20:39,154 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:20:39,155 - INFO - Found instance of known bug: BUG-8
+2025-04-28 20:20:39,261 - INFO - Mutation 9/9: DELETE /datatb/product/edit/abc/
+2025-04-28 20:20:44,266 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:20:44,266 - INFO - Found instance of known bug: BUG-8
+2025-04-28 20:20:44,268 - INFO - Progress: 200 tests, 64 crashes, 3 interesting cases, 346.54 seconds elapsed
+2025-04-28 20:20:44,373 - INFO - Completed queue cycle #1
+2025-04-28 20:20:44,373 - INFO - Selected seed: PUT /datatb/product/
+2025-04-28 20:20:44,373 - INFO - Selected seed with energy 3: PUT /datatb/product/
+2025-04-28 20:20:44,374 - INFO - Mutation 1/3: PUT /datatb/product/
+2025-04-28 20:20:44,374 - INFO - Payload: {'name': 'pd', 'nfo': 'dt', 'price': 99, 'KhBFCSrU': 32767}
+2025-04-28 20:20:44,530 - INFO - Mutation 2/3: PUT /datatb/product/
+2025-04-28 20:20:44,530 - INFO - Payload: {'id': 100, 'name': 'pd', 'price': 99, 'vyvSJ': True}
+2025-04-28 20:20:44,671 - INFO - Mutation 3/3: PUT /datatb/product/
+2025-04-28 20:20:44,671 - INFO - Payload: {'id': 100, 'name': '\npd', 'info': 'dt', 'price': 99}
+2025-04-28 20:20:44,807 - INFO - Selected seed: DELETE /datatb/product/delete/{id}/
+2025-04-28 20:20:44,807 - INFO - Selected seed with energy 5: DELETE /datatb/product/delete/{id}/
+2025-04-28 20:20:44,807 - INFO - Mutation 1/5: DELETE /datatb/product/delete/abc/
+2025-04-28 20:20:49,812 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:20:49,814 - WARNING - Discovered new unique bug: BUG-9 with signature DELETE:/datatb/product/delete/{id}/:ConnectionTimeout
+2025-04-28 20:20:49,921 - INFO - Mutation 2/5: DELETE /datatb/product/delete/46/
+2025-04-28 20:20:54,931 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:20:54,932 - INFO - Found instance of known bug: BUG-9
+2025-04-28 20:20:55,037 - INFO - Mutation 3/5: DELETE /datatb/product/delete/-1/
+2025-04-28 20:21:00,041 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:21:00,041 - INFO - Found instance of known bug: BUG-9
+2025-04-28 20:21:00,146 - INFO - Mutation 4/5: DELETE /datatb/product/delete/0/
+2025-04-28 20:21:05,151 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:21:05,151 - INFO - Found instance of known bug: BUG-9
+2025-04-28 20:21:05,254 - INFO - Mutation 5/5: DELETE /datatb/product/delete/7620046/
+2025-04-28 20:21:10,258 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:21:10,259 - INFO - Found instance of known bug: BUG-9
+2025-04-28 20:21:10,366 - INFO - Selected seed: GET /datatb/product/export/
+2025-04-28 20:21:10,367 - INFO - Selected seed with energy 5: GET /datatb/product/export/
+2025-04-28 20:21:10,367 - INFO - Mutation 1/5: GET /datatb/product/export/
+2025-04-28 20:21:15,372 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:21:15,372 - INFO - Found instance of known bug: BUG-1
+2025-04-28 20:21:15,476 - INFO - Mutation 2/5: GET /datatb/product/export/
+2025-04-28 20:21:20,481 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:21:20,482 - INFO - Found instance of known bug: BUG-1
+2025-04-28 20:21:20,483 - INFO - Progress: 210 tests, 71 crashes, 3 interesting cases, 382.75 seconds elapsed
+2025-04-28 20:21:20,585 - INFO - Mutation 3/5: GET /datatb/product/export/
+2025-04-28 20:21:25,592 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:21:25,592 - INFO - Found instance of known bug: BUG-1
+2025-04-28 20:21:25,699 - INFO - Mutation 4/5: GET /datatb/product/export/
+2025-04-28 20:21:30,705 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:21:30,705 - INFO - Found instance of known bug: BUG-1
+2025-04-28 20:21:30,811 - INFO - Mutation 5/5: GET /datatb/product/export/
+2025-04-28 20:21:35,816 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:21:35,816 - INFO - Found instance of known bug: BUG-1
+2025-04-28 20:21:35,917 - INFO - Selected seed: GET /datatb/product/delete/{id}/
+2025-04-28 20:21:35,918 - INFO - Selected seed with energy 8: GET /datatb/product/delete/{id}/
+2025-04-28 20:21:35,918 - INFO - Mutation 1/8: GET /datatb/product/delete/48/
+2025-04-28 20:21:40,920 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:21:40,921 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:21:41,023 - INFO - Mutation 2/8: GET /datatb/product/delete/59/
+2025-04-28 20:21:46,027 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:21:46,028 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:21:46,129 - INFO - Mutation 3/8: GET /datatb/product/delete/61/
+2025-04-28 20:21:51,134 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:21:51,134 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:21:51,240 - INFO - Mutation 4/8: GET /datatb/product/delete/11/
+2025-04-28 20:21:56,247 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:21:56,248 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:21:56,355 - INFO - Mutation 5/8: GET /datatb/product/delete/60/
+2025-04-28 20:22:01,361 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:22:01,361 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:22:01,468 - INFO - Mutation 6/8: GET /datatb/product/delete/5/
+2025-04-28 20:22:06,472 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:22:06,472 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:22:06,573 - INFO - Mutation 7/8: GET /datatb/product/delete/15/
+2025-04-28 20:22:11,580 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:22:11,580 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:22:11,583 - INFO - Progress: 220 tests, 81 crashes, 3 interesting cases, 433.85 seconds elapsed
+2025-04-28 20:22:11,683 - INFO - Mutation 8/8: GET /datatb/product/delete/24/
+2025-04-28 20:22:16,688 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:22:16,688 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:22:16,791 - INFO - Selected seed: PUT /datatb/product/export/
+2025-04-28 20:22:16,792 - INFO - Selected seed with energy 5: PUT /datatb/product/export/
+2025-04-28 20:22:16,792 - INFO - Mutation 1/5: PUT /datatb/product/export/
+2025-04-28 20:22:16,793 - INFO - Payload: {'search': "'", 'hidden_cols': [], 'type': 'p[f'}
+2025-04-28 20:22:16,947 - INFO - Mutation 2/5: PUT /datatb/product/export/
+2025-04-28 20:22:16,947 - INFO - Payload: {'search': '', 'hidden_cols': [], 'type': 'pdf'}
+2025-04-28 20:22:21,951 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:22:21,952 - WARNING - Discovered new unique bug: BUG-10 with signature PUT:/datatb/product/export/:ConnectionTimeout
+2025-04-28 20:22:22,058 - INFO - Mutation 3/5: PUT /datatb/product/export/
+2025-04-28 20:22:22,059 - INFO - Payload: {'idden_!ols': [], 'type': 'k\rd'}
+2025-04-28 20:22:22,214 - INFO - Mutation 4/5: PUT /datatb/product/export/
+2025-04-28 20:22:22,214 - INFO - Payload: {'search': '', 'hiddn_cols': [], 'type': 'p6df', 'XXTUVrQW': 44}
+2025-04-28 20:22:22,356 - INFO - Mutation 5/5: PUT /datatb/product/export/
+2025-04-28 20:22:22,356 - INFO - Payload: {'search': '', 'hidden_cols': [], 'type': 'pdf', 'kNVYacZ': 'test_value'}
+2025-04-28 20:22:27,360 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:22:27,364 - INFO - Found instance of known bug: BUG-10
+2025-04-28 20:22:27,471 - INFO - Selected seed: PUT /datatb/product/delete/{id}/
+2025-04-28 20:22:27,471 - INFO - Selected seed with energy 9: PUT /datatb/product/delete/{id}/
+2025-04-28 20:22:27,471 - INFO - Mutation 1/9: PUT /datatb/product/delete/43/
+2025-04-28 20:22:32,475 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:22:32,475 - WARNING - Discovered new unique bug: BUG-11 with signature PUT:/datatb/product/delete/{id}/:ConnectionTimeout
+2025-04-28 20:22:32,580 - INFO - Mutation 2/9: PUT /datatb/product/delete/25/
+2025-04-28 20:22:32,581 - INFO - Payload: {'cnfirm': 17}
+2025-04-28 20:22:37,594 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:22:37,594 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:22:37,697 - INFO - Mutation 3/9: PUT /datatb/product/delete/49/
+2025-04-28 20:22:42,700 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:22:42,700 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:22:42,803 - INFO - Mutation 4/9: PUT /datatb/product/delete/18/
+2025-04-28 20:22:42,803 - INFO - Payload: {'confirm': True, 'efq': None}
+2025-04-28 20:22:47,806 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:22:47,806 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:22:47,807 - INFO - Progress: 230 tests, 88 crashes, 3 interesting cases, 470.08 seconds elapsed
+2025-04-28 20:22:47,912 - INFO - Mutation 5/9: PUT /datatb/product/delete/2/
+2025-04-28 20:22:52,915 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:22:52,915 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:22:53,019 - INFO - Mutation 6/9: PUT /datatb/product/delete/94/
+2025-04-28 20:22:58,026 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:22:58,026 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:22:58,133 - INFO - Mutation 7/9: PUT /datatb/product/delete/29/
+2025-04-28 20:22:58,134 - INFO - Payload: {'confiri': True}
+2025-04-28 20:23:03,138 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:23:03,138 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:23:03,244 - INFO - Mutation 8/9: PUT /datatb/product/delete/85/
+2025-04-28 20:23:03,244 - INFO - Payload: {'confirm': 65535}
+2025-04-28 20:23:08,249 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:23:08,249 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:23:08,351 - INFO - Mutation 9/9: PUT /datatb/product/delete/4K/
+2025-04-28 20:23:13,357 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:23:13,358 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:23:13,463 - INFO - Selected seed: DELETE /datatb/product/export/
+2025-04-28 20:23:13,464 - INFO - Selected seed with energy 5: DELETE /datatb/product/export/
+2025-04-28 20:23:13,465 - INFO - Mutation 1/5: DELETE /datatb/product/export/
+2025-04-28 20:23:18,482 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:23:18,482 - INFO - Found instance of known bug: BUG-5
+2025-04-28 20:23:18,585 - INFO - Mutation 2/5: DELETE /datatb/product/export/
+2025-04-28 20:23:23,595 - WARNING - Server Error! Connection error: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /datatb/product/export/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1064ec050>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2025-04-28 20:23:23,597 - WARNING - Discovered new unique bug: BUG-12 with signature DELETE:/datatb/product/export/:ConnectionIssue
+2025-04-28 20:23:23,597 - INFO - Restarting the server...
+2025-04-28 20:23:25,734 - INFO - Starting Django server with coverage from: /Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication
+2025-04-28 20:23:25,740 - INFO - Django server process started with coverage
+2025-04-28 20:23:25,741 - INFO - Waiting for server at http://localhost:8000 to be available (timeout: 30s)
+2025-04-28 20:23:27,383 - INFO - Server is up and running! Status code: 200
+2025-04-28 20:23:27,496 - INFO - Login successful!
+2025-04-28 20:23:27,601 - INFO - Mutation 3/5: DELETE /datatb/product/export/
+2025-04-28 20:23:27,784 - INFO - Mutation 4/5: DELETE /datatb/product/export/
+2025-04-28 20:23:27,946 - INFO - Mutation 5/5: DELETE /datatb/product/export/
+2025-04-28 20:23:27,974 - INFO - Progress: 240 tests, 95 crashes, 3 interesting cases, 510.25 seconds elapsed
+2025-04-28 20:23:28,080 - INFO - Selected seed: GET /datatb/product/delete/{id}/
+2025-04-28 20:23:28,080 - INFO - Selected seed with energy 5: GET /datatb/product/delete/{id}/
+2025-04-28 20:23:28,080 - INFO - Mutation 1/5: GET /datatb/product/delete/47/
+2025-04-28 20:23:28,199 - INFO - Mutation 2/5: GET /datatb/product/delete/6/
+2025-04-28 20:23:28,325 - INFO - Mutation 3/5: GET /datatb/product/delete/20/
+2025-04-28 20:23:28,450 - INFO - Mutation 4/5: GET /datatb/product/delete/16/
+2025-04-28 20:23:28,584 - INFO - Mutation 5/5: GET /datatb/product/delete/49/
+2025-04-28 20:23:28,708 - INFO - Selected seed: DELETE /datatb/product/edit/{id}/
+2025-04-28 20:23:28,708 - INFO - Selected seed with energy 7: DELETE /datatb/product/edit/{id}/
+2025-04-28 20:23:28,708 - INFO - Mutation 1/7: DELETE /datatb/product/edit/44/
+2025-04-28 20:23:28,864 - INFO - Mutation 2/7: DELETE /datatb/product/edit/+/
+2025-04-28 20:23:28,985 - INFO - Mutation 3/7: DELETE /datatb/product/edit/29/
+2025-04-28 20:23:29,126 - INFO - Mutation 4/7: DELETE /datatb/product/edit/2189909/
+2025-04-28 20:23:29,283 - INFO - Mutation 5/7: DELETE /datatb/product/edit/67/
+2025-04-28 20:23:29,316 - INFO - Progress: 250 tests, 95 crashes, 3 interesting cases, 511.59 seconds elapsed
+2025-04-28 20:23:29,421 - INFO - Mutation 6/7: DELETE /datatb/product/edit/90/
+2025-04-28 20:23:29,568 - INFO - Mutation 7/7: DELETE /datatb/product/edit/abc/
+2025-04-28 20:23:29,691 - INFO - Selected seed: PUT /api/product/{id}/
+2025-04-28 20:23:29,692 - INFO - Selected seed with energy 7: PUT /api/product/{id}/
+2025-04-28 20:23:29,692 - INFO - Mutation 1/7: PUT /api/product/-1/
+2025-04-28 20:23:29,692 - INFO - Payload: {'name': 'Ad', 'info': 'dt', 'price': 99, 'ZmioywES': 4294966548}
+2025-04-28 20:23:29,996 - INFO - Mutation 2/7: PUT /api/product/-1/
+2025-04-28 20:23:29,997 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-28 20:23:30,383 - INFO - Mutation 3/7: PUT /api/product/9/
+2025-04-28 20:23:30,384 - INFO - Payload: {'id': 101, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-28 20:23:30,623 - INFO - Mutation 4/7: PUT /api/product/97/
+2025-04-28 20:23:30,623 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'xt', 'price': 99}
+2025-04-28 20:23:30,766 - INFO - Mutation 5/7: PUT /api/product/54/
+2025-04-28 20:23:30,767 - INFO - Payload: {'id': 100, 'info': 'dt`', 'price': 103}
+2025-04-28 20:23:30,909 - INFO - Mutation 6/7: PUT /api/product/29/
+2025-04-28 20:23:30,909 - INFO - Payload: {'id': 100, 'name': '|pd', 'info': 'dt', 'price': 99, 'sfgKyv': 187}
+2025-04-28 20:23:31,089 - INFO - Mutation 7/7: PUT /api/product/9/
+2025-04-28 20:23:31,089 - INFO - Payload: {'id': 50, 'name': 'pd7', 'info': 'dt', 'price': 99, 'sQhg': 896}
+2025-04-28 20:23:31,317 - INFO - Selected seed: DELETE /datatb/product/
+2025-04-28 20:23:31,319 - INFO - Selected seed with energy 6: DELETE /datatb/product/
+2025-04-28 20:23:31,319 - INFO - Mutation 1/6: DELETE /datatb/product/
+2025-04-28 20:23:31,456 - INFO - Progress: 260 tests, 95 crashes, 3 interesting cases, 513.73 seconds elapsed
+2025-04-28 20:23:31,558 - INFO - Mutation 2/6: DELETE /datatb/product/
+2025-04-28 20:23:31,831 - INFO - Mutation 3/6: DELETE /datatb/product/
+2025-04-28 20:23:31,965 - INFO - Mutation 4/6: DELETE /datatb/product/
+2025-04-28 20:23:32,100 - INFO - Mutation 5/6: DELETE /datatb/product/
+2025-04-28 20:23:32,246 - INFO - Mutation 6/6: DELETE /datatb/product/
+2025-04-28 20:23:32,389 - INFO - Selected seed: POST /datatb/product/export/
+2025-04-28 20:23:32,390 - INFO - Selected seed with energy 7: POST /datatb/product/export/
+2025-04-28 20:23:32,390 - INFO - Mutation 1/7: POST /datatb/product/export/
+2025-04-28 20:23:32,390 - INFO - Payload: {'format': 'pf', 'template': 'default'}
+2025-04-28 20:23:32,530 - INFO - Mutation 2/7: POST /datatb/product/export/
+2025-04-28 20:23:32,530 - INFO - Payload: {'forat': 'pLf', 'template': 'dec`ult', 'HdY': '"test_value', 'LsYdAC': True}
+2025-04-28 20:23:32,726 - INFO - Mutation 3/7: POST /datatb/product/export/
+2025-04-28 20:23:32,726 - INFO - Payload: {'format': 'df', 'template': 'def-ault'}
+2025-04-28 20:23:32,856 - INFO - Mutation 4/7: POST /datatb/product/export/
+2025-04-28 20:23:32,857 - INFO - Payload: {'template': '|default'}
+2025-04-28 20:23:32,990 - INFO - Mutation 5/7: POST /datatb/product/export/
+2025-04-28 20:23:32,990 - INFO - Payload: {'format': 'pdf', 'template': 'default', 'scHwkxa': 0}
+2025-04-28 20:23:33,018 - INFO - Progress: 270 tests, 95 crashes, 3 interesting cases, 515.29 seconds elapsed
+2025-04-28 20:23:33,124 - INFO - Mutation 6/7: POST /datatb/product/export/
+2025-04-28 20:23:33,124 - INFO - Payload: {'format': 'pd&f', 'template': 'defautt', 'sasVg': 424, 'PEgOK': 'test_value', 'KhzUB': None}
+2025-04-28 20:23:33,266 - INFO - Mutation 7/7: POST /datatb/product/export/
+2025-04-28 20:23:33,266 - INFO - Payload: {'forma': 'pdf', 'template': 'default'}
+2025-04-28 20:23:33,406 - INFO - Selected seed: GET /datatb/product/
+2025-04-28 20:23:33,406 - INFO - Selected seed with energy 7: GET /datatb/product/
+2025-04-28 20:23:33,406 - INFO - Mutation 1/7: GET /datatb/product/
+2025-04-28 20:23:33,543 - INFO - Mutation 2/7: GET /datatb/product/
+2025-04-28 20:23:33,679 - INFO - Mutation 3/7: GET /datatb/product/
+2025-04-28 20:23:33,809 - INFO - Mutation 4/7: GET /datatb/product/
+2025-04-28 20:23:33,942 - INFO - Mutation 5/7: GET /datatb/product/
+2025-04-28 20:23:34,173 - INFO - Mutation 6/7: GET /datatb/product/
+2025-04-28 20:23:34,306 - INFO - Mutation 7/7: GET /datatb/product/
+2025-04-28 20:23:34,439 - INFO - Selected seed: POST /api/product/{id}/
+2025-04-28 20:23:34,440 - INFO - Selected seed with energy 7: POST /api/product/{id}/
+2025-04-28 20:23:34,440 - INFO - Mutation 1/7: POST /api/product/abc/
+2025-04-28 20:23:34,440 - INFO - Payload: {'id': 100, 'name': 'p', 'info': 'd', 'price': -29}
+2025-04-28 20:23:34,457 - INFO - Found new coverage path with hash: 2294d0152dddac3b452c90ebc4d21701
+2025-04-28 20:23:34,457 - INFO - New coverage from: POST /api/product/abc/
+2025-04-28 20:23:34,457 - INFO - Found interesting test case with new coverage: POST /api/product/{id}/
+2025-04-28 20:23:34,457 - INFO - Progress: 280 tests, 95 crashes, 4 interesting cases, 516.73 seconds elapsed
+2025-04-28 20:23:34,563 - INFO - Mutation 2/7: POST /api/product/99/
+2025-04-28 20:23:34,564 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-28 20:23:34,717 - INFO - Mutation 3/7: POST /api/product/80/
+2025-04-28 20:23:34,717 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99, 'tjYihdDU': None}
+2025-04-28 20:23:34,857 - INFO - Mutation 4/7: POST /api/product/45/
+2025-04-28 20:23:34,857 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dd', 'price': 35}
+2025-04-28 20:23:34,999 - INFO - Mutation 5/7: POST /api/product/82/
+2025-04-28 20:23:34,999 - INFO - Payload: {'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-28 20:23:35,159 - INFO - Mutation 6/7: POST /api/product/-1/
+2025-04-28 20:23:35,159 - INFO - Payload: {'id': 102, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-28 20:23:35,281 - INFO - Mutation 7/7: POST /api/product/6/
+2025-04-28 20:23:35,281 - INFO - Payload: {'id': 100, 'name': 'p', 'info': 'dt', 'price': 99}
+2025-04-28 20:23:35,433 - INFO - Selected seed: POST /datatb/product/edit/{id}/
+2025-04-28 20:23:35,434 - INFO - Selected seed with energy 8: POST /datatb/product/edit/{id}/
+2025-04-28 20:23:35,434 - INFO - Mutation 1/8: POST /datatb/product/edit/43/
+2025-04-28 20:23:35,434 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99, 'tnjhaqYy': None}
+2025-04-28 20:23:35,549 - INFO - Mutation 2/8: POST /datatb/product/edit/72/
+2025-04-28 20:23:35,549 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99, 'jCPWoI': True, 'cVeVwW': -870}
+2025-04-28 20:23:35,659 - INFO - Mutation 3/8: POST /datatb/product/edit/abc/
+2025-04-28 20:23:35,659 - INFO - Payload: {'id': 92, 'info': 'dt', 'price': 32767}
+2025-04-28 20:23:35,781 - INFO - Mutation 4/8: POST /datatb/product/edit/69/
+2025-04-28 20:23:35,781 - INFO - Payload: {'id': 100, 'nqme': 'xpd', 'info': "d't", 'price': 99, 'vLRgi': None, 'BEFL': 'test_value'}
+2025-04-28 20:23:35,791 - INFO - Progress: 290 tests, 95 crashes, 4 interesting cases, 518.06 seconds elapsed
+2025-04-28 20:23:35,893 - INFO - Mutation 5/8: POST /datatb/product/edit/4600011/
+2025-04-28 20:23:35,893 - INFO - Payload: {'id': 100, 'name': 'Ipd', 'price': 4294967295, 'SeYf': None}
+2025-04-28 20:23:36,019 - INFO - Mutation 6/8: POST /datatb/product/edit/5444913/
+2025-04-28 20:23:36,019 - INFO - Payload: {'d': 96, 'nme': 'pd', 'info': 't', 'price': 99}
+2025-04-28 20:23:36,140 - INFO - Mutation 7/8: POST /datatb/product/edit/92/
+2025-04-28 20:23:36,140 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 107, 'QimCYk': True}
+2025-04-28 20:23:36,267 - INFO - Mutation 8/8: POST /datatb/product/edit/30/
+2025-04-28 20:23:36,267 - INFO - Payload: {'name': 'Tpd', 'ifo': 'd%nt'}
+2025-04-28 20:23:36,390 - INFO - Selected seed: GET /api/product/{id}/
+2025-04-28 20:23:36,391 - INFO - Selected seed with energy 9: GET /api/product/{id}/
+2025-04-28 20:23:36,391 - INFO - Mutation 1/9: GET /api/product/37/
+2025-04-28 20:23:36,518 - INFO - Mutation 2/9: GET /api/product/86/
+2025-04-28 20:23:36,645 - INFO - Mutation 3/9: GET /api/product/93/
+2025-04-28 20:23:36,773 - INFO - Mutation 4/9: GET /api/product/98/
+2025-04-28 20:23:36,889 - INFO - Mutation 5/9: GET /api/product/66/
+2025-04-28 20:23:37,017 - INFO - Mutation 6/9: GET /api/product/32/
+2025-04-28 20:23:37,041 - INFO - Progress: 300 tests, 95 crashes, 4 interesting cases, 519.31 seconds elapsed
+2025-04-28 20:23:37,147 - INFO - Mutation 7/9: GET /api/product/35/
+2025-04-28 20:23:37,277 - INFO - Mutation 8/9: GET /api/product/58/
+2025-04-28 20:23:37,408 - INFO - Mutation 9/9: GET /api/product/58/
+2025-04-28 20:23:37,538 - INFO - Selected seed: PUT /datatb/product/export/
+2025-04-28 20:23:37,538 - INFO - Selected seed with energy 7: PUT /datatb/product/export/
+2025-04-28 20:23:37,539 - INFO - Mutation 1/7: PUT /datatb/product/export/
+2025-04-28 20:23:37,539 - INFO - Payload: {'search': '', 'hidden_cols': [], 'type': 'pdf'}
+2025-04-28 20:23:37,768 - WARNING - Request error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2025-04-28 20:23:37,768 - WARNING - Discovered new unique bug: BUG-13 with signature PUT:/datatb/product/export/:ConnectionIssue
+2025-04-28 20:23:37,874 - INFO - Mutation 2/7: PUT /datatb/product/export/
+2025-04-28 20:23:37,874 - INFO - Payload: {'search': ')', 'hidden_cols': [], 'type': 'pdf', 'Oyh': 'test_value', 'MrBht': None}
+2025-04-28 20:23:37,875 - WARNING - Server crashed! Process terminated unexpectedly.
+2025-04-28 20:23:37,875 - INFO - Found instance of known bug: BUG-13
+2025-04-28 20:23:37,875 - INFO - Restarting the server...
+2025-04-28 20:23:39,880 - INFO - Starting Django server with coverage from: /Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication
+2025-04-28 20:23:39,882 - INFO - Django server process started with coverage
+2025-04-28 20:23:39,882 - INFO - Waiting for server at http://localhost:8000 to be available (timeout: 30s)
+2025-04-28 20:23:41,506 - INFO - Server is up and running! Status code: 200
+2025-04-28 20:23:41,615 - INFO - Login successful!
+2025-04-28 20:23:41,721 - INFO - Mutation 3/7: PUT /datatb/product/export/
+2025-04-28 20:23:41,721 - INFO - Payload: {'search': '', 'type': 'pdf', 'mWjU': 'test_vale'}
+2025-04-28 20:23:41,907 - WARNING - Request error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2025-04-28 20:23:41,907 - INFO - Found instance of known bug: BUG-13
+2025-04-28 20:23:42,012 - INFO - Mutation 4/7: PUT /datatb/product/export/
+2025-04-28 20:23:42,013 - INFO - Payload: {'search': 'D', 'hidden_cols': [], 'type': 'pdf'}
+2025-04-28 20:23:42,014 - WARNING - Server crashed! Process terminated unexpectedly.
+2025-04-28 20:23:42,014 - INFO - Found instance of known bug: BUG-13
+2025-04-28 20:23:42,014 - INFO - Restarting the server...
+2025-04-28 20:23:44,017 - INFO - Starting Django server with coverage from: /Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication
+2025-04-28 20:23:44,022 - INFO - Django server process started with coverage
+2025-04-28 20:23:44,022 - INFO - Waiting for server at http://localhost:8000 to be available (timeout: 30s)
+2025-04-28 20:23:45,118 - INFO - Server is up and running! Status code: 200
+2025-04-28 20:23:45,229 - INFO - Login successful!
+2025-04-28 20:23:45,335 - INFO - Mutation 5/7: PUT /datatb/product/export/
+2025-04-28 20:23:45,336 - INFO - Payload: {'search': '\\', 'hidden_cols': [], 'type': 'pd\t'}
+2025-04-28 20:23:45,490 - INFO - Mutation 6/7: PUT /datatb/product/export/
+2025-04-28 20:23:45,490 - INFO - Payload: {'type': 'pdf', 'tjlAaIl': None}
+2025-04-28 20:23:45,668 - WARNING - Request error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2025-04-28 20:23:45,668 - INFO - Found instance of known bug: BUG-13
+2025-04-28 20:23:45,770 - INFO - Mutation 7/7: PUT /datatb/product/export/
+2025-04-28 20:23:45,770 - INFO - Payload: {'search': '', 'hidden_ols': [], 'Type': 'pf'}
+2025-04-28 20:23:45,772 - WARNING - Server crashed! Process terminated unexpectedly.
+2025-04-28 20:23:45,772 - INFO - Found instance of known bug: BUG-13
+2025-04-28 20:23:45,772 - INFO - Restarting the server...
+2025-04-28 20:23:47,777 - INFO - Starting Django server with coverage from: /Users/hongjingtoh/Downloads/SoftwareTestingProject/ProjectCaseStudies/DjangoWebApplication
+2025-04-28 20:23:47,780 - INFO - Django server process started with coverage
+2025-04-28 20:23:47,780 - INFO - Waiting for server at http://localhost:8000 to be available (timeout: 30s)
+2025-04-28 20:23:51,472 - INFO - Server is up and running! Status code: 200
+2025-04-28 20:23:51,609 - INFO - Login successful!
+2025-04-28 20:23:51,609 - INFO - Progress: 310 tests, 101 crashes, 4 interesting cases, 533.88 seconds elapsed
+2025-04-28 20:23:51,714 - INFO - Selected seed: POST /api/product/{id}/
+2025-04-28 20:23:51,715 - INFO - Selected seed with energy 4: POST /api/product/{id}/
+2025-04-28 20:23:51,715 - INFO - Mutation 1/4: POST /api/product/0/
+2025-04-28 20:23:51,715 - INFO - Payload: {'ino': 'd&tR?', 'prica': 1}
+2025-04-28 20:23:51,868 - INFO - Mutation 2/4: POST /api/product/85/
+2025-04-28 20:23:51,868 - INFO - Payload: {'ino': 'd&tR?', 'prica': 1, 'TIDA': None}
+2025-04-28 20:23:52,008 - INFO - Mutation 3/4: POST /api/product/48/
+2025-04-28 20:23:52,008 - INFO - Payload: {'ino': 'd&tRX?', 'prica': 1, 'tsFUy': 2147483648, 'BYdLV': -880}
+2025-04-28 20:23:52,195 - INFO - Mutation 4/4: POST /api/product/9814119/
+2025-04-28 20:23:52,195 - INFO - Payload: {'prica': 1}
+2025-04-28 20:23:52,335 - INFO - Selected seed: PUT /datatb/product/edit/{id}/
+2025-04-28 20:23:52,335 - INFO - Selected seed with energy 8: PUT /datatb/product/edit/{id}/
+2025-04-28 20:23:52,335 - INFO - Mutation 1/8: PUT /datatb/product/edit/4/
+2025-04-28 20:23:52,336 - INFO - Payload: {'id': 100, 'name': 'pd', 'price': 99}
+2025-04-28 20:23:52,451 - INFO - Mutation 2/8: PUT /datatb/product/edit/67/
+2025-04-28 20:23:52,451 - INFO - Payload: {'id': 100, 'name': 'pd', 'price': 127}
+2025-04-28 20:23:52,574 - INFO - Mutation 3/8: PUT /datatb/product/edit/69/
+2025-04-28 20:23:52,574 - INFO - Payload: {'id': 127, 'nme': 'pd', 'info': 'dt', 'price': 3, 'TQEdjhh': None, 'SgnxGQqI': None}
+2025-04-28 20:23:52,691 - INFO - Mutation 4/8: PUT /datatb/product/edit/72/
+2025-04-28 20:23:52,702 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 9}
+2025-04-28 20:23:52,826 - INFO - Mutation 5/8: PUT /datatb/product/edit/94/
+2025-04-28 20:23:52,827 - INFO - Payload: {'name': 'pd', 'info': 't%n', 'price': 2147483648, 'yywgRdx': None}
+2025-04-28 20:23:52,946 - INFO - Mutation 6/8: PUT /datatb/product/edit/55/
+2025-04-28 20:23:52,947 - INFO - Payload: {'id': 100, 'ncme': 'pd', 'info': 'dt', 'price': 2147483648}
+2025-04-28 20:23:52,965 - INFO - Progress: 320 tests, 101 crashes, 4 interesting cases, 535.24 seconds elapsed
+2025-04-28 20:23:53,071 - INFO - Mutation 7/8: PUT /datatb/product/edit/-1/
+2025-04-28 20:23:53,071 - INFO - Payload: {'info': 'dt', 'rrice': 99}
+2025-04-28 20:23:53,199 - INFO - Mutation 8/8: PUT /datatb/product/edit/61/
+2025-04-28 20:23:53,199 - INFO - Payload: {'id': 100, 'name': 'p*d', 'info': 'dt', 'price': 99}
+2025-04-28 20:23:53,323 - INFO - Selected seed: POST /datatb/product/
+2025-04-28 20:23:53,323 - INFO - Selected seed with energy 3: POST /datatb/product/
+2025-04-28 20:23:53,324 - INFO - Mutation 1/3: POST /datatb/product/
+2025-04-28 20:23:53,324 - INFO - Payload: {'id': 100, 'name': 'pd`', 'info': 'dt', 'price': 35}
+2025-04-28 20:23:53,467 - INFO - Mutation 2/3: POST /datatb/product/
+2025-04-28 20:23:53,467 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt', 'vELFDeYb': 'test_value'}
+2025-04-28 20:23:53,603 - INFO - Mutation 3/3: POST /datatb/product/
+2025-04-28 20:23:53,603 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt', 'GyKL': None}
+2025-04-28 20:23:53,747 - INFO - Selected seed: PUT /datatb/product/
+2025-04-28 20:23:53,747 - INFO - Selected seed with energy 4: PUT /datatb/product/
+2025-04-28 20:23:53,747 - INFO - Mutation 1/4: PUT /datatb/product/
+2025-04-28 20:23:53,747 - INFO - Payload: {'id': 99, 'name': 'pd', 'info': 'dt', 'price': 67, 'nlJoeng': 'test_value'}
+2025-04-28 20:23:53,880 - INFO - Mutation 2/4: PUT /datatb/product/
+2025-04-28 20:23:53,880 - INFO - Payload: {'name': 'pDd', 'info': 't', 'price': 247483648}
+2025-04-28 20:23:54,020 - INFO - Mutation 3/4: PUT /datatb/product/
+2025-04-28 20:23:54,021 - INFO - Payload: {'name': 'pd', 'nfo': 'dt', 'rice': 99, 'rgqS': True}
+2025-04-28 20:23:54,160 - INFO - Mutation 4/4: PUT /datatb/product/
+2025-04-28 20:23:54,161 - INFO - Payload: {'id': 116, 'name': 'Hd', 'Info': 'dt'}
+2025-04-28 20:23:54,309 - INFO - Selected seed: GET /datatb/product/edit/{id}/
+2025-04-28 20:23:54,310 - INFO - Selected seed with energy 10: GET /datatb/product/edit/{id}/
+2025-04-28 20:23:54,310 - INFO - Mutation 1/10: GET /datatb/product/edit/-1/
+2025-04-28 20:23:54,325 - INFO - Progress: 330 tests, 101 crashes, 4 interesting cases, 536.60 seconds elapsed
+2025-04-28 20:23:54,430 - INFO - Mutation 2/10: GET /datatb/product/edit/30/
+2025-04-28 20:23:54,591 - INFO - Mutation 3/10: GET /datatb/product/edit/abc/
+2025-04-28 20:23:54,710 - INFO - Mutation 4/10: GET /datatb/product/edit/78/
+2025-04-28 20:23:54,847 - INFO - Mutation 5/10: GET /datatb/product/edit/3967024/
+2025-04-28 20:23:54,989 - INFO - Mutation 6/10: GET /datatb/product/edit/45/
+2025-04-28 20:23:55,132 - INFO - Mutation 7/10: GET /datatb/product/edit/36/
+2025-04-28 20:23:55,285 - INFO - Mutation 8/10: GET /datatb/product/edit/38/
+2025-04-28 20:23:55,439 - INFO - Mutation 9/10: GET /datatb/product/edit/27/
+2025-04-28 20:23:55,590 - INFO - Mutation 10/10: GET /datatb/product/edit/a/
+2025-04-28 20:23:55,710 - INFO - Selected seed: DELETE /api/product/{id}/
+2025-04-28 20:23:55,711 - INFO - Selected seed with energy 7: DELETE /api/product/{id}/
+2025-04-28 20:23:55,711 - INFO - Mutation 1/7: DELETE /api/product/6/
+2025-04-28 20:23:55,735 - INFO - Progress: 340 tests, 101 crashes, 4 interesting cases, 538.01 seconds elapsed
+2025-04-28 20:23:55,841 - INFO - Mutation 2/7: DELETE /api/product/51/
+2025-04-28 20:23:55,974 - INFO - Mutation 3/7: DELETE /api/product/28/
+2025-04-28 20:23:56,111 - INFO - Mutation 4/7: DELETE /api/product/82/
+2025-04-28 20:23:56,242 - INFO - Mutation 5/7: DELETE /api/product/100/
+2025-04-28 20:23:56,376 - INFO - Mutation 6/7: DELETE /api/product/33/
+2025-04-28 20:23:56,506 - INFO - Mutation 7/7: DELETE /api/product/5359357/
+2025-04-28 20:23:56,641 - INFO - Selected seed: DELETE /api/product/{id}/
+2025-04-28 20:23:56,641 - INFO - Selected seed with energy 5: DELETE /api/product/{id}/
+2025-04-28 20:23:56,641 - INFO - Mutation 1/5: DELETE /api/product/62/
+2025-04-28 20:23:56,766 - INFO - Mutation 2/5: DELETE /api/product/56/
+2025-04-28 20:23:56,903 - INFO - Mutation 3/5: DELETE /api/product/85/
+2025-04-28 20:23:57,033 - INFO - Mutation 4/5: DELETE /api/product/19/
+2025-04-28 20:23:57,055 - INFO - Progress: 350 tests, 101 crashes, 4 interesting cases, 539.33 seconds elapsed
+2025-04-28 20:23:57,160 - INFO - Mutation 5/5: DELETE /api/product/44/
+2025-04-28 20:23:57,295 - INFO - Selected seed: POST /datatb/product/delete/{id}/
+2025-04-28 20:23:57,295 - INFO - Selected seed with energy 9: POST /datatb/product/delete/{id}/
+2025-04-28 20:23:57,296 - INFO - Mutation 1/9: POST /datatb/product/delete/4o/
+2025-04-28 20:23:57,296 - INFO - Payload: {'cascade': 111, 'permanmnt': False}
+2025-04-28 20:23:57,432 - INFO - Mutation 2/9: POST /datatb/product/delete/84/
+2025-04-28 20:23:57,432 - INFO - Payload: {'cascade': True}
+2025-04-28 20:23:57,564 - INFO - Mutation 3/9: POST /datatb/product/delete/85/
+2025-04-28 20:23:57,565 - INFO - Payload: {'permanent': False, 'gkHia': True}
+2025-04-28 20:23:57,716 - INFO - Mutation 4/9: POST /datatb/product/delete/8V/
+2025-04-28 20:23:57,717 - INFO - Payload: {'cascade': 127, 'permanent': False, 'NBhHxlnQ': 'test_v-alue'}
+2025-04-28 20:23:57,843 - INFO - Mutation 5/9: POST /datatb/product/delete/abc/
+2025-04-28 20:23:57,843 - INFO - Payload: {'cascade': True, 'permanent': False}
+2025-04-28 20:23:57,991 - INFO - Mutation 6/9: POST /datatb/product/delete/44/
+2025-04-28 20:23:57,993 - INFO - Payload: {'cascae': 5, 'UcJtQ': None, 'WXVfi': True}
+2025-04-28 20:23:58,120 - INFO - Mutation 7/9: POST /datatb/product/delete/20/
+2025-04-28 20:23:58,121 - INFO - Payload: {'cascade': True, 'permanent': False}
+2025-04-28 20:23:58,249 - INFO - Mutation 8/9: POST /datatb/product/delete/-1/
+2025-04-28 20:23:58,249 - INFO - Payload: {'cascade': 127, 'permanent': False, 'EoFDyzXs': -860}
+2025-04-28 20:23:58,377 - INFO - Mutation 9/9: POST /datatb/product/delete/0/
+2025-04-28 20:23:58,377 - INFO - Payload: {'cascade': 65535, 'permanent': False}
+2025-04-28 20:23:58,397 - INFO - Progress: 360 tests, 101 crashes, 4 interesting cases, 540.67 seconds elapsed
+2025-04-28 20:23:58,497 - INFO - Completed queue cycle #2
+2025-04-28 20:23:58,498 - INFO - Selected seed: POST /api/product/{id}/
+2025-04-28 20:23:58,498 - INFO - Selected seed with energy 4: POST /api/product/{id}/
+2025-04-28 20:23:58,498 - INFO - Mutation 1/4: POST /api/product/83/
+2025-04-28 20:23:58,662 - INFO - Mutation 2/4: POST /api/product/74/
+2025-04-28 20:23:58,662 - INFO - Payload: {'ino': 'd&tR?', 'psice': 107}
+2025-04-28 20:23:58,809 - INFO - Mutation 3/4: POST /api/product/6/
+2025-04-28 20:23:58,809 - INFO - Payload: {'ino': '(d&tR?', 'iedX': 'test_value'}
+2025-04-28 20:23:58,960 - INFO - Mutation 4/4: POST /api/product/36/
+2025-04-28 20:23:58,960 - INFO - Payload: {'rlUrtTbJ': 'test_valua'}
+2025-04-28 20:23:59,114 - INFO - Selected seed: POST /datatb/product/
+2025-04-28 20:23:59,114 - INFO - Selected seed with energy 3: POST /datatb/product/
+2025-04-28 20:23:59,114 - INFO - Mutation 1/3: POST /datatb/product/
+2025-04-28 20:23:59,114 - INFO - Payload: {'id': -100, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-28 20:23:59,253 - INFO - Mutation 2/3: POST /datatb/product/
+2025-04-28 20:23:59,255 - INFO - Payload: {'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-28 20:23:59,395 - INFO - Mutation 3/3: POST /datatb/product/
+2025-04-28 20:23:59,395 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'mt|', 'price': 99}
+2025-04-28 20:23:59,540 - INFO - Selected seed: POST /datatb/product/edit/{id}/
+2025-04-28 20:23:59,540 - INFO - Selected seed with energy 6: POST /datatb/product/edit/{id}/
+2025-04-28 20:23:59,540 - INFO - Mutation 1/6: POST /datatb/product/edit/74/
+2025-04-28 20:23:59,540 - INFO - Payload: {'id': 100, 'name': '@d', 'info': 'dt', 'price': -29, 'LyHhrJ': True, 'LiAYb': True}
+2025-04-28 20:23:59,661 - INFO - Mutation 2/6: POST /datatb/product/edit/6118055/
+2025-04-28 20:23:59,661 - INFO - Payload: {'id': 102, 'name': 'd', 'info': 'dtl', 'price': 2147483648, 'JUdyX': -195}
+2025-04-28 20:23:59,797 - INFO - Mutation 3/6: POST /datatb/product/edit/89/
+2025-04-28 20:23:59,797 - INFO - Payload: {'id': 100, 'name': '2pA', 'info': 'dt', 'price': 67}
+2025-04-28 20:23:59,808 - INFO - Progress: 370 tests, 101 crashes, 4 interesting cases, 542.08 seconds elapsed
+2025-04-28 20:23:59,914 - INFO - Mutation 4/6: POST /datatb/product/edit/56/
+2025-04-28 20:23:59,914 - INFO - Payload: {'id': 100, 'name': 'p*(', 'info': 'dt', 'price': -29}
+2025-04-28 20:24:00,035 - INFO - Mutation 5/6: POST /datatb/product/edit/31/
+2025-04-28 20:24:00,035 - INFO - Payload: {'name': 'pdB', 'price': 9}
+2025-04-28 20:24:00,163 - INFO - Mutation 6/6: POST /datatb/product/edit/9505344/
+2025-04-28 20:24:00,164 - INFO - Payload: {'id': 4294967295, 'info': 'd', 'vDFaoEDl': 'test_valuve', 'MqDPIt': 'test_alue'}
+2025-04-28 20:24:00,281 - INFO - Selected seed: GET /datatb/product/
+2025-04-28 20:24:00,281 - INFO - Selected seed with energy 4: GET /datatb/product/
+2025-04-28 20:24:00,281 - INFO - Mutation 1/4: GET /datatb/product/
+2025-04-28 20:24:00,439 - INFO - Mutation 2/4: GET /datatb/product/
+2025-04-28 20:24:00,585 - INFO - Mutation 3/4: GET /datatb/product/
+2025-04-28 20:24:00,730 - INFO - Mutation 4/4: GET /datatb/product/
+2025-04-28 20:24:00,866 - INFO - Selected seed: GET /datatb/product/export/
+2025-04-28 20:24:00,866 - INFO - Selected seed with energy 5: GET /datatb/product/export/
+2025-04-28 20:24:00,866 - INFO - Mutation 1/5: GET /datatb/product/export/
+2025-04-28 20:24:01,014 - INFO - Mutation 2/5: GET /datatb/product/export/
+2025-04-28 20:24:01,163 - INFO - Mutation 3/5: GET /datatb/product/export/
+2025-04-28 20:24:01,208 - INFO - Progress: 380 tests, 101 crashes, 4 interesting cases, 543.48 seconds elapsed
+2025-04-28 20:24:01,314 - INFO - Mutation 4/5: GET /datatb/product/export/
+2025-04-28 20:24:01,459 - INFO - Mutation 5/5: GET /datatb/product/export/
+2025-04-28 20:24:01,607 - INFO - Selected seed: GET /datatb/product/export/
+2025-04-28 20:24:01,607 - INFO - Selected seed with energy 5: GET /datatb/product/export/
+2025-04-28 20:24:01,607 - INFO - Mutation 1/5: GET /datatb/product/export/
+2025-04-28 20:24:01,757 - INFO - Mutation 2/5: GET /datatb/product/export/
+2025-04-28 20:24:01,898 - INFO - Mutation 3/5: GET /datatb/product/export/
+2025-04-28 20:24:02,044 - INFO - Mutation 4/5: GET /datatb/product/export/
+2025-04-28 20:24:02,195 - INFO - Mutation 5/5: GET /datatb/product/export/
+2025-04-28 20:24:02,343 - INFO - Selected seed: POST /datatb/product/export/
+2025-04-28 20:24:02,344 - INFO - Selected seed with energy 5: POST /datatb/product/export/
+2025-04-28 20:24:02,344 - INFO - Mutation 1/5: POST /datatb/product/export/
+2025-04-28 20:24:02,344 - INFO - Payload: {'search': '\x0b', 'hidden_cols': [], 't{p': 'pdf'}
+2025-04-28 20:24:02,468 - INFO - Mutation 2/5: POST /datatb/product/export/
+2025-04-28 20:24:02,469 - INFO - Payload: {'search': '', 'hidden_cols': [], 'waHVOhR': 'test_value'}
+2025-04-28 20:24:02,611 - INFO - Mutation 3/5: POST /datatb/product/export/
+2025-04-28 20:24:02,611 - INFO - Payload: {'search': '', 'hidden_cols': [], 'type': 'pdT'}
+2025-04-28 20:24:02,644 - INFO - Progress: 390 tests, 101 crashes, 4 interesting cases, 544.91 seconds elapsed
+2025-04-28 20:24:02,746 - INFO - Mutation 4/5: POST /datatb/product/export/
+2025-04-28 20:24:02,746 - INFO - Payload: {'type': 'pd$!f', 'XkVPydJ': 'test_value'}
+2025-04-28 20:24:02,905 - INFO - Mutation 5/5: POST /datatb/product/export/
+2025-04-28 20:24:02,905 - INFO - Payload: {'search': 'B', 'hidden_cos': []}
+2025-04-28 20:24:03,025 - INFO - Selected seed: DELETE /datatb/product/edit/{id}/
+2025-04-28 20:24:03,025 - INFO - Selected seed with energy 6: DELETE /datatb/product/edit/{id}/
+2025-04-28 20:24:03,025 - INFO - Mutation 1/6: DELETE /datatb/product/edit/9L/
+2025-04-28 20:24:03,148 - INFO - Mutation 2/6: DELETE /datatb/product/edit/3a/
+2025-04-28 20:24:03,281 - INFO - Mutation 3/6: DELETE /datatb/product/edit/61/
+2025-04-28 20:24:03,441 - INFO - Mutation 4/6: DELETE /datatb/product/edit/63/
+2025-04-28 20:24:03,591 - INFO - Mutation 5/6: DELETE /datatb/product/edit/abc/
+2025-04-28 20:24:03,715 - INFO - Mutation 6/6: DELETE /datatb/product/edit/86/
+2025-04-28 20:24:03,876 - INFO - Selected seed: PUT /datatb/product/edit/{id}/
+2025-04-28 20:24:03,876 - INFO - Selected seed with energy 4: PUT /datatb/product/edit/{id}/
+2025-04-28 20:24:03,876 - INFO - Mutation 1/4: PUT /datatb/product/edit/36/
+2025-04-28 20:24:03,876 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'd', 'price': 99}
+2025-04-28 20:24:03,994 - INFO - Mutation 2/4: PUT /datatb/product/edit/30/
+2025-04-28 20:24:03,994 - INFO - Payload: {'id': 100, 'name': '<pd', 'info': 'dtx', 'price': 99}
+2025-04-28 20:24:04,010 - INFO - Progress: 400 tests, 101 crashes, 4 interesting cases, 546.28 seconds elapsed
+2025-04-28 20:24:04,111 - INFO - Mutation 3/4: PUT /datatb/product/edit/abc/
+2025-04-28 20:24:04,111 - INFO - Payload: {'id': 102, 'name': 'p[_', 'info': 'd;|', 'price': 99, 'jlX': True, 'DlrQK': -453}
+2025-04-28 20:24:04,247 - INFO - Mutation 4/4: PUT /datatb/product/edit/18/
+2025-04-28 20:24:04,248 - INFO - Payload: {'name': 'pd', 'info': 'dt', 'price': 99, 'VwbL': True}
+2025-04-28 20:24:04,376 - INFO - Selected seed: DELETE /datatb/product/delete/{id}/
+2025-04-28 20:24:04,377 - INFO - Selected seed with energy 14: DELETE /datatb/product/delete/{id}/
+2025-04-28 20:24:04,377 - INFO - Mutation 1/14: DELETE /datatb/product/delete/98/
+2025-04-28 20:24:04,507 - INFO - Mutation 2/14: DELETE /datatb/product/delete/95/
+2025-04-28 20:24:04,639 - INFO - Mutation 3/14: DELETE /datatb/product/delete/36/
+2025-04-28 20:24:04,765 - INFO - Mutation 4/14: DELETE /datatb/product/delete/81/
+2025-04-28 20:24:04,880 - INFO - Mutation 5/14: DELETE /datatb/product/delete/8464398/
+2025-04-28 20:24:05,005 - INFO - Mutation 6/14: DELETE /datatb/product/delete/66/
+2025-04-28 20:24:05,126 - INFO - Mutation 7/14: DELETE /datatb/product/delete/14/
+2025-04-28 20:24:05,256 - INFO - Mutation 8/14: DELETE /datatb/product/delete/64/
+2025-04-28 20:24:05,279 - INFO - Progress: 410 tests, 101 crashes, 4 interesting cases, 547.55 seconds elapsed
+2025-04-28 20:24:05,384 - INFO - Mutation 9/14: DELETE /datatb/product/delete/52/
+2025-04-28 20:24:05,512 - INFO - Mutation 10/14: DELETE /datatb/product/delete/71/
+2025-04-28 20:24:05,630 - INFO - Mutation 11/14: DELETE /datatb/product/delete/62/
+2025-04-28 20:24:05,761 - INFO - Mutation 12/14: DELETE /datatb/product/delete/7N/
+2025-04-28 20:24:05,903 - INFO - Mutation 13/14: DELETE /datatb/product/delete/19/
+2025-04-28 20:24:06,039 - INFO - Mutation 14/14: DELETE /datatb/product/delete/46/
+2025-04-28 20:24:06,167 - INFO - Selected seed: GET /datatb/product/edit/{id}/
+2025-04-28 20:24:06,167 - INFO - Selected seed with energy 6: GET /datatb/product/edit/{id}/
+2025-04-28 20:24:06,168 - INFO - Mutation 1/6: GET /datatb/product/edit/D7/
+2025-04-28 20:24:06,300 - INFO - Mutation 2/6: GET /datatb/product/edit/19/
+2025-04-28 20:24:06,488 - INFO - Mutation 3/6: GET /datatb/product/edit/5783172/
+2025-04-28 20:24:11,492 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:24:11,493 - INFO - Found instance of known bug: BUG-6
+2025-04-28 20:24:11,599 - INFO - Mutation 4/6: GET /datatb/product/edit/53/
+2025-04-28 20:24:16,604 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:24:16,605 - INFO - Found instance of known bug: BUG-6
+2025-04-28 20:24:16,606 - INFO - Progress: 420 tests, 103 crashes, 4 interesting cases, 558.88 seconds elapsed
+2025-04-28 20:24:16,711 - INFO - Mutation 5/6: GET /datatb/product/edit/63/
+2025-04-28 20:24:21,716 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:24:21,716 - INFO - Found instance of known bug: BUG-6
+2025-04-28 20:24:21,822 - INFO - Mutation 6/6: GET /datatb/product/edit/19/
+2025-04-28 20:24:26,826 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:24:26,826 - INFO - Found instance of known bug: BUG-6
+2025-04-28 20:24:26,932 - INFO - Selected seed: PUT /datatb/product/delete/{id}/
+2025-04-28 20:24:26,932 - INFO - Selected seed with energy 8: PUT /datatb/product/delete/{id}/
+2025-04-28 20:24:26,933 - INFO - Mutation 1/8: PUT /datatb/product/delete/97/
+2025-04-28 20:24:31,936 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:24:31,936 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:24:32,044 - INFO - Mutation 2/8: PUT /datatb/product/delete/2/
+2025-04-28 20:24:32,044 - INFO - Payload: {'confirm': 10}
+2025-04-28 20:24:37,047 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:24:37,047 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:24:37,150 - INFO - Mutation 3/8: PUT /datatb/product/delete/50/
+2025-04-28 20:24:37,150 - INFO - Payload: {'confirm': 255, 'ock': True}
+2025-04-28 20:24:42,154 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:24:42,154 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:24:42,257 - INFO - Mutation 4/8: PUT /datatb/product/delete/37/
+2025-04-28 20:24:47,263 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:24:47,264 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:24:47,371 - INFO - Mutation 5/8: PUT /datatb/product/delete/74/
+2025-04-28 20:24:52,375 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:24:52,376 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:24:52,481 - INFO - Mutation 6/8: PUT /datatb/product/delete/42/
+2025-04-28 20:24:57,487 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:24:57,488 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:24:57,594 - INFO - Mutation 7/8: PUT /datatb/product/delete/41/
+2025-04-28 20:25:02,598 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:25:02,599 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:25:02,705 - INFO - Mutation 8/8: PUT /datatb/product/delete/19/
+2025-04-28 20:25:02,705 - INFO - Payload: {'confirm': 5, 'LNOrkT': True}
+2025-04-28 20:25:07,710 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:25:07,713 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:25:07,714 - INFO - Progress: 430 tests, 113 crashes, 4 interesting cases, 609.98 seconds elapsed
+2025-04-28 20:25:07,819 - INFO - Selected seed: DELETE /datatb/product/export/
+2025-04-28 20:25:07,819 - INFO - Selected seed with energy 5: DELETE /datatb/product/export/
+2025-04-28 20:25:07,820 - INFO - Mutation 1/5: DELETE /datatb/product/export/
+2025-04-28 20:25:12,825 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:25:12,825 - INFO - Found instance of known bug: BUG-5
+2025-04-28 20:25:12,930 - INFO - Mutation 2/5: DELETE /datatb/product/export/
+2025-04-28 20:25:17,934 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:25:17,934 - INFO - Found instance of known bug: BUG-5
+2025-04-28 20:25:18,037 - INFO - Mutation 3/5: DELETE /datatb/product/export/
+2025-04-28 20:25:23,041 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:25:23,041 - INFO - Found instance of known bug: BUG-5
+2025-04-28 20:25:23,147 - INFO - Mutation 4/5: DELETE /datatb/product/export/
+2025-04-28 20:25:28,151 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:25:28,151 - INFO - Found instance of known bug: BUG-5
+2025-04-28 20:25:28,257 - INFO - Mutation 5/5: DELETE /datatb/product/export/
+2025-04-28 20:25:33,260 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:25:33,260 - INFO - Found instance of known bug: BUG-5
+2025-04-28 20:25:33,368 - INFO - Selected seed: PUT /datatb/product/export/
+2025-04-28 20:25:33,368 - INFO - Selected seed with energy 6: PUT /datatb/product/export/
+2025-04-28 20:25:33,369 - INFO - Mutation 1/6: PUT /datatb/product/export/
+2025-04-28 20:25:33,369 - INFO - Payload: {'format': 'bpC'}
+2025-04-28 20:25:33,535 - INFO - Mutation 2/6: PUT /datatb/product/export/
+2025-04-28 20:25:33,535 - INFO - Payload: {'format': 'pdf', 'template': 'defalt', 'DBHgZj': 255, 'EhSObBtg': 429}
+2025-04-28 20:25:33,667 - INFO - Mutation 3/6: PUT /datatb/product/export/
+2025-04-28 20:25:33,668 - INFO - Payload: {'format': 'pdf', 'template': 'dfault'}
+2025-04-28 20:25:33,799 - INFO - Mutation 4/6: PUT /datatb/product/export/
+2025-04-28 20:25:33,799 - INFO - Payload: {'template': 'defaultn'}
+2025-04-28 20:25:33,949 - INFO - Mutation 5/6: PUT /datatb/product/export/
+2025-04-28 20:25:33,949 - INFO - Payload: {'format': 'p\ndf', 'template': 'default', 'gfiLnx': True}
+2025-04-28 20:25:33,992 - INFO - Progress: 440 tests, 118 crashes, 4 interesting cases, 636.26 seconds elapsed
+2025-04-28 20:25:34,097 - INFO - Mutation 6/6: PUT /datatb/product/export/
+2025-04-28 20:25:34,098 - INFO - Payload: {'format': 'pdf'}
+2025-04-28 20:25:34,243 - INFO - Selected seed: PUT /api/product/{id}/
+2025-04-28 20:25:34,243 - INFO - Selected seed with energy 7: PUT /api/product/{id}/
+2025-04-28 20:25:34,243 - INFO - Mutation 1/7: PUT /api/product/6/
+2025-04-28 20:25:34,243 - INFO - Payload: {'id': 100, 'name': 'Wpd', 'info': 'dt', 'price': 99}
+2025-04-28 20:25:39,246 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:25:39,247 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:25:39,348 - INFO - Mutation 2/7: PUT /api/product/-1/
+2025-04-28 20:25:39,348 - INFO - Payload: {'id': 100, 'name': 'p`d', 'info': 'dt', 'price': 99}
+2025-04-28 20:25:44,353 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:25:44,353 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:25:44,458 - INFO - Mutation 3/7: PUT /api/product/89/
+2025-04-28 20:25:44,459 - INFO - Payload: {'id': 100, 'name': 'p', 'info': 'dt', 'pric': 99}
+2025-04-28 20:25:49,462 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:25:49,463 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:25:49,566 - INFO - Mutation 4/7: PUT /api/product/100/
+2025-04-28 20:25:49,567 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 49}
+2025-04-28 20:25:54,572 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:25:54,573 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:25:54,678 - INFO - Mutation 5/7: PUT /api/product/37/
+2025-04-28 20:25:54,678 - INFO - Payload: {'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-28 20:25:59,685 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:25:59,685 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:25:59,791 - INFO - Mutation 6/7: PUT /api/product/7=/
+2025-04-28 20:25:59,792 - INFO - Payload: {'id': 10, 'name': 'pd', 'info': 'dt', 'buCz': True, 'gVx': True, 'dBYT': None}
+2025-04-28 20:26:04,795 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:26:04,795 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:26:04,901 - INFO - Mutation 7/7: PUT /api/product/-1/
+2025-04-28 20:26:04,902 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-28 20:26:09,905 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:26:09,905 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:26:10,011 - INFO - Selected seed: POST /datatb/product/delete/{id}/
+2025-04-28 20:26:10,012 - INFO - Selected seed with energy 6: POST /datatb/product/delete/{id}/
+2025-04-28 20:26:10,012 - INFO - Mutation 1/6: POST /datatb/product/delete/11/
+2025-04-28 20:26:10,013 - INFO - Payload: {'confirm': True}
+2025-04-28 20:26:15,018 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:26:15,024 - WARNING - Discovered new unique bug: BUG-14 with signature POST:/datatb/product/delete/{id}/:ConnectionTimeout
+2025-04-28 20:26:15,134 - INFO - Mutation 2/6: POST /datatb/product/delete/44/
+2025-04-28 20:26:15,135 - INFO - Payload: {'confirm': 1}
+2025-04-28 20:26:20,139 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:26:20,140 - INFO - Found instance of known bug: BUG-14
+2025-04-28 20:26:20,141 - INFO - Progress: 450 tests, 127 crashes, 4 interesting cases, 682.41 seconds elapsed
+2025-04-28 20:26:20,247 - INFO - Mutation 3/6: POST /datatb/product/delete/13/
+2025-04-28 20:26:20,247 - INFO - Payload: {'confizm': True, 'EfO': None, 'ACfbpOzd': 't\\est_value'}
+2025-04-28 20:26:25,250 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:26:25,251 - INFO - Found instance of known bug: BUG-14
+2025-04-28 20:26:25,357 - INFO - Mutation 4/6: POST /datatb/product/delete/37/
+2025-04-28 20:26:25,357 - INFO - Payload: {'AzMVIJ': "*tes'_valu"}
+2025-04-28 20:26:30,361 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:26:30,362 - INFO - Found instance of known bug: BUG-14
+2025-04-28 20:26:30,466 - INFO - Mutation 5/6: POST /datatb/product/delete/68/
+2025-04-28 20:26:35,472 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:26:35,472 - INFO - Found instance of known bug: BUG-14
+2025-04-28 20:26:35,575 - INFO - Mutation 6/6: POST /datatb/product/delete/40/
+2025-04-28 20:26:40,579 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:26:40,579 - INFO - Found instance of known bug: BUG-14
+2025-04-28 20:26:40,681 - INFO - Selected seed: DELETE /datatb/product/
+2025-04-28 20:26:40,681 - INFO - Selected seed with energy 6: DELETE /datatb/product/
+2025-04-28 20:26:40,681 - INFO - Mutation 1/6: DELETE /datatb/product/
+2025-04-28 20:26:40,848 - INFO - Mutation 2/6: DELETE /datatb/product/
+2025-04-28 20:26:41,005 - INFO - Mutation 3/6: DELETE /datatb/product/
+2025-04-28 20:26:41,182 - INFO - Mutation 4/6: DELETE /datatb/product/
+2025-04-28 20:26:41,356 - INFO - Mutation 5/6: DELETE /datatb/product/
+2025-04-28 20:26:41,509 - INFO - Mutation 6/6: DELETE /datatb/product/
+2025-04-28 20:26:41,549 - INFO - Progress: 460 tests, 131 crashes, 4 interesting cases, 703.82 seconds elapsed
+2025-04-28 20:26:41,655 - INFO - Selected seed: GET /datatb/product/delete/{id}/
+2025-04-28 20:26:41,655 - INFO - Selected seed with energy 7: GET /datatb/product/delete/{id}/
+2025-04-28 20:26:41,656 - INFO - Mutation 1/7: GET /datatb/product/delete/56/
+2025-04-28 20:26:46,660 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:26:46,660 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:26:46,763 - INFO - Mutation 2/7: GET /datatb/product/delete/44/
+2025-04-28 20:26:51,767 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:26:51,767 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:26:51,869 - INFO - Mutation 3/7: GET /datatb/product/delete/abc/
+2025-04-28 20:26:56,874 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:26:56,875 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:26:56,977 - INFO - Mutation 4/7: GET /datatb/product/delete/82/
+2025-04-28 20:27:01,983 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:27:01,984 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:27:02,090 - INFO - Mutation 5/7: GET /datatb/product/delete/41/
+2025-04-28 20:27:07,097 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:27:07,097 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:27:07,202 - INFO - Mutation 6/7: GET /datatb/product/delete/12/
+2025-04-28 20:27:12,206 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:27:12,207 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:27:12,311 - INFO - Mutation 7/7: GET /datatb/product/delete/3/
+2025-04-28 20:27:17,315 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:27:17,315 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:27:17,417 - INFO - Selected seed: DELETE /api/product/{id}/
+2025-04-28 20:27:17,417 - INFO - Selected seed with energy 5: DELETE /api/product/{id}/
+2025-04-28 20:27:17,417 - INFO - Mutation 1/5: DELETE /api/product/4/
+2025-04-28 20:27:22,420 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:27:22,420 - INFO - Found instance of known bug: BUG-2
+2025-04-28 20:27:22,523 - INFO - Mutation 2/5: DELETE /api/product/60/
+2025-04-28 20:27:27,527 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:27:27,527 - INFO - Found instance of known bug: BUG-2
+2025-04-28 20:27:27,631 - INFO - Mutation 3/5: DELETE /api/product/66/
+2025-04-28 20:27:32,637 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:27:32,638 - INFO - Found instance of known bug: BUG-2
+2025-04-28 20:27:32,639 - INFO - Progress: 470 tests, 141 crashes, 4 interesting cases, 754.91 seconds elapsed
+2025-04-28 20:27:32,745 - INFO - Mutation 4/5: DELETE /api/product/34/
+2025-04-28 20:27:37,752 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:27:37,752 - INFO - Found instance of known bug: BUG-2
+2025-04-28 20:27:37,858 - INFO - Mutation 5/5: DELETE /api/product/1/
+2025-04-28 20:27:42,862 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:27:42,862 - INFO - Found instance of known bug: BUG-2
+2025-04-28 20:27:42,966 - INFO - Selected seed: DELETE /datatb/product/edit/{id}/
+2025-04-28 20:27:42,966 - INFO - Selected seed with energy 6: DELETE /datatb/product/edit/{id}/
+2025-04-28 20:27:42,966 - INFO - Mutation 1/6: DELETE /datatb/product/edit/9/
+2025-04-28 20:27:47,970 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:27:47,971 - INFO - Found instance of known bug: BUG-8
+2025-04-28 20:27:48,077 - INFO - Mutation 2/6: DELETE /datatb/product/edit/80/
+2025-04-28 20:27:53,082 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:27:53,082 - INFO - Found instance of known bug: BUG-8
+2025-04-28 20:27:53,190 - INFO - Mutation 3/6: DELETE /datatb/product/edit/7/
+2025-04-28 20:27:58,194 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:27:58,194 - INFO - Found instance of known bug: BUG-8
+2025-04-28 20:27:58,299 - INFO - Mutation 4/6: DELETE /datatb/product/edit/-1/
+2025-04-28 20:28:03,306 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:28:03,307 - INFO - Found instance of known bug: BUG-8
+2025-04-28 20:28:03,414 - INFO - Mutation 5/6: DELETE /datatb/product/edit/abc/
+2025-04-28 20:28:08,436 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:28:08,437 - INFO - Found instance of known bug: BUG-8
+2025-04-28 20:28:08,541 - INFO - Mutation 6/6: DELETE /datatb/product/edit/78/
+2025-04-28 20:28:13,545 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:28:13,546 - INFO - Found instance of known bug: BUG-8
+2025-04-28 20:28:13,653 - INFO - Selected seed: GET /datatb/product/delete/{id}/
+2025-04-28 20:28:13,654 - INFO - Selected seed with energy 6: GET /datatb/product/delete/{id}/
+2025-04-28 20:28:13,654 - INFO - Mutation 1/6: GET /datatb/product/delete/63/
+2025-04-28 20:28:18,659 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:28:18,659 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:28:18,764 - INFO - Mutation 2/6: GET /datatb/product/delete/4]/
+2025-04-28 20:28:23,768 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:28:23,769 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:28:23,770 - INFO - Progress: 480 tests, 151 crashes, 4 interesting cases, 806.04 seconds elapsed
+2025-04-28 20:28:23,874 - INFO - Mutation 3/6: GET /datatb/product/delete/7k/
+2025-04-28 20:28:28,878 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:28:28,878 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:28:28,984 - INFO - Mutation 4/6: GET /datatb/product/delete/$2/
+2025-04-28 20:28:33,990 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:28:33,992 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:28:34,097 - INFO - Mutation 5/6: GET /datatb/product/delete/24/
+2025-04-28 20:28:39,115 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:28:39,116 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:28:39,222 - INFO - Mutation 6/6: GET /datatb/product/delete/0/
+2025-04-28 20:28:44,226 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:28:44,226 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:28:44,330 - INFO - Selected seed: GET /api/product/{id}/
+2025-04-28 20:28:44,331 - INFO - Selected seed with energy 5: GET /api/product/{id}/
+2025-04-28 20:28:44,331 - INFO - Mutation 1/5: GET /api/product/0/
+2025-04-28 20:28:49,336 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:28:49,336 - WARNING - Discovered new unique bug: BUG-15 with signature GET:/api/product/{id}/:ConnectionTimeout
+2025-04-28 20:28:49,442 - INFO - Mutation 2/5: GET /api/product/85/
+2025-04-28 20:28:54,446 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:28:54,447 - INFO - Found instance of known bug: BUG-15
+2025-04-28 20:28:54,554 - INFO - Mutation 3/5: GET /api/product/1352208/
+2025-04-28 20:28:59,558 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:28:59,559 - INFO - Found instance of known bug: BUG-15
+2025-04-28 20:28:59,664 - INFO - Mutation 4/5: GET /api/product/82/
+2025-04-28 20:29:04,673 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:29:04,676 - INFO - Found instance of known bug: BUG-15
+2025-04-28 20:29:04,783 - INFO - Mutation 5/5: GET /api/product/90/
+2025-04-28 20:29:09,786 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:29:09,786 - INFO - Found instance of known bug: BUG-15
+2025-04-28 20:29:09,893 - INFO - Selected seed: PUT /api/product/{id}/
+2025-04-28 20:29:09,893 - INFO - Selected seed with energy 5: PUT /api/product/{id}/
+2025-04-28 20:29:09,893 - INFO - Mutation 1/5: PUT /api/product/32/
+2025-04-28 20:29:09,893 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-28 20:29:14,898 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:29:14,898 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:29:14,900 - INFO - Progress: 490 tests, 161 crashes, 4 interesting cases, 857.17 seconds elapsed
+2025-04-28 20:29:15,002 - INFO - Mutation 2/5: PUT /api/product/2655203/
+2025-04-28 20:29:15,002 - INFO - Payload: {'id': 4294967213, 'name': '\np\x00>d'}
+2025-04-28 20:29:20,006 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:29:20,006 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:29:20,111 - INFO - Mutation 3/5: PUT /api/product/abc/
+2025-04-28 20:29:20,111 - INFO - Payload: {'id': 50, 'info': 'dt', 'price': 99}
+2025-04-28 20:29:25,114 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:29:25,114 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:29:25,221 - INFO - Mutation 4/5: PUT /api/product/75/
+2025-04-28 20:29:25,222 - INFO - Payload: {'id': 32767, 'name': 'pd@', 'info': 'dt', 'price': 99}
+2025-04-28 20:29:30,228 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:29:30,228 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:29:30,336 - INFO - Mutation 5/5: PUT /api/product/57/
+2025-04-28 20:29:30,336 - INFO - Payload: {'n!me': '', 'price': 201}
+2025-04-28 20:29:35,339 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:29:35,340 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:29:35,448 - INFO - Selected seed: PUT /datatb/product/
+2025-04-28 20:29:35,448 - INFO - Selected seed with energy 5: PUT /datatb/product/
+2025-04-28 20:29:35,449 - INFO - Mutation 1/5: PUT /datatb/product/
+2025-04-28 20:29:35,449 - INFO - Payload: {'id': 96, 'name': 'pd', 'info': 'dt', 'price': 41}
+2025-04-28 20:29:35,605 - INFO - Mutation 2/5: PUT /datatb/product/
+2025-04-28 20:29:35,605 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-28 20:29:35,758 - INFO - Mutation 3/5: PUT /datatb/product/
+2025-04-28 20:29:35,758 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 98}
+2025-04-28 20:29:35,902 - INFO - Mutation 4/5: PUT /datatb/product/
+2025-04-28 20:29:35,902 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 100}
+2025-04-28 20:29:36,047 - INFO - Mutation 5/5: PUT /datatb/product/
+2025-04-28 20:29:36,047 - INFO - Payload: {'i': 32767, 'nae': 'pd', 'info': '-dt', 'price': -1}
+2025-04-28 20:29:36,186 - INFO - Selected seed: POST /api/product/{id}/
+2025-04-28 20:29:36,186 - INFO - Selected seed with energy 4: POST /api/product/{id}/
+2025-04-28 20:29:36,186 - INFO - Mutation 1/4: POST /api/product/9/
+2025-04-28 20:29:36,186 - INFO - Payload: {'name': 'pd', 'info': 'dt', 'price': 115, 'JMzmN': -2919}
+2025-04-28 20:29:41,190 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:29:41,191 - WARNING - Discovered new unique bug: BUG-16 with signature POST:/api/product/{id}/:ConnectionTimeout
+2025-04-28 20:29:41,192 - INFO - Progress: 500 tests, 166 crashes, 4 interesting cases, 883.46 seconds elapsed
+2025-04-28 20:29:41,297 - INFO - Mutation 2/4: POST /api/product/92/
+2025-04-28 20:29:41,297 - INFO - Payload: {'id': 96, 'name': 'pd', 'price': 99}
+2025-04-28 20:29:46,303 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:29:46,304 - INFO - Found instance of known bug: BUG-16
+2025-04-28 20:29:46,411 - INFO - Mutation 3/4: POST /api/product/69/
+2025-04-28 20:29:46,411 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-28 20:29:51,415 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:29:51,415 - INFO - Found instance of known bug: BUG-16
+2025-04-28 20:29:51,521 - INFO - Mutation 4/4: POST /api/product/0/
+2025-04-28 20:29:51,521 - INFO - Payload: {')d': 2147483648, 'name': 'pd', 'info': 'dtF', 'price': 0}
+2025-04-28 20:29:56,526 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:29:56,526 - INFO - Found instance of known bug: BUG-16
+2025-04-28 20:29:56,628 - INFO - Selected seed: DELETE /datatb/product/
+2025-04-28 20:29:56,629 - INFO - Selected seed with energy 4: DELETE /datatb/product/
+2025-04-28 20:29:56,630 - INFO - Mutation 1/4: DELETE /datatb/product/
+2025-04-28 20:29:56,791 - INFO - Mutation 2/4: DELETE /datatb/product/
+2025-04-28 20:29:56,942 - INFO - Mutation 3/4: DELETE /datatb/product/
+2025-04-28 20:29:57,090 - INFO - Mutation 4/4: DELETE /datatb/product/
+2025-04-28 20:29:57,240 - INFO - Selected seed: GET /api/product/{id}/
+2025-04-28 20:29:57,240 - INFO - Selected seed with energy 6: GET /api/product/{id}/
+2025-04-28 20:29:57,240 - INFO - Mutation 1/6: GET /api/product/12/
+2025-04-28 20:30:02,245 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:30:02,245 - INFO - Found instance of known bug: BUG-15
+2025-04-28 20:30:02,349 - INFO - Mutation 2/6: GET /api/product/46/
+2025-04-28 20:30:07,352 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:30:07,353 - INFO - Found instance of known bug: BUG-15
+2025-04-28 20:30:07,458 - INFO - Mutation 3/6: GET /api/product/0/
+2025-04-28 20:30:12,462 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:30:12,463 - INFO - Found instance of known bug: BUG-15
+2025-04-28 20:30:12,464 - INFO - Progress: 510 tests, 172 crashes, 4 interesting cases, 914.74 seconds elapsed
+2025-04-28 20:30:12,570 - INFO - Mutation 4/6: GET /api/product/35/
+2025-04-28 20:30:17,574 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:30:17,574 - INFO - Found instance of known bug: BUG-15
+2025-04-28 20:30:17,679 - INFO - Mutation 5/6: GET /api/product/1/
+2025-04-28 20:30:22,684 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:30:22,684 - INFO - Found instance of known bug: BUG-15
+2025-04-28 20:30:22,792 - INFO - Mutation 6/6: GET /api/product/Y9/
+2025-04-28 20:30:23,233 - INFO - Found new coverage path with hash: 0086c84d83a1567194fc2576a3f78236
+2025-04-28 20:30:23,233 - INFO - New coverage from: GET /api/product/Y9/
+2025-04-28 20:30:23,233 - INFO - Found interesting test case with new coverage: GET /api/product/{id}/
+2025-04-28 20:30:23,338 - INFO - Completed queue cycle #3
+2025-04-28 20:30:23,338 - INFO - Selected seed: POST /datatb/product/delete/{id}/
+2025-04-28 20:30:23,338 - INFO - Selected seed with energy 6: POST /datatb/product/delete/{id}/
+2025-04-28 20:30:23,338 - INFO - Mutation 1/6: POST /datatb/product/delete/28/
+2025-04-28 20:30:23,338 - INFO - Payload: {'cascade': -1, 'permanent': False}
+2025-04-28 20:30:28,342 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:30:28,342 - INFO - Found instance of known bug: BUG-14
+2025-04-28 20:30:28,447 - INFO - Mutation 2/6: POST /datatb/product/delete/74/
+2025-04-28 20:30:28,448 - INFO - Payload: {'cascade': True, 'permanent': 0, 'eTnbdYKx': None}
+2025-04-28 20:30:33,451 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:30:33,451 - INFO - Found instance of known bug: BUG-14
+2025-04-28 20:30:33,558 - INFO - Mutation 3/6: POST /datatb/product/delete/44/
+2025-04-28 20:30:33,558 - INFO - Payload: {'cascade': True, 'permanent': 65535}
+2025-04-28 20:30:38,563 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:30:38,563 - INFO - Found instance of known bug: BUG-14
+2025-04-28 20:30:38,668 - INFO - Mutation 4/6: POST /datatb/product/delete/64/
+2025-04-28 20:30:38,668 - INFO - Payload: {'cascade': True, 'permanent': 4294967295, 'WiXuBqP': True}
+2025-04-28 20:30:43,674 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:30:43,675 - INFO - Found instance of known bug: BUG-14
+2025-04-28 20:30:43,782 - INFO - Mutation 5/6: POST /datatb/product/delete/8651314/
+2025-04-28 20:30:43,783 - INFO - Payload: {'cascade': 32767, 'permanent': -4}
+2025-04-28 20:30:48,787 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:30:48,788 - INFO - Found instance of known bug: BUG-14
+2025-04-28 20:30:48,891 - INFO - Mutation 6/6: POST /datatb/product/delete/53/
+2025-04-28 20:30:48,891 - INFO - Payload: {'permanen': 4}
+2025-04-28 20:30:53,896 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:30:53,896 - INFO - Found instance of known bug: BUG-14
+2025-04-28 20:30:53,999 - INFO - Selected seed: GET /datatb/product/
+2025-04-28 20:30:54,000 - INFO - Selected seed with energy 5: GET /datatb/product/
+2025-04-28 20:30:54,000 - INFO - Mutation 1/5: GET /datatb/product/
+2025-04-28 20:30:54,052 - INFO - Progress: 520 tests, 180 crashes, 5 interesting cases, 956.32 seconds elapsed
+2025-04-28 20:30:54,157 - INFO - Mutation 2/5: GET /datatb/product/
+2025-04-28 20:30:54,310 - INFO - Mutation 3/5: GET /datatb/product/
+2025-04-28 20:30:54,460 - INFO - Mutation 4/5: GET /datatb/product/
+2025-04-28 20:30:54,825 - INFO - Mutation 5/5: GET /datatb/product/
+2025-04-28 20:30:54,984 - INFO - Selected seed: PUT /datatb/product/edit/{id}/
+2025-04-28 20:30:54,984 - INFO - Selected seed with energy 5: PUT /datatb/product/edit/{id}/
+2025-04-28 20:30:54,984 - INFO - Mutation 1/5: PUT /datatb/product/edit/abc/
+2025-04-28 20:30:54,984 - INFO - Payload: {'id': 255, 'name': 'pd|', 'info': '(t', 'price': 99}
+2025-04-28 20:30:59,989 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:30:59,989 - WARNING - Discovered new unique bug: BUG-17 with signature PUT:/datatb/product/edit/{id}/:ConnectionTimeout
+2025-04-28 20:31:00,097 - INFO - Mutation 2/5: PUT /datatb/product/edit/79/
+2025-04-28 20:31:00,097 - INFO - Payload: {'id': 1, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-28 20:31:00,218 - INFO - Mutation 3/5: PUT /datatb/product/edit/7816819/
+2025-04-28 20:31:00,218 - INFO - Payload: {'id': 85, 'name': '\npd@', 'info': 't', 'pric%': 99, 'pkBOT': 'test_value'}
+2025-04-28 20:31:05,223 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:31:05,224 - INFO - Found instance of known bug: BUG-17
+2025-04-28 20:31:05,329 - INFO - Mutation 4/5: PUT /datatb/product/edit/8443709/
+2025-04-28 20:31:05,330 - INFO - Payload: {'id': 100, 'name': 'pDd', 'info': 'dt', 'price': 99}
+2025-04-28 20:31:05,461 - INFO - Mutation 5/5: PUT /datatb/product/edit/55/
+2025-04-28 20:31:05,461 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dtP', 'price': 99}
+2025-04-28 20:31:05,588 - INFO - Selected seed: DELETE /datatb/product/
+2025-04-28 20:31:05,588 - INFO - Selected seed with energy 4: DELETE /datatb/product/
+2025-04-28 20:31:05,588 - INFO - Mutation 1/4: DELETE /datatb/product/
+2025-04-28 20:31:05,637 - INFO - Progress: 530 tests, 182 crashes, 5 interesting cases, 967.91 seconds elapsed
+2025-04-28 20:31:05,743 - INFO - Mutation 2/4: DELETE /datatb/product/
+2025-04-28 20:31:05,889 - INFO - Mutation 3/4: DELETE /datatb/product/
+2025-04-28 20:31:06,029 - INFO - Mutation 4/4: DELETE /datatb/product/
+2025-04-28 20:31:06,170 - INFO - Selected seed: PUT /datatb/product/delete/{id}/
+2025-04-28 20:31:06,171 - INFO - Selected seed with energy 6: PUT /datatb/product/delete/{id}/
+2025-04-28 20:31:06,171 - INFO - Mutation 1/6: PUT /datatb/product/delete/0/
+2025-04-28 20:31:11,175 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:31:11,175 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:31:11,277 - INFO - Mutation 2/6: PUT /datatb/product/delete/47/
+2025-04-28 20:31:11,277 - INFO - Payload: {'confirm': 429497295}
+2025-04-28 20:31:16,282 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:31:16,282 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:31:16,389 - INFO - Mutation 3/6: PUT /datatb/product/delete/78/
+2025-04-28 20:31:21,394 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:31:21,394 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:31:21,500 - INFO - Mutation 4/6: PUT /datatb/product/delete/3P/
+2025-04-28 20:31:21,501 - INFO - Payload: {'confirm': True, 'kkVzczna': True, 'WIRXa': -547}
+2025-04-28 20:31:26,504 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:31:26,505 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:31:26,611 - INFO - Mutation 5/6: PUT /datatb/product/delete/9/
+2025-04-28 20:31:31,615 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:31:31,616 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:31:31,724 - INFO - Mutation 6/6: PUT /datatb/product/delete/0/
+2025-04-28 20:31:31,725 - INFO - Payload: {'confirm': 2}
+2025-04-28 20:31:36,729 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:31:36,730 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:31:36,838 - INFO - Selected seed: DELETE /datatb/product/export/
+2025-04-28 20:31:36,838 - INFO - Selected seed with energy 5: DELETE /datatb/product/export/
+2025-04-28 20:31:36,838 - INFO - Mutation 1/5: DELETE /datatb/product/export/
+2025-04-28 20:31:41,843 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:31:41,843 - INFO - Found instance of known bug: BUG-5
+2025-04-28 20:31:41,844 - INFO - Progress: 540 tests, 189 crashes, 5 interesting cases, 1004.12 seconds elapsed
+2025-04-28 20:31:41,945 - INFO - Mutation 2/5: DELETE /datatb/product/export/
+2025-04-28 20:31:46,950 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:31:46,951 - INFO - Found instance of known bug: BUG-5
+2025-04-28 20:31:47,052 - INFO - Mutation 3/5: DELETE /datatb/product/export/
+2025-04-28 20:31:52,060 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:31:52,061 - INFO - Found instance of known bug: BUG-5
+2025-04-28 20:31:52,167 - INFO - Mutation 4/5: DELETE /datatb/product/export/
+2025-04-28 20:31:57,174 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:31:57,174 - INFO - Found instance of known bug: BUG-5
+2025-04-28 20:31:57,276 - INFO - Mutation 5/5: DELETE /datatb/product/export/
+2025-04-28 20:32:02,281 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:32:02,281 - INFO - Found instance of known bug: BUG-5
+2025-04-28 20:32:02,387 - INFO - Selected seed: GET /datatb/product/export/
+2025-04-28 20:32:02,388 - INFO - Selected seed with energy 5: GET /datatb/product/export/
+2025-04-28 20:32:02,388 - INFO - Mutation 1/5: GET /datatb/product/export/
+2025-04-28 20:32:07,394 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:32:07,394 - INFO - Found instance of known bug: BUG-1
+2025-04-28 20:32:07,497 - INFO - Mutation 2/5: GET /datatb/product/export/
+2025-04-28 20:32:12,501 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:32:12,501 - INFO - Found instance of known bug: BUG-1
+2025-04-28 20:32:12,608 - INFO - Mutation 3/5: GET /datatb/product/export/
+2025-04-28 20:32:17,612 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:32:17,613 - INFO - Found instance of known bug: BUG-1
+2025-04-28 20:32:17,720 - INFO - Mutation 4/5: GET /datatb/product/export/
+2025-04-28 20:32:22,723 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:32:22,723 - INFO - Found instance of known bug: BUG-1
+2025-04-28 20:32:22,857 - INFO - Mutation 5/5: GET /datatb/product/export/
+2025-04-28 20:32:27,912 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:32:27,912 - INFO - Found instance of known bug: BUG-1
+2025-04-28 20:32:28,020 - INFO - Selected seed: PUT /datatb/product/
+2025-04-28 20:32:28,020 - INFO - Selected seed with energy 4: PUT /datatb/product/
+2025-04-28 20:32:28,021 - INFO - Mutation 1/4: PUT /datatb/product/
+2025-04-28 20:32:28,021 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-28 20:32:28,073 - INFO - Progress: 550 tests, 198 crashes, 5 interesting cases, 1050.34 seconds elapsed
+2025-04-28 20:32:28,178 - INFO - Mutation 2/4: PUT /datatb/product/
+2025-04-28 20:32:28,178 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt'}
+2025-04-28 20:32:28,326 - INFO - Mutation 3/4: PUT /datatb/product/
+2025-04-28 20:32:28,326 - INFO - Payload: {'name': 'dp\rZ', 'info': 'dO', 'price': 255}
+2025-04-28 20:32:28,468 - INFO - Mutation 4/4: PUT /datatb/product/
+2025-04-28 20:32:28,468 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 107}
+2025-04-28 20:32:28,613 - INFO - Selected seed: DELETE /datatb/product/edit/{id}/
+2025-04-28 20:32:28,613 - INFO - Selected seed with energy 5: DELETE /datatb/product/edit/{id}/
+2025-04-28 20:32:28,613 - INFO - Mutation 1/5: DELETE /datatb/product/edit/77/
+2025-04-28 20:32:33,617 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:32:33,617 - INFO - Found instance of known bug: BUG-8
+2025-04-28 20:32:33,723 - INFO - Mutation 2/5: DELETE /datatb/product/edit/3946947/
+2025-04-28 20:32:38,727 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:32:38,727 - INFO - Found instance of known bug: BUG-8
+2025-04-28 20:32:38,829 - INFO - Mutation 3/5: DELETE /datatb/product/edit/83/
+2025-04-28 20:32:43,833 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:32:43,833 - INFO - Found instance of known bug: BUG-8
+2025-04-28 20:32:43,941 - INFO - Mutation 4/5: DELETE /datatb/product/edit/41/
+2025-04-28 20:32:48,945 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:32:48,945 - INFO - Found instance of known bug: BUG-8
+2025-04-28 20:32:49,057 - INFO - Mutation 5/5: DELETE /datatb/product/edit/23/
+2025-04-28 20:32:54,072 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:32:54,073 - INFO - Found instance of known bug: BUG-8
+2025-04-28 20:32:54,178 - INFO - Selected seed: POST /datatb/product/edit/{id}/
+2025-04-28 20:32:54,178 - INFO - Selected seed with energy 6: POST /datatb/product/edit/{id}/
+2025-04-28 20:32:54,179 - INFO - Mutation 1/6: POST /datatb/product/edit/56/
+2025-04-28 20:32:54,179 - INFO - Payload: {'name': 'pb', 'info': 'dht', 'price': 99, 'PtTERrE': 'test_value'}
+2025-04-28 20:32:59,182 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:32:59,183 - INFO - Found instance of known bug: BUG-7
+2025-04-28 20:32:59,290 - INFO - Mutation 2/6: POST /datatb/product/edit/33/
+2025-04-28 20:32:59,290 - INFO - Payload: {'id': 100, 'name': 'pd', 'knfo': 'dt', 'price': 99}
+2025-04-28 20:33:04,295 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:33:04,295 - INFO - Found instance of known bug: BUG-7
+2025-04-28 20:33:04,297 - INFO - Progress: 560 tests, 205 crashes, 5 interesting cases, 1086.57 seconds elapsed
+2025-04-28 20:33:04,402 - INFO - Mutation 3/6: POST /datatb/product/edit/86/
+2025-04-28 20:33:04,402 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 99, 'sdzq': None, 'ieQ': -838}
+2025-04-28 20:33:09,406 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:33:09,407 - INFO - Found instance of known bug: BUG-7
+2025-04-28 20:33:09,511 - INFO - Mutation 4/6: POST /datatb/product/edit/41/
+2025-04-28 20:33:09,511 - INFO - Payload: {'id': 100, 'nae': 'pd', 'info': 'dt', 'price': 93}
+2025-04-28 20:33:14,516 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:33:14,516 - INFO - Found instance of known bug: BUG-7
+2025-04-28 20:33:14,618 - INFO - Mutation 5/6: POST /datatb/product/edit/46/
+2025-04-28 20:33:14,619 - INFO - Payload: {'id': 100, 'name': 'p', 'info': 'dt', 'price': 98}
+2025-04-28 20:33:14,750 - INFO - Mutation 6/6: POST /datatb/product/edit/0/
+2025-04-28 20:33:14,750 - INFO - Payload: {'i`': 100, 'name': 'pd', 'info': ']t', 'price': -101}
+2025-04-28 20:33:19,755 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:33:19,755 - INFO - Found instance of known bug: BUG-7
+2025-04-28 20:33:19,857 - INFO - Selected seed: DELETE /datatb/product/delete/{id}/
+2025-04-28 20:33:19,857 - INFO - Selected seed with energy 6: DELETE /datatb/product/delete/{id}/
+2025-04-28 20:33:19,857 - INFO - Mutation 1/6: DELETE /datatb/product/delete/68/
+2025-04-28 20:33:24,860 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:33:24,860 - INFO - Found instance of known bug: BUG-9
+2025-04-28 20:33:24,967 - INFO - Mutation 2/6: DELETE /datatb/product/delete/51/
+2025-04-28 20:33:29,974 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:33:29,974 - INFO - Found instance of known bug: BUG-9
+2025-04-28 20:33:30,080 - INFO - Mutation 3/6: DELETE /datatb/product/delete/63/
+2025-04-28 20:33:35,085 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:33:35,086 - INFO - Found instance of known bug: BUG-9
+2025-04-28 20:33:35,188 - INFO - Mutation 4/6: DELETE /datatb/product/delete/15/
+2025-04-28 20:33:40,191 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:33:40,191 - INFO - Found instance of known bug: BUG-9
+2025-04-28 20:33:40,297 - INFO - Mutation 5/6: DELETE /datatb/product/delete/79/
+2025-04-28 20:33:45,301 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:33:45,301 - INFO - Found instance of known bug: BUG-9
+2025-04-28 20:33:45,403 - INFO - Mutation 6/6: DELETE /datatb/product/delete/85/
+2025-04-28 20:33:50,409 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:33:50,409 - INFO - Found instance of known bug: BUG-9
+2025-04-28 20:33:50,411 - INFO - Progress: 570 tests, 214 crashes, 5 interesting cases, 1132.68 seconds elapsed
+2025-04-28 20:33:50,517 - INFO - Selected seed: PUT /api/product/{id}/
+2025-04-28 20:33:50,517 - INFO - Selected seed with energy 8: PUT /api/product/{id}/
+2025-04-28 20:33:50,518 - INFO - Mutation 1/8: PUT /api/product/18/
+2025-04-28 20:33:50,518 - INFO - Payload: {'id': 100, 'name': '.', 'info': 't', 'price': -28, 'DGL': 799, 'JWxgrX': None}
+2025-04-28 20:33:55,522 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:33:55,522 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:33:55,628 - INFO - Mutation 2/8: PUT /api/product/70/
+2025-04-28 20:33:55,628 - INFO - Payload: {'id': 100, 'name': 't', 'info': '', 'price': 255}
+2025-04-28 20:34:00,633 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:34:00,633 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:34:00,740 - INFO - Mutation 3/8: PUT /api/product/90/
+2025-04-28 20:34:00,740 - INFO - Payload: {'id': 100, 'name': 't', 'info': 'd', 'price': -30}
+2025-04-28 20:34:05,745 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:34:05,745 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:34:05,848 - INFO - Mutation 4/8: PUT /api/product/30/
+2025-04-28 20:34:05,848 - INFO - Payload: {'id': 100, 'name': 't', 'info': 'd', 'pbice': -29}
+2025-04-28 20:34:10,852 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:34:10,852 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:34:10,958 - INFO - Mutation 5/8: PUT /api/product/96/
+2025-04-28 20:34:10,958 - INFO - Payload: {'id': 50, 'name': 't', 'info': 'd;', 'price': 256}
+2025-04-28 20:34:15,962 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:34:15,962 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:34:16,069 - INFO - Mutation 6/8: PUT /api/product/35/
+2025-04-28 20:34:16,069 - INFO - Payload: {'id': 100, 'name': '\rt', 'info': 'd', 'prace': 65535}
+2025-04-28 20:34:21,072 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:34:21,073 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:34:21,178 - INFO - Mutation 7/8: PUT /api/product/62/
+2025-04-28 20:34:21,179 - INFO - Payload: {'id': 100, 'name': 't', 'info': '', 'price': -29}
+2025-04-28 20:34:26,184 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:34:26,185 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:34:26,290 - INFO - Mutation 8/8: PUT /api/product/48/
+2025-04-28 20:34:26,291 - INFO - Payload: {'id': 256, 'name': 't', 'info': 'd', 'price': 65535, 'ZqksA': True}
+2025-04-28 20:34:31,298 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:34:31,298 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:34:31,404 - INFO - Selected seed: PUT /datatb/product/delete/{id}/
+2025-04-28 20:34:31,405 - INFO - Selected seed with energy 5: PUT /datatb/product/delete/{id}/
+2025-04-28 20:34:31,405 - INFO - Mutation 1/5: PUT /datatb/product/delete/17/
+2025-04-28 20:34:31,405 - INFO - Payload: {'confirm': True, 'QPt': 'test_value'}
+2025-04-28 20:34:36,410 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:34:36,411 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:34:36,515 - INFO - Mutation 2/5: PUT /datatb/product/delete/0/
+2025-04-28 20:34:36,515 - INFO - Payload: {'confir': 1}
+2025-04-28 20:34:41,519 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:34:41,519 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:34:41,521 - INFO - Progress: 580 tests, 224 crashes, 5 interesting cases, 1183.79 seconds elapsed
+2025-04-28 20:34:41,623 - INFO - Mutation 3/5: PUT /datatb/product/delete/29/
+2025-04-28 20:34:41,623 - INFO - Payload: {'confirm': True, 'plZPv': 804, 'luBD': -469}
+2025-04-28 20:34:46,626 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:34:46,627 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:34:46,734 - INFO - Mutation 4/5: PUT /datatb/product/delete/-1/
+2025-04-28 20:34:51,737 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:34:51,737 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:34:51,843 - INFO - Mutation 5/5: PUT /datatb/product/delete/5/
+2025-04-28 20:34:56,847 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:34:56,847 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:34:56,951 - INFO - Selected seed: POST /datatb/product/
+2025-04-28 20:34:56,951 - INFO - Selected seed with energy 4: POST /datatb/product/
+2025-04-28 20:34:56,952 - INFO - Mutation 1/4: POST /datatb/product/
+2025-04-28 20:34:57,098 - INFO - Mutation 2/4: POST /datatb/product/
+2025-04-28 20:34:57,098 - INFO - Payload: {'name': 'qd', 'info': 'dtY', 'price': 99, 'ppxJHClm': None, 'akvCvtm': -119, 'GCTELBYM': 539, 'ozg': 'test_value'}
+2025-04-28 20:34:57,241 - INFO - Mutation 3/4: POST /datatb/product/
+2025-04-28 20:34:57,243 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': '(?t', 'price': 98, 'hkhfL': None, 'nIsWb': 0}
+2025-04-28 20:34:57,414 - INFO - Mutation 4/4: POST /datatb/product/
+2025-04-28 20:34:57,415 - INFO - Payload: {'id': 100, 'name': 'pd', 'nfo': 'dt', 'price': 99, 'uKAEhJ': True}
+2025-04-28 20:34:57,623 - INFO - Selected seed: POST /datatb/product/export/
+2025-04-28 20:34:57,623 - INFO - Selected seed with energy 5: POST /datatb/product/export/
+2025-04-28 20:34:57,623 - INFO - Mutation 1/5: POST /datatb/product/export/
+2025-04-28 20:34:57,623 - INFO - Payload: {'search': '', 'hidden_cols': [], 'type': 'pdf', 'DHO': 'test_value'}
+2025-04-28 20:35:02,628 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:35:02,629 - WARNING - Discovered new unique bug: BUG-18 with signature POST:/datatb/product/export/:ConnectionTimeout
+2025-04-28 20:35:02,735 - INFO - Mutation 2/5: POST /datatb/product/export/
+2025-04-28 20:35:02,735 - INFO - Payload: {'search': '(', 'hidden_cols': [], 'type': 'pd<'}
+2025-04-28 20:35:02,868 - INFO - Mutation 3/5: POST /datatb/product/export/
+2025-04-28 20:35:02,868 - INFO - Payload: {'search': '', 'hidden_cols': [], 'vype': 'pdf'}
+2025-04-28 20:35:02,914 - INFO - Progress: 590 tests, 228 crashes, 5 interesting cases, 1205.19 seconds elapsed
+2025-04-28 20:35:03,016 - INFO - Mutation 4/5: POST /datatb/product/export/
+2025-04-28 20:35:03,016 - INFO - Payload: {'search': '<\n)', 'pype': 'Udf'}
+2025-04-28 20:35:03,148 - INFO - Mutation 5/5: POST /datatb/product/export/
+2025-04-28 20:35:03,148 - INFO - Payload: {'search': '', 'hidden_cols': [], 'type': 'pdf', 'Xhmgnulg': None}
+2025-04-28 20:35:08,151 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:35:08,151 - INFO - Found instance of known bug: BUG-18
+2025-04-28 20:35:08,258 - INFO - Selected seed: GET /datatb/product/delete/{id}/
+2025-04-28 20:35:08,260 - INFO - Selected seed with energy 5: GET /datatb/product/delete/{id}/
+2025-04-28 20:35:08,261 - INFO - Mutation 1/5: GET /datatb/product/delete/8/
+2025-04-28 20:35:13,265 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:35:13,265 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:35:13,375 - INFO - Mutation 2/5: GET /datatb/product/delete/71/
+2025-04-28 20:35:18,380 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:35:18,380 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:35:18,488 - INFO - Mutation 3/5: GET /datatb/product/delete/0/
+2025-04-28 20:35:23,493 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:35:23,493 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:35:23,598 - INFO - Mutation 4/5: GET /datatb/product/delete/98/
+2025-04-28 20:35:28,601 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:35:28,602 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:35:28,709 - INFO - Mutation 5/5: GET /datatb/product/delete/79/
+2025-04-28 20:35:33,714 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:35:33,714 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:35:33,817 - INFO - Selected seed: DELETE /api/product/{id}/
+2025-04-28 20:35:33,817 - INFO - Selected seed with energy 6: DELETE /api/product/{id}/
+2025-04-28 20:35:33,818 - INFO - Mutation 1/6: DELETE /api/product/19/
+2025-04-28 20:35:38,822 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:35:38,828 - INFO - Found instance of known bug: BUG-2
+2025-04-28 20:35:38,931 - INFO - Mutation 2/6: DELETE /api/product/92/
+2025-04-28 20:35:43,935 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:35:43,936 - INFO - Found instance of known bug: BUG-2
+2025-04-28 20:35:44,038 - INFO - Mutation 3/6: DELETE /api/product/21/
+2025-04-28 20:35:49,041 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:35:49,042 - INFO - Found instance of known bug: BUG-2
+2025-04-28 20:35:49,044 - INFO - Progress: 600 tests, 237 crashes, 5 interesting cases, 1251.32 seconds elapsed
+2025-04-28 20:35:49,148 - INFO - Mutation 4/6: DELETE /api/product/9\/
+2025-04-28 20:35:54,152 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:35:54,152 - INFO - Found instance of known bug: BUG-2
+2025-04-28 20:35:54,258 - INFO - Mutation 5/6: DELETE /api/product/30/
+2025-04-28 20:35:59,264 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:35:59,264 - INFO - Found instance of known bug: BUG-2
+2025-04-28 20:35:59,370 - INFO - Mutation 6/6: DELETE /api/product/abc/
+2025-04-28 20:36:04,378 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:36:04,379 - INFO - Found instance of known bug: BUG-2
+2025-04-28 20:36:04,485 - INFO - Selected seed: GET /datatb/product/delete/{id}/
+2025-04-28 20:36:04,486 - INFO - Selected seed with energy 5: GET /datatb/product/delete/{id}/
+2025-04-28 20:36:04,486 - INFO - Mutation 1/5: GET /datatb/product/delete/77/
+2025-04-28 20:36:09,491 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:36:09,491 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:36:09,601 - INFO - Mutation 2/5: GET /datatb/product/delete/0/
+2025-04-28 20:36:14,608 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:36:14,608 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:36:14,710 - INFO - Mutation 3/5: GET /datatb/product/delete/69/
+2025-04-28 20:36:19,716 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:36:19,716 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:36:19,824 - INFO - Mutation 4/5: GET /datatb/product/delete/18/
+2025-04-28 20:36:24,829 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:36:24,830 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:36:24,938 - INFO - Mutation 5/5: GET /datatb/product/delete/63/
+2025-04-28 20:36:29,942 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:36:29,942 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:36:30,046 - INFO - Selected seed: POST /api/product/{id}/
+2025-04-28 20:36:30,047 - INFO - Selected seed with energy 6: POST /api/product/{id}/
+2025-04-28 20:36:30,047 - INFO - Mutation 1/6: POST /api/product/15/
+2025-04-28 20:36:30,048 - INFO - Payload: {'info': 'C'}
+2025-04-28 20:36:35,052 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:36:35,052 - INFO - Found instance of known bug: BUG-16
+2025-04-28 20:36:35,158 - INFO - Mutation 2/6: POST /api/product/-1/
+2025-04-28 20:36:35,159 - INFO - Payload: {'id': 100, 'info': '&dt', 'price': 1}
+2025-04-28 20:36:40,164 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:36:40,165 - INFO - Found instance of known bug: BUG-16
+2025-04-28 20:36:40,166 - INFO - Found new coverage path with hash: b351a76087c0283df209421b61002528
+2025-04-28 20:36:40,166 - INFO - New coverage from: POST /api/product/-1/
+2025-04-28 20:36:40,166 - INFO - Found interesting test case with new coverage: POST /api/product/{id}/
+2025-04-28 20:36:40,166 - INFO - Progress: 610 tests, 247 crashes, 6 interesting cases, 1302.44 seconds elapsed
+2025-04-28 20:36:40,271 - INFO - Mutation 3/6: POST /api/product/0/
+2025-04-28 20:36:40,272 - INFO - Payload: {'id': 100, 'name': '&pd', 'info': 'dt', 'price': 2147483648}
+2025-04-28 20:36:45,275 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:36:45,276 - INFO - Found instance of known bug: BUG-16
+2025-04-28 20:36:45,379 - INFO - Mutation 4/6: POST /api/product/0/
+2025-04-28 20:36:45,380 - INFO - Payload: {'id': 100, 'name': '\rd', 'info': 'dt', 'price': 99}
+2025-04-28 20:36:50,383 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:36:50,383 - INFO - Found instance of known bug: BUG-16
+2025-04-28 20:36:50,489 - INFO - Mutation 5/6: POST /api/product/20/
+2025-04-28 20:36:50,489 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'd9', 'price': 99}
+2025-04-28 20:36:55,493 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:36:55,493 - INFO - Found instance of known bug: BUG-16
+2025-04-28 20:36:55,596 - INFO - Mutation 6/6: POST /api/product/58/
+2025-04-28 20:36:55,596 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt'}
+2025-04-28 20:37:00,599 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:37:00,600 - INFO - Found instance of known bug: BUG-16
+2025-04-28 20:37:00,702 - INFO - Selected seed: DELETE /datatb/product/export/
+2025-04-28 20:37:00,702 - INFO - Selected seed with energy 5: DELETE /datatb/product/export/
+2025-04-28 20:37:00,703 - INFO - Mutation 1/5: DELETE /datatb/product/export/
+2025-04-28 20:37:05,706 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:37:05,706 - INFO - Found instance of known bug: BUG-5
+2025-04-28 20:37:05,809 - INFO - Mutation 2/5: DELETE /datatb/product/export/
+2025-04-28 20:37:10,813 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:37:10,813 - INFO - Found instance of known bug: BUG-5
+2025-04-28 20:37:10,918 - INFO - Mutation 3/5: DELETE /datatb/product/export/
+2025-04-28 20:37:15,922 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:37:15,923 - INFO - Found instance of known bug: BUG-5
+2025-04-28 20:37:16,031 - INFO - Mutation 4/5: DELETE /datatb/product/export/
+2025-04-28 20:37:21,039 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:37:21,040 - INFO - Found instance of known bug: BUG-5
+2025-04-28 20:37:21,151 - INFO - Mutation 5/5: DELETE /datatb/product/export/
+2025-04-28 20:37:26,164 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:37:26,164 - INFO - Found instance of known bug: BUG-5
+2025-04-28 20:37:26,269 - INFO - Selected seed: GET /datatb/product/delete/{id}/
+2025-04-28 20:37:26,270 - INFO - Selected seed with energy 5: GET /datatb/product/delete/{id}/
+2025-04-28 20:37:26,270 - INFO - Mutation 1/5: GET /datatb/product/delete/77/
+2025-04-28 20:37:31,273 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:37:31,273 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:37:31,275 - INFO - Progress: 620 tests, 257 crashes, 6 interesting cases, 1353.55 seconds elapsed
+2025-04-28 20:37:31,377 - INFO - Mutation 2/5: GET /datatb/product/delete/82/
+2025-04-28 20:37:36,381 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:37:36,382 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:37:36,487 - INFO - Mutation 3/5: GET /datatb/product/delete/0/
+2025-04-28 20:37:41,492 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:37:41,495 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:37:41,603 - INFO - Mutation 4/5: GET /datatb/product/delete/78/
+2025-04-28 20:37:46,608 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:37:46,608 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:37:46,714 - INFO - Mutation 5/5: GET /datatb/product/delete/0/
+2025-04-28 20:37:51,718 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:37:51,718 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:37:51,822 - INFO - Selected seed: GET /datatb/product/edit/{id}/
+2025-04-28 20:37:51,822 - INFO - Selected seed with energy 7: GET /datatb/product/edit/{id}/
+2025-04-28 20:37:51,823 - INFO - Mutation 1/7: GET /datatb/product/edit/-1/
+2025-04-28 20:37:56,826 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:37:56,826 - INFO - Found instance of known bug: BUG-6
+2025-04-28 20:37:56,933 - INFO - Mutation 2/7: GET /datatb/product/edit/96/
+2025-04-28 20:38:01,936 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:38:01,936 - INFO - Found instance of known bug: BUG-6
+2025-04-28 20:38:02,039 - INFO - Mutation 3/7: GET /datatb/product/edit/19/
+2025-04-28 20:38:07,044 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:38:07,044 - INFO - Found instance of known bug: BUG-6
+2025-04-28 20:38:07,148 - INFO - Mutation 4/7: GET /datatb/product/edit/8/
+2025-04-28 20:38:12,153 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:38:12,153 - INFO - Found instance of known bug: BUG-6
+2025-04-28 20:38:12,260 - INFO - Mutation 5/7: GET /datatb/product/edit/91/
+2025-04-28 20:38:17,265 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:38:17,265 - INFO - Found instance of known bug: BUG-6
+2025-04-28 20:38:17,373 - INFO - Mutation 6/7: GET /datatb/product/edit/-1/
+2025-04-28 20:38:22,377 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:38:22,378 - INFO - Found instance of known bug: BUG-6
+2025-04-28 20:38:22,380 - INFO - Progress: 630 tests, 267 crashes, 6 interesting cases, 1404.65 seconds elapsed
+2025-04-28 20:38:22,484 - INFO - Mutation 7/7: GET /datatb/product/edit/Y9/
+2025-04-28 20:38:27,487 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:38:27,488 - INFO - Found instance of known bug: BUG-6
+2025-04-28 20:38:27,594 - INFO - Selected seed: PUT /datatb/product/export/
+2025-04-28 20:38:27,597 - INFO - Selected seed with energy 7: PUT /datatb/product/export/
+2025-04-28 20:38:27,597 - INFO - Mutation 1/7: PUT /datatb/product/export/
+2025-04-28 20:38:27,597 - INFO - Payload: {'format': 'npdf', 'teoplate': 'default'}
+2025-04-28 20:38:27,755 - INFO - Mutation 2/7: PUT /datatb/product/export/
+2025-04-28 20:38:27,756 - INFO - Payload: {'format': 'pdf', 'template': 'default'}
+2025-04-28 20:38:27,902 - INFO - Mutation 3/7: PUT /datatb/product/export/
+2025-04-28 20:38:27,902 - INFO - Payload: {'format': '`dZ=', 'template': 'Cefaul'}
+2025-04-28 20:38:28,046 - INFO - Mutation 4/7: PUT /datatb/product/export/
+2025-04-28 20:38:28,046 - INFO - Payload: {'format': 'pdf', 'temphate': 'defaultN'}
+2025-04-28 20:38:28,191 - INFO - Mutation 5/7: PUT /datatb/product/export/
+2025-04-28 20:38:28,191 - INFO - Payload: {'format': '2pdfA', 'template': 'Ndefaut'}
+2025-04-28 20:38:28,337 - INFO - Mutation 6/7: PUT /datatb/product/export/
+2025-04-28 20:38:28,337 - INFO - Payload: {'format': 'mdfj', 'template': 'de>faul', 'Tyo': 'ytestvalue'}
+2025-04-28 20:38:28,579 - INFO - Mutation 7/7: PUT /datatb/product/export/
+2025-04-28 20:38:28,579 - INFO - Payload: {'format': 'pd\\f', 'template': 'def`ult'}
+2025-04-28 20:38:28,710 - INFO - Selected seed: GET /api/product/{id}/
+2025-04-28 20:38:28,710 - INFO - Selected seed with energy 6: GET /api/product/{id}/
+2025-04-28 20:38:28,710 - INFO - Mutation 1/6: GET /api/product/52/
+2025-04-28 20:38:33,713 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:38:33,714 - INFO - Found instance of known bug: BUG-15
+2025-04-28 20:38:33,818 - INFO - Mutation 2/6: GET /api/product/16/
+2025-04-28 20:38:38,823 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:38:38,823 - INFO - Found instance of known bug: BUG-15
+2025-04-28 20:38:38,825 - INFO - Progress: 640 tests, 270 crashes, 6 interesting cases, 1421.10 seconds elapsed
+2025-04-28 20:38:38,929 - INFO - Mutation 3/6: GET /api/product/7/
+2025-04-28 20:38:43,934 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:38:43,934 - INFO - Found instance of known bug: BUG-15
+2025-04-28 20:38:44,039 - INFO - Mutation 4/6: GET /api/product/54/
+2025-04-28 20:38:49,042 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:38:49,043 - INFO - Found instance of known bug: BUG-15
+2025-04-28 20:38:49,148 - INFO - Mutation 5/6: GET /api/product/8423435/
+2025-04-28 20:38:54,154 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:38:54,154 - INFO - Found instance of known bug: BUG-15
+2025-04-28 20:38:54,259 - INFO - Mutation 6/6: GET /api/product/63/
+2025-04-28 20:38:59,263 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:38:59,264 - INFO - Found instance of known bug: BUG-15
+2025-04-28 20:38:59,366 - INFO - Completed queue cycle #4
+2025-04-28 20:38:59,366 - INFO - Selected seed: GET /api/product/{id}/
+2025-04-28 20:38:59,367 - INFO - Selected seed with energy 6: GET /api/product/{id}/
+2025-04-28 20:38:59,367 - INFO - Mutation 1/6: GET /api/product/45/
+2025-04-28 20:39:04,370 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:39:04,370 - INFO - Found instance of known bug: BUG-15
+2025-04-28 20:39:04,477 - INFO - Mutation 2/6: GET /api/product/46/
+2025-04-28 20:39:09,482 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:39:09,482 - INFO - Found instance of known bug: BUG-15
+2025-04-28 20:39:09,586 - INFO - Mutation 3/6: GET /api/product/95/
+2025-04-28 20:39:14,589 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:39:14,590 - INFO - Found instance of known bug: BUG-15
+2025-04-28 20:39:14,693 - INFO - Mutation 4/6: GET /api/product/65/
+2025-04-28 20:39:19,698 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:39:19,699 - INFO - Found instance of known bug: BUG-15
+2025-04-28 20:39:19,806 - INFO - Mutation 5/6: GET /api/product/26/
+2025-04-28 20:39:24,810 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:39:24,811 - INFO - Found instance of known bug: BUG-15
+2025-04-28 20:39:24,914 - INFO - Mutation 6/6: GET /api/product/82/
+2025-04-28 20:39:29,918 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:39:29,918 - INFO - Found instance of known bug: BUG-15
+2025-04-28 20:39:29,921 - INFO - Progress: 650 tests, 280 crashes, 6 interesting cases, 1472.19 seconds elapsed
+2025-04-28 20:39:30,025 - INFO - Selected seed: PUT /datatb/product/export/
+2025-04-28 20:39:30,026 - INFO - Selected seed with energy 6: PUT /datatb/product/export/
+2025-04-28 20:39:30,026 - INFO - Mutation 1/6: PUT /datatb/product/export/
+2025-04-28 20:39:30,027 - INFO - Payload: {'format': 'pdf', 'template': 'default', 'eyA': 'test_value'}
+2025-04-28 20:39:30,183 - INFO - Mutation 2/6: PUT /datatb/product/export/
+2025-04-28 20:39:30,183 - INFO - Payload: {'format': 'Hdf', 'template': 'default', 'jhr': 'test_value'}
+2025-04-28 20:39:30,331 - INFO - Mutation 3/6: PUT /datatb/product/export/
+2025-04-28 20:39:30,331 - INFO - Payload: {'format': 'pdf\n', 'template': 'default', 'YyA': None}
+2025-04-28 20:39:30,467 - INFO - Mutation 4/6: PUT /datatb/product/export/
+2025-04-28 20:39:30,467 - INFO - Payload: {'format': 'p\\df', 'template': 'Ueault'}
+2025-04-28 20:39:30,605 - INFO - Mutation 5/6: PUT /datatb/product/export/
+2025-04-28 20:39:30,605 - INFO - Payload: {'format': 'pd', 'template': 'default', 'cdTH': -293}
+2025-04-28 20:39:30,749 - INFO - Mutation 6/6: PUT /datatb/product/export/
+2025-04-28 20:39:30,749 - INFO - Payload: {'fomat': '<pd', 'tmplate': 'defult', 'MHuCL': 127}
+2025-04-28 20:39:30,897 - INFO - Selected seed: DELETE /datatb/product/
+2025-04-28 20:39:30,897 - INFO - Selected seed with energy 4: DELETE /datatb/product/
+2025-04-28 20:39:30,897 - INFO - Mutation 1/4: DELETE /datatb/product/
+2025-04-28 20:39:31,030 - INFO - Mutation 2/4: DELETE /datatb/product/
+2025-04-28 20:39:31,186 - INFO - Mutation 3/4: DELETE /datatb/product/
+2025-04-28 20:39:31,336 - INFO - Mutation 4/4: DELETE /datatb/product/
+2025-04-28 20:39:31,385 - INFO - Progress: 660 tests, 280 crashes, 6 interesting cases, 1473.66 seconds elapsed
+2025-04-28 20:39:31,491 - INFO - Selected seed: GET /datatb/product/delete/{id}/
+2025-04-28 20:39:31,491 - INFO - Selected seed with energy 5: GET /datatb/product/delete/{id}/
+2025-04-28 20:39:31,491 - INFO - Mutation 1/5: GET /datatb/product/delete/25/
+2025-04-28 20:39:36,494 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:39:36,495 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:39:36,599 - INFO - Mutation 2/5: GET /datatb/product/delete/68/
+2025-04-28 20:39:41,602 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:39:41,603 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:39:41,711 - INFO - Mutation 3/5: GET /datatb/product/delete/9/
+2025-04-28 20:39:46,718 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:39:46,718 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:39:46,822 - INFO - Mutation 4/5: GET /datatb/product/delete/53/
+2025-04-28 20:39:51,828 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:39:51,828 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:39:51,934 - INFO - Mutation 5/5: GET /datatb/product/delete/26/
+2025-04-28 20:39:56,939 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:39:56,939 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:39:57,044 - INFO - Selected seed: GET /datatb/product/edit/{id}/
+2025-04-28 20:39:57,044 - INFO - Selected seed with energy 5: GET /datatb/product/edit/{id}/
+2025-04-28 20:39:57,044 - INFO - Mutation 1/5: GET /datatb/product/edit/0/
+2025-04-28 20:40:02,048 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:40:02,049 - INFO - Found instance of known bug: BUG-6
+2025-04-28 20:40:02,156 - INFO - Mutation 2/5: GET /datatb/product/edit/69/
+2025-04-28 20:40:07,162 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:40:07,162 - INFO - Found instance of known bug: BUG-6
+2025-04-28 20:40:07,268 - INFO - Mutation 3/5: GET /datatb/product/edit/87/
+2025-04-28 20:40:12,274 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:40:12,274 - INFO - Found instance of known bug: BUG-6
+2025-04-28 20:40:12,378 - INFO - Mutation 4/5: GET /datatb/product/edit/87/
+2025-04-28 20:40:17,381 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:40:17,382 - INFO - Found instance of known bug: BUG-6
+2025-04-28 20:40:17,487 - INFO - Mutation 5/5: GET /datatb/product/edit/16/
+2025-04-28 20:40:22,491 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:40:22,493 - INFO - Found instance of known bug: BUG-6
+2025-04-28 20:40:22,495 - INFO - Progress: 670 tests, 290 crashes, 6 interesting cases, 1524.77 seconds elapsed
+2025-04-28 20:40:22,601 - INFO - Selected seed: GET /datatb/product/delete/{id}/
+2025-04-28 20:40:22,601 - INFO - Selected seed with energy 5: GET /datatb/product/delete/{id}/
+2025-04-28 20:40:22,601 - INFO - Mutation 1/5: GET /datatb/product/delete/43/
+2025-04-28 20:40:27,606 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:40:27,606 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:40:27,709 - INFO - Mutation 2/5: GET /datatb/product/delete/26/
+2025-04-28 20:40:32,715 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:40:32,715 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:40:32,818 - INFO - Mutation 3/5: GET /datatb/product/delete/-1/
+2025-04-28 20:40:37,822 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:40:37,822 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:40:37,925 - INFO - Mutation 4/5: GET /datatb/product/delete/52/
+2025-04-28 20:40:42,936 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:40:42,937 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:40:43,042 - INFO - Mutation 5/5: GET /datatb/product/delete/0/
+2025-04-28 20:40:48,046 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:40:48,046 - INFO - Found instance of known bug: BUG-3
+2025-04-28 20:40:48,153 - INFO - Selected seed: POST /datatb/product/
+2025-04-28 20:40:48,153 - INFO - Selected seed with energy 4: POST /datatb/product/
+2025-04-28 20:40:48,153 - INFO - Mutation 1/4: POST /datatb/product/
+2025-04-28 20:40:48,154 - INFO - Payload: {'id': 100, 'name': 'p}', 'JetMvuC': True}
+2025-04-28 20:40:48,335 - INFO - Mutation 2/4: POST /datatb/product/
+2025-04-28 20:40:48,336 - INFO - Payload: {'name': 'p\x0b', 'info': 'dt', 'price': 99, 'GMYpbmYq': True}
+2025-04-28 20:40:48,475 - INFO - Mutation 3/4: POST /datatb/product/
+2025-04-28 20:40:48,475 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dt', 'price': 35}
+2025-04-28 20:40:48,611 - INFO - Mutation 4/4: POST /datatb/product/
+2025-04-28 20:40:48,611 - INFO - Payload: {'name': 'pd', 'jHkk': 84, 'RorWQIoJ': 393, 'TlPPY': 374}
+2025-04-28 20:40:48,753 - INFO - Selected seed: GET /datatb/product/
+2025-04-28 20:40:48,754 - INFO - Selected seed with energy 5: GET /datatb/product/
+2025-04-28 20:40:48,755 - INFO - Mutation 1/5: GET /datatb/product/
+2025-04-28 20:40:48,800 - INFO - Progress: 680 tests, 295 crashes, 6 interesting cases, 1551.07 seconds elapsed
+2025-04-28 20:40:48,902 - INFO - Mutation 2/5: GET /datatb/product/
+2025-04-28 20:40:49,046 - INFO - Mutation 3/5: GET /datatb/product/
+2025-04-28 20:40:49,195 - INFO - Mutation 4/5: GET /datatb/product/
+2025-04-28 20:40:49,345 - INFO - Mutation 5/5: GET /datatb/product/
+2025-04-28 20:40:49,491 - INFO - Selected seed: PUT /datatb/product/delete/{id}/
+2025-04-28 20:40:49,492 - INFO - Selected seed with energy 5: PUT /datatb/product/delete/{id}/
+2025-04-28 20:40:49,492 - INFO - Mutation 1/5: PUT /datatb/product/delete/91/
+2025-04-28 20:40:49,492 - INFO - Payload: {'cascade': 5, 'permanent': False, 'rdEoIXMg': -596}
+2025-04-28 20:40:54,496 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:40:54,496 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:40:54,603 - INFO - Mutation 2/5: PUT /datatb/product/delete/0/
+2025-04-28 20:40:54,603 - INFO - Payload: {'cascade': 4294967294, 'permanent': 2}
+2025-04-28 20:40:59,609 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:40:59,610 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:40:59,714 - INFO - Mutation 3/5: PUT /datatb/product/delete/35/
+2025-04-28 20:40:59,714 - INFO - Payload: {'cascade': 4294967295, 'permanent': False}
+2025-04-28 20:41:04,719 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:41:04,719 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:41:04,824 - INFO - Mutation 4/5: PUT /datatb/product/delete/7218128/
+2025-04-28 20:41:04,824 - INFO - Payload: {'cascade': True, 'permanent': False, 'zfyFanp': None}
+2025-04-28 20:41:09,838 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:41:09,838 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:41:09,944 - INFO - Mutation 5/5: PUT /datatb/product/delete/53/
+2025-04-28 20:41:09,945 - INFO - Payload: {'cascade': True, 'permanent': 1}
+2025-04-28 20:41:14,951 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:41:14,951 - INFO - Found instance of known bug: BUG-11
+2025-04-28 20:41:15,058 - INFO - Selected seed: DELETE /datatb/product/edit/{id}/
+2025-04-28 20:41:15,059 - INFO - Selected seed with energy 5: DELETE /datatb/product/edit/{id}/
+2025-04-28 20:41:15,059 - INFO - Mutation 1/5: DELETE /datatb/product/edit/8/
+2025-04-28 20:41:20,064 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:41:20,064 - INFO - Found instance of known bug: BUG-8
+2025-04-28 20:41:20,066 - INFO - Progress: 690 tests, 301 crashes, 6 interesting cases, 1582.34 seconds elapsed
+2025-04-28 20:41:20,170 - INFO - Mutation 2/5: DELETE /datatb/product/edit/37/
+2025-04-28 20:41:25,175 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:41:25,175 - INFO - Found instance of known bug: BUG-8
+2025-04-28 20:41:25,280 - INFO - Mutation 3/5: DELETE /datatb/product/edit/0/
+2025-04-28 20:41:30,285 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:41:30,286 - INFO - Found instance of known bug: BUG-8
+2025-04-28 20:41:30,388 - INFO - Mutation 4/5: DELETE /datatb/product/edit/2/
+2025-04-28 20:41:35,395 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:41:35,395 - INFO - Found instance of known bug: BUG-8
+2025-04-28 20:41:35,499 - INFO - Mutation 5/5: DELETE /datatb/product/edit/36/
+2025-04-28 20:41:40,501 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:41:40,502 - INFO - Found instance of known bug: BUG-8
+2025-04-28 20:41:40,607 - INFO - Selected seed: DELETE /api/product/{id}/
+2025-04-28 20:41:40,608 - INFO - Selected seed with energy 6: DELETE /api/product/{id}/
+2025-04-28 20:41:40,608 - INFO - Mutation 1/6: DELETE /api/product/3</
+2025-04-28 20:41:45,612 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:41:45,612 - INFO - Found instance of known bug: BUG-2
+2025-04-28 20:41:45,714 - INFO - Mutation 2/6: DELETE /api/product/99/
+2025-04-28 20:41:50,719 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:41:50,719 - INFO - Found instance of known bug: BUG-2
+2025-04-28 20:41:50,823 - INFO - Mutation 3/6: DELETE /api/product/60/
+2025-04-28 20:41:55,827 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:41:55,827 - INFO - Found instance of known bug: BUG-2
+2025-04-28 20:41:55,931 - INFO - Mutation 4/6: DELETE /api/product/79/
+2025-04-28 20:42:00,936 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:42:00,936 - INFO - Found instance of known bug: BUG-2
+2025-04-28 20:42:01,043 - INFO - Mutation 5/6: DELETE /api/product/68/
+2025-04-28 20:42:06,047 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:42:06,047 - INFO - Found instance of known bug: BUG-2
+2025-04-28 20:42:06,154 - INFO - Mutation 6/6: DELETE /api/product/5223025/
+2025-04-28 20:42:11,159 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:42:11,160 - INFO - Found instance of known bug: BUG-2
+2025-04-28 20:42:11,168 - INFO - Progress: 700 tests, 311 crashes, 6 interesting cases, 1633.44 seconds elapsed
+2025-04-28 20:42:11,272 - INFO - Selected seed: POST /datatb/product/delete/{id}/
+2025-04-28 20:42:11,273 - INFO - Selected seed with energy 7: POST /datatb/product/delete/{id}/
+2025-04-28 20:42:11,273 - INFO - Mutation 1/7: POST /datatb/product/delete/14/
+2025-04-28 20:42:11,273 - INFO - Payload: {'cascade': 48, 'GIYN': 65535, 'IxPNtW': 711}
+2025-04-28 20:42:16,278 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:42:16,279 - INFO - Found instance of known bug: BUG-14
+2025-04-28 20:42:16,384 - INFO - Mutation 2/7: POST /datatb/product/delete/47/
+2025-04-28 20:42:16,384 - INFO - Payload: {'ca{cade': 0, 'permanent': 0, 'HVbyLHC': 'test_vYalue'}
+2025-04-28 20:42:21,388 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:42:21,388 - INFO - Found instance of known bug: BUG-14
+2025-04-28 20:42:21,493 - INFO - Mutation 3/7: POST /datatb/product/delete/20/
+2025-04-28 20:42:21,493 - INFO - Payload: {'cascade': True}
+2025-04-28 20:42:26,498 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:42:26,499 - INFO - Found instance of known bug: BUG-14
+2025-04-28 20:42:26,602 - INFO - Mutation 4/7: POST /datatb/product/delete/97/
+2025-04-28 20:42:26,602 - INFO - Payload: {'cascade': 65535, 'permanent': False}
+2025-04-28 20:42:31,607 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:42:31,608 - INFO - Found instance of known bug: BUG-14
+2025-04-28 20:42:31,715 - INFO - Mutation 5/7: POST /datatb/product/delete/0/
+2025-04-28 20:42:31,716 - INFO - Payload: {'cascade': True, 'permanent': 255}
+2025-04-28 20:42:36,718 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:42:36,719 - INFO - Found instance of known bug: BUG-14
+2025-04-28 20:42:36,821 - INFO - Mutation 6/7: POST /datatb/product/delete/90/
+2025-04-28 20:42:36,822 - INFO - Payload: {'cascade': 5, 'permanent': False}
+2025-04-28 20:42:41,826 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:42:41,826 - INFO - Found instance of known bug: BUG-14
+2025-04-28 20:42:41,933 - INFO - Mutation 7/7: POST /datatb/product/delete/49/
+2025-04-28 20:42:41,935 - INFO - Payload: {'cascade': True, 'permanent': False, 'BbdrPi': -275}
+2025-04-28 20:42:46,939 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:42:46,939 - INFO - Found instance of known bug: BUG-14
+2025-04-28 20:42:47,045 - INFO - Selected seed: DELETE /datatb/product/export/
+2025-04-28 20:42:47,046 - INFO - Selected seed with energy 5: DELETE /datatb/product/export/
+2025-04-28 20:42:47,046 - INFO - Mutation 1/5: DELETE /datatb/product/export/
+2025-04-28 20:42:52,051 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:42:52,051 - INFO - Found instance of known bug: BUG-5
+2025-04-28 20:42:52,156 - INFO - Mutation 2/5: DELETE /datatb/product/export/
+2025-04-28 20:42:57,160 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:42:57,160 - INFO - Found instance of known bug: BUG-5
+2025-04-28 20:42:57,265 - INFO - Mutation 3/5: DELETE /datatb/product/export/
+2025-04-28 20:43:02,269 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:43:02,270 - INFO - Found instance of known bug: BUG-5
+2025-04-28 20:43:02,271 - INFO - Progress: 710 tests, 321 crashes, 6 interesting cases, 1684.54 seconds elapsed
+2025-04-28 20:43:02,376 - INFO - Mutation 4/5: DELETE /datatb/product/export/
+2025-04-28 20:43:07,384 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:43:07,385 - INFO - Found instance of known bug: BUG-5
+2025-04-28 20:43:07,489 - INFO - Mutation 5/5: DELETE /datatb/product/export/
+2025-04-28 20:43:12,496 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:43:12,496 - INFO - Found instance of known bug: BUG-5
+2025-04-28 20:43:12,600 - INFO - Selected seed: GET /datatb/product/export/
+2025-04-28 20:43:12,600 - INFO - Selected seed with energy 5: GET /datatb/product/export/
+2025-04-28 20:43:12,602 - INFO - Mutation 1/5: GET /datatb/product/export/
+2025-04-28 20:43:17,605 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:43:17,605 - INFO - Found instance of known bug: BUG-1
+2025-04-28 20:43:17,715 - INFO - Mutation 2/5: GET /datatb/product/export/
+2025-04-28 20:43:22,719 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:43:22,719 - INFO - Found instance of known bug: BUG-1
+2025-04-28 20:43:22,822 - INFO - Mutation 3/5: GET /datatb/product/export/
+2025-04-28 20:43:27,827 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:43:27,828 - INFO - Found instance of known bug: BUG-1
+2025-04-28 20:43:27,933 - INFO - Mutation 4/5: GET /datatb/product/export/
+2025-04-28 20:43:32,937 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:43:32,937 - INFO - Found instance of known bug: BUG-1
+2025-04-28 20:43:33,045 - INFO - Mutation 5/5: GET /datatb/product/export/
+2025-04-28 20:43:38,049 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:43:38,049 - INFO - Found instance of known bug: BUG-1
+2025-04-28 20:43:38,155 - INFO - Selected seed: GET /datatb/product/edit/{id}/
+2025-04-28 20:43:38,155 - INFO - Selected seed with energy 5: GET /datatb/product/edit/{id}/
+2025-04-28 20:43:38,156 - INFO - Mutation 1/5: GET /datatb/product/edit/3171829/
+2025-04-28 20:43:43,160 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:43:43,160 - INFO - Found instance of known bug: BUG-6
+2025-04-28 20:43:43,264 - INFO - Mutation 2/5: GET /datatb/product/edit/66/
+2025-04-28 20:43:48,270 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:43:48,270 - INFO - Found instance of known bug: BUG-6
+2025-04-28 20:43:48,377 - INFO - Mutation 3/5: GET /datatb/product/edit/3/
+2025-04-28 20:43:53,381 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:43:53,381 - INFO - Found instance of known bug: BUG-6
+2025-04-28 20:43:53,384 - INFO - Progress: 720 tests, 331 crashes, 6 interesting cases, 1735.66 seconds elapsed
+2025-04-28 20:43:53,485 - INFO - Mutation 4/5: GET /datatb/product/edit/1/
+2025-04-28 20:43:58,490 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:43:58,490 - INFO - Found instance of known bug: BUG-6
+2025-04-28 20:43:58,596 - INFO - Mutation 5/5: GET /datatb/product/edit/57/
+2025-04-28 20:44:03,602 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:44:03,602 - INFO - Found instance of known bug: BUG-6
+2025-04-28 20:44:03,708 - INFO - Selected seed: POST /datatb/product/export/
+2025-04-28 20:44:03,709 - INFO - Selected seed with energy 8: POST /datatb/product/export/
+2025-04-28 20:44:03,709 - INFO - Mutation 1/8: POST /datatb/product/export/
+2025-04-28 20:44:03,709 - INFO - Payload: {'format': 'pdf', 'template': 'default'}
+2025-04-28 20:44:03,861 - INFO - Mutation 2/8: POST /datatb/product/export/
+2025-04-28 20:44:03,861 - INFO - Payload: {'format': 'df', 'template': 'defult', 'xEMFTg': 'test_value'}
+2025-04-28 20:44:04,005 - INFO - Mutation 3/8: POST /datatb/product/export/
+2025-04-28 20:44:04,005 - INFO - Payload: {'format': 'pdf', 'templatE': 'default'}
+2025-04-28 20:44:04,147 - INFO - Mutation 4/8: POST /datatb/product/export/
+2025-04-28 20:44:04,147 - INFO - Payload: {'ormat': 'pf'}
+2025-04-28 20:44:04,288 - INFO - Mutation 5/8: POST /datatb/product/export/
+2025-04-28 20:44:04,288 - INFO - Payload: {'format': 'apdf', 'template': 'defult'}
+2025-04-28 20:44:04,427 - INFO - Mutation 6/8: POST /datatb/product/export/
+2025-04-28 20:44:04,427 - INFO - Payload: {'format': 'pdf', 'template': 'default'}
+2025-04-28 20:44:04,576 - INFO - Mutation 7/8: POST /datatb/product/export/
+2025-04-28 20:44:04,576 - INFO - Payload: {'format': 'I', 'nWJgjdxy': None}
+2025-04-28 20:44:04,724 - INFO - Mutation 8/8: POST /datatb/product/export/
+2025-04-28 20:44:04,724 - INFO - Payload: {'fomat': "&pd\r'f"}
+2025-04-28 20:44:04,758 - INFO - Progress: 730 tests, 333 crashes, 6 interesting cases, 1747.03 seconds elapsed
+2025-04-28 20:44:04,863 - INFO - Selected seed: PUT /datatb/product/
+2025-04-28 20:44:04,863 - INFO - Selected seed with energy 5: PUT /datatb/product/
+2025-04-28 20:44:04,864 - INFO - Mutation 1/5: PUT /datatb/product/
+2025-04-28 20:44:04,864 - INFO - Payload: {'name': 'pd?', 'price': 99}
+2025-04-28 20:44:05,014 - INFO - Mutation 2/5: PUT /datatb/product/
+2025-04-28 20:44:05,014 - INFO - Payload: {'id': 95, 'name': 'pd', 'info': 'd$t', 'price': 9, 'Izj': None}
+2025-04-28 20:44:05,147 - INFO - Mutation 3/5: PUT /datatb/product/
+2025-04-28 20:44:05,148 - INFO - Payload: {'id': 200, 'name': 'pd', 'info': 'dt', 'price': 99}
+2025-04-28 20:44:05,294 - INFO - Mutation 4/5: PUT /datatb/product/
+2025-04-28 20:44:05,294 - INFO - Payload: {'id': 100, 'name': 'pd', 'info': 'dh', 'price': 99}
+2025-04-28 20:44:05,442 - INFO - Mutation 5/5: PUT /datatb/product/
+2025-04-28 20:44:05,442 - INFO - Payload: {'id': 100, 'name': 'pd=', 'info': 'dt', 'price': 35}
+2025-04-28 20:44:05,594 - INFO - Selected seed: POST /api/product/{id}/
+2025-04-28 20:44:05,594 - INFO - Selected seed with energy 7: POST /api/product/{id}/
+2025-04-28 20:44:05,594 - INFO - Mutation 1/7: POST /api/product/13/
+2025-04-28 20:44:05,594 - INFO - Payload: {'id': 100, 'nme': 't', 'info': 'd', 'price': -29}
+2025-04-28 20:44:10,597 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:44:10,597 - INFO - Found instance of known bug: BUG-16
+2025-04-28 20:44:10,702 - INFO - Mutation 2/7: POST /api/product/45/
+2025-04-28 20:44:10,703 - INFO - Payload: {'id': 100, 'name': 't\\K', 'info': '', 'price': -13, 'bMp': True, 'WYuNx': 'test_value', 'yiWJU': 346, 'RWNNfmv': None}
+2025-04-28 20:44:15,706 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:44:15,707 - INFO - Found instance of known bug: BUG-16
+2025-04-28 20:44:15,814 - INFO - Mutation 3/7: POST /api/product/9/
+2025-04-28 20:44:15,814 - INFO - Payload: {'info': '(', 'price': -9, 'cAhA': 17}
+2025-04-28 20:44:20,819 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:44:20,820 - INFO - Found instance of known bug: BUG-16
+2025-04-28 20:44:20,922 - INFO - Mutation 4/7: POST /api/product/65/
+2025-04-28 20:44:20,922 - INFO - Payload: {'name': 't', 'info': '', 'price': -29}
+2025-04-28 20:44:25,927 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:44:25,928 - INFO - Found instance of known bug: BUG-16
+2025-04-28 20:44:26,040 - INFO - Mutation 5/7: POST /api/product/3041697/
+2025-04-28 20:44:26,041 - INFO - Payload: {'id': 100, 'name': 't', 'info': 'd', 'price': -29}
+2025-04-28 20:44:31,046 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:44:31,047 - INFO - Found instance of known bug: BUG-16
+2025-04-28 20:44:31,049 - INFO - Progress: 740 tests, 338 crashes, 6 interesting cases, 1773.32 seconds elapsed
+2025-04-28 20:44:31,150 - INFO - Mutation 6/7: POST /api/product/58/
+2025-04-28 20:44:31,150 - INFO - Payload: {'id': 96, 'name': 't', 'info': 'd', 'price': -30, 'nnJL': 'test_value'}
+2025-04-28 20:44:36,154 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:44:36,154 - INFO - Found instance of known bug: BUG-16
+2025-04-28 20:44:36,257 - INFO - Mutation 7/7: POST /api/product/1/
+2025-04-28 20:44:36,257 - INFO - Payload: {'id': 100, 'name': '', 'info': 'd', 'price': -61}
+2025-04-28 20:44:41,262 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:44:41,264 - INFO - Found instance of known bug: BUG-16
+2025-04-28 20:44:41,368 - INFO - Selected seed: PUT /api/product/{id}/
+2025-04-28 20:44:41,368 - INFO - Selected seed with energy 6: PUT /api/product/{id}/
+2025-04-28 20:44:41,370 - INFO - Mutation 1/6: PUT /api/product/3P/
+2025-04-28 20:44:41,370 - INFO - Payload: {'ino': 'd&tR?', 'price': 89, 'PKaot': 478}
+2025-04-28 20:44:46,374 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:44:46,375 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:44:46,481 - INFO - Mutation 2/6: PUT /api/product/11/
+2025-04-28 20:44:46,482 - INFO - Payload: {'no': 'd&tR*', 'price': 99, 'ZVR': None}
+2025-04-28 20:44:51,486 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:44:51,487 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:44:51,591 - INFO - Mutation 3/6: PUT /api/product/42/
+2025-04-28 20:44:51,592 - INFO - Payload: {'price': 99}
+2025-04-28 20:44:56,599 - WARNING - Request error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)
+2025-04-28 20:44:56,599 - INFO - Found instance of known bug: BUG-4
+2025-04-28 20:44:56,706 - INFO - Mutation 4/6: PUT /api/product/-4/
+2025-04-28 20:44:56,706 - INFO - Payload: {'ino': 'd&tR5', 'price': 99}
+2025-04-28 20:44:57,163 - INFO - Fuzzing interrupted by user
+2025-04-28 20:44:57,179 - INFO - Session data saved to sessions/session 5
+2025-04-28 20:44:57,182 - INFO - Session data saved to sessions/session 5
+2025-04-28 20:44:57,183 - INFO - Terminating server process...
+2025-04-28 20:44:57,450 - INFO - Fuzzing completed

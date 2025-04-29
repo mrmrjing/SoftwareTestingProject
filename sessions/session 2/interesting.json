@@ -1,0 +1,54 @@
+{
+  "0": "2025-04-28T18:41:50.564212",
+  "1": {
+    "timestamp": "2025-04-28T18:41:53.242170",
+    "path": "/api/product/{id}/",
+    "method": "DELETE",
+    "input": {
+      "id": 100,
+      "name": "pd"
+    }
+  },
+  "2": {
+    "timestamp": "2025-04-28T18:41:58.752032",
+    "path": "/api/product/{id}/",
+    "method": "GET",
+    "input": {}
+  },
+  "3": {
+    "timestamp": "2025-04-28T18:41:59.825072",
+    "path": "/api/product/{id}/",
+    "method": "GET",
+    "input": {
+      "id": 100,
+      "name": "pd",
+      "zwWQqaH": "test)_\rvalue"
+    }
+  },
+  "4": {
+    "timestamp": "2025-04-28T18:43:34.675386",
+    "path": "/api/product/{id}/",
+    "method": "PUT",
+    "input": {
+      "id": 100,
+      "name": "pd"
+    }
+  },
+  "5": {
+    "timestamp": "2025-04-28T18:45:38.008399",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {}
+  },
+  "6": {
+    "timestamp": "2025-04-28T19:01:41.633068",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 108,
+      "name": "pd",
+      "info": "dt",
+      "rice": 99
+    }
+  }
+}

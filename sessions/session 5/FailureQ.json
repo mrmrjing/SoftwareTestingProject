@@ -1,0 +1,4085 @@
+{
+  "/datatb/product/export/": {
+    "GET": {
+      "ERROR": [
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": [],
+            "type": "pdfr"
+          },
+          "timestamp": "2025-04-28T20:15:19.072235",
+          "mutation_id": "37c881675e0d1e32662ae744bd8962b2",
+          "bug_id": "BUG-1",
+          "signature": "GET:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": [],
+            "type": "df"
+          },
+          "timestamp": "2025-04-28T20:15:24.192680",
+          "mutation_id": "00e6d3bbea61f302c90af3305c3293bd",
+          "bug_id": "BUG-1",
+          "signature": "GET:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hiddef_cols": [],
+            "type": "pd&"
+          },
+          "timestamp": "2025-04-28T20:15:29.302361",
+          "mutation_id": "393dd325eeff890bf4876d1965956974",
+          "bug_id": "BUG-1",
+          "signature": "GET:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "hidden_cols": [],
+            "type": "pdf"
+          },
+          "timestamp": "2025-04-28T20:15:34.410160",
+          "mutation_id": "befcedb692e86f066bd685aead0b6810",
+          "bug_id": "BUG-1",
+          "signature": "GET:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": []
+          },
+          "timestamp": "2025-04-28T20:15:39.519261",
+          "mutation_id": "49590b6e196d3dd790dba662d1f5b642",
+          "bug_id": "BUG-1",
+          "signature": "GET:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_col": [],
+            "type": "pdf"
+          },
+          "timestamp": "2025-04-28T20:15:44.630146",
+          "mutation_id": "4060d7f9463703e0f42df4bb42f3ecb5",
+          "bug_id": "BUG-1",
+          "signature": "GET:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": [],
+            "type": "pdh"
+          },
+          "timestamp": "2025-04-28T20:15:49.739049",
+          "mutation_id": "b42e076bafbc650d983abe673d7dfe77",
+          "bug_id": "BUG-1",
+          "signature": "GET:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "type": "pd",
+            "BWjdcj": -1,
+            "kOaDnGK": -271,
+            "PPgRQ": 37,
+            "TTYRzgv": null
+          },
+          "timestamp": "2025-04-28T20:15:54.847934",
+          "mutation_id": "70046a34fa0b105a4fef62ae3e008203",
+          "bug_id": "BUG-1",
+          "signature": "GET:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": [],
+            "type": "pdf"
+          },
+          "timestamp": "2025-04-28T20:15:59.958916",
+          "mutation_id": "c12872c2e77e34e8f1753272d8b04912",
+          "bug_id": "BUG-1",
+          "signature": "GET:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": [],
+            "type": "pdf"
+          },
+          "timestamp": "2025-04-28T20:16:05.065178",
+          "mutation_id": "c12872c2e77e34e8f1753272d8b04912",
+          "bug_id": "BUG-1",
+          "signature": "GET:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": [],
+            "type": "Odf"
+          },
+          "timestamp": "2025-04-28T20:21:15.372406",
+          "mutation_id": "e126ca879e09d5005884c4dd84a28eff",
+          "bug_id": "BUG-1",
+          "signature": "GET:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "\\",
+            "hidden_cols": [],
+            "type": "pdf",
+            "]NuatoY": null,
+            "fLnsJwV": 280
+          },
+          "timestamp": "2025-04-28T20:21:20.482894",
+          "mutation_id": "11a81883246e21d1a299401c92674e4e",
+          "bug_id": "BUG-1",
+          "signature": "GET:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": [],
+            "type": "pdf"
+          },
+          "timestamp": "2025-04-28T20:21:25.593227",
+          "mutation_id": "c12872c2e77e34e8f1753272d8b04912",
+          "bug_id": "BUG-1",
+          "signature": "GET:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": [],
+            "typ": "Jf"
+          },
+          "timestamp": "2025-04-28T20:21:30.705728",
+          "mutation_id": "2c6daa5a8873eff0842b74c0dac834c5",
+          "bug_id": "BUG-1",
+          "signature": "GET:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "type": "vdf",
+            "mJN": null
+          },
+          "timestamp": "2025-04-28T20:21:35.816595",
+          "mutation_id": "bb3a6e3355ed765bc74c4380dff2b008",
+          "bug_id": "BUG-1",
+          "signature": "GET:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "seavch": "",
+            "hidden_cols": [],
+            "type": "pdf",
+            "ebff": true
+          },
+          "timestamp": "2025-04-28T20:32:07.395268",
+          "mutation_id": "256a647f2cf833b369faf140ff25f372",
+          "bug_id": "BUG-1",
+          "signature": "GET:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "\n",
+            "hidden_cols": []
+          },
+          "timestamp": "2025-04-28T20:32:12.501583",
+          "mutation_id": "e4e29aa8aadf29b2e6bb85b2edd22da7",
+          "bug_id": "BUG-1",
+          "signature": "GET:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": [],
+            "type": "pdCf"
+          },
+          "timestamp": "2025-04-28T20:32:17.613136",
+          "mutation_id": "9287f124d643ba51a54485b05373f4b2",
+          "bug_id": "BUG-1",
+          "signature": "GET:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": [],
+            "type": "pdf"
+          },
+          "timestamp": "2025-04-28T20:32:22.723695",
+          "mutation_id": "c12872c2e77e34e8f1753272d8b04912",
+          "bug_id": "BUG-1",
+          "signature": "GET:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": [],
+            "type": "pdf"
+          },
+          "timestamp": "2025-04-28T20:32:27.913192",
+          "mutation_id": "c12872c2e77e34e8f1753272d8b04912",
+          "bug_id": "BUG-1",
+          "signature": "GET:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": [],
+            "type": "pd.f",
+            "NirA": "test_value"
+          },
+          "timestamp": "2025-04-28T20:43:17.606037",
+          "mutation_id": "a3029f9add91f44b6bbd0afd1b2914cc",
+          "bug_id": "BUG-1",
+          "signature": "GET:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": [],
+            "type": "pdf",
+            "SAT": true
+          },
+          "timestamp": "2025-04-28T20:43:22.719684",
+          "mutation_id": "776d2c70bf4b0d0633df01c9fce896c1",
+          "bug_id": "BUG-1",
+          "signature": "GET:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": []
+          },
+          "timestamp": "2025-04-28T20:43:27.828584",
+          "mutation_id": "49590b6e196d3dd790dba662d1f5b642",
+          "bug_id": "BUG-1",
+          "signature": "GET:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": [],
+            "type": "pdf"
+          },
+          "timestamp": "2025-04-28T20:43:32.937869",
+          "mutation_id": "c12872c2e77e34e8f1753272d8b04912",
+          "bug_id": "BUG-1",
+          "signature": "GET:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "hiddn_cols": [],
+            "type": "pd]",
+            "CiwDf": -696,
+            "hjN": true
+          },
+          "timestamp": "2025-04-28T20:43:38.050093",
+          "mutation_id": "57a18d670fca5e1a780862f10c92285c",
+          "bug_id": "BUG-1",
+          "signature": "GET:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        }
+      ]
+    },
+    "DELETE": {
+      "ERROR": [
+        {
+          "input": {
+            "search": "y",
+            "hidden_cols": [],
+            "type": "pd;"
+          },
+          "timestamp": "2025-04-28T20:18:03.421191",
+          "mutation_id": "831c1ff16e752733d574b9fcc0538db9",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": [],
+            "type": "\u000bd'yf"
+          },
+          "timestamp": "2025-04-28T20:18:08.529338",
+          "mutation_id": "a7ccaca591d3cf69556e66af8015ba70",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": [],
+            "type": "|pnf"
+          },
+          "timestamp": "2025-04-28T20:18:13.638885",
+          "mutation_id": "b0c3d8e21e963ea6119d6d492a7e9f0c",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "searc": "",
+            "type": "pdf"
+          },
+          "timestamp": "2025-04-28T20:18:18.746036",
+          "mutation_id": "ae5f2f09eb5f05f0a22937a8b25af7e5",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "type": "pdf"
+          },
+          "timestamp": "2025-04-28T20:19:11.510144",
+          "mutation_id": "f4a41fe04fc31e4df9a928c63ff8cc98",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": [],
+            "type": "pdf",
+            "gLVNLF": true
+          },
+          "timestamp": "2025-04-28T20:19:16.616653",
+          "mutation_id": "f50849c05f2eb2dd15d7e78e670593c7",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": [],
+            "type": "pdf",
+            "IWQODYGj": null
+          },
+          "timestamp": "2025-04-28T20:19:21.725844",
+          "mutation_id": "ac39c46725361b42afa071c827b6d5fc",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": [],
+            "type": "pdf",
+            "lnzFy": null
+          },
+          "timestamp": "2025-04-28T20:19:26.841951",
+          "mutation_id": "d3b8856c5c719a1c5df40349dc2f35de",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hiden_cols": [],
+            "type": "pdf"
+          },
+          "timestamp": "2025-04-28T20:19:32.068541",
+          "mutation_id": "b7dce10a3ebccb43f368c59c311f7b0b",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": [],
+            "type": "pd"
+          },
+          "timestamp": "2025-04-28T20:19:37.177448",
+          "mutation_id": "3df039786a790c0d801f2c47975989f8",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "format": "pd]",
+            "template": "defaul"
+          },
+          "timestamp": "2025-04-28T20:23:18.483002",
+          "mutation_id": "358dfef13428e427e5c0e0f553aaf740",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "format": "+d>f",
+            "template": "default"
+          },
+          "timestamp": "2025-04-28T20:25:12.825411",
+          "mutation_id": "33578a3dba97eebe75e685e304cca201",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "format": "p}>f",
+            "blN": true
+          },
+          "timestamp": "2025-04-28T20:25:17.934909",
+          "mutation_id": "86adecb233b2e7e17a71cabd511220c0",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "format": "pdf",
+            "template": "default",
+            "NStgVq": -170
+          },
+          "timestamp": "2025-04-28T20:25:23.041635",
+          "mutation_id": "bd64f8ff42809cd89802c876d9392a47",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "forat": "pdf",
+            "template": "defA_ult"
+          },
+          "timestamp": "2025-04-28T20:25:28.151833",
+          "mutation_id": "8cc06feb20044dfed81aeb0eb44bcc36",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "format": "pd.f",
+            "template": "dfault"
+          },
+          "timestamp": "2025-04-28T20:25:33.261031",
+          "mutation_id": "0fd9208bf164607dbdee618201194d1d",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": [],
+            "type": "pdf"
+          },
+          "timestamp": "2025-04-28T20:31:41.843827",
+          "mutation_id": "652e7bc92a9c9c673b79a397de451ae6",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "|",
+            "hidden_cols": [],
+            "type": "df",
+            "JWWgaA": "test_9value",
+            "OpmMIoF": null
+          },
+          "timestamp": "2025-04-28T20:31:46.951434",
+          "mutation_id": "cf6b71a0097cec8c1545f282163ff4e0",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": []
+          },
+          "timestamp": "2025-04-28T20:31:52.061323",
+          "mutation_id": "70538b122d9ccef155e95f11a2498108",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "type": "",
+            "lXtze": null,
+            "iua": 554
+          },
+          "timestamp": "2025-04-28T20:31:57.174910",
+          "mutation_id": "f57e4e9823fa8b9c94f4b7160e72a72f",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": [],
+            "type": "pdf"
+          },
+          "timestamp": "2025-04-28T20:32:02.281720",
+          "mutation_id": "652e7bc92a9c9c673b79a397de451ae6",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "format": "pidf",
+            "template": "default"
+          },
+          "timestamp": "2025-04-28T20:37:05.706970",
+          "mutation_id": "c50620160f9c0038116625d33a1c982f",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "format": "mpdf",
+            "template": "default"
+          },
+          "timestamp": "2025-04-28T20:37:10.813936",
+          "mutation_id": "4f68a2e785fd9a0feab1dc7e1c33644a",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {},
+          "timestamp": "2025-04-28T20:37:15.924048",
+          "mutation_id": "ae51bf83a31350118456a85d2f3f9531",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "format": "pd",
+            "template": "def<au`>i",
+            "tVwOq": null
+          },
+          "timestamp": "2025-04-28T20:37:21.040332",
+          "mutation_id": "82a72fc4841c6c3ef2be9476908b26d2",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "format": "pdf",
+            "templae": "default"
+          },
+          "timestamp": "2025-04-28T20:37:26.164655",
+          "mutation_id": "d1ce1aac32d1339a9eb37c450616086d",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "searcx": "",
+            "hidden_cols": [],
+            "type": "pdf"
+          },
+          "timestamp": "2025-04-28T20:42:52.051889",
+          "mutation_id": "8ae362f0484c5c39238867a2546abe8c",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": [],
+            "type": "pdf"
+          },
+          "timestamp": "2025-04-28T20:42:57.161075",
+          "mutation_id": "652e7bc92a9c9c673b79a397de451ae6",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": [],
+            "type": "pdf"
+          },
+          "timestamp": "2025-04-28T20:43:02.270248",
+          "mutation_id": "652e7bc92a9c9c673b79a397de451ae6",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": [],
+            "type": "df"
+          },
+          "timestamp": "2025-04-28T20:43:07.385537",
+          "mutation_id": "6c9dac96a97be2dd6618f0f8fe22dd2e",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "|",
+            "hidden_cols": [],
+            "type": "pdf"
+          },
+          "timestamp": "2025-04-28T20:43:12.497007",
+          "mutation_id": "9ac678d5ef17776cb0763fe8f1ca75af",
+          "bug_id": "BUG-5",
+          "signature": "DELETE:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        }
+      ],
+      "CRASH": [
+        {
+          "input": {
+            "format": "pdf",
+            "tempnate": "default;",
+            "XjhYDk": -113
+          },
+          "timestamp": "2025-04-28T20:23:23.597288",
+          "mutation_id": "ed5446998d87fde152865d682381f14e",
+          "bug_id": "BUG-12",
+          "signature": "DELETE:/datatb/product/export/:ConnectionIssue",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /datatb/product/export/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1064ec050>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+        }
+      ]
+    },
+    "PUT": {
+      "ERROR": [
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": [],
+            "type": "pdf"
+          },
+          "timestamp": "2025-04-28T20:22:21.952452",
+          "mutation_id": "69fcba99dae23c3d901e9112131cae28",
+          "bug_id": "BUG-10",
+          "signature": "PUT:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": [],
+            "type": "pdf",
+            "kNVYacZ": "test_value"
+          },
+          "timestamp": "2025-04-28T20:22:27.364986",
+          "mutation_id": "c985f1f18254d10015ecb383c4e43949",
+          "bug_id": "BUG-10",
+          "signature": "PUT:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": [],
+            "type": "pdf"
+          },
+          "timestamp": "2025-04-28T20:23:37.768711",
+          "mutation_id": "69fcba99dae23c3d901e9112131cae28",
+          "bug_id": "BUG-13",
+          "signature": "PUT:/datatb/product/export/:ConnectionIssue",
+          "error": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+        },
+        {
+          "input": {
+            "search": "",
+            "type": "pdf",
+            "mWjU": "test_vale"
+          },
+          "timestamp": "2025-04-28T20:23:41.907531",
+          "mutation_id": "9fc981d67caeff7f63336fa3f20298a5",
+          "bug_id": "BUG-13",
+          "signature": "PUT:/datatb/product/export/:ConnectionIssue",
+          "error": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+        },
+        {
+          "input": {
+            "type": "pdf",
+            "tjlAaIl": null
+          },
+          "timestamp": "2025-04-28T20:23:45.668352",
+          "mutation_id": "984ceb42a402836e4e314a0ee5311aa7",
+          "bug_id": "BUG-13",
+          "signature": "PUT:/datatb/product/export/:ConnectionIssue",
+          "error": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+        }
+      ],
+      "CRASH": [
+        {
+          "input": {
+            "search": ")",
+            "hidden_cols": [],
+            "type": "pdf",
+            "Oyh": "test_value",
+            "MrBht": null
+          },
+          "timestamp": "2025-04-28T20:23:37.875641",
+          "mutation_id": "7f4dac5865dd4c6aa725d6cce5cf98aa",
+          "bug_id": "BUG-13",
+          "signature": "PUT:/datatb/product/export/:ConnectionIssue",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /datatb/product/export/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10639b790>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+        },
+        {
+          "input": {
+            "search": "D",
+            "hidden_cols": [],
+            "type": "pdf"
+          },
+          "timestamp": "2025-04-28T20:23:42.014568",
+          "mutation_id": "ff9b5aa55dea1acc99642a90fcace9c0",
+          "bug_id": "BUG-13",
+          "signature": "PUT:/datatb/product/export/:ConnectionIssue",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /datatb/product/export/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10639bdf0>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_ols": [],
+            "Type": "pf"
+          },
+          "timestamp": "2025-04-28T20:23:45.772267",
+          "mutation_id": "7c4232dfbf8ff4c3a139e7e4125b6078",
+          "bug_id": "BUG-13",
+          "signature": "PUT:/datatb/product/export/:ConnectionIssue",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /datatb/product/export/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10639b350>: Failed to establish a new connection: [Errno 61] Connection refused'))"
+        }
+      ]
+    },
+    "POST": {
+      "ERROR": [
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": [],
+            "type": "pdf",
+            "DHO": "test_value"
+          },
+          "timestamp": "2025-04-28T20:35:02.629976",
+          "mutation_id": "0dbae9a345eeb66301efba6dbcee5627",
+          "bug_id": "BUG-18",
+          "signature": "POST:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "search": "",
+            "hidden_cols": [],
+            "type": "pdf",
+            "Xhmgnulg": null
+          },
+          "timestamp": "2025-04-28T20:35:08.152111",
+          "mutation_id": "150f866f988de7b994729518650c0af0",
+          "bug_id": "BUG-18",
+          "signature": "POST:/datatb/product/export/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        }
+      ]
+    }
+  },
+  "/api/product/{id}/": {
+    "DELETE": {
+      "ERROR": [
+        {
+          "input": {
+            "id": 100,
+            "name": "pd",
+            "info": "dt",
+            "wOdD": true
+          },
+          "timestamp": "2025-04-28T20:16:10.173690",
+          "mutation_id": "7d73f5bd4f02d47680de33ac2005076c",
+          "bug_id": "BUG-2",
+          "signature": "DELETE:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pi",
+            "info": "dt",
+            "price": 99,
+            "ggfKmo": 911
+          },
+          "timestamp": "2025-04-28T20:16:15.287022",
+          "mutation_id": "035d8bbc6e8a8e1aa62085294356f6e6",
+          "bug_id": "BUG-2",
+          "signature": "DELETE:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "{d",
+            "info": "dt",
+            "price": 49
+          },
+          "timestamp": "2025-04-28T20:16:20.396186",
+          "mutation_id": "54740051d6c4f08410953031d6346dc7",
+          "bug_id": "BUG-2",
+          "signature": "DELETE:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pd",
+            "info": "dt",
+            "pric%": 99
+          },
+          "timestamp": "2025-04-28T20:16:25.508779",
+          "mutation_id": "213896c89553728d8984aa5a1803dc13",
+          "bug_id": "BUG-2",
+          "signature": "DELETE:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 108,
+            "name": "p",
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:16:30.623994",
+          "mutation_id": "be688999f270491c869d92167aff7a44",
+          "bug_id": "BUG-2",
+          "signature": "DELETE:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "\\pd",
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:27:22.420828",
+          "mutation_id": "3c5c65b61bddeefcd68128d6dfa3edc1",
+          "bug_id": "BUG-2",
+          "signature": "DELETE:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pd",
+            "info": "dwt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:27:27.527798",
+          "mutation_id": "de29e8889d815a45f646287e8f292b88",
+          "bug_id": "BUG-2",
+          "signature": "DELETE:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pd",
+            "info": "dt",
+            "price": 99,
+            "NuWOyAs": 306
+          },
+          "timestamp": "2025-04-28T20:27:32.638149",
+          "mutation_id": "7d5add3aa81f9a6509b86d6a681eb551",
+          "bug_id": "BUG-2",
+          "signature": "DELETE:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "name": "pd",
+            "price": 30718
+          },
+          "timestamp": "2025-04-28T20:27:37.752577",
+          "mutation_id": "143f613e27bb7039f6f336817a3be4fb",
+          "bug_id": "BUG-2",
+          "signature": "DELETE:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "nama": "pd",
+            "info": "Dt",
+            "rice": 65491,
+            "JlbXK": null
+          },
+          "timestamp": "2025-04-28T20:27:42.862563",
+          "mutation_id": "c9114e0a5a0d6ac913acaa1610bcefaf",
+          "bug_id": "BUG-2",
+          "signature": "DELETE:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": -28,
+            "name": "p",
+            "info": "",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:35:38.829097",
+          "mutation_id": "e005a2d30fdd96c18dfab6fed8aa9374",
+          "bug_id": "BUG-2",
+          "signature": "DELETE:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": -28,
+            "name": "p",
+            "info": "d",
+            "price": -29,
+            "SoOV": "test_value"
+          },
+          "timestamp": "2025-04-28T20:35:43.936103",
+          "mutation_id": "8f7132dff71c3e9c997027ea2ce1ef0d",
+          "bug_id": "BUG-2",
+          "signature": "DELETE:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "p",
+            "price": -29
+          },
+          "timestamp": "2025-04-28T20:35:49.042598",
+          "mutation_id": "1ce4383e82af9f97ba6bc287070bb4a3",
+          "bug_id": "BUG-2",
+          "signature": "DELETE:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "name": "p",
+            "infg": "$",
+            "price": 2147483648
+          },
+          "timestamp": "2025-04-28T20:35:54.152896",
+          "mutation_id": "dc79e226b69fad714f3d167812ccab25",
+          "bug_id": "BUG-2",
+          "signature": "DELETE:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "p",
+            "info": "d",
+            "price": -15
+          },
+          "timestamp": "2025-04-28T20:35:59.265130",
+          "mutation_id": "120218f4e42539c31a1663706a26fb59",
+          "bug_id": "BUG-2",
+          "signature": "DELETE:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "sp",
+            "info": "",
+            "priCe": -58
+          },
+          "timestamp": "2025-04-28T20:36:04.379314",
+          "mutation_id": "2b37c11698e4fc513fc8d03704019d85",
+          "bug_id": "BUG-2",
+          "signature": "DELETE:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "p",
+            "info": "d",
+            "price": -93
+          },
+          "timestamp": "2025-04-28T20:41:45.612513",
+          "mutation_id": "4b43725ed3c8729c225e591787390362",
+          "bug_id": "BUG-2",
+          "signature": "DELETE:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "p",
+            "info": "Pd",
+            "price": -29
+          },
+          "timestamp": "2025-04-28T20:41:50.719958",
+          "mutation_id": "67986c84a9a290cea788eba98e5be9d6",
+          "bug_id": "BUG-2",
+          "signature": "DELETE:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 255,
+            "name": ")\ti",
+            "info": ")",
+            "price": -15,
+            "EyTucHse": "test_value"
+          },
+          "timestamp": "2025-04-28T20:41:55.827598",
+          "mutation_id": "61a44343deb5b9e034f07c9125ac2a3c",
+          "bug_id": "BUG-2",
+          "signature": "DELETE:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "p",
+            "inf": "d",
+            "price": 16,
+            "CCkvx": 359,
+            "XyeGR": -343
+          },
+          "timestamp": "2025-04-28T20:42:00.936910",
+          "mutation_id": "04237b7bd18cf2a1b0b80004cffbfe88",
+          "bug_id": "BUG-2",
+          "signature": "DELETE:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 32767,
+            "name": "p",
+            "info": "d",
+            "price": -29
+          },
+          "timestamp": "2025-04-28T20:42:06.047477",
+          "mutation_id": "1e98a6e72424ccbc7aa89dd527bd78e7",
+          "bug_id": "BUG-2",
+          "signature": "DELETE:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "p*",
+            "info": "d",
+            "price": -29
+          },
+          "timestamp": "2025-04-28T20:42:11.160450",
+          "mutation_id": "2378a62e27feda1d6a834742b2334e67",
+          "bug_id": "BUG-2",
+          "signature": "DELETE:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        }
+      ]
+    },
+    "PUT": {
+      "ERROR": [
+        {
+          "input": {
+            "ino": "d&tR?",
+            "price": 2147483648
+          },
+          "timestamp": "2025-04-28T20:17:11.512704",
+          "mutation_id": "f28ec0ab583d708748b23c780b88e1ba",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "ino": "d&tR?",
+            "prica": 1
+          },
+          "timestamp": "2025-04-28T20:17:16.628311",
+          "mutation_id": "63903e63d4fe709d3ac78a51960d288c",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "ino": "d&tR?",
+            "price": 114
+          },
+          "timestamp": "2025-04-28T20:17:21.739315",
+          "mutation_id": "9997c5ed52edeb6695825ff8af0d492e",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {},
+          "timestamp": "2025-04-28T20:17:26.852382",
+          "mutation_id": "7cd7612d6a789d17060582fb5bd1f47f",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "ino": "d&tR?",
+            "price": 4294967295
+          },
+          "timestamp": "2025-04-28T20:17:31.968034",
+          "mutation_id": "15038a4307bb2955743c55061603abd8",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "ino": "&tR?"
+          },
+          "timestamp": "2025-04-28T20:17:37.074187",
+          "mutation_id": "75c60bd645058b110adbbd644a2dd16f",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "price": 4294967295
+          },
+          "timestamp": "2025-04-28T20:17:42.181047",
+          "mutation_id": "e50433e041c78920a35c453be8ebdd16",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "ino": "d&tR?",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:17:47.293427",
+          "mutation_id": "5499ce312891c8012763469867e13a15",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "ino": "d&tR?"
+          },
+          "timestamp": "2025-04-28T20:17:52.404738",
+          "mutation_id": "d03bede0c37734ea6fb6a478143d4116",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "ino": "d&tR?",
+            "price": 97,
+            "vWetLZkc": null
+          },
+          "timestamp": "2025-04-28T20:17:57.515947",
+          "mutation_id": "f55cf7798714938136c41a4ecfbb6780",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "Wpd",
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:25:39.247664",
+          "mutation_id": "e2025d4632790b1444f0c89d49d8659a",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "p`d",
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:25:44.354072",
+          "mutation_id": "5758e1579da54b98f31b1793ecce0433",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "p",
+            "info": "dt",
+            "pric": 99
+          },
+          "timestamp": "2025-04-28T20:25:49.463339",
+          "mutation_id": "5ad35b56f052cc6e308eba5fe1944da5",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pd",
+            "info": "dt",
+            "price": 49
+          },
+          "timestamp": "2025-04-28T20:25:54.573405",
+          "mutation_id": "15bd2f662135c8a5a7eb12e841d3543a",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "name": "pd",
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:25:59.685908",
+          "mutation_id": "cd79fe187077bcd79836e594d76654d3",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 10,
+            "name": "pd",
+            "info": "dt",
+            "buCz": true,
+            "gVx": true,
+            "dBYT": null
+          },
+          "timestamp": "2025-04-28T20:26:04.795978",
+          "mutation_id": "d4ff3da9f7739acdbd0369b7a07e1b38",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pd",
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:26:09.905671",
+          "mutation_id": "32b781682d26df5c50f2ff28b82a152b",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pd",
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:29:14.898973",
+          "mutation_id": "ac10e42214785b12664506072733e619",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 4294967213,
+            "name": "\np\u0000>d"
+          },
+          "timestamp": "2025-04-28T20:29:20.006429",
+          "mutation_id": "29fdea71198872d8b24b3378c2944e26",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 50,
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:29:25.114832",
+          "mutation_id": "be820033e3e91cfbc78337a3deac465f",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 32767,
+            "name": "pd@",
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:29:30.229096",
+          "mutation_id": "1fb908aa36b23ac6d3d7bfc46633b812",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "n!me": "",
+            "price": 201
+          },
+          "timestamp": "2025-04-28T20:29:35.340536",
+          "mutation_id": "7c63745583026b8d9689695caf6c6b2a",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": ".",
+            "info": "t",
+            "price": -28,
+            "DGL": 799,
+            "JWxgrX": null
+          },
+          "timestamp": "2025-04-28T20:33:55.522575",
+          "mutation_id": "263e729f7915de7a850af2cdc16c8c15",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "t",
+            "info": "",
+            "price": 255
+          },
+          "timestamp": "2025-04-28T20:34:00.633618",
+          "mutation_id": "c945c6913926af0bea8395e19ba39735",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "t",
+            "info": "d",
+            "price": -30
+          },
+          "timestamp": "2025-04-28T20:34:05.745744",
+          "mutation_id": "036ff201f76e5e210c586411d7c4649c",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "t",
+            "info": "d",
+            "pbice": -29
+          },
+          "timestamp": "2025-04-28T20:34:10.852915",
+          "mutation_id": "bdf52f133029bec02002f45576b7d0e2",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 50,
+            "name": "t",
+            "info": "d;",
+            "price": 256
+          },
+          "timestamp": "2025-04-28T20:34:15.963087",
+          "mutation_id": "eb5d54e14f5952a7ee2a6ce536efc8ce",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "\rt",
+            "info": "d",
+            "prace": 65535
+          },
+          "timestamp": "2025-04-28T20:34:21.073341",
+          "mutation_id": "22f8a19138aa515ae618a66e40d33ce8",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "t",
+            "info": "",
+            "price": -29
+          },
+          "timestamp": "2025-04-28T20:34:26.185107",
+          "mutation_id": "594e517d1b1df123715c26fcb4da0078",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 256,
+            "name": "t",
+            "info": "d",
+            "price": 65535,
+            "ZqksA": true
+          },
+          "timestamp": "2025-04-28T20:34:31.298559",
+          "mutation_id": "bac7fb85d1b2301ceaab3940476c80b5",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "ino": "d&tR?",
+            "price": 89,
+            "PKaot": 478
+          },
+          "timestamp": "2025-04-28T20:44:46.375508",
+          "mutation_id": "836e521d7dae8ba61a13c19cb8f4645e",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "no": "d&tR*",
+            "price": 99,
+            "ZVR": null
+          },
+          "timestamp": "2025-04-28T20:44:51.487456",
+          "mutation_id": "f5c5e84baf1038f7e3bc12ba7d339b65",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:44:56.599658",
+          "mutation_id": "01eb3eb917de1f9d931e645086e7056e",
+          "bug_id": "BUG-4",
+          "signature": "PUT:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        }
+      ]
+    },
+    "GET": {
+      "ERROR": [
+        {
+          "input": {
+            "ino": "d&tR?",
+            "oqL": 255
+          },
+          "timestamp": "2025-04-28T20:28:49.336536",
+          "mutation_id": "1bae980b15cefabe6bb0f19abeeb120e",
+          "bug_id": "BUG-15",
+          "signature": "GET:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "ino": "d&~R?",
+            "Xknz": 964
+          },
+          "timestamp": "2025-04-28T20:28:54.447590",
+          "mutation_id": "b3132d626045f456751b0b06d0fe4f93",
+          "bug_id": "BUG-15",
+          "signature": "GET:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "ino": "d&tR?",
+            "pice": 98
+          },
+          "timestamp": "2025-04-28T20:28:59.559370",
+          "mutation_id": "0bb0a31c57f1c9c7eac1ece80a281582",
+          "bug_id": "BUG-15",
+          "signature": "GET:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "ino": "d&tR?",
+            "price": 99,
+            "COIWDfX": true
+          },
+          "timestamp": "2025-04-28T20:29:04.676348",
+          "mutation_id": "74885f4d269a0e5f54a46268c41d712c",
+          "bug_id": "BUG-15",
+          "signature": "GET:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "ino": "d&RR?"
+          },
+          "timestamp": "2025-04-28T20:29:09.786750",
+          "mutation_id": "a92027aec011a9b4c117963295a8a5f2",
+          "bug_id": "BUG-15",
+          "signature": "GET:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 116,
+            "name": "",
+            "price": -29
+          },
+          "timestamp": "2025-04-28T20:30:02.246025",
+          "mutation_id": "018811bacd6b1ccd06cee71b519db79c",
+          "bug_id": "BUG-15",
+          "signature": "GET:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 127,
+            "name": "p",
+            "info": "dH",
+            "price": -29
+          },
+          "timestamp": "2025-04-28T20:30:07.353171",
+          "mutation_id": "2cb7affd48f16d8221b389bdf3bbdf7d",
+          "bug_id": "BUG-15",
+          "signature": "GET:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "p",
+            "info": "ud"
+          },
+          "timestamp": "2025-04-28T20:30:12.463263",
+          "mutation_id": "ccb11769a0a39cae0dbcabe2fd0df910",
+          "bug_id": "BUG-15",
+          "signature": "GET:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "\t",
+            "info": "d",
+            "ZbN": 4294967295,
+            "iTc": "test_value"
+          },
+          "timestamp": "2025-04-28T20:30:17.574886",
+          "mutation_id": "47d7bf93188f67081432c4a2d26ff920",
+          "bug_id": "BUG-15",
+          "signature": "GET:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 4294967195,
+            "name": "c",
+            "info": "d",
+            "price": -29,
+            "pkpwPjt": null
+          },
+          "timestamp": "2025-04-28T20:30:22.685155",
+          "mutation_id": "58e7366b18a0308a023c4982f2c346ad",
+          "bug_id": "BUG-15",
+          "signature": "GET:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 2147483648,
+            "name": "p",
+            "price": 99,
+            "swLOfEb": 430,
+            "lUDVpr": 256
+          },
+          "timestamp": "2025-04-28T20:38:33.714129",
+          "mutation_id": "d95c2ae0ff0f449ef066d3e78be606f6",
+          "bug_id": "BUG-15",
+          "signature": "GET:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pd",
+            "swLOfEb": 429
+          },
+          "timestamp": "2025-04-28T20:38:38.823642",
+          "mutation_id": "678276d6967c4f7b3e68c14bdfad1751",
+          "bug_id": "BUG-15",
+          "signature": "GET:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pd",
+            "price": 4294967196,
+            "swLOfEb": 429,
+            "hihe": "test_value"
+          },
+          "timestamp": "2025-04-28T20:38:43.934862",
+          "mutation_id": "90e085077ca6c48f975f07ffbfcae212",
+          "bug_id": "BUG-15",
+          "signature": "GET:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pd",
+            "price": 99,
+            "swLOfEb": 429,
+            "kyEgaMaD": null
+          },
+          "timestamp": "2025-04-28T20:38:49.043152",
+          "mutation_id": "d38fe96599f55fd5aaef56001fa9f08e",
+          "bug_id": "BUG-15",
+          "signature": "GET:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 102,
+            "name": "",
+            "price": -99
+          },
+          "timestamp": "2025-04-28T20:38:54.154635",
+          "mutation_id": "188e407216717e8bae42545a423b6b68",
+          "bug_id": "BUG-15",
+          "signature": "GET:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "name": "pd",
+            "price": 99,
+            "swLOEb": 214
+          },
+          "timestamp": "2025-04-28T20:38:59.264109",
+          "mutation_id": "9042fd2516608d045bce410bb1e1820e",
+          "bug_id": "BUG-15",
+          "signature": "GET:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "ino": "d&&tR?",
+            "prica": 1,
+            "lOtVIvgC": 17
+          },
+          "timestamp": "2025-04-28T20:39:04.370824",
+          "mutation_id": "b256803c515d44ca4338969d6cc596fc",
+          "bug_id": "BUG-15",
+          "signature": "GET:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "ino": "d&tR?",
+            "prica": 4
+          },
+          "timestamp": "2025-04-28T20:39:09.482881",
+          "mutation_id": "ce0fa0f5ff46b80e1ac6ed8f2156a576",
+          "bug_id": "BUG-15",
+          "signature": "GET:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "ino": "d&R}?",
+            "prica": 1,
+            "ofBGBK": true
+          },
+          "timestamp": "2025-04-28T20:39:14.590600",
+          "mutation_id": "81014ac56ec6010fdd59f43b5a9ce67d",
+          "bug_id": "BUG-15",
+          "signature": "GET:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "ino": "Yd&tR?",
+            "prica": 255
+          },
+          "timestamp": "2025-04-28T20:39:19.699322",
+          "mutation_id": "434a7e0a1d42d357a41c015e7f9ae3dd",
+          "bug_id": "BUG-15",
+          "signature": "GET:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "io": "d&tR?"
+          },
+          "timestamp": "2025-04-28T20:39:24.811590",
+          "mutation_id": "e50078b3586e0ce1876e511d35ab24a9",
+          "bug_id": "BUG-15",
+          "signature": "GET:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "ino": ")d&tR",
+            "prica": 0
+          },
+          "timestamp": "2025-04-28T20:39:29.918778",
+          "mutation_id": "3fb7000ef3eac2d36f852e70c13606cf",
+          "bug_id": "BUG-15",
+          "signature": "GET:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        }
+      ]
+    },
+    "POST": {
+      "ERROR": [
+        {
+          "input": {
+            "name": "pd",
+            "info": "dt",
+            "price": 115,
+            "JMzmN": -2919
+          },
+          "timestamp": "2025-04-28T20:29:41.191547",
+          "mutation_id": "726f57ec2e0c8aa242e041342971fb67",
+          "bug_id": "BUG-16",
+          "signature": "POST:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 96,
+            "name": "pd",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:29:46.304900",
+          "mutation_id": "9692ec65d7bfdce27b496856ae2a2c96",
+          "bug_id": "BUG-16",
+          "signature": "POST:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pd",
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:29:51.415386",
+          "mutation_id": "12df656591b8515c401a597251021898",
+          "bug_id": "BUG-16",
+          "signature": "POST:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            ")d": 2147483648,
+            "name": "pd",
+            "info": "dtF",
+            "price": 0
+          },
+          "timestamp": "2025-04-28T20:29:56.526493",
+          "mutation_id": "3f2830004025a76499f4d82b14dff9a2",
+          "bug_id": "BUG-16",
+          "signature": "POST:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "info": "C"
+          },
+          "timestamp": "2025-04-28T20:36:35.052585",
+          "mutation_id": "0a7faca5bd618ce147c7c9c80584a714",
+          "bug_id": "BUG-16",
+          "signature": "POST:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "info": "&dt",
+            "price": 1
+          },
+          "timestamp": "2025-04-28T20:36:40.165176",
+          "mutation_id": "dd5070e36bb183fa9f19adff967f16e3",
+          "bug_id": "BUG-16",
+          "signature": "POST:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "&pd",
+            "info": "dt",
+            "price": 2147483648
+          },
+          "timestamp": "2025-04-28T20:36:45.276921",
+          "mutation_id": "61b6979e0e7f648508de3016d296b3fd",
+          "bug_id": "BUG-16",
+          "signature": "POST:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "\rd",
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:36:50.383332",
+          "mutation_id": "efad8f2ba00a8635319e31e05e9a9802",
+          "bug_id": "BUG-16",
+          "signature": "POST:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pd",
+            "info": "d9",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:36:55.493745",
+          "mutation_id": "cd9b1a150959888cfd19fac4d24e9975",
+          "bug_id": "BUG-16",
+          "signature": "POST:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pd",
+            "info": "dt"
+          },
+          "timestamp": "2025-04-28T20:37:00.600288",
+          "mutation_id": "7727d2ab23de7cda438c7f5e22c72156",
+          "bug_id": "BUG-16",
+          "signature": "POST:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "nme": "t",
+            "info": "d",
+            "price": -29
+          },
+          "timestamp": "2025-04-28T20:44:10.597165",
+          "mutation_id": "0fdb2bd3dd336235fc96eb0f44b4cc5f",
+          "bug_id": "BUG-16",
+          "signature": "POST:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "t\\K",
+            "info": "",
+            "price": -13,
+            "bMp": true,
+            "WYuNx": "test_value",
+            "yiWJU": 346,
+            "RWNNfmv": null
+          },
+          "timestamp": "2025-04-28T20:44:15.707391",
+          "mutation_id": "3890babb8d4446efcec1525245f91356",
+          "bug_id": "BUG-16",
+          "signature": "POST:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "info": "(",
+            "price": -9,
+            "cAhA": 17
+          },
+          "timestamp": "2025-04-28T20:44:20.820271",
+          "mutation_id": "90d3954a9e861febbf06575f9193ab05",
+          "bug_id": "BUG-16",
+          "signature": "POST:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "name": "t",
+            "info": "",
+            "price": -29
+          },
+          "timestamp": "2025-04-28T20:44:25.928383",
+          "mutation_id": "98c8399685aca304c62c6b3323be733f",
+          "bug_id": "BUG-16",
+          "signature": "POST:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "t",
+            "info": "d",
+            "price": -29
+          },
+          "timestamp": "2025-04-28T20:44:31.047395",
+          "mutation_id": "98ed905dac35caa639896f2e3e9207bc",
+          "bug_id": "BUG-16",
+          "signature": "POST:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 96,
+            "name": "t",
+            "info": "d",
+            "price": -30,
+            "nnJL": "test_value"
+          },
+          "timestamp": "2025-04-28T20:44:36.154541",
+          "mutation_id": "66d3ce294ed62d48bfa30b184ab03db4",
+          "bug_id": "BUG-16",
+          "signature": "POST:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "",
+            "info": "d",
+            "price": -61
+          },
+          "timestamp": "2025-04-28T20:44:41.264882",
+          "mutation_id": "9dd084c2d5a62c5a46abf25262771053",
+          "bug_id": "BUG-16",
+          "signature": "POST:/api/product/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        }
+      ]
+    }
+  },
+  "/datatb/product/delete/{id}/": {
+    "GET": {
+      "ERROR": [
+        {
+          "input": {
+            "carcade": true,
+            "permanent": false,
+            "vFg": true
+          },
+          "timestamp": "2025-04-28T20:16:35.739820",
+          "mutation_id": "e79246d75a6b163198846749e6219075",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": true,
+            "permanent": 0
+          },
+          "timestamp": "2025-04-28T20:16:40.853005",
+          "mutation_id": "a5b161031c3703a1a6721209cd33d916",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "permanent": false
+          },
+          "timestamp": "2025-04-28T20:16:45.962489",
+          "mutation_id": "7b263f9dab4e985278f6b260b2f13429",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": true,
+            "permanent": 0
+          },
+          "timestamp": "2025-04-28T20:16:51.072709",
+          "mutation_id": "9d35f71e1680602d16260aa8056c349d",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": 255,
+            "permanent": 65535
+          },
+          "timestamp": "2025-04-28T20:16:56.185379",
+          "mutation_id": "b6f4cf48de9a7e7b1b2f43880eb8ff60",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": -127,
+            "permanent": 65535,
+            "sbGPKQq": "test_value"
+          },
+          "timestamp": "2025-04-28T20:17:01.295906",
+          "mutation_id": "7d7c4c929a3273b996c9905af03002fa",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": 2147483648
+          },
+          "timestamp": "2025-04-28T20:17:06.405221",
+          "mutation_id": "2ad0ddabfc6744831715f040e068325d",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confirm": 1
+          },
+          "timestamp": "2025-04-28T20:21:40.921343",
+          "mutation_id": "a7329940068670f3ddfbd71eaa329f91",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confire": true
+          },
+          "timestamp": "2025-04-28T20:21:46.028157",
+          "mutation_id": "7630df7024f6dc98e7cc89118a89b2e5",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confirm": -7
+          },
+          "timestamp": "2025-04-28T20:21:51.134573",
+          "mutation_id": "3d2109f6392379f956c5b6f9ae03aa76",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confir": 65535
+          },
+          "timestamp": "2025-04-28T20:21:56.248705",
+          "mutation_id": "3eb728f7789169877835d4bd6ee09c87",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confirm": true,
+            "UnVW": "test_value"
+          },
+          "timestamp": "2025-04-28T20:22:01.362114",
+          "mutation_id": "0d7403bc50f0150e28145a39960a93b2",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confirm": -1
+          },
+          "timestamp": "2025-04-28T20:22:06.472722",
+          "mutation_id": "5dccde6232413ab5d7ed8b2a0a9e50f1",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confirm": true
+          },
+          "timestamp": "2025-04-28T20:22:11.581188",
+          "mutation_id": "a7a0c9954632e6b4e131be38b8c1bee8",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {},
+          "timestamp": "2025-04-28T20:22:16.688676",
+          "mutation_id": "6ec4e36a846c07c2ca184691cc68f68c",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": true,
+            "IExxNj": -71
+          },
+          "timestamp": "2025-04-28T20:26:46.660400",
+          "mutation_id": "116803f3e8e8ffd05769ad45c24be4a9",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "permannt": 1,
+            "wageQh": 18198
+          },
+          "timestamp": "2025-04-28T20:26:51.768057",
+          "mutation_id": "969a6734ceeb51ea8876894eaa40b887",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": true
+          },
+          "timestamp": "2025-04-28T20:26:56.875288",
+          "mutation_id": "ed0c33a680a8e48e529cc980b6bceda9",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": true,
+            "permanent": false,
+            "krprtyG": true
+          },
+          "timestamp": "2025-04-28T20:27:01.984678",
+          "mutation_id": "6dd5bced829a0b35e2c4456e4cb3572f",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": 4294967295,
+            "permanent": 0
+          },
+          "timestamp": "2025-04-28T20:27:07.097688",
+          "mutation_id": "5888a81727c59fa25ad3a8b9f971f005",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cacade": 81,
+            "permanet": 64,
+            "TWbzJV": "test_value"
+          },
+          "timestamp": "2025-04-28T20:27:12.207297",
+          "mutation_id": "905b58b16d40449ef8e4fc9ae29a6300",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {},
+          "timestamp": "2025-04-28T20:27:17.315939",
+          "mutation_id": "2967d150f751932b2ab7ca706759f7b5",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": 65535,
+            "permanent": -128
+          },
+          "timestamp": "2025-04-28T20:28:18.660076",
+          "mutation_id": "a44aa5d764f49c0c28967d9afa6f57cf",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": true,
+            "0ermanent": false
+          },
+          "timestamp": "2025-04-28T20:28:23.769137",
+          "mutation_id": "1c33b95a2ec9cc3fdbea2309311b4ec1",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": 17,
+            "permanent": 16
+          },
+          "timestamp": "2025-04-28T20:28:28.878534",
+          "mutation_id": "0bd1bd92c25409665a9ce7fbd73a2a59",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": -126,
+            "permanent": 254
+          },
+          "timestamp": "2025-04-28T20:28:33.992269",
+          "mutation_id": "cdc954a86b966d6f38b6938d3e6d0a93",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {},
+          "timestamp": "2025-04-28T20:28:39.116164",
+          "mutation_id": "6ec4e36a846c07c2ca184691cc68f68c",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": true,
+            "permanent": false,
+            "Wbk": -884
+          },
+          "timestamp": "2025-04-28T20:28:44.226571",
+          "mutation_id": "ceab45abee9b41af78a38f6eef1be2c2",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": 0,
+            "permaneot": 65535,
+            "dkA": "test_value"
+          },
+          "timestamp": "2025-04-28T20:35:13.266032",
+          "mutation_id": "261d84890cb04aceac086195112ea56a",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": 3,
+            "permanent": -4294967295
+          },
+          "timestamp": "2025-04-28T20:35:18.380582",
+          "mutation_id": "dbcccd56ccc9920008abbb20be9f4584",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": -2,
+            "permanent": false
+          },
+          "timestamp": "2025-04-28T20:35:23.493828",
+          "mutation_id": "7d826ff0f455a15346f5d3e7cacff0bd",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": true,
+            "permanent": false
+          },
+          "timestamp": "2025-04-28T20:35:28.602370",
+          "mutation_id": "9753dea2cc650e107d9b7268f80d5574",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "Cascade": true,
+            "permanent": 65540
+          },
+          "timestamp": "2025-04-28T20:35:33.714852",
+          "mutation_id": "2857c2670517ebd0a0ca5e752e2d95e6",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascadg": true,
+            "permanent": false
+          },
+          "timestamp": "2025-04-28T20:36:09.494727",
+          "mutation_id": "c4463cca0af9c430ec400a8965beb0c5",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascadg": true,
+            "permanent": false,
+            "Kultxp": true
+          },
+          "timestamp": "2025-04-28T20:36:14.608756",
+          "mutation_id": "5767a6e2ffba93e5b5955bde7198dc2e",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": true,
+            "permanent": 1
+          },
+          "timestamp": "2025-04-28T20:36:19.716648",
+          "mutation_id": "a3169ccce81663b25188835b10d6dd74",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": 127,
+            "permnent": 16
+          },
+          "timestamp": "2025-04-28T20:36:24.830798",
+          "mutation_id": "c9464c6894cd1d9ce0113029acf35bdd",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": true,
+            "permanent": 2
+          },
+          "timestamp": "2025-04-28T20:36:29.942941",
+          "mutation_id": "10aec65835682ce3bd31ac8fac88c832",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confirm": 257,
+            "EnULFJmY": "test_value",
+            "VKf": 255
+          },
+          "timestamp": "2025-04-28T20:37:31.273798",
+          "mutation_id": "b120007d2d2ff86b4b8517b97497ea4d",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "rCEq": 127
+          },
+          "timestamp": "2025-04-28T20:37:36.382434",
+          "mutation_id": "ee3125f893671cdd82daab8798f7bb70",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confirm": true
+          },
+          "timestamp": "2025-04-28T20:37:41.496143",
+          "mutation_id": "a23488b2e4b96b5b02d35167958328c6",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confirm": true
+          },
+          "timestamp": "2025-04-28T20:37:46.608365",
+          "mutation_id": "eebc043317061a951f3e12af2317f228",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confrm": true
+          },
+          "timestamp": "2025-04-28T20:37:51.719066",
+          "mutation_id": "5d1adddc51c9a047e0d19fb338e19f5b",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {},
+          "timestamp": "2025-04-28T20:39:36.495840",
+          "mutation_id": "5c917e2a993f266ac31141cb30fb94bf",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "c\u007fnfirm": true
+          },
+          "timestamp": "2025-04-28T20:39:41.605244",
+          "mutation_id": "38b5d9e126c071609e7dd929edd979b4",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confirm": 2147483648,
+            "FnqDebM": 4
+          },
+          "timestamp": "2025-04-28T20:39:46.718875",
+          "mutation_id": "80a8121bd645683c93ba80e3187175aa",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confirm": 255
+          },
+          "timestamp": "2025-04-28T20:39:51.828919",
+          "mutation_id": "97d1a8c58c00d87d512da7e1a619f9e4",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confirm": 1
+          },
+          "timestamp": "2025-04-28T20:39:56.939844",
+          "mutation_id": "e3ccae8f06150f0674be9f3caf725ef2",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": -127,
+            "permaneNt": false
+          },
+          "timestamp": "2025-04-28T20:40:27.606921",
+          "mutation_id": "b138addac21c69b8302203617d1f218a",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascae": true,
+            "permanent": false,
+            "MtCTzH": null,
+            "xozg": "{est_value",
+            "VHvxaAq": 944
+          },
+          "timestamp": "2025-04-28T20:40:32.715821",
+          "mutation_id": "114be44ec3a2ccdb06d2a2d0c3daa2b8",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": 65535,
+            "permanent": 2
+          },
+          "timestamp": "2025-04-28T20:40:37.822611",
+          "mutation_id": "d447de3a31404b7e037a68d0dfc8b172",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "permajent": 8
+          },
+          "timestamp": "2025-04-28T20:40:42.937961",
+          "mutation_id": "e47114bf1345cde857d841c7bccfc282",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cacade": true,
+            "permanent": 12
+          },
+          "timestamp": "2025-04-28T20:40:48.046698",
+          "mutation_id": "1608affbf9d6aff500d21e10311580f7",
+          "bug_id": "BUG-3",
+          "signature": "GET:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        }
+      ]
+    },
+    "DELETE": {
+      "ERROR": [
+        {
+          "input": {},
+          "timestamp": "2025-04-28T20:20:49.814564",
+          "mutation_id": "5af1c167002ab30951cafacddef36a87",
+          "bug_id": "BUG-9",
+          "signature": "DELETE:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confirm": true,
+            "mOtJIkX": "test_value"
+          },
+          "timestamp": "2025-04-28T20:20:54.933134",
+          "mutation_id": "1a7f54e16162820626bb9a689ffd1355",
+          "bug_id": "BUG-9",
+          "signature": "DELETE:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confmrm": 1
+          },
+          "timestamp": "2025-04-28T20:21:00.041749",
+          "mutation_id": "f1dbbcbb43cbf9090f5f62e076e5e4e5",
+          "bug_id": "BUG-9",
+          "signature": "DELETE:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "convirm": -6
+          },
+          "timestamp": "2025-04-28T20:21:05.151817",
+          "mutation_id": "7f3c2f8c62a11596362798549f398780",
+          "bug_id": "BUG-9",
+          "signature": "DELETE:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cnfirm": true,
+            "DHRmM": true,
+            "xLa": true
+          },
+          "timestamp": "2025-04-28T20:21:10.259487",
+          "mutation_id": "d077674f57c3a611c4b692357f26ddc5",
+          "bug_id": "BUG-9",
+          "signature": "DELETE:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {},
+          "timestamp": "2025-04-28T20:33:24.860898",
+          "mutation_id": "c262f42159c13b8204b89f1e9056b3ba",
+          "bug_id": "BUG-9",
+          "signature": "DELETE:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cofirm": true
+          },
+          "timestamp": "2025-04-28T20:33:29.974861",
+          "mutation_id": "0b5b180acac9f49e71b315c5b42b3ddf",
+          "bug_id": "BUG-9",
+          "signature": "DELETE:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {},
+          "timestamp": "2025-04-28T20:33:35.086407",
+          "mutation_id": "88d1717c871282bdd6510e5b3eb17077",
+          "bug_id": "BUG-9",
+          "signature": "DELETE:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cofirm": 255
+          },
+          "timestamp": "2025-04-28T20:33:40.191298",
+          "mutation_id": "24fe57dffaa82650cd0fbadb4a1b8936",
+          "bug_id": "BUG-9",
+          "signature": "DELETE:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {},
+          "timestamp": "2025-04-28T20:33:45.301911",
+          "mutation_id": "3a416c44c864b30ea0fd34af9626b802",
+          "bug_id": "BUG-9",
+          "signature": "DELETE:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confirm": true,
+            "WjUsMWoP": true
+          },
+          "timestamp": "2025-04-28T20:33:50.410094",
+          "mutation_id": "4a971b9b0a6180a74a17322482b160e4",
+          "bug_id": "BUG-9",
+          "signature": "DELETE:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        }
+      ]
+    },
+    "PUT": {
+      "ERROR": [
+        {
+          "input": {},
+          "timestamp": "2025-04-28T20:22:32.475913",
+          "mutation_id": "053e0fdc0f90fd8db411d061dad078bf",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cnfirm": 17
+          },
+          "timestamp": "2025-04-28T20:22:37.594905",
+          "mutation_id": "e65815266d61223dfb7ad7a4c8850949",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {},
+          "timestamp": "2025-04-28T20:22:42.701165",
+          "mutation_id": "3c2f10af0a1191937a74616a86bdeab3",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confirm": true,
+            "efq": null
+          },
+          "timestamp": "2025-04-28T20:22:47.806689",
+          "mutation_id": "e376cfeb50188729acba8d0f870ca0d1",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {},
+          "timestamp": "2025-04-28T20:22:52.915718",
+          "mutation_id": "8b16a38307cc590705dead576d5e0473",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {},
+          "timestamp": "2025-04-28T20:22:58.026665",
+          "mutation_id": "e7f72493eb187b1beec2315e697f314e",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confiri": true
+          },
+          "timestamp": "2025-04-28T20:23:03.138993",
+          "mutation_id": "faa1609d6d73a3eb12a8516a90f66f0d",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confirm": 65535
+          },
+          "timestamp": "2025-04-28T20:23:08.249693",
+          "mutation_id": "699224f4e15cb86f555e241d9b08ee20",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {},
+          "timestamp": "2025-04-28T20:23:13.358190",
+          "mutation_id": "608a8a270bfb8783c4b4f69182abe5c7",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {},
+          "timestamp": "2025-04-28T20:24:31.937053",
+          "mutation_id": "4c150a8a7e225028e9e0f309c6114423",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confirm": 10
+          },
+          "timestamp": "2025-04-28T20:24:37.047629",
+          "mutation_id": "26a484eb2ff5b52ed858b0101a3492ce",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confirm": 255,
+            "ock": true
+          },
+          "timestamp": "2025-04-28T20:24:42.155548",
+          "mutation_id": "3fde34eb0b43b685b92161766d506b5e",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {},
+          "timestamp": "2025-04-28T20:24:47.264630",
+          "mutation_id": "aa96103cbaa57be5dfd8e2c9d266c43d",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {},
+          "timestamp": "2025-04-28T20:24:52.376183",
+          "mutation_id": "bc9b1a27473f85ba8bc91dd09ba36a27",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {},
+          "timestamp": "2025-04-28T20:24:57.488863",
+          "mutation_id": "f620d2a295f6c6028bb50586e5791b03",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {},
+          "timestamp": "2025-04-28T20:25:02.599259",
+          "mutation_id": "c60016faa8755f7d3d3f2d3521f8a946",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confirm": 5,
+            "LNOrkT": true
+          },
+          "timestamp": "2025-04-28T20:25:07.713517",
+          "mutation_id": "8aecca9960c0f157ad9e2d5a62088d48",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {},
+          "timestamp": "2025-04-28T20:31:11.175720",
+          "mutation_id": "c387f82c5e08345482fa72280aadc2ef",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confirm": 429497295
+          },
+          "timestamp": "2025-04-28T20:31:16.282679",
+          "mutation_id": "216d22dcc52e95a72319331389e48f71",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {},
+          "timestamp": "2025-04-28T20:31:21.394797",
+          "mutation_id": "86b7fd59f030baa43d310c22bc0629a9",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confirm": true,
+            "kkVzczna": true,
+            "WIRXa": -547
+          },
+          "timestamp": "2025-04-28T20:31:26.505222",
+          "mutation_id": "588a613ae70b3900f48af02276af8380",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {},
+          "timestamp": "2025-04-28T20:31:31.616301",
+          "mutation_id": "da902a350334acf840247a1907bdc056",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confirm": 2
+          },
+          "timestamp": "2025-04-28T20:31:36.730172",
+          "mutation_id": "80c3d9498aab490939b9915db7f36c9a",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confirm": true,
+            "QPt": "test_value"
+          },
+          "timestamp": "2025-04-28T20:34:36.411317",
+          "mutation_id": "5559cf3a34ebfe7083d765b5d230d3f3",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confir": 1
+          },
+          "timestamp": "2025-04-28T20:34:41.520068",
+          "mutation_id": "ae5c852cb3e51cbf6699f97bacab5062",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confirm": true,
+            "plZPv": 804,
+            "luBD": -469
+          },
+          "timestamp": "2025-04-28T20:34:46.627288",
+          "mutation_id": "d8cf4a4bfa831b807d0aa687550aa04b",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {},
+          "timestamp": "2025-04-28T20:34:51.737390",
+          "mutation_id": "fb79a99f6a30aa0e063354234bb48415",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {},
+          "timestamp": "2025-04-28T20:34:56.847913",
+          "mutation_id": "37c6e5a78f316fb9f592eb149c5c52fa",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": 5,
+            "permanent": false,
+            "rdEoIXMg": -596
+          },
+          "timestamp": "2025-04-28T20:40:54.496782",
+          "mutation_id": "81d9452fae45cdcbe8457b6dd25437c4",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": 4294967294,
+            "permanent": 2
+          },
+          "timestamp": "2025-04-28T20:40:59.610582",
+          "mutation_id": "5d0e1e30889f7372aa4197ba09674caa",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": 4294967295,
+            "permanent": false
+          },
+          "timestamp": "2025-04-28T20:41:04.719504",
+          "mutation_id": "751aad4e39cd2010a41f663377a2a097",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": true,
+            "permanent": false,
+            "zfyFanp": null
+          },
+          "timestamp": "2025-04-28T20:41:09.838846",
+          "mutation_id": "48a774b0b41caf2176453ca012431ed8",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": true,
+            "permanent": 1
+          },
+          "timestamp": "2025-04-28T20:41:14.952029",
+          "mutation_id": "481706296189cc990e84849dd8b9f464",
+          "bug_id": "BUG-11",
+          "signature": "PUT:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        }
+      ]
+    },
+    "POST": {
+      "ERROR": [
+        {
+          "input": {
+            "confirm": true
+          },
+          "timestamp": "2025-04-28T20:26:15.025090",
+          "mutation_id": "bca4b9c24098b7a69380b16ba638fca1",
+          "bug_id": "BUG-14",
+          "signature": "POST:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confirm": 1
+          },
+          "timestamp": "2025-04-28T20:26:20.140811",
+          "mutation_id": "6cfec98560a1abdf5e7d4f031abf4f7e",
+          "bug_id": "BUG-14",
+          "signature": "POST:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "confizm": true,
+            "EfO": null,
+            "ACfbpOzd": "t\\est_value"
+          },
+          "timestamp": "2025-04-28T20:26:25.251482",
+          "mutation_id": "367dd72f3574aa94b84c53de0c427147",
+          "bug_id": "BUG-14",
+          "signature": "POST:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "AzMVIJ": "*tes'_valu"
+          },
+          "timestamp": "2025-04-28T20:26:30.362438",
+          "mutation_id": "e450b4485cd61ed6409842c393fe5ab5",
+          "bug_id": "BUG-14",
+          "signature": "POST:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {},
+          "timestamp": "2025-04-28T20:26:35.472634",
+          "mutation_id": "25eb92cfb5098f25e2aaadaa24b698b8",
+          "bug_id": "BUG-14",
+          "signature": "POST:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {},
+          "timestamp": "2025-04-28T20:26:40.579879",
+          "mutation_id": "b61360a793b4c1079a20c81200d267bc",
+          "bug_id": "BUG-14",
+          "signature": "POST:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": -1,
+            "permanent": false
+          },
+          "timestamp": "2025-04-28T20:30:28.342405",
+          "mutation_id": "24405af6899c0bfebe0eb56048c3e569",
+          "bug_id": "BUG-14",
+          "signature": "POST:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": true,
+            "permanent": 0,
+            "eTnbdYKx": null
+          },
+          "timestamp": "2025-04-28T20:30:33.451974",
+          "mutation_id": "bcb2818ce8b2d913c4404c1b90343c9e",
+          "bug_id": "BUG-14",
+          "signature": "POST:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": true,
+            "permanent": 65535
+          },
+          "timestamp": "2025-04-28T20:30:38.563772",
+          "mutation_id": "65a2a875f4b88657e3a25e2bbfb4bae7",
+          "bug_id": "BUG-14",
+          "signature": "POST:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": true,
+            "permanent": 4294967295,
+            "WiXuBqP": true
+          },
+          "timestamp": "2025-04-28T20:30:43.675518",
+          "mutation_id": "b0965ecc37cd9365ad709fe06e42db5d",
+          "bug_id": "BUG-14",
+          "signature": "POST:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": 32767,
+            "permanent": -4
+          },
+          "timestamp": "2025-04-28T20:30:48.788337",
+          "mutation_id": "110a8279386620d41ee93d536a0033f4",
+          "bug_id": "BUG-14",
+          "signature": "POST:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "permanen": 4
+          },
+          "timestamp": "2025-04-28T20:30:53.896877",
+          "mutation_id": "c4a60d37fa6a3465e2312f85206671e3",
+          "bug_id": "BUG-14",
+          "signature": "POST:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": 48,
+            "GIYN": 65535,
+            "IxPNtW": 711
+          },
+          "timestamp": "2025-04-28T20:42:16.280240",
+          "mutation_id": "e3473ff095818482c1ee8f86e2282d39",
+          "bug_id": "BUG-14",
+          "signature": "POST:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "ca{cade": 0,
+            "permanent": 0,
+            "HVbyLHC": "test_vYalue"
+          },
+          "timestamp": "2025-04-28T20:42:21.389327",
+          "mutation_id": "9942c734690161f66f6325a843063e04",
+          "bug_id": "BUG-14",
+          "signature": "POST:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": true
+          },
+          "timestamp": "2025-04-28T20:42:26.499298",
+          "mutation_id": "dc96524e68284be4035e28dbebbb8953",
+          "bug_id": "BUG-14",
+          "signature": "POST:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": 65535,
+            "permanent": false
+          },
+          "timestamp": "2025-04-28T20:42:31.608188",
+          "mutation_id": "c3934a25a1591cca9fe7b741d83a8d4e",
+          "bug_id": "BUG-14",
+          "signature": "POST:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": true,
+            "permanent": 255
+          },
+          "timestamp": "2025-04-28T20:42:36.719685",
+          "mutation_id": "2d2b729588167153f112fdb054af8ab8",
+          "bug_id": "BUG-14",
+          "signature": "POST:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": 5,
+            "permanent": false
+          },
+          "timestamp": "2025-04-28T20:42:41.826865",
+          "mutation_id": "f757e15e7b591c31010b293b78ef646c",
+          "bug_id": "BUG-14",
+          "signature": "POST:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "cascade": true,
+            "permanent": false,
+            "BbdrPi": -275
+          },
+          "timestamp": "2025-04-28T20:42:46.939535",
+          "mutation_id": "7bbdb7b5482a818f87644024d031770b",
+          "bug_id": "BUG-14",
+          "signature": "POST:/datatb/product/delete/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        }
+      ]
+    }
+  },
+  "/datatb/product/edit/{id}/": {
+    "GET": {
+      "ERROR": [
+        {
+          "input": {
+            "id": 100,
+            "info": "dt",
+            "price": 0
+          },
+          "timestamp": "2025-04-28T20:18:23.859491",
+          "mutation_id": "42dfb90bd4db7bdde749a2e862035a71",
+          "bug_id": "BUG-6",
+          "signature": "GET:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 101,
+            "name": "p)",
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:18:28.966449",
+          "mutation_id": "bde169676d6f4155ea0417323aad214f",
+          "bug_id": "BUG-6",
+          "signature": "GET:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "i": 100,
+            "name": "0>d",
+            "info": "t",
+            "price": 99,
+            "nl": true
+          },
+          "timestamp": "2025-04-28T20:18:34.077513",
+          "mutation_id": "fb18652a840128f28c46108fb520d9cf",
+          "bug_id": "BUG-6",
+          "signature": "GET:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:18:39.188468",
+          "mutation_id": "c630cda5cd8400f49c488cb359838737",
+          "bug_id": "BUG-6",
+          "signature": "GET:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 101,
+            "name": "",
+            "info": "dt",
+            "price": 99,
+            "LBBCxd": "tnst_value"
+          },
+          "timestamp": "2025-04-28T20:18:44.297662",
+          "mutation_id": "de9478d79e3b6098d2ba1b852a7e7cc8",
+          "bug_id": "BUG-6",
+          "signature": "GET:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "info": "ht"
+          },
+          "timestamp": "2025-04-28T20:18:49.408220",
+          "mutation_id": "f31f53e61649a32289ac3b0b1e692bb8",
+          "bug_id": "BUG-6",
+          "signature": "GET:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "*upd",
+            "info": "dt"
+          },
+          "timestamp": "2025-04-28T20:18:54.516818",
+          "mutation_id": "8577e9138dba38e279179cb9ee56ada7",
+          "bug_id": "BUG-6",
+          "signature": "GET:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 10,
+            "name": "pd",
+            "info": "dt",
+            "price": -29
+          },
+          "timestamp": "2025-04-28T20:18:59.622789",
+          "mutation_id": "06f1b4b492c7dd09ac221027cba1b347",
+          "bug_id": "BUG-6",
+          "signature": "GET:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 200,
+            "info": "t",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:19:04.733828",
+          "mutation_id": "7a58da2f510c47ac488ad815b8e47ead",
+          "bug_id": "BUG-6",
+          "signature": "GET:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pd",
+            "inf": "dft",
+            "price": 65535
+          },
+          "timestamp": "2025-04-28T20:24:11.493161",
+          "mutation_id": "7cee8ceedb8de973557a755464323b6b",
+          "bug_id": "BUG-6",
+          "signature": "GET:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 214748364,
+            "name": "\"O:",
+            "info": "dt",
+            "prmce": 127
+          },
+          "timestamp": "2025-04-28T20:24:16.605387",
+          "mutation_id": "57942c5315ba01454534b0b983207262",
+          "bug_id": "BUG-6",
+          "signature": "GET:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pd",
+            "info": "dt",
+            "price": 99,
+            "pBCZNui": "test'_vaue",
+            "VSpdP": "tes\u0000t_value"
+          },
+          "timestamp": "2025-04-28T20:24:21.716716",
+          "mutation_id": "cde1c88b5a8fb1cd97bd02a602265be6",
+          "bug_id": "BUG-6",
+          "signature": "GET:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "nam": "pd",
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:24:26.826847",
+          "mutation_id": "6b4b62ce9e2b474f3beed3655e44d659",
+          "bug_id": "BUG-6",
+          "signature": "GET:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:37:56.826933",
+          "mutation_id": "793b0b7de76e4480490177e2e790a98c",
+          "bug_id": "BUG-6",
+          "signature": "GET:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pd",
+            "price": 99,
+            "qLfsjds": null
+          },
+          "timestamp": "2025-04-28T20:38:01.936867",
+          "mutation_id": "9495898da6102c69ccb4011c9efadfff",
+          "bug_id": "BUG-6",
+          "signature": "GET:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "name": "pd<",
+            "info": "dt",
+            "price": 99,
+            "lHhY": -908
+          },
+          "timestamp": "2025-04-28T20:38:07.044680",
+          "mutation_id": "c35f09d724ad4d4daf51458f9c039f75",
+          "bug_id": "BUG-6",
+          "signature": "GET:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "i": 0,
+            "nme": "PQd",
+            "price": 123
+          },
+          "timestamp": "2025-04-28T20:38:12.153821",
+          "mutation_id": "94a2158b233601592ba992fe9320720f",
+          "bug_id": "BUG-6",
+          "signature": "GET:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 4294967295,
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:38:17.266016",
+          "mutation_id": "6b892e53245243cb7c1faafc070b883e",
+          "bug_id": "BUG-6",
+          "signature": "GET:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pd",
+            "info": "dt",
+            "price": 2147483648,
+            "RETmPpO": null
+          },
+          "timestamp": "2025-04-28T20:38:22.378277",
+          "mutation_id": "ac45e370c6e7348fb507f8206ae60494",
+          "bug_id": "BUG-6",
+          "signature": "GET:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "info": "dt<",
+            "price": 99,
+            "kbCl": null,
+            "upcLFcil": "test_|valcue"
+          },
+          "timestamp": "2025-04-28T20:38:27.488579",
+          "mutation_id": "389227f407208886b60b62e88878468a",
+          "bug_id": "BUG-6",
+          "signature": "GET:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "",
+            "info": "d'",
+            "price": -1
+          },
+          "timestamp": "2025-04-28T20:40:02.049162",
+          "mutation_id": "3732d248531a4ff07b58fe2457dd1d1b",
+          "bug_id": "BUG-6",
+          "signature": "GET:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "p",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:40:07.163084",
+          "mutation_id": "11455630ef46bf2caab516bb32356cae",
+          "bug_id": "BUG-6",
+          "signature": "GET:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 2348,
+            "name": "/]d",
+            "info": "dt",
+            "price": 2147483648
+          },
+          "timestamp": "2025-04-28T20:40:12.274808",
+          "mutation_id": "726b4b7ec69892be0fad7e13f6733105",
+          "bug_id": "BUG-6",
+          "signature": "GET:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "d",
+            "info": "dt",
+            "price": 255
+          },
+          "timestamp": "2025-04-28T20:40:17.382815",
+          "mutation_id": "2893bd2015aa7b826d28dfef208a4552",
+          "bug_id": "BUG-6",
+          "signature": "GET:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:40:22.493482",
+          "mutation_id": "a091196d458d3e7a76b296b85d657b02",
+          "bug_id": "BUG-6",
+          "signature": "GET:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "name": "pd",
+            "info": "t",
+            "price": 102
+          },
+          "timestamp": "2025-04-28T20:43:43.160562",
+          "mutation_id": "4630b4e2cb33fdd979bbf4eff661602d",
+          "bug_id": "BUG-6",
+          "signature": "GET:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 110,
+            "name": "(pd",
+            "info": "t",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:43:48.270323",
+          "mutation_id": "f6e8d32a134163886592e151f76f00cf",
+          "bug_id": "BUG-6",
+          "signature": "GET:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pxd",
+            "info": "",
+            "dCcCNk": null
+          },
+          "timestamp": "2025-04-28T20:43:53.382310",
+          "mutation_id": "09fa3dd14817ef4b6aec69b4f5445ef3",
+          "bug_id": "BUG-6",
+          "signature": "GET:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "info": "dt",
+            "QSveRia": "test_value"
+          },
+          "timestamp": "2025-04-28T20:43:58.490652",
+          "mutation_id": "c444c54992b5f0f8b1e52f33a0c5533f",
+          "bug_id": "BUG-6",
+          "signature": "GET:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pd",
+            "info": "dt",
+            "prica": 0,
+            "iwscF": null
+          },
+          "timestamp": "2025-04-28T20:44:03.602760",
+          "mutation_id": "b505bf8118df294f167602f83f2276fa",
+          "bug_id": "BUG-6",
+          "signature": "GET:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        }
+      ]
+    },
+    "POST": {
+      "ERROR": [
+        {
+          "input": {
+            "id": 116,
+            "name": "pd",
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:19:42.553791",
+          "mutation_id": "d68ec07e638d84aba16fb3750ec6bc4a",
+          "bug_id": "BUG-7",
+          "signature": "POST:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 1,
+            "name": "pd",
+            "info": "t",
+            "prIce": 255
+          },
+          "timestamp": "2025-04-28T20:19:47.799743",
+          "mutation_id": "5f210b776d7c16fb11551a26ab9caa34",
+          "bug_id": "BUG-7",
+          "signature": "POST:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 108,
+            "name": "pd",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:19:52.909205",
+          "mutation_id": "fc80f80961b7d35842e1a74d8c9421f6",
+          "bug_id": "BUG-7",
+          "signature": "POST:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 50,
+            "name": "pd,s",
+            "info": "dw",
+            "vVEe": true
+          },
+          "timestamp": "2025-04-28T20:19:58.284437",
+          "mutation_id": "aa7d6f904ba81d28466f49e7a7ecc814",
+          "bug_id": "BUG-7",
+          "signature": "POST:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "name": "pb",
+            "info": "dht",
+            "price": 99,
+            "PtTERrE": "test_value"
+          },
+          "timestamp": "2025-04-28T20:32:59.183792",
+          "mutation_id": "36a69d46f5205ffb05193cbc0546b9a1",
+          "bug_id": "BUG-7",
+          "signature": "POST:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pd",
+            "knfo": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:33:04.295742",
+          "mutation_id": "6572b3bd66f04bbd691655882c9c9492",
+          "bug_id": "BUG-7",
+          "signature": "POST:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pd",
+            "info": "dt",
+            "price": 99,
+            "sdzq": null,
+            "ieQ": -838
+          },
+          "timestamp": "2025-04-28T20:33:09.407140",
+          "mutation_id": "dd90924f790e31785354a743629362c6",
+          "bug_id": "BUG-7",
+          "signature": "POST:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "nae": "pd",
+            "info": "dt",
+            "price": 93
+          },
+          "timestamp": "2025-04-28T20:33:14.516555",
+          "mutation_id": "0dcb0ca5b731a68d2b1c956f25fd8cb6",
+          "bug_id": "BUG-7",
+          "signature": "POST:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "i`": 100,
+            "name": "pd",
+            "info": "]t",
+            "price": -101
+          },
+          "timestamp": "2025-04-28T20:33:19.756054",
+          "mutation_id": "4a74e764fe23689a8a72e547bcdbf64b",
+          "bug_id": "BUG-7",
+          "signature": "POST:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        }
+      ]
+    },
+    "DELETE": {
+      "ERROR": [
+        {
+          "input": {
+            "id": 100,
+            "name": "%spd",
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:20:03.399927",
+          "mutation_id": "4b253d207e3651baff984e7875a47ed8",
+          "bug_id": "BUG-8",
+          "signature": "DELETE:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pd",
+            "info": "dt",
+            "price": 98
+          },
+          "timestamp": "2025-04-28T20:20:08.510374",
+          "mutation_id": "773fca0208eaf236df3fa887fb89e296",
+          "bug_id": "BUG-8",
+          "signature": "DELETE:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pd",
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:20:13.619085",
+          "mutation_id": "fce5c539a0fa11e2b8499a945124a633",
+          "bug_id": "BUG-8",
+          "signature": "DELETE:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "p",
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:20:18.729415",
+          "mutation_id": "186dc7f9d6fedcb66b789764f6b4ba03",
+          "bug_id": "BUG-8",
+          "signature": "DELETE:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "p",
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:20:23.834024",
+          "mutation_id": "fd6613ccdbfa8a787f46c2e3f6de0f6c",
+          "bug_id": "BUG-8",
+          "signature": "DELETE:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 65535,
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:20:28.943453",
+          "mutation_id": "4754eed08f32f5211b7fa0991d9b1241",
+          "bug_id": "BUG-8",
+          "signature": "DELETE:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pd",
+            "info": "dt",
+            "price": 99,
+            "eckHqe": -861
+          },
+          "timestamp": "2025-04-28T20:20:34.049223",
+          "mutation_id": "9514291179ca0ecd220a11cbe693846d",
+          "bug_id": "BUG-8",
+          "signature": "DELETE:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "<pd",
+            "nfo": "t",
+            "rice": 99
+          },
+          "timestamp": "2025-04-28T20:20:39.155214",
+          "mutation_id": "f41b75f27f6bb0d96adfe91f45e09f0d",
+          "bug_id": "BUG-8",
+          "signature": "DELETE:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 108,
+            "name": "pd",
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:20:44.267068",
+          "mutation_id": "20f3a98bfce0c10ae1a6aac875cb8f22",
+          "bug_id": "BUG-8",
+          "signature": "DELETE:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pd",
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:27:47.971175",
+          "mutation_id": "2535c56713fd4ad6da270eec503ff754",
+          "bug_id": "BUG-8",
+          "signature": "DELETE:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 96,
+            "name": "pd",
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:27:53.083311",
+          "mutation_id": "cfe0a6e10d06f112552a9c893cc5379f",
+          "bug_id": "BUG-8",
+          "signature": "DELETE:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 127,
+            "name": "%nd",
+            "info": "dvG",
+            "price": 99,
+            "NvIEZW": true
+          },
+          "timestamp": "2025-04-28T20:27:58.194481",
+          "mutation_id": "499f08d2c06d1e8a3603081b16699a94",
+          "bug_id": "BUG-8",
+          "signature": "DELETE:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pd",
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:28:03.307936",
+          "mutation_id": "9e95b0cea146ed3f732d4400868e60a1",
+          "bug_id": "BUG-8",
+          "signature": "DELETE:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pd",
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:28:08.437360",
+          "mutation_id": "f5ccb683073c936c569d2e5d277f6356",
+          "bug_id": "BUG-8",
+          "signature": "DELETE:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": -91,
+            "price": 255
+          },
+          "timestamp": "2025-04-28T20:28:13.546841",
+          "mutation_id": "053575f78832ede00dde8a5b421bc6d1",
+          "bug_id": "BUG-8",
+          "signature": "DELETE:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 255,
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:32:33.617611",
+          "mutation_id": "91a80f66ece4ed4d0c002147fea8640d",
+          "bug_id": "BUG-8",
+          "signature": "DELETE:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "name": "pd",
+            "ifo": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:32:38.727608",
+          "mutation_id": "7d660712829d596a3a6d92e3a5a8e873",
+          "bug_id": "BUG-8",
+          "signature": "DELETE:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "nme": "pd",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:32:43.833661",
+          "mutation_id": "7b751daae0efb8c339da5abcac44ad1c",
+          "bug_id": "BUG-8",
+          "signature": "DELETE:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 127,
+            "name": "p7d",
+            "price": -29
+          },
+          "timestamp": "2025-04-28T20:32:48.945804",
+          "mutation_id": "eb1bf52469ea0e1df2b52cdfbd94e143",
+          "bug_id": "BUG-8",
+          "signature": "DELETE:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pd",
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:32:54.073630",
+          "mutation_id": "e27616aa6499891312ebd731608f233f",
+          "bug_id": "BUG-8",
+          "signature": "DELETE:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 101,
+            "ame": "$d",
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:41:20.065078",
+          "mutation_id": "4b4390960de36c950bb729908cf8f7bf",
+          "bug_id": "BUG-8",
+          "signature": "DELETE:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pd",
+            "info": "dt",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:41:25.175488",
+          "mutation_id": "aaa7c8f600adbc1a506a4b4c5597b68c",
+          "bug_id": "BUG-8",
+          "signature": "DELETE:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pd",
+            "info": "dt"
+          },
+          "timestamp": "2025-04-28T20:41:30.286118",
+          "mutation_id": "26292ab6e8bd4f32002cf510f7930bc7",
+          "bug_id": "BUG-8",
+          "signature": "DELETE:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pd",
+            "price": 127
+          },
+          "timestamp": "2025-04-28T20:41:35.395805",
+          "mutation_id": "7683013e89a7252c3628db8a2fc7c168",
+          "bug_id": "BUG-8",
+          "signature": "DELETE:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 100,
+            "name": "pd)",
+            "info": "d",
+            "JTz": "test_valu`e"
+          },
+          "timestamp": "2025-04-28T20:41:40.502131",
+          "mutation_id": "b65abf6211771c06073f6b7e60a8e548",
+          "bug_id": "BUG-8",
+          "signature": "DELETE:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        }
+      ]
+    },
+    "PUT": {
+      "ERROR": [
+        {
+          "input": {
+            "id": 255,
+            "name": "pd|",
+            "info": "(t",
+            "price": 99
+          },
+          "timestamp": "2025-04-28T20:30:59.992035",
+          "mutation_id": "edd4b71e039f7b3c8e738122fc42b155",
+          "bug_id": "BUG-17",
+          "signature": "PUT:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        },
+        {
+          "input": {
+            "id": 85,
+            "name": "\npd@",
+            "info": "t",
+            "pric%": 99,
+            "pkBOT": "test_value"
+          },
+          "timestamp": "2025-04-28T20:31:05.224246",
+          "mutation_id": "163158aa5d6c18a62b748cf68a995ad0",
+          "bug_id": "BUG-17",
+          "signature": "PUT:/datatb/product/edit/{id}/:ConnectionTimeout",
+          "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5.0)"
+        }
+      ]
+    }
+  }
+}

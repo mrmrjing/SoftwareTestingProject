@@ -1,5 +1,5 @@
 # Plot a table of that tabulates these three timings (time to first crash, average time to generate a test)
-# Usage: python plot_table_2_1.py sessions/"session 10" sessions/"session 11" 
+# Usage: python plot_table_2_1.py sessions/"session 1" sessions/"session 2" sessions/"session 3" sessions/"session 4" sessions/"session 5" --output fuzzer_efficiency.csv
 import json
 import os
 import datetime

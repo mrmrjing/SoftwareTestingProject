@@ -8,7 +8,7 @@ logger = logging.getLogger("MutationEngine")
 
 class MutationEngine:
     """
-    A simplified mutation engine implementing core AFL-style mutation strategies.
+    A mutation engine implementing AFL-style mutation strategies with context aware inputs (HTTP)
     
     This class focuses on the fundamental mutation operations:
     - bitflip: Flips random bits in inputs

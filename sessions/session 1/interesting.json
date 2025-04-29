@@ -1,0 +1,74 @@
+{
+  "0": "2025-04-28T18:10:13.274483",
+  "1": {
+    "timestamp": "2025-04-28T18:10:30.959881",
+    "path": "/api/product/{id}/",
+    "method": "DELETE",
+    "input": {
+      "id": 100,
+      "oame": "p\\d",
+      "info": "d",
+      "price": 99,
+      "mbRbk": "test_value",
+      "NFOx": -47
+    }
+  },
+  "2": {
+    "timestamp": "2025-04-28T18:10:36.914151",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 100,
+      "name": "|d",
+      "info": "dt",
+      "price": 99,
+      "wzwvYvqI": true
+    }
+  },
+  "3": {
+    "timestamp": "2025-04-28T18:10:52.519814",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 100,
+      "name": "",
+      "pricm": 99,
+      "mMcHVQ": 942
+    }
+  },
+  "4": {
+    "timestamp": "2025-04-28T18:11:40.570471",
+    "path": "/api/product/{id}/",
+    "method": "PUT",
+    "input": {
+      "id": 102,
+      "name": "pd",
+      "info": "dt",
+      "price": 99
+    }
+  },
+  "5": {
+    "timestamp": "2025-04-28T18:13:38.458250",
+    "path": "/api/product/{id}/",
+    "method": "GET",
+    "input": {
+      "d": 110,
+      "price": 99,
+      "wzwvYvqI": 4294966294,
+      "bpDIcQ": "test_value"
+    }
+  },
+  "6": {
+    "timestamp": "2025-04-28T18:13:39.389493",
+    "path": "/api/product/{id}/",
+    "method": "GET",
+    "input": {
+      "id": 100,
+      "name": "|d",
+      "info": "dt",
+      "price": 65535,
+      "wzwvYvqI": true,
+      "rYmFv": true
+    }
+  }
+}

@@ -15,15 +15,15 @@ fi
 cd "$APP_DIR"
 
 # 3) Create venv if it doesn’t exist
-if [ ! -d "$VENV_DIR" ]; then
-  echo "→ Creating virtual environment in ./$VENV_DIR…"
-  python3 -m venv "$VENV_DIR"
+if [ ! -d "virtual" ]; then
+  echo "→ Creating virtual environment in ./virtual…"
+  python3 -m venv "virtual"
 fi
 
 # 4) Activate the virtualenv
 echo "→ Activating virtual environment…"
 # shellcheck disable=SC1090
-source "$VENV_DIR/bin/activate"
+source "virtual/bin/activate"
 
 # 5) Install requirements
 if [ -f requirements.txt ]; then

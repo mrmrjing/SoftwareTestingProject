@@ -1,0 +1,140 @@
+{
+  "/api/product/{id}/": {
+    "methods": {
+      "GET": true,
+      "POST": true,
+      "PUT": true,
+      "DELETE": true
+    },
+    "seeds": [
+      {
+        "id": 100,
+        "name": "pd",
+        "info": "dt",
+        "price": 99
+      },
+      {
+        "id": 100,
+        "name": "pd",
+        "info": "dt",
+        "price": 99
+      },
+      {
+        "id": 100,
+        "name": "pd",
+        "price": 99
+      },
+      {
+        "id": 100,
+        "name": "pd",
+        "info": "t",
+        "price": 99,
+        "suQBlS": true
+      },
+      {
+        "name": "pd",
+        "info": "d`t!",
+        "Bjhi": "testvalue"
+      },
+      {
+        "d": 32766,
+        "name": "pd",
+        "info": "dt",
+        "price": 99
+      },
+      {
+        "id": 100,
+        "name": "pe",
+        "info": "dt\n",
+        "price": 1,
+        "vnVywho": true
+      },
+      {
+        "id": 100,
+        "name": "d",
+        "info": "dt",
+        "price": 99
+      }
+    ]
+  },
+  "/datatb/product/": {
+    "methods": {
+      "GET": true,
+      "POST": true,
+      "PUT": true,
+      "DELETE": true
+    },
+    "seeds": [
+      {
+        "id": 100,
+        "name": "pd",
+        "info": "dt",
+        "price": 99
+      },
+      {
+        "id": 100,
+        "name": "pd",
+        "info": "dt",
+        "price": 99
+      }
+    ]
+  },
+  "/datatb/product/export/": {
+    "methods": {
+      "GET": true,
+      "POST": true,
+      "PUT": true,
+      "DELETE": true
+    },
+    "seeds": [
+      {
+        "search": "",
+        "hidden_cols": [],
+        "type": "pdf"
+      },
+      {
+        "format": "pdf",
+        "template": "default"
+      }
+    ]
+  },
+  "/datatb/product/edit/{id}/": {
+    "methods": {
+      "GET": true,
+      "POST": true,
+      "PUT": true,
+      "DELETE": true
+    },
+    "seeds": [
+      {
+        "id": 100,
+        "name": "pd",
+        "info": "dt",
+        "price": 99
+      },
+      {
+        "id": 100,
+        "name": "pd",
+        "info": "dt",
+        "price": 99
+      }
+    ]
+  },
+  "/datatb/product/delete/{id}/": {
+    "methods": {
+      "GET": true,
+      "POST": true,
+      "PUT": true,
+      "DELETE": true
+    },
+    "seeds": [
+      {
+        "confirm": true
+      },
+      {
+        "cascade": true,
+        "permanent": false
+      }
+    ]
+  }
+}

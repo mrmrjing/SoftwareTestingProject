@@ -1,0 +1,69 @@
+{
+  "0": "2025-04-29T14:58:20.200504",
+  "1": {
+    "timestamp": "2025-04-29T14:58:37.273290",
+    "path": "/api/product/{id}/",
+    "method": "PUT",
+    "input": {
+      "id": 100,
+      "name": "pd",
+      "price": 99
+    }
+  },
+  "2": {
+    "timestamp": "2025-04-29T14:58:50.953800",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {
+      "id": 100,
+      "name": "pd",
+      "info": "t",
+      "price": 99,
+      "suQBlS": true
+    }
+  },
+  "3": {
+    "timestamp": "2025-04-29T14:58:51.408610",
+    "path": "/api/product/{id}/",
+    "method": "POST",
+    "input": {
+      "name": "pd",
+      "info": "d`t!",
+      "Bjhi": "testvalue"
+    }
+  },
+  "4": {
+    "timestamp": "2025-04-29T14:59:03.209415",
+    "path": "/api/product/{id}/",
+    "method": "DELETE",
+    "input": {
+      "d": 32766,
+      "name": "pd",
+      "info": "dt",
+      "price": 99
+    }
+  },
+  "5": {
+    "timestamp": "2025-04-29T15:02:15.670313",
+    "path": "/api/product/{id}/",
+    "method": "GET",
+    "input": {
+      "id": 100,
+      "name": "pe",
+      "info": "dt\n",
+      "price": 1,
+      "vnVywho": true
+    }
+  },
+  "6": {
+    "timestamp": "2025-04-29T15:02:15.790249",
+    "path": "/api/product/{id}/",
+    "method": "GET",
+    "input": {
+      "id": 100,
+      "name": "d",
+      "info": "dt",
+      "price": 99
+    }
+  }
+}
