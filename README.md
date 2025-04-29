@@ -29,23 +29,36 @@
 ## 3. Architecture
 ### 3.1 Overall Workflow
 ### 3.1 Overall Workflow
-
 ```mermaid
 flowchart TD
-    subgraph Bootstrap Environment
-      A[run.sh] --> B[Create/activate venv & install deps]
+    subgraph Setup Django Environment
+      AA[install_django.sh] --> AB[Set up Django virtualenv, install deps, pre-warm server]
     end
+
+    subgraph Bootstrap Environment
+      A[run.sh] --> B[Create/activate global venv & install deps]
+    end
+
+    AB --> A
     B --> C[Executes main.py]
+
     subgraph Interactive CLI
       C --> D["print_commands()"]
       D --> E["get_args_interactive()"]
       E --> F{User command}
+      
       F -->|DJANGO| G["ensure_django_app_available()"]
-      G --> H["fuzz_main()" → Django fuzzing]
-      F -->|DJANGO file_path| I["fuzz_main(path)" → targeted fuzzing]
-      F -->|BLE| J[“Not Supported Yet”]
+      G --> H{File path provided?}
+      H -->|Yes| I["fuzz_main(filepath) → targeted Django fuzzing"]
+      H -->|No| J["fuzz_main() → general Django fuzzing"]
+
+      F -->|BLE| K["ensure_ble_app_available()"]
+      K --> L{--resume filepath provided?}
+      L -->|Yes| M["ble_main(filepath) → resume fuzzing session"]
+      L -->|No| N["ble_main() → fresh BLE fuzzing"]
     end
 ```
+
 - **`run.sh`**  
   Acts as the project’s bootstrapper. When invoked, it:  
   1. Ensures you’re in the repository root.  

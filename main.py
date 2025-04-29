@@ -47,41 +47,6 @@ def print_commands() -> None:
     print(Fore.MAGENTA + "  BLE --resume <filepath>" + Style.RESET_ALL)
 
 
-# def get_args_interactive() -> List[str]:
-#     prompt = Fore.CYAN + "Enter command: " + Style.RESET_ALL
-
-#     # show available commands once at start
-#     print_commands()
-
-#     while True:
-#         raw = input(prompt).strip()
-#         if not raw:
-#             # empty input → retry
-#             continue
-
-#         # split into at most two parts: project and optional filepath
-#         parts = raw.split(maxsplit=1)
-#         proj = parts[0].upper()
-
-#         # validate project type
-#         if proj not in VALID_PROJECT_TYPES:
-#             valid_choices = ", ".join(VALID_PROJECT_TYPES.keys())
-#             print(Fore.RED + f"  ✖ Unknown project type '{proj}'. Valid choices: {valid_choices}")
-#             print_commands()
-#             continue
-#         if not VALID_PROJECT_TYPES[proj]:
-#             print(Fore.RED + f"  ✖ '{proj}' support is currently disabled.")
-#             print_commands()
-#             continue
-
-#         args = [proj]
-
-
-#         if len(parts) == 2 and parts[1].strip():
-#             args.append(parts[1].strip())
-#         # valid args gathered
-#         return args
-    
 def get_args_interactive() -> List[str]:
     prompt = Fore.CYAN + "Enter command: " + Style.RESET_ALL
 
@@ -126,6 +91,7 @@ def get_args_interactive() -> List[str]:
                     continue
 
                 abs_path = (PROJECT_ROOT /"BLE" / raw_path).expanduser().resolve()
+                print(abs_path)
                 if not abs_path.exists():
                     print(Fore.RED + f"  ✖ BLE resume file '{raw_path}' not found. Please check the path.")
                     print_commands()
