@@ -26,7 +26,6 @@
 ---
 
 ## 3  Architecture <a id="3-architecture"></a>
-
 ```mermaid
 flowchart TD
     subgraph Setup Django Environment
@@ -48,12 +47,12 @@ flowchart TD
         F -->|DJANGO| G["ensure_django_app_available()"]
         G --> H{File path provided?}
         H -->|Yes| I["fuzz_main(filepath) – targeted Django fuzz"]
-        H -->|No|  J["fuzz_main() – general Django fuzz"]
+        H -->|No| J["fuzz_main() – general Django fuzz"]
 
         F -->|BLE| K["ensure_ble_app_available()"]
         K --> L{--resume filepath?}
         L -->|Yes| M["ble_main(filepath) – resume session"]
-        L -->|No|  N["ble_main() – fresh BLE fuzz"]
+        L -->|No| N["ble_main() – fresh BLE fuzz"]
     end
 ```
 
